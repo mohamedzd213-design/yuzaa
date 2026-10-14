@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>yuzaa · Infusions énergisantes naturelles</title>
-<meta name="description" content="yuzaa, infusions énergisantes 100 % plantes et sans sucre ajouté : guayusa, maté et guarana pour tes révisions, sans le crash du café.">
+<meta name="description" content="yuzaa, infusions énergisantes 100 % plantes et sans sucre ajouté : guayusa, maté et guarana pour vos journées d’étude. Osez l’énergie végétale.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=DM+Sans:opsz,wght@9..40,400..700&display=swap">
@@ -178,6 +178,8 @@ main{min-height:60vh}
 .hero{background:var(--bg-brand-subtle)}
 .hero .g2{padding-block:72px 80px}
 .hero h1{margin-block:14px 18px}
+.hero-sub{font:700 clamp(22px,2.3vw,30px)/1.2 var(--font-display);color:var(--text-brand);letter-spacing:-.01em;margin:-4px 0 18px}
+.ftr .sig{font:800 24px/1.2 var(--font-display);color:var(--eveil-300);margin-top:16px;letter-spacing:-.01em}
 .hero .lead{font-size:19px;color:var(--text-secondary);max-width:44ch}
 .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 .proofs{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:28px;font-size:14px;font-weight:500;color:var(--text-brand)}
@@ -486,8 +488,8 @@ details.cond p{margin-top:10px;color:var(--text-secondary);max-width:70ch}
 #view.pg-in{animation:yz-in .5s cubic-bezier(.2,.7,.2,1) both}
 .rv{opacity:0;transform:translateY(28px);transition:opacity .75s cubic-bezier(.2,.7,.2,1),transform .75s cubic-bezier(.2,.7,.2,1);transition-delay:var(--rd,0s)}
 .rv.in{opacity:1;transform:none}
-.hero .t-over,.hero h1,.hero .lead,.hero .ctas,.hero .proofs{animation:yz-in .8s cubic-bezier(.2,.7,.2,1) both}
-.hero h1{animation-delay:.08s}.hero .lead{animation-delay:.18s}.hero .ctas{animation-delay:.28s}.hero .proofs{animation-delay:.38s}
+.hero .t-over,.hero h1,.hero .hero-sub,.hero .lead,.hero .ctas,.hero .proofs{animation:yz-in .8s cubic-bezier(.2,.7,.2,1) both}
+.hero h1{animation-delay:.08s}.hero .hero-sub{animation-delay:.13s}.hero .lead{animation-delay:.18s}.hero .ctas{animation-delay:.28s}.hero .proofs{animation-delay:.38s}
 .hero .media svg{transform:translate3d(0,var(--px,0px),0);will-change:transform}
 .hv-bob,.hv-leaf,.hv-drift,.hv-glow{transform-box:fill-box}
 .hv-bob{animation:yz-float 6s ease-in-out infinite;transform-origin:center}
@@ -554,6 +556,7 @@ details.cond p{margin-top:10px;color:var(--text-secondary);max-width:70ch}
       <div class="ftop">
         <div>
           <a class="logo" href="#accueil" aria-label="yuzaa, accueil" data-logo="light"></a>
+          <p class="sig">Infusez vos journées.</p>
           <p style="margin-top:14px;font-size:14px;max-width:34ch">Infusions énergisantes 100 % plantes, sans sucre ajouté. Une énergie naturelle pour vos journées d'étude et de travail.</p>
           <form class="form" data-form="newsletter" novalidate style="margin-top:20px">
             <div class="field">
@@ -652,7 +655,8 @@ const V={};
 V.accueil=()=>`
 <section class="hero"><div class="wrap g2">
  <div><span class="t-over over">Infusions énergisantes · 100 % plantes · Sans sucre ajouté</span>
-  <h1 class="t-display">L'énergie des plantes, sans le crash.</h1>
+  <h1 class="t-display">Osez l'énergie végétale.</h1>
+  <p class="hero-sub">Quand l'énergie prend une infusion.</p>
   <p class="lead">Trois infusions au guayusa, au maté et au guarana, riches en caféine naturelle pour accompagner vos journées d'étude et de travail. Une énergie progressive, sans sucre ajouté ni arôme artificiel.</p>
   <div class="ctas"><a class="btn btn-primary" href="#infusions">Découvrir les recettes</a><a class="btn btn-ghost" href="#coffret-decouverte">Coffret Découverte · 19,90 €</a></div>
   <div class="proofs"><span>${ico.nosugar}Sans sucre ajouté</span><span>${ico.leaf}100 % plantes</span><span>${ico.tin}Carton recyclé</span></div>
@@ -813,7 +817,7 @@ V.pros=()=>`
 V.histoire=()=>`
 <section class="hero"><div class="wrap" style="padding-block:72px 64px;max-width:900px">
  <span class="t-over over">Notre histoire</span><h1 class="t-display" style="margin-block:14px 18px">Nés d'un scan Yuka.</h1>
- <p class="lead" style="max-width:60ch">yuzaa est une marque française née de l'expérience de six étudiants qui enchaînaient les canettes pendant leurs révisions. Notre conviction : l'énergie dont on a besoin peut venir des plantes, sans le crash du café ni le sucre des boissons énergisantes.</p>
+ <p class="lead" style="max-width:60ch">yuzaa est une marque française née de l'expérience de six étudiants qui enchaînaient les canettes pendant leurs révisions. Notre conviction : l'énergie dont on a besoin peut venir des plantes, sans les coups de fatigue du café ni le sucre des boissons énergisantes.</p>
 </div></section>
 <section class="sec-tight"><div class="wrap"><blockquote class="quote" style="margin:0">« Je fais attention à tout ce que je mange, sauf à ce qui me fait tenir la journée. »<cite>Une phrase entendue dans presque tous nos entretiens avec des étudiants.</cite></blockquote></div></section>
 <section class="sec-tight"><div class="wrap g2" style="align-items:start">
