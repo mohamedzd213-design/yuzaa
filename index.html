@@ -423,6 +423,45 @@ details.cond p{margin-top:10px;color:var(--text-secondary);max-width:70ch}
 .nf .code{font:800 clamp(80px,14cqi,160px)/0.9 var(--font-display);color:var(--focus-300);letter-spacing:-.04em}
 
 
+
+/* Notre histoire */
+.sh-hero .g2{padding-block:72px 80px}
+.sh-why p{color:var(--text-secondary);max-width:54ch;margin-bottom:12px;font-size:17px}
+.sh-quote{margin:28px 0 0;padding:0 0 0 22px;border-left:4px solid var(--eveil-500,#E8973B);font:700 clamp(20px,2.2cqi,26px)/1.3 var(--font-display);color:var(--eveil-700)}
+.sh-quote cite{display:block;margin-top:10px;font:500 14px var(--font-body);color:var(--text-secondary);font-style:normal}
+.sh-stats{display:grid;gap:14px}
+.stat{display:grid;gap:4px;padding:26px 28px;border-radius:var(--r-l);background:var(--bg-surface);border:1px solid var(--border-default)}
+.stat b{font:800 52px/1 var(--font-display);letter-spacing:-.03em;color:var(--rush-700);font-variant-numeric:tabular-nums}
+.stat.is-brand{background:var(--bg-brand-subtle);border-color:transparent}.stat.is-brand b{color:var(--text-brand)}
+.stat.is-warm{background:var(--bg-warm);border-color:transparent}.stat.is-warm b{color:var(--eveil-700)}
+.sh-band{background:var(--bg-brand-subtle)}
+.pillar{background:var(--bg-surface);border-radius:var(--r-l);padding:32px;display:grid;gap:10px;align-content:start;transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s}
+.pillar:hover{transform:translateY(-4px);box-shadow:0 20px 40px -24px rgba(27,26,22,.35)}
+.pillar .ico{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--bg-brand-subtle);color:var(--text-brand)}
+.pillar .ico svg{width:26px;height:26px}
+.pillar h3{font-size:24px}.pillar p{color:var(--text-secondary)}
+.origins{display:grid;gap:32px}
+.origin{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+.origin:nth-child(even) > .media{order:2}
+.origin > .media{aspect-ratio:4/3;border-radius:var(--r-l);overflow:hidden}
+.origin > .media svg{width:100%;height:100%;display:block}
+.origin h3{font-size:clamp(26px,2.8cqi,36px);margin-block:14px 12px;letter-spacing:-.02em}
+.origin p{color:var(--text-secondary);margin-bottom:12px;max-width:52ch}
+.origin .link{display:inline-block;margin-top:6px}
+.sh-team .team{margin-top:8px}
+.sh-cta{background:var(--focus-800,#1B5A31);color:#fff;border-radius:var(--r-l);padding:56px;display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:center}
+.sh-cta h2{color:#fff}.sh-cta p{color:rgba(255,255,255,.82);margin-top:12px;max-width:50ch}
+.sh-cta .ctas{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end}
+.sh-ghost{border-color:#fff;color:#fff;background:transparent}.sh-ghost:hover{background:rgba(255,255,255,.12)}
+.site.wf .sh-cta{background:#E6E6E6!important;color:#333}.site.wf .sh-cta h2,.site.wf .sh-cta p{color:#333}.site.wf .sh-ghost{border-color:#555;color:#333}
+@container site (max-width:760px){
+  .origin{grid-template-columns:1fr;gap:20px}
+  .origin:nth-child(even) > .media{order:0}
+  .sh-cta{grid-template-columns:1fr;padding:32px 24px}
+  .sh-cta .ctas{justify-content:flex-start}
+  .stat b{font-size:42px}
+}
+
 /* Pop-up newsletter */
 .nlpop{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:20px;background:rgba(18,30,22,.55);backdrop-filter:blur(3px);opacity:0;transition:opacity .35s}
 .nlpop[hidden]{display:none}
@@ -674,6 +713,13 @@ const tinSVG=(d,bg)=>`<svg viewBox="0 0 200 240" role="img" aria-label="Boîte $
 function heroSVG(){return `<svg viewBox="0 0 520 480" role="img" aria-label="Les trois boîtes yuzaa : Rush, Focus et Éveil"><circle class="hv-glow" cx="270" cy="250" r="190" fill="#D3EBD9"/><path class="hv-leaf" d="M60 120c40-60 110-70 150-40-40 50-100 70-150 40z" fill="#7FC594"/><path class="hv-leaf hv-d2" d="M420 380c40-50 90-50 110-20-40 40-80 50-110 20z" fill="#7FC594" opacity=".7"/><path class="hv-leaf hv-d3" d="M440 90c10-40 50-60 80-50-10 40-45 60-80 50z" fill="#F5BC75"/><path class="hv-drift" d="M96 330c8-16 26-20 36-12-9 13-24 18-36 12z" fill="#7FC594" opacity=".55"/><path class="hv-drift hv-d2" d="M470 230c6-12 20-15 28-9-7 10-19 14-28 9z" fill="#F5BC75" opacity=".7"/><g transform="translate(40 150) scale(1.05)"><g class="hv-bob hv-d2">${tin('rush')}</g></g><g transform="translate(300 160) scale(1.05)"><g class="hv-bob hv-d3">${tin('eveil')}</g></g><g transform="translate(150 80) scale(1.45)"><g class="hv-bob">${tin('focus')}</g></g></svg>`;}
 function sceneSVG(c,label){const p=P[c]||P.focus;return `<svg viewBox="0 0 400 300" role="img" aria-label="${label||''}" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" fill="${p.c1}"/><circle cx="300" cy="80" r="120" fill="${p.c3}" opacity=".7"/><path d="M40 260C40 160 110 90 230 80c0 120-70 180-190 180z" fill="${p.c5}" opacity=".85"/><path d="M20 290l60-60" stroke="${p.c7}" stroke-width="6" stroke-linecap="round"/><path d="M150 120l-40 60h28l-14 46 46-64h-28l12-42z" fill="#fff" opacity=".9"/><path d="M280 270c20-60 70-80 110-70-20 50-60 80-110 70z" fill="${p.c7}" opacity=".35"/></svg>`;}
 function plantSVG(c){const p=P[c];return `<svg viewBox="0 0 400 250" role="img" aria-label="Feuilles de ${p.plantMain}" preserveAspectRatio="xMidYMid slice"><rect width="400" height="250" fill="${p.c1}"/><path d="M200 230V70" stroke="${p.c7}" stroke-width="5"/><path d="M200 120c-60-10-90-50-90-90 50 0 85 35 90 90z" fill="${p.c5}"/><path d="M200 160c60-10 95-50 95-95-55 5-90 40-95 95z" fill="${p.c3}"/><path d="M200 200c-50-5-80-35-85-70 45 0 80 25 85 70z" fill="${p.c7}" opacity=".8"/><circle cx="320" cy="200" r="14" fill="${p.c7}" opacity=".5"/><circle cx="345" cy="185" r="10" fill="${p.c5}"/></svg>`;}
+function leavesSVG(){const L=(d,x,y,r,sc,cls)=>{const p=P[d];return `<g transform="translate(${x} ${y}) rotate(${r}) scale(${sc})"><g class="hv-leaf ${cls}"><path d="M0 0C-10-90 40-160 120-190 140-110 100-30 0 0z" fill="${p.c5}"/><path d="M0 0C30-60 70-120 118-186" stroke="${p.c7}" stroke-width="4" fill="none" stroke-linecap="round" opacity=".55"/></g></g>`;};
+ return `<svg viewBox="0 0 520 480" role="img" aria-label="Feuilles de guayusa, de maté et de graines de guarana"><circle class="hv-glow" cx="260" cy="240" r="200" fill="#D3EBD9"/><circle cx="380" cy="120" r="46" fill="#F5BC75" opacity=".8"/>${L('rush',300,420,32,1.05,'hv-d3')}${L('eveil',190,430,-38,1.1,'hv-d2')}${L('focus',250,440,-4,1.4,'')}<path d="M100 300c-6 20-4 36 4 50" stroke="#7A2A22" stroke-width="4" fill="none" stroke-linecap="round"/><g class="hv-drift">${[[92,352],[118,372],[88,386]].map(([x,y])=>`<g transform="translate(${x} ${y})"><circle r="15" fill="#C9372C"/><circle r="8" fill="#fff"/><circle r="5" fill="#1B1A16"/></g>`).join('')}</g></svg>`;}
+function landSVG(c){const p=P[c];
+ const sky=`<rect width="480" height="360" fill="${p.c1}"/>`;
+ if(c==='eveil')return `<svg viewBox="0 0 480 360" role="img" aria-label="Forêt amazonienne à l'aube" preserveAspectRatio="xMidYMid slice">${sky}<circle class="hv-glow" cx="240" cy="230" r="70" fill="${p.c3}"/><path d="M0 230c60-40 120-40 180-10s130 30 180 0 90-30 120-20v160H0z" fill="${p.c5}" opacity=".45"/>${[30,95,160,330,400,455].map((x,i)=>`<g transform="translate(${x} ${200+(i%2)*18})"><rect x="-4" y="40" width="8" height="90" fill="${p.c7}" opacity=".55"/><ellipse cy="30" rx="${34+(i%3)*6}" ry="44" fill="${p.c7}" opacity="${.5+(i%2)*.2}"/></g>`).join('')}<path d="M0 300c80-20 160-20 240 0s160 20 240 0v60H0z" fill="${p.c7}" opacity=".8"/><g transform="translate(250 330) rotate(-20)"><g class="hv-leaf"><path d="M0 0C-8-70 30-120 90-140 104-80 76-24 0 0z" fill="#2A8046"/></g></g></svg>`;
+ if(c==='focus')return `<svg viewBox="0 0 480 360" role="img" aria-label="Collines et forêts d'Amérique du Sud" preserveAspectRatio="xMidYMid slice">${sky}<circle class="hv-glow" cx="360" cy="90" r="48" fill="${p.c3}"/><path d="M0 210c90-50 170-60 250-30s150 20 230-20v200H0z" fill="${p.c3}"/><path d="M0 260c100-40 200-40 300-10s120 10 180-10v120H0z" fill="${p.c5}"/>${[60,120,180,240].map((x,i)=>`<path d="M${x} ${300-i*6}c10-30 30-30 40 0" stroke="${p.c7}" stroke-width="5" fill="none" stroke-linecap="round" opacity=".5"/>`).join('')}<path d="M0 320c120-30 240-30 360-10 50 8 90 6 120 0v50H0z" fill="${p.c7}"/><g transform="translate(380 300)"><g class="hv-bob"><path d="M-36 0c0-34 16-52 36-52s36 18 36 52c0 22-16 34-36 34s-36-12-36-34z" fill="#C79A5B"/><path d="M-30-30h60" stroke="#8A6332" stroke-width="5"/><path d="M14-46l22-60" stroke="#6B6559" stroke-width="6" stroke-linecap="round"/></g></g></svg>`;
+ return `<svg viewBox="0 0 480 360" role="img" aria-label="Fleuve amazonien et fruits de guarana" preserveAspectRatio="xMidYMid slice">${sky}<circle class="hv-glow" cx="110" cy="90" r="50" fill="${p.c3}"/><path d="M0 200c80-30 160-30 240-10s160 20 240-10v180H0z" fill="${p.c5}" opacity=".55"/><path d="M0 270c90-25 170-10 240 10s150 15 240-5v85H0z" fill="#9FC9D9"/><path d="M0 300c90-15 170 0 240 15s150 10 240-5" stroke="#fff" stroke-width="3" fill="none" opacity=".6"/><path d="M330 0c-10 60 30 90 10 150s20 90 0 130" stroke="${p.c7}" stroke-width="7" fill="none" stroke-linecap="round" opacity=".7"/>${[[300,130,-30],[372,170,30],[310,230,-20]].map(([x,y,r])=>`<path transform="translate(${x} ${y}) rotate(${r})" d="M0 0c20-26 54-28 70-6-22 22-50 24-70 6z" fill="${p.c7}" opacity=".75"/>`).join('')}<g class="hv-bob">${[[345,190],[366,205],[343,214],[362,228],[383,190]].map(([x,y])=>`<g transform="translate(${x} ${y})"><circle r="13" fill="#C9372C"/><circle r="7" fill="#fff"/><circle r="4.5" fill="#1B1A16"/></g>`).join('')}</g></svg>`;}
 const ico={
  lab:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3"/><path d="M7 15h10"/></svg>',
  leaf:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19C5 10 11 4 20 4c0 9-6 15-15 15z"/><path d="M4 20l6-6"/></svg>',
@@ -873,34 +919,66 @@ V.pros=()=>`
 </div></section>`;
 
 V.histoire=()=>`
-<section class="hero"><div class="wrap" style="padding-block:72px 64px;max-width:900px">
- <span class="t-over over">Notre histoire</span><h1 class="t-display" style="margin-block:14px 18px">Nés d'un scan Yuka.</h1>
- <p class="lead" style="max-width:60ch">yuzaa est une marque française née de l'expérience de six étudiants qui enchaînaient les canettes pendant leurs révisions. Notre conviction : l'énergie dont on a besoin peut venir des plantes, sans les coups de fatigue du café ni le sucre des boissons énergisantes.</p>
+<section class="hero sh-hero"><div class="wrap g2">
+ <div><span class="t-over over">Notre histoire</span>
+  <h1 class="t-display">Au commencement, une feuille.</h1>
+  <p class="hero-sub">Bien avant les canettes, l'énergie poussait dans les arbres.</p>
+  <p class="lead">En Amazonie et en Amérique du Sud, on boit depuis des siècles du guayusa, du maté et du guarana pour commencer la journée, travailler ou se retrouver. yuzaa remet ce savoir dans votre tasse.</p>
+ </div>
+ <div class="media">${leavesSVG()}</div>
 </div></section>
-<section class="sec-tight"><div class="wrap"><blockquote class="quote" style="margin:0">« Je fais attention à tout ce que je mange, sauf à ce qui me fait tenir la journée. »<cite>Une phrase entendue dans presque tous nos entretiens avec des étudiants.</cite></blockquote></div></section>
-<section class="sec-tight"><div class="wrap g2" style="align-items:start">
- <div class="media" style="aspect-ratio:4/5">${sceneSVG('focus','Atelier yuzaa')}</div>
- <div><h2 class="t-h2" style="margin-bottom:20px">Notre parcours</h2><div class="tl">
-  <div><b>Sept. 2025</b><div><h3>Le déclic</h3><p>Trois canettes par jour, un sommeil perturbé et une étiquette pleine d'additifs.</p></div></div>
-  <div><b>Hiver 2026</b><div><h3>Les recettes</h3><p>42 essais de mélanges et des dégustations à l'aveugle auprès de 60 étudiants.</p></div></div>
-  <div><b>Été 2026</b><div><h3>Le lancement</h3><p>Premières boîtes vendues sur les stands BDE, puis en ligne.</p></div></div>
-  <div><b>Aujourd'hui</b><div><h3>yuzaa</h3><p>Trois recettes, des coffrets pensés pour les examens et une offre dédiée aux cafés, coworkings et BDE.</p></div></div>
- </div></div>
+
+<section class="sec"><div class="wrap g2 sh-why">
+ <div><span class="t-over over">Le constat</span><h2 class="t-h2" style="margin-block:8px 16px">Pourquoi yuzaa ?</h2>
+  <p>Pendant nos révisions, l'énergie arrivait en canette : beaucoup de sucre, des arômes, des colorants, et des après-midis en dents de scie.</p>
+  <p>Nous cherchions une alternative aussi efficace, mais plus simple. Nous l'avons trouvée dans des plantes que d'autres cultures connaissent depuis toujours.</p>
+  <blockquote class="sh-quote">« Je fais attention à tout ce que je mange, sauf à ce qui me fait tenir la journée. »<cite>Une phrase entendue dans presque tous nos échanges avec des étudiants.</cite></blockquote>
+ </div>
+ <div class="sh-stats"><div class="stat"><span class="t-sm">Une canette de 250 ml</span><b><span data-count="27">27</span> g</b><span class="t-sm">de sucre en moyenne</span></div><div class="stat is-brand"><span class="t-sm">Une tasse yuzaa</span><b>0 g</b><span class="t-sm">de sucre ajouté</span></div><div class="stat is-warm"><span class="t-sm">Le prix d'une tasse</span><b>0,30 €</b><span class="t-sm">contre 1,50 € la canette</span></div></div>
 </div></section>
+
+<section class="sec sh-band" id="engagements"><div class="wrap">
+ <div class="sec-head"><div><span class="t-over over">Notre mission</span><h2 class="t-h2" style="margin-top:8px">Une énergie naturelle, simple et transparente</h2><p>Trois engagements guident chacune de nos recettes.</p></div></div>
+ <div class="g3">
+  <div class="pillar"><span class="ico">${ico.leaf}</span><h3>100 % plantes</h3><p>Des feuilles, des graines, des épices et des agrumes. Aucun arôme artificiel, aucun colorant.</p></div>
+  <div class="pillar"><span class="ico">${ico.nosugar}</span><h3>Sans sucre ajouté</h3><p>La douceur vient des plantes elles-mêmes. Vous gardez une énergie régulière, du matin au soir.</p></div>
+  <div class="pillar"><span class="ico">${ico.tin}</span><h3>Carton recyclé</h3><p>Boîtes, sachets et colis en carton recyclé. Zéro plastique, de l'atelier à votre bureau.</p></div>
+ </div>
+</div></section>
+
 <section class="sec" id="producteurs"><div class="wrap">
- <div class="sec-head"><div><span class="t-over over">Producteurs</span><h2 class="t-h2" style="margin-top:8px">Trois plantes, trois énergies</h2><p>Trois plantes naturellement riches en caféine, chacune au cœur d'une recette.</p></div></div>
- <div class="g3"><div class="plant bg-eveil"><div class="media">${plantSVG('eveil')}</div><h3>Guayusa</h3><p class="t-sm">La base d'Éveil. Une énergie douce, associée à la citronnelle et à la menthe.</p></div><div class="plant bg-focus"><div class="media">${plantSVG('focus')}</div><h3>Maté</h3><p class="t-sm">Vert dans Focus avec le gingembre et le citron, torréfié dans Rush. Une énergie stable et durable.</p></div><div class="plant bg-rush"><div class="media">${plantSVG('rush')}</div><h3>Guarana</h3><p class="t-sm">Le cœur de Rush, avec le cacao. Notre plante la plus riche en caféine.</p></div></div>
+ <div class="sec-head"><div><span class="t-over over">D'où viennent nos plantes</span><h2 class="t-h2" style="margin-top:8px">Trois plantes, trois terres, trois rituels</h2><p>Chaque recette yuzaa commence par une plante et par l'histoire des peuples qui l'ont fait connaître.</p></div></div>
+ <div class="origins">
+  <article class="origin"><div class="media">${landSVG('eveil')}</div><div>
+   <span class="pastille pastille-eveil">Amazonie équatorienne · Éveil</span>
+   <h3>Guayusa, la feuille de l'aube</h3>
+   <p>Au pied des Andes, les familles kichwa se réveillent avant le soleil. Autour du feu, elles partagent une infusion de guayusa et se racontent leurs rêves de la nuit.</p>
+   <p>Cette feuille d'un houx amazonien apporte une énergie douce et progressive. C'est la base d'Éveil, avec la citronnelle et la menthe.</p>
+   <a class="link" href="#produit-eveil">Découvrir Éveil →</a></div></article>
+  <article class="origin"><div class="media">${landSVG('focus')}</div><div>
+   <span class="pastille pastille-focus">Forêts d'Amérique du Sud · Focus et Rush</span>
+   <h3>Maté, la boisson du partage</h3>
+   <p>Des forêts du Paraguay aux plaines d'Argentine, le maté se boit à plusieurs. La calebasse passe de main en main, pendant les études, au travail ou entre amis.</p>
+   <p>Vert, il offre une concentration stable : c'est le cœur de Focus, avec le gingembre et le citron. Torréfié, il donne à Rush ses notes profondes.</p>
+   <a class="link" href="#produit-focus">Découvrir Focus →</a></div></article>
+  <article class="origin"><div class="media">${landSVG('rush')}</div><div>
+   <span class="pastille pastille-rush">Amazonie brésilienne · Rush</span>
+   <h3>Guarana, la graine qui ouvre les yeux</h3>
+   <p>Sur les rives de l'Amazone, le peuple sateré-mawé cultive le guarana depuis des générations. Ses fruits rouges, entrouverts sur une graine noire, ressemblent à des yeux grands ouverts.</p>
+   <p>C'est la plante la plus riche en caféine de notre gamme. Associée au cacao, elle fait de Rush la recette des grands jours.</p>
+   <a class="link" href="#produit-rush">Découvrir Rush →</a></div></article>
+ </div>
 </div></section>
-<section class="sec-tight"><div class="wrap g2">
- <div><h2 class="t-h2">L'équipe</h2><p class="muted" style="margin-block:12px 24px;max-width:52ch">Six profils complémentaires, de la gestion de projet à la logistique, réunis autour d'une même conviction.</p><a class="btn btn-primary" href="#contact">Nous écrire</a></div>
- <div class="nums"><div><b>3</b><span class="t-sm">recettes</span></div><div><b>0 g</b><span class="t-sm">de sucre ajouté</span></div><div><b>100 %</b><span class="t-sm">plantes</span></div><div><b>0,30 €</b><span class="t-sm">la tasse</span></div></div>
-</div>
-<div class="wrap"><div class="team" style="margin-top:40px">${TEAM.map(([n,r,img])=>`<div class="member"><span class="avatar"><img src="${img}" alt="${n}, ${r}" width="120" height="120" loading="lazy"></span><b>${n}</b><small>${r}</small></div>`).join('')}</div></div></section>
-<section class="sec" id="engagements"><div class="wrap">
- <h2 class="t-h2" style="margin-bottom:24px">Nos engagements</h2>
- <div class="g4"><div class="eng"><span class="pastille pastille-focus">Direct</span><h3>Vente en direct</h3><p>Sur notre site, sans intermédiaire, pour maintenir la tasse à 0,30 €.</p></div><div class="eng"><span class="pastille pastille-focus">Plantes</span><h3>100 % plantes</h3><p>Sans sucre ajouté, sans arôme artificiel.</p></div><div class="eng"><span class="pastille pastille-eveil">Recettes</span><h3>Recettes transparentes</h3><p>Plantes et teneur en caféine clairement indiquées sur chaque boîte.</p></div><div class="eng"><span class="pastille pastille-rush">Zéro-plastique</span><h3>Carton recyclé</h3><p>Tous nos produits sont emballés dans des boîtes en carton recyclé.</p></div></div>
+
+<section class="sec sh-team"><div class="wrap">
+ <div class="sec-head"><div><span class="t-over over">L'équipe</span><h2 class="t-h2" style="margin-top:8px">Six étudiants derrière chaque tasse</h2><p>Six profils complémentaires, de la gestion de projet à la logistique, réunis autour d'une même conviction : l'énergie peut être naturelle.</p></div></div>
+ <div class="team">${TEAM.map(([n,r,img])=>`<div class="member"><span class="avatar"><img src="${img}" alt="${n}, ${r}" width="120" height="120" loading="lazy"></span><b>${n}</b><small>${r}</small></div>`).join('')}</div>
 </div></section>
-<section class="sec-tight" style="padding-bottom:80px"><div class="wrap"><div class="band"><div><h2 class="t-h3">Trouvez votre recette</h2><p class="muted">Le coffret Découverte réunit les trois recettes et une boule à thé, pour 19,90 €.</p></div><a class="btn btn-energy" href="#coffret-decouverte">Découvrir le coffret</a></div></div></section>`;
+
+<section class="sec-tight" style="padding-bottom:88px"><div class="wrap"><div class="sh-cta">
+ <div><span class="t-over" style="color:var(--eveil-300)">Infusez vos journées</span><h2 class="t-h2" style="margin-top:8px">Trois origines, trois énergies.<br>Laquelle est la vôtre ?</h2><p>Éveil, Focus ou Rush : choisissez selon votre journée, ou goûtez les trois avec le coffret Découverte.</p></div>
+ <div class="ctas"><a class="btn btn-light" href="#infusions">Découvrir les recettes</a><a class="btn sh-ghost" href="#coffret-decouverte">Coffret Découverte · 19,90 €</a></div>
+</div></div></section>`;
 
 V.blog=()=>{const cats=['Tous','Énergie','Plantes','Recettes','Routine'];const list=ARTS.slice(1).filter(a=>state.bfilter==='Tous'||a.cat===state.bfilter);return `
 <div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / Blog</nav></div>
@@ -1075,7 +1153,7 @@ function render(keepScroll){const r=(location.hash.slice(1)||'accueil');const m=
 /* ---------- Animations ---------- */
 const RM=matchMedia('(prefers-reduced-motion: reduce)');
 const still=()=>RM.matches||$('#site').classList.contains('wf');
-const RV='.sec-head,.pcard,.acard,.card,.member,.day,.sim,.daycards>div,.tiles>*,.steps4>*,.g4>*,.quality>*,.feat>*,.cmpw,.plant,.tstep,.faqg details,.proof,.story>*,.quote';
+const RV='.sec-head,.pcard,.acard,.card,.member,.day,.sim,.daycards>div,.tiles>*,.steps4>*,.g4>*,.quality>*,.feat>*,.cmpw,.plant,.origin,.pillar,.stat,.tstep,.faqg details,.proof,.story>*,.quote';
 const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const t=e.target;io.unobserve(t);if(t.dataset.count!=null)countUp(t);else t.classList.add('in');}),{rootMargin:'0px 0px -8% 0px',threshold:.08}):null;
 function countUp(el){const n=+el.dataset.count,t0=performance.now(),dur=1100;const step=now=>{const k=Math.min(1,(now-t0)/dur);el.textContent=Math.round(n*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(step);};el.textContent='0';requestAnimationFrame(step);}
 function animate(){const v=$('#view');v.classList.remove('pg-in');if(still()||!io)return;void v.offsetWidth;v.classList.add('pg-in');
