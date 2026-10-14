@@ -1,0 +1,1044 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Site yuzaa</title>
+<meta name="description" content="Prototype interactif du site yuzaa : maquette graphique et mode wireframe, desktop et mobile.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=DM+Sans:opsz,wght@9..40,400..700&display=swap">
+<style>
+/* yuzaa · design system "Nature & Énergie" v1, appliqué aux maquettes.
+   Primitives : Éveil (abricot), Focus (vert, couleur de marque), Rush (rouge), Sable (neutres chauds).
+   Les composants n'utilisent que les tokens sémantiques. */
+:root{
+  --eveil-100:#FFF6E8;--eveil-300:#FFE0B5;--eveil-500:#F5BC75;--eveil-700:#A3600F;
+  --focus-50:#EEF6EF;--focus-100:#D3EBD9;--focus-300:#7FC594;--focus-500:#2A8046;--focus-700:#1B5A31;--focus-900:#0F3320;
+  --rush-100:#FDE4DF;--rush-300:#F28A7C;--rush-500:#D93A2B;--rush-700:#9E2318;
+  --sable-0:#FFFFFF;--sable-50:#FAF7EF;--sable-100:#F2EDE1;--sable-200:#E3DCCB;--sable-400:#A8A08E;--sable-600:#6B6559;--sable-800:#33302A;--sable-900:#1B1A16;
+
+  --font-display:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;
+  --font-body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r-s:8px;--r-m:14px;--r-l:24px;--r-pill:999px;
+  --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;--s-8:64px;--s-9:96px;
+  --shadow:0 1px 2px rgba(27,26,22,.06),0 8px 24px rgba(27,26,22,.06);
+  color-scheme:light;
+}
+/* Les tokens sémantiques sont aussi déclarés sur .site, pour que le mode wireframe du prototype les recalcule */
+:root,.site{
+  --bg-default:var(--sable-50);--bg-surface:var(--sable-0);--bg-subtle:var(--sable-100);
+  --bg-brand:var(--focus-700);--bg-brand-subtle:var(--focus-50);--bg-energy:var(--rush-500);--bg-warm:var(--eveil-100);
+  --text-primary:var(--sable-900);--text-secondary:var(--sable-600);--text-brand:var(--focus-700);--text-on-brand:var(--sable-0);--text-on-energy:var(--sable-0);
+  --border-default:var(--sable-200);--border-strong:var(--sable-400);--border-brand:var(--focus-500);
+  --action-primary:var(--focus-500);--action-primary-hover:var(--focus-700);--action-energy:var(--rush-500);--action-energy-hover:var(--rush-700);
+  --feedback-success:var(--focus-500);--feedback-warning:var(--eveil-700);--feedback-error:var(--rush-700);--feedback-info:var(--sable-600);
+
+}
+*{box-sizing:border-box}
+body{background:var(--bg-default);color:var(--text-primary);font-family:var(--font-body);font-size:16px;line-height:1.6;margin:0}
+h1,h2,h3,h4{font-family:var(--font-display);line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus-300);outline-offset:2px;border-radius:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* Échelle typographique (charte) */
+.t-display{font-family:var(--font-display);font-weight:800;font-size:clamp(40px,6vw,72px);line-height:1.05;letter-spacing:-.02em}
+.t-h1{font-family:var(--font-display);font-weight:700;font-size:clamp(32px,4.4vw,48px);line-height:1.1;letter-spacing:-.015em}
+.t-h2{font-family:var(--font-display);font-weight:700;font-size:clamp(26px,3vw,36px);line-height:1.15;letter-spacing:-.01em}
+.t-h3{font-family:var(--font-display);font-weight:600;font-size:28px;line-height:1.2}
+.t-h4{font-family:var(--font-display);font-weight:600;font-size:22px;line-height:1.25}
+.t-lg{font-size:18px;line-height:1.6}
+.t-sm{font-size:14px;line-height:1.5}
+.t-label{font-weight:600;font-size:16px;letter-spacing:.005em}
+.t-over{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.t-cap{font-weight:500;font-size:12px;line-height:1.4;color:var(--text-secondary)}
+.muted{color:var(--text-secondary)}
+
+/* Boutons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 16px/1.2 var(--font-body);padding:13px 22px;border-radius:var(--r-pill);border:2px solid transparent;cursor:pointer;text-decoration:none;transition:background .15s,color .15s,border-color .15s;white-space:nowrap}
+.btn-primary{background:var(--action-primary);color:var(--text-on-brand)}
+.btn-primary:hover{background:var(--action-primary-hover)}
+.btn-energy{background:var(--action-energy);color:var(--text-on-energy)}
+.btn-energy:hover{background:var(--action-energy-hover)}
+.btn-ghost{background:transparent;border-color:var(--text-brand);color:var(--text-brand)}
+.btn-ghost:hover{background:var(--bg-brand-subtle)}
+.btn-light{background:var(--sable-0);color:var(--text-brand)}
+.btn-sm{padding:8px 14px;font-size:14px}
+.btn-block{width:100%}
+.btn[disabled]{background:var(--sable-200);color:var(--sable-600);cursor:not-allowed}
+.link{color:var(--text-brand);font-weight:600;text-underline-offset:3px}
+
+/* Badges de dose */
+.dose{display:inline-flex;align-items:center;gap:6px;font:600 12px/1 var(--font-body);letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;border-radius:var(--r-pill)}
+.dose::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.dose-eveil{background:var(--eveil-100);color:var(--eveil-700)}
+.dose-focus{background:var(--focus-50);color:var(--focus-700)}
+.dose-rush{background:var(--rush-100);color:var(--rush-700)}
+.tag{display:inline-block;font:500 13px/1 var(--font-body);padding:7px 12px;border-radius:var(--r-pill);background:var(--bg-subtle);color:var(--text-secondary)}
+
+/* Formulaires */
+.field{display:grid;gap:6px}
+.field label{font-weight:600;font-size:14px}
+.input,.select,textarea.input{font:400 16px/1.4 var(--font-body);padding:12px 14px;border:1.5px solid var(--border-default);border-radius:var(--r-s);background:var(--bg-surface);color:var(--text-primary);width:100%}
+.input:focus{outline:none;border-color:var(--border-brand);box-shadow:0 0 0 3px var(--focus-100)}
+.field.has-error .input{border-color:var(--feedback-error);box-shadow:0 0 0 3px var(--rush-100)}
+.field .err{color:var(--feedback-error);font-size:13px;font-weight:500;display:none}
+.field.has-error .err{display:block}
+.field.is-ok .input{border-color:var(--feedback-success)}
+.hint{font-size:13px;color:var(--text-secondary)}
+.alert{padding:12px 16px;border-radius:var(--r-s);font-size:14px;font-weight:500}
+.alert-ok{background:var(--focus-50);color:var(--focus-700)}
+.alert-err{background:var(--rush-100);color:var(--rush-700)}
+.alert-warn{background:var(--eveil-100);color:var(--eveil-700)}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:14px}
+.check input{accent-color:var(--focus-500);width:18px;height:18px;margin-top:2px}
+
+.card{background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--r-m)}
+
+/* ---------- Pages de documentation (hub, plan, zoning, charte) ---------- */
+.doc{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 80px}
+.doc-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-block:8px 28px;border-bottom:1px solid var(--border-default);margin-bottom:40px}
+.doc-top nav{display:flex;flex-wrap:wrap;gap:6px}
+.doc-top nav a{font-size:14px;font-weight:500;text-decoration:none;padding:7px 12px;border-radius:var(--r-pill);color:var(--text-secondary)}
+.doc-top nav a:hover{background:var(--bg-subtle);color:var(--text-primary)}
+.doc-top nav a[aria-current]{background:var(--bg-brand);color:var(--text-on-brand)}
+.doc h1{font-weight:800;font-size:clamp(34px,5vw,56px);letter-spacing:-.02em}
+.doc h2{font-weight:700;font-size:clamp(24px,3vw,32px);margin-bottom:8px}
+.doc h3{font-weight:600;font-size:20px}
+.doc .lead{font-size:18px;max-width:68ch;color:var(--text-secondary);margin-top:14px}
+.doc section{margin-top:64px}
+.doc .intro-note{max-width:70ch;color:var(--text-secondary)}
+.req{display:inline-flex;align-items:center;gap:6px;font:600 11px/1 var(--font-body);letter-spacing:.07em;text-transform:uppercase;padding:6px 9px;border-radius:6px;background:var(--eveil-100);color:var(--eveil-700)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--border-default);border-radius:var(--r-m);background:var(--bg-surface)}
+table.tbl{border-collapse:collapse;width:100%;font-size:14px;min-width:820px}
+.tbl th,.tbl td{text-align:left;vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--border-default)}
+.tbl th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-secondary);background:var(--bg-subtle);font-weight:600;position:sticky;top:0}
+.tbl tr:last-child td{border-bottom:0}
+.tbl code{font-size:12.5px;background:var(--bg-subtle);padding:2px 6px;border-radius:4px;word-break:break-all}
+.chars{font-size:12px;color:var(--text-secondary);font-variant-numeric:tabular-nums}
+.new{display:inline-block;font:600 10px/1 var(--font-body);letter-spacing:.06em;text-transform:uppercase;background:var(--rush-100);color:var(--rush-700);padding:4px 6px;border-radius:4px;margin-left:6px;vertical-align:2px}
+.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--text-brand)}
+.logo svg{display:block}
+.logo b{font:800 26px/1 var(--font-display);letter-spacing:-.03em}
+
+</style>
+<style>
+/* Barre d'outils du prototype (hors site) */
+html,body{background:#E9E5DA}
+.pbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding:10px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));background:#1B1A16;color:#F2EDE1;font:500 13px/1.2 var(--font-body)}
+.pbar b{font-family:var(--font-display);font-size:15px;letter-spacing:-.01em}
+.pbar a{color:#F2EDE1}
+.seg{display:inline-flex;background:#33302A;border-radius:999px;padding:3px}
+.seg button{font:600 12px/1 var(--font-body);color:#F2EDE1;background:none;border:0;padding:8px 12px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:#F2EDE1;color:#1B1A16}
+.pbar select{font:500 13px var(--font-body);background:#33302A;color:#F2EDE1;border:0;border-radius:8px;padding:8px 10px;max-width:220px}
+.pbar .sp{flex:1}
+.stage{padding:24px max(0px,env(safe-area-inset-right,0px)) 48px max(0px,env(safe-area-inset-left,0px))}
+.stage.mobile{padding-inline:16px}
+
+/* ---------- Le site ---------- */
+.site{container:site/inline-size;font-family:var(--font-body);color:var(--text-primary);background:var(--bg-default);margin:0 auto;max-width:1440px;overflow:hidden;box-shadow:0 10px 40px rgba(27,26,22,.12)}
+.stage.mobile .site{max-width:390px;border-radius:36px;border:10px solid #1B1A16}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:40px}
+.announce{background:var(--focus-900);color:var(--focus-100);font-size:13px;text-align:center;padding:8px 16px}
+.announce b{color:var(--sable-0)}
+.hdr{position:sticky;top:0;z-index:20;background:var(--bg-surface);border-bottom:1px solid var(--border-default)}
+.hdr .wrap{display:flex;align-items:center;gap:32px;height:72px}
+.nav{display:flex;gap:4px;flex:1}
+.nav a{text-decoration:none;font-weight:500;font-size:15px;padding:10px 14px;border-radius:999px;color:var(--text-primary)}
+.nav a:hover{background:var(--bg-subtle)}
+.nav a.on{color:var(--text-brand);background:var(--bg-brand-subtle);font-weight:600}
+.icons{display:flex;gap:6px;align-items:center}
+.ibtn{position:relative;display:inline-grid;place-items:center;width:44px;height:44px;border-radius:999px;color:var(--text-primary);text-decoration:none;background:none;border:0;cursor:pointer}
+.ibtn:hover{background:var(--bg-subtle)}
+.ibtn svg{width:22px;height:22px}
+.count{position:absolute;top:4px;right:2px;min-width:18px;height:18px;border-radius:9px;background:var(--action-energy);color:#fff;font:700 11px/18px var(--font-body);text-align:center;padding:0 4px}
+.burger{display:none}
+.mnav{display:none}
+
+main{min-height:60vh}
+.sec{padding-block:80px}
+.sec-tight{padding-block:48px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin-bottom:36px}
+.sec-head p{max-width:56ch;color:var(--text-secondary);margin-top:10px}
+.over{color:var(--text-brand)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.crumb{font-size:13px;color:var(--text-secondary);padding-block:20px}
+.crumb a{color:var(--text-secondary)}
+
+/* médias : illustrations vectorielles (en mode wireframe : boîte barrée) */
+.media{position:relative;border-radius:var(--r-l);overflow:hidden;display:grid;place-items:center}
+.media svg{width:100%;height:100%;display:block}
+
+/* Hero */
+.hero{background:var(--bg-brand-subtle)}
+.hero .g2{padding-block:72px 80px}
+.hero h1{margin-block:14px 18px}
+.hero .lead{font-size:19px;color:var(--text-secondary);max-width:44ch}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.proofs{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:28px;font-size:14px;font-weight:500;color:var(--text-brand)}
+.proofs span{display:inline-flex;gap:6px;align-items:center}
+.proofs svg{width:18px;height:18px}
+.hero .media{aspect-ratio:1/0.92;background:var(--focus-100)}
+
+/* Cartes produit */
+.pcard{border-radius:var(--r-l);padding:22px;display:flex;flex-direction:column;gap:12px;text-decoration:none;color:inherit;border:1px solid transparent;transition:transform .2s}
+.pcard:hover{transform:translateY(-3px)}
+.pcard .media{aspect-ratio:1/1;border-radius:var(--r-m);background:rgba(255,255,255,.55)}
+.pcard h3{font-size:30px;font-weight:800}
+.pcard .row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:auto}
+.price{font:700 20px/1 var(--font-display);font-variant-numeric:tabular-nums}
+.price small{font:500 13px var(--font-body);color:var(--text-secondary)}
+.bg-eveil{background:var(--eveil-100)}.bg-focus{background:var(--focus-50)}.bg-rush{background:var(--rush-100)}
+.bg-sable{background:var(--bg-subtle)}
+
+/* Journée type */
+.day{background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--r-l);padding:32px}
+.dayline{position:relative;height:12px;border-radius:6px;background:linear-gradient(90deg,var(--focus-300) 0 35%,var(--eveil-300) 35% 70%,var(--sable-200) 70%);margin:56px 0 18px}
+.pin{position:absolute;top:-46px;transform:translateX(-50%);text-align:center;font-size:13px;font-weight:600;white-space:nowrap}
+.pin::after{content:"";display:block;width:2px;height:22px;background:currentColor;margin:4px auto 0}
+.hours{display:flex;justify-content:space-between;font-size:12px;color:var(--text-secondary);font-variant-numeric:tabular-nums}
+.daycards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.daycards div{padding:16px;border-radius:var(--r-m)}
+.daycards b{display:block;font-family:var(--font-display);font-size:18px}
+
+/* Simulateur */
+.sim{background:var(--bg-brand);color:var(--text-on-brand);border-radius:var(--r-l);padding:48px;display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+.sim h2{color:#fff}
+.sim p{color:var(--focus-100)}
+.sim input[type=range]{width:100%;accent-color:var(--eveil-500);margin-top:18px}
+.simout{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.simout div{background:rgba(255,255,255,.08);border-radius:var(--r-m);padding:18px}
+.simout .big{font:800 34px/1 var(--font-display);font-variant-numeric:tabular-nums;margin-top:6px;display:block}
+.simout .save{grid-column:1/-1;background:var(--eveil-300);color:var(--sable-900)}
+.simout .save .big{color:var(--eveil-700)}
+
+.proof{display:flex;flex-direction:column;gap:10px;padding:24px;border-radius:var(--r-m);background:var(--bg-surface);border:1px solid var(--border-default)}
+.proof .ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--bg-brand-subtle);color:var(--text-brand)}
+.proof .ico svg{width:24px;height:24px}
+.proof h3{font-size:19px}
+.proof p{font-size:14px;color:var(--text-secondary)}
+
+.review{padding:24px;border-radius:var(--r-m);background:var(--bg-surface);border:1px solid var(--border-default);display:flex;flex-direction:column;gap:12px}
+.stars{color:var(--eveil-500);letter-spacing:2px}
+.review footer{font-size:13px;color:var(--text-secondary);margin-top:auto}
+
+.acard{text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:12px}
+.acard .media{aspect-ratio:4/3;border-radius:var(--r-m)}
+.acard h3{font-size:20px}
+.acard p{font-size:14px;color:var(--text-secondary)}
+
+/* Footer */
+.ftr{background:var(--bg-brand);color:var(--focus-100);padding-block:64px 28px;margin-top:0}
+.ftr a{color:var(--focus-100);text-decoration:none;font-size:14px}
+.ftr a:hover{color:#fff;text-decoration:underline}
+.ftop{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:32px}
+.ftr h4{font:600 12px/1 var(--font-body);letter-spacing:.08em;text-transform:uppercase;color:var(--focus-300);margin-bottom:14px}
+.ftr ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.nl{display:flex;gap:8px;margin-top:16px}
+.nl .input{background:var(--focus-900);border-color:var(--focus-500);color:#fff}
+.nl .input::placeholder{color:var(--focus-300)}
+.ftr .field .err{color:var(--rush-300)}
+.fbot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;border-top:1px solid var(--focus-500);margin-top:48px;padding-top:20px;font-size:13px}
+.social{display:flex;gap:8px;margin-top:18px}
+.social a{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--focus-900)}
+.social svg{width:18px;height:18px}
+
+/* Page produit */
+.pgrid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:start}
+.gal{display:grid;gap:12px}
+.gal .main{aspect-ratio:1/1}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.thumbs .media{aspect-ratio:1/1;border-radius:var(--r-m);cursor:pointer;border:2px solid transparent}
+.thumbs .media.on{border-color:var(--border-brand)}
+.pinfo{display:flex;flex-direction:column;gap:18px}
+.pinfo > .dose{align-self:flex-start}
+.pinfo h1{font-size:clamp(40px,5cqi,60px);font-weight:800}
+.kw{font-size:18px;color:var(--text-secondary);margin-top:-8px}
+.gauge{display:flex;gap:6px;align-items:center;font-size:13px;font-weight:600}
+.gauge i{width:44px;height:10px;border-radius:5px;background:var(--sable-200)}
+.opts{display:grid;gap:10px}
+.opt{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1.5px solid var(--border-default);border-radius:var(--r-m);cursor:pointer;background:var(--bg-surface)}
+.opt:has(input:checked){border-color:var(--border-brand);background:var(--bg-brand-subtle)}
+.opt input{accent-color:var(--focus-500);width:18px;height:18px}
+.opt .grow{flex:1}
+.opt small{display:block;color:var(--text-secondary);font-size:13px}
+.buy{display:flex;gap:12px}
+.qty{display:inline-flex;align-items:center;border:1.5px solid var(--border-default);border-radius:999px;background:var(--bg-surface)}
+.qty button{width:40px;height:44px;border:0;background:none;font-size:18px;cursor:pointer;color:var(--text-primary)}
+.qty span{min-width:24px;text-align:center;font-weight:600;font-variant-numeric:tabular-nums}
+.reas{display:grid;gap:8px;font-size:14px;color:var(--text-secondary)}
+.reas span{display:flex;gap:8px;align-items:center}
+.reas svg{width:18px;height:18px;color:var(--text-brand);flex:none}
+.steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.steps4 div{background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--r-m);padding:20px}
+.steps4 b{display:block;font:800 30px/1 var(--font-display);color:var(--text-brand);margin-bottom:8px}
+.steps4 p{font-size:14px;color:var(--text-secondary)}
+.quality{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.quality .card{padding:28px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:10px 20px;font-size:15px;margin-top:16px}
+.kv dt{color:var(--text-secondary)}
+.kv dd{margin:0;font-weight:500}
+.carousel{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}
+.carousel > *{flex:0 0 280px;scroll-snap-align:start}
+.cnav{display:flex;gap:8px}
+.cnav button{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--border-strong);background:var(--bg-surface);cursor:pointer;font-size:18px;color:var(--text-primary)}
+details.cond{border-top:1px solid var(--border-default);padding-block:16px}
+details.cond:last-child{border-bottom:1px solid var(--border-default)}
+details.cond summary{cursor:pointer;font-weight:600;font-size:17px;list-style:none;display:flex;justify-content:space-between}
+details.cond summary::after{content:"+";font-size:22px;color:var(--text-brand)}
+details.cond[open] summary::after{content:"–"}
+details.cond p{margin-top:10px;color:var(--text-secondary);max-width:70ch}
+.mbuy{display:none}
+
+/* Catalogue */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:500 14px/1 var(--font-body);padding:10px 16px;border-radius:999px;border:1.5px solid var(--border-default);background:var(--bg-surface);cursor:pointer;color:var(--text-primary)}
+.chip[aria-pressed="true"]{background:var(--bg-brand);border-color:var(--bg-brand);color:#fff}
+.cmp{width:100%;border-collapse:collapse;font-size:15px;background:var(--bg-surface);border-radius:var(--r-m);overflow:hidden}
+.cmp th,.cmp td{padding:14px 18px;border-bottom:1px solid var(--border-default);text-align:left}
+.cmp th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-secondary);background:var(--bg-subtle)}
+.cmpw{overflow-x:auto;border:1px solid var(--border-default);border-radius:var(--r-m)}
+
+/* Histoire */
+.quote{background:var(--bg-warm);border-radius:var(--r-l);padding:48px;font:600 clamp(22px,2.6cqi,32px)/1.3 var(--font-display);color:var(--eveil-700)}
+.quote cite{display:block;font:500 15px var(--font-body);color:var(--text-secondary);margin-top:16px;font-style:normal}
+.tl{display:grid;gap:12px}
+.tl > div{display:grid;grid-template-columns:110px 1fr;gap:20px;padding:20px 24px;background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--r-m)}
+.tl > div > b{font:700 15px var(--font-display);color:var(--text-brand)}
+.tl h3{font-size:19px;margin-bottom:4px}
+.tl p{font-size:15px;color:var(--text-secondary)}
+.plant{border-radius:var(--r-l);padding:28px;display:flex;flex-direction:column;gap:10px}
+.plant .media{aspect-ratio:16/10;border-radius:var(--r-m);background:rgba(255,255,255,.5)}
+.plant h3{font-size:26px}
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.nums div{background:var(--bg-brand-subtle);border-radius:var(--r-m);padding:20px}
+.nums b{display:block;font:800 40px/1 var(--font-display);color:var(--text-brand);font-variant-numeric:tabular-nums}
+.team{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.member{text-align:center;display:grid;gap:4px;justify-items:center}
+.avatar{width:88px;height:88px;border-radius:50%;display:grid;place-items:center;font:800 26px var(--font-display);margin-bottom:8px}
+.member small{color:var(--text-secondary);font-size:13px}
+.eng{padding:24px;border-radius:var(--r-m);background:var(--bg-surface);border:1px solid var(--border-default)}
+.eng h3{font-size:19px;margin-block:12px 6px}
+.eng p{font-size:14px;color:var(--text-secondary)}
+.band{background:var(--bg-warm);border-radius:var(--r-l);padding:48px;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
+
+/* Blog / article */
+.feat{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;text-decoration:none;color:inherit}
+.feat .media{aspect-ratio:16/10}
+.agrid{display:grid;grid-template-columns:240px 1fr;gap:56px;align-items:start}
+.toc{position:sticky;top:96px;background:var(--bg-subtle);border-radius:var(--r-m);padding:20px}
+.toc ol{margin:12px 0 0;padding-left:18px;display:grid;gap:8px;font-size:14px}
+.toc a{color:var(--text-primary);text-decoration:none}
+.toc a:hover{color:var(--text-brand)}
+.prose{max-width:68ch;font-size:17px;line-height:1.75}
+.prose h2{font-size:30px;margin-block:44px 14px}
+.prose p{margin-bottom:18px}
+.prose ul{padding-left:20px;margin-bottom:18px}
+.prose li{margin-bottom:6px}
+.callout{background:var(--bg-brand-subtle);border-radius:var(--r-m);padding:24px;margin-block:28px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.meta{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:14px;color:var(--text-secondary);margin-top:16px}
+
+/* Compte */
+.auth{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.auth .card{padding:32px;display:grid;gap:18px}
+.form{display:grid;gap:16px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.dash{display:grid;grid-template-columns:240px 1fr;gap:32px;align-items:start}
+.side{background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--r-m);padding:12px;display:grid;gap:2px}
+.side a,.side button{display:block;text-align:left;padding:11px 14px;border-radius:10px;text-decoration:none;font:500 15px var(--font-body);color:var(--text-primary);background:none;border:0;cursor:pointer}
+.side a:hover,.side button:hover{background:var(--bg-subtle)}
+.side .on{background:var(--bg-brand-subtle);color:var(--text-brand);font-weight:600}
+.dmain{display:grid;gap:20px}
+.welcome{background:var(--bg-brand-subtle);border-radius:var(--r-l);padding:28px}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tile{border-radius:var(--r-m);padding:20px;display:grid;gap:6px}
+.tile b{font:800 32px/1 var(--font-display);font-variant-numeric:tabular-nums}
+.sub{background:var(--bg-warm);border-radius:var(--r-m);padding:24px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:center}
+.otable{width:100%;border-collapse:collapse;font-size:15px}
+.otable th,.otable td{text-align:left;padding:12px 8px;border-bottom:1px solid var(--border-default)}
+.otable th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-secondary)}
+.pill{display:inline-block;font:600 12px/1 var(--font-body);padding:6px 10px;border-radius:999px}
+.p-ok{background:var(--focus-50);color:var(--focus-700)}
+.p-run{background:var(--eveil-100);color:var(--eveil-700)}
+
+/* Suivi */
+.track{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tstep{border-radius:var(--r-m);padding:22px;display:grid;gap:6px;border:2px solid transparent}
+.tstep b{font-family:var(--font-display);font-size:20px}
+.tstep.now{border-color:var(--eveil-700)}
+.events{display:grid;gap:0;margin-top:8px}
+.events div{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--border-default);font-size:15px}
+.events span{color:var(--text-secondary);font-variant-numeric:tabular-nums}
+
+/* Tunnel */
+.stepper{display:flex;gap:8px;flex-wrap:wrap;margin-block:28px 32px}
+.stepper span{display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px;color:var(--text-secondary);padding:8px 14px 8px 8px;border-radius:999px;background:var(--bg-subtle)}
+.stepper i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-style:normal;background:var(--sable-200);color:var(--sable-800);font-size:13px}
+.stepper .on{background:var(--bg-brand);color:#fff}.stepper .on i{background:#fff;color:var(--text-brand)}
+.stepper .done{background:var(--bg-brand-subtle);color:var(--text-brand)}.stepper .done i{background:var(--action-primary);color:#fff}
+.cartg{display:grid;grid-template-columns:1fr 380px;gap:32px;align-items:start}
+.jauge{background:var(--bg-warm);border-radius:var(--r-m);padding:16px 20px;font-size:14px;font-weight:500;color:var(--eveil-700)}
+.jauge .bar{height:8px;border-radius:4px;background:var(--eveil-300);margin-top:10px;overflow:hidden}
+.jauge .bar i{display:block;height:100%;background:var(--eveil-700);border-radius:4px}
+.jauge.ok{background:var(--focus-50);color:var(--focus-700)}
+.jauge.ok .bar{background:var(--focus-100)}.jauge.ok .bar i{background:var(--focus-500)}
+.line{display:grid;grid-template-columns:96px 1fr auto;gap:18px;align-items:center;padding:18px 0;border-bottom:1px solid var(--border-default)}
+.line .media{width:96px;height:96px;border-radius:var(--r-m)}
+.line h3{font-size:19px}
+.line .rm{background:none;border:0;color:var(--text-secondary);font-size:13px;text-decoration:underline;cursor:pointer;padding:0;margin-top:6px}
+.recap{position:sticky;top:96px;background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--r-l);padding:24px;display:grid;gap:14px}
+.recap .r{display:flex;justify-content:space-between;font-size:15px;font-variant-numeric:tabular-nums}
+.recap .tot{font:800 22px var(--font-display);border-top:1px solid var(--border-default);padding-top:14px}
+.promo{display:flex;gap:8px}
+.ship{display:grid;gap:10px}
+.empty{text-align:center;padding:64px 24px;display:grid;gap:14px;justify-items:center}
+.confirm{text-align:center;display:grid;gap:16px;justify-items:center;padding-block:56px 32px}
+.okmark{width:80px;height:80px;border-radius:50%;background:var(--action-primary);color:#fff;display:grid;place-items:center}
+.okmark svg{width:40px;height:40px}
+
+/* FAQ, contact, légal, 404 */
+.faqg{display:grid;grid-template-columns:240px 1fr;gap:48px;align-items:start}
+.faqcat{display:grid;gap:4px;position:sticky;top:96px}
+.faqcat a{padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:500}
+.faqcat a:hover{background:var(--bg-subtle)}
+.faqg h2{font-size:24px;margin-block:36px 8px}
+.faqg h2:first-child{margin-top:0}
+.contact{display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:start}
+.coord{background:var(--bg-brand);color:var(--focus-100);border-radius:var(--r-l);padding:32px;display:grid;gap:20px}
+.coord h3{color:#fff;font-size:15px;font-family:var(--font-body);letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.coord p{color:#fff;font-size:16px}
+.legal{display:grid;grid-template-columns:240px 1fr;gap:56px;align-items:start}
+.legal h2{font-size:22px;margin-block:32px 10px}
+.legal p{color:var(--text-secondary);margin-bottom:12px;max-width:72ch}
+.nf{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding-block:56px}
+.nf .code{font:800 clamp(80px,14cqi,160px)/0.9 var(--font-display);color:var(--focus-300);letter-spacing:-.04em}
+
+/* Toast */
+.toast{visibility:hidden;position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,140%);background:var(--sable-900);color:#fff;padding:14px 18px;border-radius:14px;display:flex;gap:14px;align-items:center;font-size:15px;transition:transform .25s;z-index:60;max-width:calc(100vw - 32px)}
+.toast.on{visibility:visible;transform:translate(-50%,0)}
+.toast a{color:var(--eveil-300);font-weight:600}
+
+/* ---------- Mobile (≤ 760 px de large pour le site) ---------- */
+@container site (max-width:760px){
+  .wrap{padding-inline:20px}
+  .nav{display:none}
+  .burger{display:inline-grid}
+  .hdr .wrap{gap:8px;height:64px}
+  .hdr .logo{flex:1}
+  .mnav[data-open="true"]{display:grid;gap:2px;padding:8px 20px 20px;border-top:1px solid var(--border-default)}
+  .mnav a{padding:14px 4px;text-decoration:none;font:600 20px var(--font-display);border-bottom:1px solid var(--border-default)}
+  .sec{padding-block:52px}
+  .g2,.g3,.g4,.pgrid,.quality,.agrid,.auth,.dash,.cartg,.faqg,.contact,.legal,.nf,.feat,.sim,.ftop{grid-template-columns:1fr}
+  .g2{gap:28px}
+  .hero .g2{padding-block:36px 44px}
+  .hero .media{order:-1;aspect-ratio:4/3}
+  .steps4,.tiles,.daycards{grid-template-columns:1fr 1fr}
+  .team{grid-template-columns:repeat(2,1fr)}
+  .track{grid-template-columns:1fr}
+  .sim{padding:28px}
+  .quote,.band{padding:28px}
+  .toc,.faqcat,.recap{position:static}
+  .faqcat{display:flex;flex-wrap:wrap}
+  .tl > div{grid-template-columns:1fr;gap:4px}
+  .events div{grid-template-columns:1fr;gap:2px}
+  .row2{grid-template-columns:1fr}
+  .line{grid-template-columns:72px 1fr;}
+  .line .media{width:72px;height:72px}
+  .line .lp{grid-column:2}
+  .pinfo .buy{display:none}
+  .mbuy{display:flex;position:sticky;bottom:0;z-index:15;gap:12px;align-items:center;justify-content:space-between;background:var(--bg-surface);border-top:1px solid var(--border-default);padding:12px 20px}
+  .ftop{gap:28px}
+  .legal aside,.agrid aside{display:none}
+}
+
+/* ---------- Mode wireframe : mêmes écrans, sans notion graphique ---------- */
+.site.wf{--eveil-100:#F1F1F1;--eveil-300:#E2E2E2;--eveil-500:#BDBDBD;--eveil-700:#555;
+  --focus-50:#F4F4F4;--focus-100:#E6E6E6;--focus-300:#C4C4C4;--focus-500:#444;--focus-700:#333;--focus-900:#2A2A2A;
+  --rush-100:#EFEFEF;--rush-300:#C9C9C9;--rush-500:#444;--rush-700:#333;
+  --sable-50:#FFFFFF;--sable-100:#F3F3F3;--sable-200:#D6D6D6;--sable-400:#9E9E9E;--sable-600:#6E6E6E;--sable-800:#333;--sable-900:#111;
+  --font-display:"Arial",system-ui,sans-serif;--font-body:"Arial",system-ui,sans-serif;--r-l:4px;--r-m:4px;--r-s:2px;--r-pill:4px}
+.site.wf .media{background:linear-gradient(to top right,transparent calc(50% - 1px),#BDBDBD calc(50% - .5px),#BDBDBD calc(50% + .5px),transparent calc(50% + 1px)),linear-gradient(to top left,transparent calc(50% - 1px),#BDBDBD calc(50% - .5px),#BDBDBD calc(50% + .5px),transparent calc(50% + 1px)),#F3F3F3!important;border:1px solid #BDBDBD}
+.site.wf .media > *{visibility:hidden}
+.site.wf .avatar,.site.wf .proof .ico{background:#E6E6E6!important;color:#555!important}
+.site.wf .pcard,.site.wf .plant,.site.wf .tile,.site.wf .tstep{border:1px solid #BDBDBD}
+.site.wf .btn,.site.wf .chip,.site.wf .pill,.site.wf .dose,.site.wf .tag{border-radius:4px}
+.site.wf .stars{color:#9E9E9E}
+.site.wf .dayline{background:#E2E2E2}
+.site.wf .logo svg path{fill:#333;stroke:#333}.site.wf .logo b{color:#111!important}.site.wf .ftr .logo svg path{fill:#fff;stroke:#fff}.site.wf .ftr .logo b{color:#fff!important}
+.site.wf .announce{background:#2A2A2A;color:#ddd}
+</style>
+</head>
+<body>
+<div class="pbar" role="toolbar" aria-label="Contrôles du prototype">
+  <b>Site yuzaa · prototype</b>
+  <div class="seg" aria-label="Fidélité">
+    <button type="button" data-mode="maquette" aria-pressed="true">Maquette</button>
+    <button type="button" data-mode="wf" aria-pressed="false">Wireframe</button>
+  </div>
+  <div class="seg" aria-label="Écran">
+    <button type="button" data-dev="desktop" aria-pressed="true">Desktop</button>
+    <button type="button" data-dev="mobile" aria-pressed="false">Mobile</button>
+  </div>
+  <label class="sr" for="jump" hidden>Aller à la page</label>
+  <select id="jump" aria-label="Aller à la page"></select>
+  <span class="sp"></span>
+  
+</div>
+
+<div class="stage" id="stage">
+<div class="site" id="site">
+  <div class="announce">Livraison offerte dès <b>35 €</b> · <b>−10 %</b> sur ta première commande avec le code <b>ETUDIANT10</b></div>
+  <header class="hdr">
+    <div class="wrap">
+      <a class="logo" href="#accueil" aria-label="yuzaa, accueil" data-logo></a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="#infusions" data-nav="infusions produit">Nos infusions</a>
+        <a href="#coffrets" data-nav="coffrets coffret">Coffrets</a>
+        <a href="#histoire" data-nav="histoire">Histoire</a>
+        <a href="#blog" data-nav="blog article">Blog</a>
+      </nav>
+      <div class="icons">
+        <a class="ibtn" href="#faq" aria-label="Aide et FAQ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5v.7M12 17h.01" stroke-linecap="round"/></svg></a>
+        <a class="ibtn" href="#compte" aria-label="Mon compte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" stroke-linecap="round"/></svg></a>
+        <a class="ibtn" href="#panier" aria-label="Panier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 7h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 7z"/><path d="M9 10V6a3 3 0 0 1 6 0v4" stroke-linecap="round"/></svg><span class="count" id="count">2</span></a>
+        <button class="ibtn burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" data-burger><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      </div>
+    </div>
+    <nav class="mnav" id="mnav" data-open="false" aria-label="Menu mobile">
+      <a href="#infusions">Nos infusions</a><a href="#coffrets">Coffrets</a><a href="#histoire">Histoire</a><a href="#blog">Blog</a><a href="#compte">Mon compte</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="view" tabindex="-1"></main>
+
+  <footer class="ftr">
+    <div class="wrap">
+      <div class="ftop">
+        <div>
+          <a class="logo" href="#accueil" aria-label="yuzaa, accueil" data-logo="light"></a>
+          <p style="margin-top:14px;font-size:14px;max-width:34ch">Infusions énergisantes 100 % plantes pour tenir tes révisions, sans le crash du café. Respirer, puis foncer.</p>
+          <form class="form" data-form="newsletter" novalidate style="margin-top:20px">
+            <div class="field">
+              <label for="nl-email" style="color:#fff">Recevoir la newsletter (1 e-mail par mois)</label>
+              <div class="nl"><input class="input" id="nl-email" name="email" type="email" placeholder="ton@email.fr" data-rule="req email" autocomplete="email"><button class="btn btn-light btn-sm" type="submit">S'inscrire</button></div>
+              <span class="err" id="nl-email-err"></span>
+            </div>
+          </form>
+          <div class="social"><a href="#accueil" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a><a href="#accueil" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 3v11a4 4 0 1 1-4-4M14 3c.5 3 2.5 5 5 5"/></svg></a></div>
+        </div>
+        <div><h4>Boutique</h4><ul><li><a href="#infusions">Nos infusions</a></li><li><a href="#produit-eveil">Éveil · 40 mg</a></li><li><a href="#produit-focus">Focus · 60 mg</a></li><li><a href="#produit-rush">Rush · 80 mg</a></li><li><a href="#coffrets">Coffrets &amp; abonnement</a></li><li><a href="#coffret-boule">Boule à thé</a></li></ul></div>
+        <div><h4>yuzaa</h4><ul><li><a href="#histoire">Notre histoire</a></li><li><a href="#histoire">Producteurs</a></li><li><a href="#histoire">Engagements</a></li><li><a href="#blog">Blog</a></li><li><a href="#pros">Offre pros</a></li></ul></div>
+        <div><h4>Aide</h4><ul><li><a href="#faq">FAQ caféine</a></li><li><a href="#contact">Contact</a></li><li><a href="#suivi">Suivi de colis</a></li><li><a href="#cgv">Livraison &amp; retours</a></li></ul></div>
+        <div><h4>Légal</h4><ul><li><a href="#cgv">CGV</a></li><li><a href="#cgu">CGU</a></li><li><a href="#mentions">Mentions légales</a></li><li><a href="#mentions">Confidentialité</a></li></ul></div>
+      </div>
+      <div class="fbot"><span>© 2026 yuzaa · Projet SAE</span><span>Paiement sécurisé · Carte, PayPal, Apple Pay</span></div>
+    </div>
+  </footer>
+</div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const eur=n=>n.toFixed(2).replace('.',',')+' €';
+
+/* ---------- Données ---------- */
+const P={
+ eveil:{id:'eveil',name:'Éveil',mg:40,key:'Infusion guayusa, citronnelle & menthe',plants:'Guayusa, citronnelle, menthe',plantMain:'guayusa',moment:'Énergie douce',mom:'apres-midi',taste:'Frais, citronné et mentholé',price:11.9,c1:'#FFF6E8',c3:'#FFE0B5',c5:'#F5BC75',c7:'#A3600F',rating:4.8,n:128,
+  desc:"L'énergie douce pour démarrer une session de révisions ou relancer l'après-midi sans gêner le sommeil. Le guayusa diffuse sa caféine lentement, la citronnelle et la menthe apportent une infusion fraîche, sans amertume."},
+ focus:{id:'focus',name:'Focus',mg:60,key:'Infusion maté vert, gingembre & citron',plants:'Maté vert, gingembre, citron',plantMain:'maté',moment:'Concentration',mom:'matin',taste:'Vif, gingembre et citron',price:11.9,c1:'#EEF6EF',c3:'#7FC594',c5:'#2A8046',c7:'#1B5A31',rating:4.7,n:214,
+  desc:"La recette de la concentration, pour tenir une matinée de cours ou de révisions. Le maté vert donne une énergie stable, le gingembre et le citron une note vive, sans sucre ajouté et sans le crash du café."},
+ rush:{id:'rush',name:'Rush',mg:80,key:'Infusion guarana, maté torréfié & cacao',plants:'Guarana, maté torréfié, cacao',plantMain:'guarana',moment:'Coup de boost',mom:'rush',taste:'Torréfié, notes de cacao',price:11.9,c1:'#FDE4DF',c3:'#F28A7C',c5:'#D93A2B',c7:'#9E2318',rating:4.6,n:97,
+  desc:"Le vrai coup de boost des veilles de partiels. Le guarana libère sa caféine progressivement, le maté torréfié et le cacao donnent une infusion ronde aux notes chocolatées, à boire chaude ou en latte."}
+};
+const C={
+ decouverte:{id:'decouverte',name:'Coffret Découverte',price:19.9,c:'focus',tag:'Pour goûter les 3 recettes',contenu:'3 × 30 g de vrac (Éveil, Focus, Rush) et une boule à thé portable.',desc:"Le meilleur moyen de trouver ta recette : environ 12 tasses de chaque, et l'infuseur pour les emporter partout."},
+ partiels:{id:'partiels',name:'Pack Partiels',price:32.9,old:35.7,c:'rush',tag:'Spécial révisions',contenu:'3 × 100 g de vrac : Éveil, Focus et Rush, soit environ 120 tasses.',desc:"De quoi tenir toute la période d'examens : Éveil pour démarrer, Focus pour les longues sessions, Rush pour la dernière ligne droite."},
+ boule:{id:'boule',name:'Boule à thé portable',price:8.9,c:'eveil',tag:'Accessoire',contenu:'Infuseur à emporter pour préparer ton vrac partout : bibliothèque, salle de cours, bureau.',desc:"Remplis-la avec une dose de vrac, plonge-la dans ta gourde ou ton mug, et retire-la au bout de 5 minutes."},
+ box:{id:'box',name:'Abonnement',price:0,c:'focus',tag:'Sans engagement',contenu:'−15 % sur chaque envoi et livraison offerte, tous les 1, 2 ou 3 mois.',desc:"Choisis tes recettes et ta fréquence. Tu modifies, décales ou suspends depuis ton compte, sans engagement."}
+};
+const ARTS=[
+ {id:'article',t:'Que contient vraiment ta boisson énergisante ?',cat:'Énergie',min:6,ex:'Sucre, taurine, colorants : on a décortiqué l\'étiquette d\'une canette et comparé avec une tasse d\'infusion.',c:'rush'},
+ {id:'article',t:'Quelle dose de caféine pour quel moment de la journée ?',cat:'Routine',min:5,ex:'Matin, après le déjeuner, veille de rendu : le guide pour choisir entre 40, 60 et 80 mg.',c:'focus'},
+ {id:'article',t:'Guayusa, maté, guarana : trois plantes, trois énergies',cat:'Plantes',min:7,ex:'D\'où viennent nos plantes, comment elles libèrent leur caféine et pourquoi elles ne donnent pas de pic.',c:'eveil'},
+ {id:'article',t:'Bien infuser : 80 °C, 5 minutes, et pourquoi ça compte',cat:'Recettes',min:4,ex:'La bonne température pour garder le goût sans amertume, et notre recette de Rush latte.',c:'focus'},
+ {id:'article',t:'5 rituels pour tenir une semaine de révisions',cat:'Routine',min:5,ex:'Thermos du matin, pause du midi, coupure à 16 h : la routine d\'Inès pendant ses partiels.',c:'eveil'},
+ {id:'article',t:'Rush latte au lait d\'avoine : la recette en 3 étapes',cat:'Recettes',min:3,ex:'Infuser serré, mousser le lait, ajouter une pointe de cacao : la version gourmande de notre recette la plus intense.',c:'rush'}
+];
+const state={cart:{focus:1,eveil:1},sub:{eveil:1,focus:1,rush:0},freq:1,promo:null,logged:false,ship:'relais',filter:'tout',bfilter:'Tous'};
+
+/* ---------- Illustrations SVG ---------- */
+const leaf=(fill,bolt)=>`<path d="M9 39C9 18 22 6 44 4c0 23-13 35-35 35z" fill="${fill}"/><path d="M3 45l9-9" stroke="${fill}" stroke-width="3.5" stroke-linecap="round"/><path d="M29 11l-10 14h7l-4 12 11-15h-7l3-11z" fill="${bolt}"/>`;
+function logoHTML(light){const f=light?'#FFFFFF':'#2A8046',b=light?'#1B5A31':'#FFFFFF',t=light?'#FFFFFF':'#1B5A31';return `<svg width="30" height="30" viewBox="0 0 48 48" aria-hidden="true">${leaf(f,b)}</svg><b style="color:${t}">yuzaa</b>`;}
+function tin(d){const p=P[d];return `<g><ellipse cx="100" cy="224" rx="72" ry="9" fill="#1B1A16" opacity=".08"/><rect x="38" y="44" width="124" height="178" rx="6" fill="#EFE6D3" stroke="${p.c7}" stroke-opacity=".18" stroke-width="2"/><rect x="35" y="32" width="130" height="22" rx="4" fill="${p.c7}"/><g transform="translate(58 66) scale(.42)">${leaf('#2A8046','#fff')}</g><text x="112" y="88" text-anchor="middle" font-family="Bricolage Grotesque,Arial Black,sans-serif" font-weight="800" font-size="24" fill="#1B5A31">yuzaa</text><rect x="38" y="104" width="124" height="82" fill="${p.c3}"/><text x="100" y="146" text-anchor="middle" font-family="Bricolage Grotesque,Arial Black,sans-serif" font-weight="800" font-size="28" fill="${p.c7}">${p.name}</text><text x="100" y="170" text-anchor="middle" font-family="DM Sans,Arial,sans-serif" font-weight="700" font-size="12" letter-spacing="1" fill="${p.c7}">${p.mg} MG CAFÉINE</text><text x="100" y="208" text-anchor="middle" font-family="DM Sans,Arial,sans-serif" font-size="10.5" fill="#6B6559">100 g · ≈ 40 tasses</text></g>`;}
+const tinSVG=(d,bg)=>`<svg viewBox="0 0 200 240" role="img" aria-label="Boîte ${P[d].name}, carton recyclé">${bg?`<rect width="200" height="240" fill="${bg}"/>`:''}${tin(d)}</svg>`;
+function heroSVG(){return `<svg viewBox="0 0 520 480" role="img" aria-label="Les trois boîtes yuzaa : Rush, Focus et Éveil"><circle cx="270" cy="250" r="190" fill="#D3EBD9"/><path d="M60 120c40-60 110-70 150-40-40 50-100 70-150 40z" fill="#7FC594"/><path d="M420 380c40-50 90-50 110-20-40 40-80 50-110 20z" fill="#7FC594" opacity=".7"/><path d="M440 90c10-40 50-60 80-50-10 40-45 60-80 50z" fill="#F5BC75"/><g transform="translate(40 150) scale(1.05)">${tin('rush')}</g><g transform="translate(300 160) scale(1.05)">${tin('eveil')}</g><g transform="translate(150 80) scale(1.45)">${tin('focus')}</g></svg>`;}
+function sceneSVG(c,label){const p=P[c]||P.focus;return `<svg viewBox="0 0 400 300" role="img" aria-label="${label||''}" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" fill="${p.c1}"/><circle cx="300" cy="80" r="120" fill="${p.c3}" opacity=".7"/><path d="M40 260C40 160 110 90 230 80c0 120-70 180-190 180z" fill="${p.c5}" opacity=".85"/><path d="M20 290l60-60" stroke="${p.c7}" stroke-width="6" stroke-linecap="round"/><path d="M150 120l-40 60h28l-14 46 46-64h-28l12-42z" fill="#fff" opacity=".9"/><path d="M280 270c20-60 70-80 110-70-20 50-60 80-110 70z" fill="${p.c7}" opacity=".35"/></svg>`;}
+function plantSVG(c){const p=P[c];return `<svg viewBox="0 0 400 250" role="img" aria-label="Feuilles de ${p.plantMain}" preserveAspectRatio="xMidYMid slice"><rect width="400" height="250" fill="${p.c1}"/><path d="M200 230V70" stroke="${p.c7}" stroke-width="5"/><path d="M200 120c-60-10-90-50-90-90 50 0 85 35 90 90z" fill="${p.c5}"/><path d="M200 160c60-10 95-50 95-95-55 5-90 40-95 95z" fill="${p.c3}"/><path d="M200 200c-50-5-80-35-85-70 45 0 80 25 85 70z" fill="${p.c7}" opacity=".8"/><circle cx="320" cy="200" r="14" fill="${p.c7}" opacity=".5"/><circle cx="345" cy="185" r="10" fill="${p.c5}"/></svg>`;}
+const ico={
+ lab:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3"/><path d="M7 15h10"/></svg>',
+ leaf:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19C5 10 11 4 20 4c0 9-6 15-15 15z"/><path d="M4 20l6-6"/></svg>',
+ nosugar:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="7" width="14" height="12" rx="2"/><path d="M8 7V5h8v2M4 4l16 16"/></svg>',
+ tin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="6" y="6" width="12" height="15" rx="2"/><path d="M5 6h14M9 3h6"/><path d="M9 12h6"/></svg>',
+ truck:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>',
+ check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>',
+ return:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h11a5 5 0 0 1 0 10H8"/><path d="M8 5L4 9l4 4"/></svg>'
+};
+const stars=r=>'★★★★★'.slice(0,Math.round(r))+'☆☆☆☆☆'.slice(0,5-Math.round(r));
+const gauge=d=>{const n=d==='eveil'?1:d==='focus'?2:3;const p=P[d];return `<div class="gauge" aria-label="${p.mg} mg de caféine">${[1,2,3].map(i=>`<i style="background:${i<=n?p.c5:''}"></i>`).join('')}<span>${p.mg} mg de caféine par tasse</span></div>`;};
+
+/* ---------- Composants ---------- */
+const pcard=d=>{const p=P[d];return `<div class="pcard bg-${d}"><a href="#produit-${d}" class="media" aria-label="Voir ${p.name}">${tinSVG(d)}</a><span class="dose dose-${d}">${p.moment} · ${p.mg} mg</span><a href="#produit-${d}" style="text-decoration:none"><h3>${p.name}</h3></a><p class="t-sm muted">${p.plants}. ${p.taste}.</p><div class="row"><span class="price">${eur(p.price)} <small>· 100 g · 0,30 € la tasse</small></span><button class="btn btn-primary btn-sm" data-add="${d}" type="button">Ajouter</button></div></div>`;};
+const multi=()=>`<svg viewBox="0 0 300 240" role="img" aria-label="Les 3 recettes"><g transform="translate(0 20) scale(.75)">${tin('eveil')}</g><g transform="translate(150 20) scale(.75)">${tin('rush')}</g><g transform="translate(70 0) scale(.85)">${tin('focus')}</g></svg>`;
+const bouleSVG=()=>`<svg viewBox="0 0 300 240" role="img" aria-label="Boule à thé portable"><circle cx="150" cy="130" r="62" fill="#E3DCCB" stroke="#A8A08E" stroke-width="4"/><path d="M88 130h124" stroke="#A8A08E" stroke-width="4"/>${[0,1,2,3,4,5,6].map(i=>`<circle cx="${112+i*13}" cy="108" r="3" fill="#A8A08E"/><circle cx="${112+i*13}" cy="152" r="3" fill="#A8A08E"/>`).join('')}<path d="M150 68V36" stroke="#6B6559" stroke-width="4"/><circle cx="150" cy="30" r="9" fill="none" stroke="#6B6559" stroke-width="4"/><path d="M180 36c20-30 60-30 80-10-30 20-60 25-80 10z" fill="#7FC594"/></svg>`;
+const cmedia=k=>k==='boule'?bouleSVG():multi();
+const cprice=k=>{const c=C[k];if(k==='box')return '−15 % <small>/ envoi</small>';return eur(c.price)+(c.old?` <small><s>${eur(c.old)}</s></small>`:'');};
+const ccard=k=>{const c=C[k];return `<div class="pcard bg-${c.c}"><a href="#coffret-${k}" class="media" aria-label="Voir ${c.name}">${cmedia(k)}</a><span class="dose dose-${c.c}">${c.tag}</span><a href="#coffret-${k}" style="text-decoration:none"><h3 style="font-size:26px">${c.name}</h3></a><p class="t-sm muted">${c.contenu}</p><div class="row"><span class="price">${cprice(k)}</span><a class="btn btn-ghost btn-sm" href="#coffret-${k}">Découvrir</a></div></div>`;};
+const acard=a=>`<a class="acard" href="#article"><div class="media">${sceneSVG(a.c,a.t)}</div><span class="t-over over">${a.cat} · ${a.min} min</span><h3>${a.t}</h3><p>${a.ex}</p></a>`;
+const field=(id,label,type,rule,extra='')=>`<div class="field"><label for="${id}">${label}</label><input class="input" id="${id}" name="${id}" type="${type}" data-rule="${rule}" aria-describedby="${id}-err" ${extra}><span class="err" id="${id}-err"></span></div>`;
+const stepper=n=>`<div class="stepper" aria-label="Étapes de commande">${['Panier','Livraison','Paiement','Confirmation'].map((s,i)=>`<span class="${i<n?'done':i===n?'on':''}" ${i===n?'aria-current="step"':''}><i>${i<n?'✓':i+1}</i>${s}</span>`).join('')}</div>`;
+
+/* ---------- Panier ---------- */
+const FREE=35;
+function subPrice(){const s=state.sub;return (s.eveil+s.focus+s.rush)*11.9*0.85;}
+function lineInfo(k){if(P[k])return{name:P[k].name,sub:P[k].key+' · vrac 100 g',price:P[k].price,media:tinSVG(k)};if(k.startsWith('sachets-')){const d=k.slice(8);return{name:P[d].name+' · sachets',sub:'Boîte de 20 sachets',price:6.9,media:tinSVG(d)};}const c=C[k];if(k==='box'){const s=state.sub;return{name:'Abonnement',sub:`${[['focus','Focus'],['eveil','Éveil'],['rush','Rush']].filter(x=>s[x[0]]).map(x=>s[x[0]]+' '+x[1]).join(' · ')} · tous les ${state.freq===1?'mois':state.freq+' mois'} · −15 %`,price:subPrice(),media:sceneSVG('focus')};}return{name:c.name,sub:c.contenu,price:c.price,media:cmedia(k)};}
+function totals(){let sub=0;for(const[k,q]of Object.entries(state.cart)){sub+=lineInfo(k).price*q;}const disc=state.promo?sub*0.1:0;const free=(sub-disc)>=FREE||!!state.cart.box;const ship=sub===0?0:free?0:(state.ship==='relais'?3.9:4.9);return{sub,disc,ship,free,tot:sub-disc+ship};}
+function count(){const n=Object.values(state.cart).reduce((a,b)=>a+b,0);const el=$('#count');el.textContent=n;el.hidden=n===0;}
+function toast(html){const t=$('#toast');t.innerHTML=html;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),2800);}
+function add(k,q=1){state.cart[k]=(state.cart[k]||0)+q;count();toast(`<span>${lineInfo(k).name} ajouté au panier</span><a href="#panier">Voir le panier</a>`);}
+
+/* ---------- Pages ---------- */
+const V={};
+V.accueil=()=>`
+<section class="hero"><div class="wrap g2">
+ <div><span class="t-over over">Infusions énergisantes · 100 % plantes · sans sucre ajouté</span>
+  <h1 class="t-display">Respirer, puis foncer.</h1>
+  <p class="lead">La caféine naturelle du guayusa, du maté et du guarana pour tenir tes révisions, sans le crash du café ni des boissons énergisantes. Trois recettes : Éveil, Focus et Rush.</p>
+  <div class="ctas"><a class="btn btn-primary" href="#infusions">Trouver ma dose</a><a class="btn btn-ghost" href="#coffret-decouverte">Goûter les 3 recettes</a></div>
+  <div class="proofs"><span>${ico.nosugar}Sans sucre ajouté</span><span>${ico.leaf}100 % plantes</span><span>${ico.tin}Carton recyclé</span></div>
+ </div>
+ <div class="media">${heroSVG()}</div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+ <div class="sec-head"><div><span class="t-over over">Nos infusions</span><h2 class="t-h2" style="margin-top:8px">Une recette pour chaque besoin</h2><p>Énergie douce, concentration ou vrai coup de boost : la caféine est indiquée sur chaque recette, 40, 60 ou 80 mg par tasse. Tu sais enfin ce que tu bois.</p></div><a class="link" href="#infusions">Comparer les 3 recettes →</a></div>
+ <div class="g3">${pcard('eveil')}${pcard('focus')}${pcard('rush')}</div>
+</div></section>
+
+<section class="sec-tight"><div class="wrap"><div class="day">
+ <div class="sec-head" style="margin-bottom:0"><div><span class="t-over over">Guide des doses</span><h2 class="t-h2" style="margin-top:8px">Ta journée, dosée</h2></div><a class="link" href="#article">Lire le guide complet →</a></div>
+ <div class="dayline" aria-hidden="true"><span class="pin" style="left:8%;color:var(--focus-700)">Focus · 8 h 30</span><span class="pin" style="left:46%;color:var(--eveil-700)">Éveil · 14 h</span><span class="pin" style="left:70%;color:var(--sable-600)">Plus de caféine après 16 h</span></div>
+ <div class="hours"><span>7 h</span><span>10 h</span><span>13 h</span><span>16 h</span><span>19 h</span><span>22 h</span></div>
+ <div class="daycards"><div class="bg-focus"><b>Le matin</b><span class="t-sm">Focus, 60 mg, pour une matinée de cours ou de révisions.</span></div><div class="bg-eveil"><b>Après le déjeuner</b><span class="t-sm">Éveil, 40 mg, pour relancer sans gêner le sommeil.</span></div><div class="bg-rush"><b>Veille de partiel</b><span class="t-sm">Rush, 80 mg, une tasse le matin à la place de Focus.</span></div></div>
+</div></div></section>
+
+<section class="sec"><div class="wrap"><div class="sim">
+ <div><span class="t-over" style="color:var(--eveil-300)">Simulateur d'économies</span><h2 class="t-h2" style="margin-top:8px">Combien te coûtent tes canettes ?</h2><p style="margin-top:12px">Une canette au distributeur coûte environ 1,50 €. Une tasse yuzaa revient à 0,30 €.</p>
+  <label for="sim" style="display:block;margin-top:24px;font-weight:600">Canettes par jour : <output id="simv">2</output></label><input type="range" id="sim" min="1" max="5" value="2" step="1"></div>
+ <div class="simout"><div><span class="t-sm">Canettes / mois</span><span class="big" id="sim-a">69 €</span></div><div><span class="t-sm">yuzaa / mois</span><span class="big" id="sim-b">14 €</span></div><div class="save"><span class="t-sm" style="font-weight:600">Économie sur un an</span><span class="big" id="sim-c">662 €</span><span class="t-cap" style="color:var(--sable-800)">Base : 23 jours ouvrés par mois, une tasse par canette remplacée.</span></div></div>
+</div></div></section>
+
+<section class="sec-tight"><div class="wrap">
+ <div class="sec-head"><div><span class="t-over over">Pourquoi yuzaa</span><h2 class="t-h2" style="margin-top:8px">L'énergie, sans ce qui va avec</h2></div></div>
+ <div class="g4">
+  <div class="proof"><span class="ico">${ico.lab}</span><h3>Caféine affichée</h3><p>40, 60 ou 80 mg par tasse : la dose est écrite sur chaque recette, pour choisir selon ton besoin.</p></div>
+  <div class="proof"><span class="ico">${ico.nosugar}</span><h3>Zéro sucre ajouté</h3><p>Pas de sucre, pas d'édulcorant, pas d'arôme artificiel. Seulement des plantes.</p></div>
+  <div class="proof"><span class="ico">${ico.leaf}</span><h3>100 % plantes</h3><p>Guayusa, maté et guarana, associés à la citronnelle, au gingembre ou au cacao. Rien d'autre.</p></div>
+  <div class="proof"><span class="ico">${ico.tin}</span><h3>Carton recyclé</h3><p>Tous nos produits sont emballés dans des boîtes en carton recyclé. Retours gratuits sous 30 jours.</p></div>
+ </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+ <div class="sec-head"><div><span class="t-over over">Avis clients</span><h2 class="t-h2" style="margin-top:8px">4,7/5 sur 439 avis</h2></div><a class="link" href="#produit-focus">Voir tous les avis →</a></div>
+ <div class="g3">
+  <div class="review"><span class="stars" aria-label="5 sur 5">★★★★★</span><p>« J'ai remplacé mes deux canettes par Focus le matin et Éveil à 14 h. Je dors enfin correctement. »</p><footer>Inès, 22 ans · alternante en marketing</footer></div>
+  <div class="review"><span class="stars" aria-label="5 sur 5">★★★★★</span><p>« Je ne supporte pas le café. Rush a un goût torréfié de cacao et me fait tenir pendant les partiels. »</p><footer>Malik, 20 ans · étudiant en L3</footer></div>
+  <div class="review"><span class="stars" aria-label="4 sur 5">★★★★☆</span><p>« Le coffret Découverte m'a permis de tester les 3 recettes, et la boule à thé me suit à la BU. »</p><footer>Clara, 19 ans · étudiante en L2</footer></div>
+ </div>
+</div></section>
+
+<section class="sec-tight"><div class="wrap">
+ <div class="sec-head"><div><span class="t-over over">Coffrets &amp; box</span><h2 class="t-h2" style="margin-top:8px">Goûter, faire le plein, s'abonner</h2></div><a class="link" href="#coffrets">Tous les coffrets →</a></div>
+ <div class="g3">${ccard('decouverte')}${ccard('partiels')}${ccard('box')}</div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+ <div class="sec-head"><div><span class="t-over over">Le blog</span><h2 class="t-h2" style="margin-top:8px">Bien doser son énergie</h2></div><a class="link" href="#blog">Tous les articles →</a></div>
+ <div class="g3">${ARTS.slice(0,3).map(acard).join('')}</div>
+</div></section>`;
+
+V.infusions=()=>`
+<div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / Nos infusions</nav></div>
+<section class="sec-tight" style="padding-top:8px"><div class="wrap">
+ <h1 class="t-h1">Nos infusions énergisantes</h1>
+ <p class="t-lg muted" style="max-width:62ch;margin-top:12px">Trois recettes 100 % plantes, trois doses de caféine naturelle, en vrac (100 g, environ 40 tasses) ou en boîte de 20 sachets. Goûte les trois avec le coffret Découverte.</p>
+ <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;margin-block:32px 24px">
+  <div class="chips" role="group" aria-label="Filtrer par moment">${[['tout','Toutes'],['apres-midi','Énergie douce'],['matin','Concentration'],['rush','Coup de boost']].map(([v,l])=>`<button class="chip" type="button" data-filter="${v}" aria-pressed="${state.filter===v}">${l}</button>`).join('')}</div>
+  <select class="input" style="width:auto" aria-label="Trier"><option>Trier : caféine croissante</option><option>Trier : mieux notées</option></select>
+ </div>
+ <div class="g3" id="plist">${['eveil','focus','rush'].filter(d=>state.filter==='tout'||P[d].mom===state.filter).map(pcard).join('')}${state.filter==='tout'?ccard('decouverte')+ccard('partiels')+ccard('boule'):''}</div>
+</div></section>
+<section class="sec"><div class="wrap">
+ <h2 class="t-h2">Comparer les recettes</h2><p class="muted" style="margin-block:8px 24px">Repères : un espresso contient environ 80 mg de caféine, une canette de 250 ml environ 80 mg.</p>
+ <div class="cmpw"><table class="cmp"><thead><tr><th>Recette</th><th>Caféine / tasse</th><th>Plantes</th><th>Goût</th><th>Pour</th><th>Vrac 100 g</th><th>20 sachets</th></tr></thead><tbody>
+ ${['eveil','focus','rush'].map(d=>{const p=P[d];return `<tr><td><span class="dose dose-${d}">${p.name}</span></td><td><b>${p.mg} mg</b></td><td>${p.plants}</td><td>${p.taste}</td><td>${p.moment}</td><td>${eur(p.price)}</td><td>6,90 €</td></tr>`}).join('')}
+ </tbody></table></div>
+</div></section>`;
+
+function produit(d){const p=P[d];const others=['eveil','focus','rush'].filter(x=>x!==d);return `
+<div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / <a href="#infusions">Nos infusions</a> / ${p.name}</nav></div>
+<section class="sec-tight" style="padding-top:8px"><div class="wrap pgrid">
+ <div class="gal"><div class="media main" style="background:${p.c1}">${tinSVG(d)}</div>
+  <div class="thumbs"><div class="media on" style="background:${p.c1}">${tinSVG(d)}</div><div class="media">${plantSVG(d)}</div><div class="media">${sceneSVG(d,'Tasse infusée')}</div><div class="media" style="background:var(--sable-100)">${sceneSVG(d,'Cuillère doseuse')}</div></div></div>
+ <div class="pinfo">
+  <span class="dose dose-${d}">${p.moment}</span>
+  <h1>${p.name}</h1>
+  <p class="kw">${p.key} · ${p.mg} mg de caféine</p>
+  <a href="#avis" class="t-sm" style="color:var(--text-secondary)"><span class="stars">${stars(p.rating)}</span> ${String(p.rating).replace('.',',')}/5 · ${p.n} avis</a>
+  <p>${p.desc}</p>
+  ${gauge(d)}
+  <fieldset class="opts" style="border:0;padding:0;margin:0"><legend class="t-label" style="margin-bottom:10px">Format</legend>
+   <label class="opt"><input type="radio" name="fmt" value="vrac" checked><span class="grow">Vrac · 100 g<small>Environ 40 tasses, soit 0,30 € la tasse</small></span><b>${eur(p.price)}</b></label>
+   <label class="opt"><input type="radio" name="fmt" value="sachets"><span class="grow">Boîte de 20 sachets<small>Pratique pour la fac ou le bureau</small></span><b>6,90 €</b></label>
+   <label class="opt"><input type="radio" name="fmt" value="abo"><span class="grow">Vrac en abonnement · −15 %<small>Tous les 1, 2 ou 3 mois, livraison offerte, sans engagement</small></span><b>${eur(p.price*.85)}</b></label>
+  </fieldset>
+  <div class="buy"><div class="qty"><button type="button" data-pq="-1" aria-label="Retirer une boîte">−</button><span id="pq">1</span><button type="button" data-pq="1" aria-label="Ajouter une boîte">+</button></div><button class="btn btn-primary" style="flex:1" type="button" data-add="${d}" data-useq>Ajouter au panier</button></div>
+  <div class="reas"><span>${ico.truck}Livraison offerte dès 35 € · point relais 3,90 € · domicile 4,90 €</span><span>${ico.return}Retours gratuits sous 30 jours</span><span>${ico.tin}Boîte en carton recyclé</span></div>
+ </div>
+</div></section>
+<div class="mbuy"><div><b>${p.name}</b><div class="t-sm muted">${eur(p.price)} · vrac 100 g</div></div><button class="btn btn-primary" type="button" data-add="${d}">Ajouter</button></div>
+
+<section class="sec-tight"><div class="wrap">
+ <h2 class="t-h2" style="margin-bottom:20px">Mode d'emploi</h2>
+ <div class="steps4"><div><b>2,5 g</b><p>Une cuillère de vrac ou un sachet pour une tasse de 25 cl.</p></div><div><b>80 °C</b><p>Eau frémissante, pas bouillante, pour éviter l'amertume.</p></div><div><b>5 min</b><p>Infuse 5 minutes dans ta boule à thé, puis retire-la.</p></div><div><b>2 max</b><p>Deux tasses par jour au maximum. Pas de caféine après 16 h.</p></div></div>
+</div></section>
+
+<section class="sec-tight"><div class="wrap quality">
+ <div class="card"><h2 class="t-h4">Composition</h2><dl class="kv"><dt>Ingrédients</dt><dd>${p.plants}*</dd><dt>Caféine</dt><dd>${p.mg} mg par tasse de 25 cl</dd><dt>Sucre</dt><dd>0 g, sans édulcorant</dd><dt>Formats</dt><dd>Vrac 100 g (≈ 40 tasses) · 20 sachets</dd><dt>Emballage</dt><dd>Boîte en carton recyclé</dd><dt>Allergènes</dt><dd>Aucun</dd></dl><p class="t-cap" style="margin-top:14px">* 100 % plantes, sans sucre ajouté. Déconseillé aux femmes enceintes et aux enfants.</p></div>
+ <div class="card bg-sable" style="border:0"><h2 class="t-h4">Ta dose de caféine</h2><dl class="kv"><dt>Par tasse</dt><dd>${p.mg} mg</dd><dt>Repère</dt><dd>${d==='eveil'?'La moitié d\'un espresso':d==='focus'?'Les trois quarts d\'un espresso':'Un espresso'}</dd><dt>Conseil</dt><dd>2 tasses par jour au maximum, pas après 16 h</dd></dl><a class="link" href="#faq" style="display:inline-block;margin-top:16px">Toutes les questions sur la caféine →</a></div>
+</div></section>
+
+<section class="sec-tight" id="avis"><div class="wrap">
+ <div class="sec-head"><div><h2 class="t-h2">Avis sur ${p.name}</h2><p>${String(p.rating).replace('.',',')}/5 · ${p.n} avis vérifiés après achat</p></div><button class="btn btn-ghost btn-sm" type="button" data-toast="Merci ! Le formulaire d'avis s'ouvrira après ta commande.">Écrire un avis</button></div>
+ <div class="g3"><div class="review"><span class="stars">★★★★★</span><p>« Aucune amertume, je le bois sans sucre. Je tiens jusqu'à midi sans coup de barre. »</p><footer>Sarah · étudiante en master</footer></div><div class="review"><span class="stars">★★★★★</span><p>« La dose est écrite sur la boîte, j'ai enfin une idée de ce que je consomme. »</p><footer>Yanis · alternant développeur</footer></div><div class="review"><span class="stars">★★★★☆</span><p>« Très bon goût. Avec la boule à thé, je l'infuse directement à la BU. »</p><footer>Léa · alternante commerce</footer></div></div>
+</div></section>
+
+<section class="sec-tight"><div class="wrap">
+ <div class="sec-head"><h2 class="t-h2">Tu aimeras aussi</h2><div class="cnav"><button type="button" data-car="-1" aria-label="Précédent">←</button><button type="button" data-car="1" aria-label="Suivant">→</button></div></div>
+ <div class="carousel" id="car">${others.map(pcard).join('')}${ccard('boule')}${ccard('decouverte')}${ccard('partiels')}</div>
+</div></section>
+
+<section class="sec-tight"><div class="wrap" style="max-width:860px">
+ <h2 class="t-h3" style="margin-bottom:12px">Conditions</h2>
+ <details class="cond"><summary>Livraison</summary><p>Point relais en 2 à 4 jours (3,90 €) ou à domicile en 48 h (4,90 €). Offerte dès 35 € d'achat et sur tous les abonnements.</p></details>
+ <details class="cond"><summary>Retours et remboursement</summary><p>Retours gratuits sous 30 jours. Le remboursement est fait dès réception du colis.</p></details>
+ <details class="cond"><summary>Précautions</summary><p>Contient de la caféine. Ne pas dépasser deux tasses par jour. Déconseillé aux femmes enceintes ou allaitantes et aux moins de 16 ans.</p></details>
+</div></section>`;}
+
+V.coffrets=()=>`
+<div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / Coffrets</nav></div>
+<section class="sec-tight" style="padding-top:8px"><div class="wrap">
+ <h1 class="t-h1">Coffrets, packs &amp; abonnement</h1>
+ <p class="t-lg muted" style="max-width:62ch;margin-top:12px">Pour goûter les trois recettes, faire le plein avant les partiels, ou recevoir ta routine sans y penser.</p>
+ <div class="g3" style="margin-top:36px">${ccard('decouverte')}${ccard('partiels')}${ccard('boule')}</div>
+</div></section>
+<section class="sec-tight"><div class="wrap"><div class="band" style="background:var(--bg-brand-subtle)">
+ <div style="max-width:56ch"><span class="t-over over">Abonnement sans engagement</span><h2 class="t-h2" style="margin-block:8px 12px">Ta routine livrée, −15 % sur chaque envoi</h2><p class="muted">Livraison offerte, envoi tous les 1, 2 ou 3 mois. Tu modifies tes recettes, décales ou suspends depuis ton compte.</p>
+ <div class="steps4" style="grid-template-columns:repeat(3,1fr);margin-top:20px"><div><b>1</b><p>Choisis tes recettes en vrac</p></div><div><b>2</b><p>Choisis ta fréquence : 1, 2 ou 3 mois</p></div><div><b>3</b><p>Modifie ou suspends quand tu veux</p></div></div></div>
+ <div style="display:grid;gap:10px;justify-items:start"><span class="price" style="font-size:32px">−15 % <small>/ envoi</small></span><a class="btn btn-primary" href="#coffret-box">Composer mon abonnement</a></div>
+</div></div></section>
+<section class="sec"><div class="wrap"><div class="band"><div style="max-width:56ch"><span class="t-over" style="color:var(--eveil-700)">Offre pros</span><h2 class="t-h3" style="margin-top:8px">Un café, un coworking ou un BDE ?</h2><p class="muted">Des formats et des prix adaptés à ton lieu ou à tes événements, sur devis.</p></div><a class="btn btn-ghost" href="#pros">Demander un devis</a></div></div></section>`;
+
+function coffret(k){const c=C[k];const abo=k==='box';const s=state.sub;const n=s.eveil+s.focus+s.rush;return `
+<div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / <a href="#coffrets">Coffrets</a> / ${c.name}</nav></div>
+<section class="sec-tight" style="padding-top:8px"><div class="wrap pgrid">
+ <div class="media main" style="aspect-ratio:1/1;background:var(--${c.c==='focus'?'focus-50':c.c==='eveil'?'eveil-100':'rush-100'})">${cmedia(k)}</div>
+ <div class="pinfo"><span class="dose dose-${c.c}">${c.tag}</span><h1 style="font-size:clamp(36px,4.4cqi,52px)">${c.name}</h1><p class="kw">${c.contenu}</p><p>${c.desc}</p>
+ ${abo?`<div class="opts">${['focus','eveil','rush'].map(d=>`<div class="opt" style="cursor:default"><span class="dose dose-${d}">${P[d].mg} mg</span><span class="grow"><b>${P[d].name}</b><small>Vrac 100 g · ${eur(P[d].price*.85)} au lieu de ${eur(P[d].price)}</small></span><div class="qty"><button type="button" data-cq="${d}" data-d="-1" aria-label="Retirer ${P[d].name}">−</button><span>${s[d]}</span><button type="button" data-cq="${d}" data-d="1" aria-label="Ajouter ${P[d].name}">+</button></div></div>`).join('')}</div>
+  <div><span class="t-label">Fréquence d'envoi</span><div class="chips" role="group" aria-label="Fréquence" style="margin-top:10px">${[1,2,3].map(f=>`<button class="chip" type="button" data-freq="${f}" aria-pressed="${state.freq===f}">Tous les ${f===1?'mois':f+' mois'}</button>`).join('')}</div></div>
+  <p class="${n<1?'alert alert-warn':'alert alert-ok'}" role="status">${n<1?'Choisis au moins une recette.':`${n} × 100 g · ${eur(n*11.9)} → <b>${eur(subPrice())}</b> par envoi, livraison offerte`}</p>
+  <button class="btn btn-primary" type="button" data-add="box" ${n<1?'disabled':''}>M'abonner</button>`
+ :`<div class="buy"><span class="price" style="font-size:28px;align-self:center;flex:1">${cprice(k)}</span><button class="btn btn-primary" type="button" data-add="${k}">Ajouter au panier</button></div>`}
+ <div class="reas"><span>${ico.truck}${abo?'Livraison offerte sur chaque envoi':'Livraison offerte dès 35 €'}</span><span>${ico.return}${abo?'Sans engagement, suspendable en un clic':'Retours gratuits sous 30 jours'}</span><span>${ico.tin}Boîte en carton recyclé</span></div></div>
+</div></section>
+<section class="sec-tight"><div class="wrap"><h2 class="t-h2" style="margin-bottom:20px">Mode d'emploi</h2><div class="steps4"><div><b>Éveil</b><p>Énergie douce, 40 mg.</p></div><div><b>Focus</b><p>Concentration, 60 mg.</p></div><div><b>Rush</b><p>Coup de boost, 80 mg.</p></div><div><b>80 °C</b><p>5 minutes d'infusion, 2,5 g par tasse.</p></div></div></div></section>
+<section class="sec-tight"><div class="wrap"><div class="card" style="padding:28px"><h2 class="t-h4">Qualité</h2><p class="muted" style="margin-top:8px;max-width:70ch">100 % plantes, sans sucre ajouté. La dose de caféine de chaque recette est indiquée sur sa boîte en carton recyclé.</p></div></div></section>
+<section class="sec-tight"><div class="wrap"><div class="sec-head"><h2 class="t-h2">Suggestions</h2></div><div class="g3">${k==='boule'?ccard('decouverte')+pcard('focus')+pcard('eveil'):k==='decouverte'?ccard('partiels')+ccard('boule')+ccard('box'):pcard('focus')+pcard('eveil')+pcard('rush')}</div></div></section>
+<section class="sec-tight"><div class="wrap" style="max-width:860px"><details class="cond"><summary>Conditions</summary><p>Point relais 3,90 € (2 à 4 jours) ou domicile 4,90 € (48 h), offerte dès 35 €. Retours gratuits sous 30 jours. Abonnement sans engagement, modifiable ou suspendable avant chaque envoi.</p></details></div></section>`;}
+
+V.pros=()=>`
+<div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / Offre pros</nav></div>
+<section class="sec-tight" style="padding-top:8px"><div class="wrap">
+ <h1 class="t-h1">Offre pros</h1><p class="t-lg muted" style="max-width:62ch;margin-top:12px">Propose yuzaa à tes clients, tes membres ou tes adhérents. Formats, volumes et prix sur devis.</p>
+ <div class="g3" style="margin-top:32px"><div class="plant bg-focus"><h3>Cafés</h3><p class="t-sm">Vrac en grand format pour la carte, et une alternative au café pour ceux qui n'en boivent pas.</p></div><div class="plant bg-eveil"><h3>Coworkings</h3><p class="t-sm">Une station d'infusions en libre-service pour tenir les longues journées.</p></div><div class="plant bg-rush"><h3>BDE</h3><p class="t-sm">Des prix pour vos ventes et vos stands, et des échantillons pour les semaines de partiels.</p></div></div>
+</div></section>
+<section class="sec-tight" style="padding-bottom:80px"><div class="wrap" style="max-width:820px">
+ <form class="card form" style="padding:32px" data-form="pros" novalidate><h2 class="t-h3">Demander un devis</h2><div class="alert alert-ok" id="pros-ok" hidden role="status">Demande envoyée. Nous te recontactons sous 48 h ouvrées avec une proposition.</div>
+  <div class="row2">${field('p-structure','Nom de la structure','text','req','autocomplete="organization"')}<div class="field"><label for="p-type">Type</label><select class="input" id="p-type"><option>Café</option><option>Coworking</option><option>BDE / association étudiante</option><option>Autre</option></select></div></div>
+  <div class="row2">${field('p-email','E-mail','email','req email','autocomplete="email"')}<div class="field"><label for="p-vol">Volume estimé par mois</label><select class="input" id="p-vol"><option>Moins de 1 kg</option><option>1 à 5 kg</option><option>Plus de 5 kg</option><option>Pour un événement</option></select></div></div>
+  <div class="field"><label for="p-msg">Ton besoin</label><textarea class="input" id="p-msg" rows="4" data-rule="req min20" aria-describedby="p-msg-err" placeholder="Ex. : stand BDE pendant la semaine de partiels, 300 étudiants"></textarea><span class="err" id="p-msg-err"></span></div>
+  <button class="btn btn-primary" type="submit" style="justify-self:start">Envoyer ma demande</button></form>
+</div></section>`;
+
+V.histoire=()=>`
+<section class="hero"><div class="wrap" style="padding-block:72px 64px;max-width:900px">
+ <span class="t-over over">Notre histoire</span><h1 class="t-display" style="margin-block:14px 18px">Nés d'un scan Yuka.</h1>
+ <p class="lead" style="max-width:60ch">yuzaa est une marque française créée par cinq étudiants qui buvaient trop de canettes pendant leurs révisions. On voulait l'énergie, sans le crash du café ni le sucre des boissons énergisantes.</p>
+</div></section>
+<section class="sec-tight"><div class="wrap"><blockquote class="quote" style="margin:0">« Je fais attention à tout ce que je mange, sauf à ce qui me fait tenir la journée. »<cite>Ce paradoxe, on l'a entendu dans presque toutes nos interviews d'étudiants.</cite></blockquote></div></section>
+<section class="sec-tight"><div class="wrap g2" style="align-items:start">
+ <div class="media" style="aspect-ratio:4/5">${sceneSVG('focus','Atelier yuzaa')}</div>
+ <div><h2 class="t-h2" style="margin-bottom:20px">Notre parcours</h2><div class="tl">
+  <div><b>Sept. 2025</b><div><h3>Le déclic</h3><p>Trois canettes par jour, un sommeil en vrac et une étiquette pleine d'additifs.</p></div></div>
+  <div><b>Hiver 2026</b><div><h3>Les recettes</h3><p>42 essais de mélanges et des dégustations à l'aveugle avec 60 étudiants.</p></div></div>
+  <div><b>Été 2026</b><div><h3>Le lancement</h3><p>Premières boîtes vendues sur les stands BDE et en ligne.</p></div></div>
+  <div><b>Aujourd'hui</b><div><h3>yuzaa</h3><p>Trois recettes, un abonnement et une offre pour les cafés, coworkings et BDE.</p></div></div>
+ </div></div>
+</div></section>
+<section class="sec" id="producteurs"><div class="wrap">
+ <div class="sec-head"><div><span class="t-over over">Producteurs</span><h2 class="t-h2" style="margin-top:8px">Trois plantes, trois énergies</h2><p>Trois plantes riches en caféine naturelle, une par recette.</p></div></div>
+ <div class="g3"><div class="plant bg-eveil"><div class="media">${plantSVG('eveil')}</div><h3>Guayusa</h3><p class="t-sm">La base d'Éveil. Une caféine douce, avec la citronnelle et la menthe.</p></div><div class="plant bg-focus"><div class="media">${plantSVG('focus')}</div><h3>Maté</h3><p class="t-sm">Vert dans Focus avec le gingembre et le citron, torréfié dans Rush. Une énergie stable.</p></div><div class="plant bg-rush"><div class="media">${plantSVG('rush')}</div><h3>Guarana</h3><p class="t-sm">Le cœur de Rush, avec le cacao. La caféine se libère lentement, sans pic.</p></div></div>
+</div></section>
+<section class="sec-tight"><div class="wrap g2">
+ <div><h2 class="t-h2">L'équipe</h2><p class="muted" style="margin-block:12px 24px;max-width:52ch">Cinq profils complémentaires, du marketing à la logistique, réunis par le même besoin.</p><a class="btn btn-primary" href="#contact">Nous écrire</a></div>
+ <div class="nums"><div><b>3</b><span class="t-sm">recettes</span></div><div><b>0 g</b><span class="t-sm">de sucre ajouté</span></div><div><b>100 %</b><span class="t-sm">plantes</span></div><div><b>0,30 €</b><span class="t-sm">la tasse</span></div></div>
+</div>
+<div class="wrap"><div class="team" style="margin-top:40px">${[['Yacine','Marketing','focus'],['Lou-ann','Commercial','eveil'],['Zeina','Produit','rush'],['Mohamed','Finance','focus'],['Ténah','Logistique','eveil']].map(([n,r,c])=>`<div class="member"><span class="avatar" style="background:${P[c].c1};color:${P[c].c7}">${n[0]}</span><b>${n}</b><small>${r}</small></div>`).join('')}</div></div></section>
+<section class="sec" id="engagements"><div class="wrap">
+ <h2 class="t-h2" style="margin-bottom:24px">Nos engagements</h2>
+ <div class="g4"><div class="eng"><span class="dose dose-focus">Direct</span><h3>Vente en direct</h3><p>Sur notre site, sans intermédiaire, pour garder 0,30 € la tasse.</p></div><div class="eng"><span class="dose dose-focus">Plantes</span><h3>100 % plantes</h3><p>Sans sucre ajouté, sans arôme artificiel.</p></div><div class="eng"><span class="dose dose-eveil">Recettes</span><h3>Recettes transparentes</h3><p>Plantes et dose de caféine indiquées sur chaque boîte.</p></div><div class="eng"><span class="dose dose-rush">Zéro-plastique</span><h3>Carton recyclé</h3><p>Tous nos produits sont emballés dans des boîtes en carton recyclé.</p></div></div>
+</div></section>
+<section class="sec-tight" style="padding-bottom:80px"><div class="wrap"><div class="band"><div><h2 class="t-h3">Prêt·e à trouver ta dose ?</h2><p class="muted">Le coffret Découverte : les 3 recettes et une boule à thé pour 19,90 €.</p></div><a class="btn btn-energy" href="#coffret-decouverte">Goûter les 3 recettes</a></div></div></section>`;
+
+V.blog=()=>{const cats=['Tous','Énergie','Plantes','Recettes','Routine'];const list=ARTS.slice(1).filter(a=>state.bfilter==='Tous'||a.cat===state.bfilter);return `
+<div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / Blog</nav></div>
+<section class="sec-tight" style="padding-top:8px"><div class="wrap">
+ <h1 class="t-h1">Le blog yuzaa</h1><p class="t-lg muted" style="max-width:60ch;margin-top:12px">Caféine, plantes, recettes et routines : tout pour doser ton énergie sans y laisser ton sommeil.</p>
+ <a class="feat" href="#article" style="margin-top:40px"><div class="media">${sceneSVG('rush',ARTS[0].t)}</div><div><span class="t-over over">À la une · ${ARTS[0].cat}</span><h2 class="t-h2" style="margin-block:10px 12px">${ARTS[0].t}</h2><p class="muted">${ARTS[0].ex}</p><span class="link" style="display:inline-block;margin-top:16px">Lire l'article →</span></div></a>
+</div></section>
+<section class="sec-tight"><div class="wrap">
+ <div class="chips" role="group" aria-label="Filtrer les articles" style="margin-bottom:28px">${cats.map(c=>`<button class="chip" type="button" data-bfilter="${c}" aria-pressed="${state.bfilter===c}">${c}</button>`).join('')}</div>
+ <div class="g3">${list.length?list.map(acard).join(''):'<p class="muted">Aucun article dans cette catégorie pour le moment.</p>'}</div>
+</div></section>
+<section class="sec"><div class="wrap"><div class="band" style="background:var(--bg-brand-subtle)"><div><h2 class="t-h3">Un article par mois dans ta boîte mail</h2><p class="muted">Et −10 % sur ta première commande.</p></div><a class="btn btn-primary" href="#nl-email" data-focusnl>S'inscrire à la newsletter</a></div></div></section>`;};
+
+V.article=()=>`
+<div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / <a href="#blog">Blog</a> / Énergie</nav></div>
+<section class="sec-tight" style="padding-top:8px"><div class="wrap" style="max-width:900px">
+ <span class="t-over over">Énergie · 6 min de lecture</span><h1 class="t-h1" style="margin-top:10px">Que contient vraiment ta boisson énergisante ?</h1>
+ <div class="meta"><span>Par Zeina, pôle produit</span><span>12 octobre 2026</span></div>
+</div></section>
+<div class="wrap"><div class="media" style="aspect-ratio:21/8">${sceneSVG('rush','Canette et tasse d\'infusion')}</div></div>
+<section class="sec-tight"><div class="wrap agrid">
+ <aside class="toc" aria-label="Sommaire"><b class="t-over">Sommaire</b><ol><li><a href="#article" data-scroll="a1">Ce que dit l'étiquette</a></li><li><a href="#article" data-scroll="a2">Sucre et caféine : le comparatif</a></li><li><a href="#article" data-scroll="a3">Pourquoi le pic, puis la chute</a></li><li><a href="#article" data-scroll="a4">Par quoi la remplacer</a></li></ol></aside>
+ <article class="prose">
+  <p>Deux à trois canettes par jour en période de révisions, c'est ce que nous ont raconté les étudiants interrogés. Mais que boit-on vraiment ?</p>
+  <h2 id="a1">Ce que dit l'étiquette</h2><p>Une canette de 250 ml contient en moyenne 27 g de sucre, soit environ 7 morceaux, 80 mg de caféine, de la taurine, des arômes et des colorants. Sur Yuka, la plupart obtiennent une note « mauvaise ».</p>
+  <h2 id="a2">Sucre et caféine : le comparatif</h2>
+  <div class="cmpw" style="margin-bottom:18px"><table class="cmp"><thead><tr><th></th><th>Canette 250 ml</th><th>yuzaa Focus</th></tr></thead><tbody><tr><td>Caféine</td><td>80 mg</td><td>60 mg</td></tr><tr><td>Sucre</td><td>27 g</td><td>0 g</td></tr><tr><td>Additifs</td><td>6 à 10</td><td>0</td></tr><tr><td>Prix</td><td>≈ 1,50 €</td><td>0,30 €</td></tr></tbody></table></div>
+  <h2 id="a3">Pourquoi le pic, puis la chute</h2><p>Le sucre rapide et la caféine de synthèse arrivent ensemble dans le sang. L'effet est immédiat, puis la glycémie retombe : c'est le coup de barre de 16 h. Les plantes comme le guarana libèrent leur caféine plus lentement.</p>
+  <div class="callout"><div><b>Trouve ta recette</b><p class="t-sm muted" style="margin:0">Éveil 40 mg, Focus 60 mg, Rush 80 mg.</p></div><a class="btn btn-primary btn-sm" href="#infusions">Comparer les infusions</a></div>
+  <h2 id="a4">Par quoi la remplacer</h2><p>Commence par remplacer une seule canette, celle du matin, par Focus. Glisse ta boule à thé dans ton sac, et garde Éveil pour l'après-midi.</p>
+ </article>
+</div></section>
+<section class="sec"><div class="wrap"><div class="sec-head"><h2 class="t-h2">À lire ensuite</h2></div><div class="g3">${ARTS.slice(1,4).map(acard).join('')}</div></div></section>`;
+
+V.compte=()=>state.logged?dashboard():`
+<div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / Mon compte</nav></div>
+<section class="sec-tight" style="padding-top:8px"><div class="wrap">
+ <h1 class="t-h1" style="margin-bottom:28px">Mon compte</h1>
+ <div class="auth">
+  <form class="card form" data-form="login" novalidate><h2 class="t-h4">J'ai déjà un compte</h2><div class="alert alert-err" id="login-msg" hidden></div>
+   ${field('l-email','E-mail','email','req email','autocomplete="email" value="ines.benali@email.fr"')}
+   ${field('l-pw','Mot de passe','password','req pw','autocomplete="current-password" value="yuzaa2026"')}
+   <a class="link t-sm" href="#compte">Mot de passe oublié ?</a>
+   <button class="btn btn-primary btn-block" type="submit">Se connecter</button></form>
+  <form class="card form" data-form="register" novalidate><h2 class="t-h4">Créer un compte</h2><p class="t-sm muted" style="margin-top:-8px">Suis tes commandes et gère ton abonnement.</p>
+   <div class="row2">${field('r-prenom','Prénom','text','req','autocomplete="given-name"')}${field('r-nom','Nom','text','req','autocomplete="family-name"')}</div>
+   ${field('r-email','E-mail','email','req email','autocomplete="email"')}
+   ${field('r-pw','Mot de passe','password','req pw','autocomplete="new-password"')}<span class="hint" style="margin-top:-10px">8 caractères minimum, dont un chiffre.</span>
+   <label class="check"><input type="checkbox" id="r-etu"> Recevoir la newsletter (recettes et offres, 1 e-mail par mois)</label>
+   <div class="field"><label class="check"><input type="checkbox" id="r-cgu" data-rule="checked" aria-describedby="r-cgu-err"> J'accepte les <a class="link" href="#cgu">conditions générales d'utilisation</a></label><span class="err" id="r-cgu-err"></span></div>
+   <button class="btn btn-primary btn-block" type="submit">Créer mon compte</button></form>
+ </div>
+</div></section>`;
+
+function dashboard(){return `
+<div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / Mon compte</nav></div>
+<section class="sec-tight" style="padding-top:8px"><div class="wrap dash">
+ <nav class="side" aria-label="Menu du compte"><a class="on" href="#compte">Tableau de bord</a><a href="#compte" data-scroll="cmd">Commandes</a><a href="#suivi">Suivi de colis</a><a href="#compte" data-scroll="abo">Abonnement</a><a href="#compte" data-scroll="prof">Profil &amp; adresses</a><button type="button" data-logout>Se déconnecter</button></nav>
+ <div class="dmain">
+  <div class="welcome"><h1 class="t-h3">Bonjour Inès</h1><p class="muted">Ton prochain envoi d'abonnement part le 3 novembre. Tu peux le modifier jusqu'au 31 octobre.</p></div>
+  <div class="tiles"><div class="tile bg-focus"><span class="t-sm">Commandes</span><b>3</b><a class="link t-sm" href="#suivi">Suivre la dernière</a></div><div class="tile bg-eveil"><span class="t-sm">Économisé avec l'abonnement</span><b>7,14 €</b><span class="t-cap">−15 % sur chaque envoi</span></div><div class="tile bg-rush"><span class="t-sm">Livraisons offertes</span><b>2</b><span class="t-cap">Abonnement et commande de plus de 35 €</span></div></div>
+  <div class="sub" id="abo"><div><span class="t-over over">Abonnement · actif</span><h2 class="t-h4" style="margin-top:6px">Focus + Éveil en vrac · 20,23 € tous les mois</h2><p class="t-sm muted">Prochain envoi : 3 novembre 2026</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-ghost btn-sm" type="button" data-toast="Envoi de novembre : Focus + Éveil + Rush, 30,35 €.">Ajouter Rush pour les partiels</button><button class="btn btn-ghost btn-sm" type="button" data-toast="Abonnement passé à un envoi tous les 2 mois.">Passer à 2 mois</button><button class="btn btn-ghost btn-sm" type="button" data-toast="Envoi de novembre suspendu. Tu peux le réactiver à tout moment.">Suspendre</button></div></div>
+  <div class="card" style="padding:24px" id="cmd"><h2 class="t-h4" style="margin-bottom:12px">Historique des commandes</h2><div style="overflow-x:auto"><table class="otable"><thead><tr><th>N°</th><th>Date</th><th>Contenu</th><th>Total</th><th>Statut</th></tr></thead><tbody><tr><td>YZ-24817</td><td>12/10/2026</td><td>Boule à thé, Rush</td><td>24,70 €</td><td><a href="#suivi" class="pill p-run">En livraison</a></td></tr><tr><td>YZ-23102</td><td>03/10/2026</td><td>Abonnement</td><td>20,23 €</td><td><span class="pill p-ok">Livrée</span></td></tr><tr><td>YZ-21877</td><td>18/09/2026</td><td>Coffret Découverte</td><td>21,81 €</td><td><span class="pill p-ok">Livrée</span></td></tr></tbody></table></div></div>
+  <div class="g2" id="prof" style="gap:20px;align-items:stretch"><div class="card" style="padding:24px"><h2 class="t-h4">Profil</h2><dl class="kv"><dt>Nom</dt><dd>Inès Benali</dd><dt>E-mail</dt><dd>ines.benali@email.fr</dd><dt>Newsletter</dt><dd>Inscrite</dd></dl></div><div class="card" style="padding:24px"><h2 class="t-h4">Adresse</h2><p class="muted" style="margin-top:12px">Inès Benali<br>14 rue de Paris<br>93100 Montreuil</p><a class="link t-sm" href="#compte" style="display:inline-block;margin-top:10px">Modifier</a></div></div>
+ </div>
+</div></section>`;}
+
+V.suivi=()=>`
+<div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / <a href="#compte">Mon compte</a> / Suivi de colis</nav></div>
+<section class="hero" style="background:var(--bg-brand-subtle)"><div class="wrap" style="padding-block:40px"><span class="t-over over">Commande YZ-24817</span><h1 class="t-h1" style="margin-top:8px">Livraison prévue jeudi 16 octobre</h1><p class="muted" style="margin-top:8px">Livraison à domicile (48 h) · 14 rue de Paris, 93100 Montreuil</p></div></section>
+<section class="sec-tight"><div class="wrap">
+ <div class="track"><div class="tstep bg-focus"><span class="pill p-ok" style="justify-self:start">✓ 13 oct.</span><b>Préparée</b><span class="t-sm muted">Ta commande a été emballée dans sa boîte en carton recyclé.</span></div><div class="tstep bg-eveil now" aria-current="step"><span class="pill p-run" style="justify-self:start">En cours</span><b>Expédiée</b><span class="t-sm muted">Prise en charge par le transporteur le 14 oct.</span></div><div class="tstep bg-sable"><span class="pill" style="justify-self:start;background:var(--sable-200)">À venir</span><b>Livrée</b><span class="t-sm muted">Estimée le 16 oct. avant 13 h.</span></div></div>
+ <div class="g2" style="margin-top:28px;align-items:start;gap:24px"><div class="card" style="padding:24px"><h2 class="t-h4">Historique</h2><div class="events"><div><span>14/10 · 09:12</span>Colis pris en charge par le transporteur</div><div><span>13/10 · 17:40</span>Colis préparé et étiqueté</div><div><span>12/10 · 21:05</span>Paiement confirmé</div></div><a class="link t-sm" href="#contact" style="display:inline-block;margin-top:14px">Un problème avec ta livraison ?</a></div>
+ <div class="card" style="padding:24px"><h2 class="t-h4">Articles</h2><div class="line" style="grid-template-columns:64px 1fr auto"><div class="media" style="width:64px;height:64px;background:var(--eveil-100)">${bouleSVG()}</div><div><b>Boule à thé portable</b><div class="t-sm muted">× 1</div></div><span>8,90 €</span></div><div class="line" style="grid-template-columns:64px 1fr auto"><div class="media" style="width:64px;height:64px;background:${P.rush.c1}">${tinSVG('rush')}</div><div><b>Rush</b><div class="t-sm muted">Vrac 100 g × 1</div></div><span>11,90 €</span></div></div></div>
+</div></section>`;
+
+V.panier=()=>{const keys=Object.keys(state.cart);if(!keys.length)return `<div class="wrap">${stepper(0)}<div class="empty"><div class="media" style="width:160px;height:190px;background:none">${tinSVG('focus')}</div><h1 class="t-h3">Ton panier est vide</h1><p class="muted">Pas encore d'énergie en stock. Commence par trouver ta dose.</p><a class="btn btn-primary" href="#infusions">Voir les infusions</a></div></div>`;
+ const t=totals();const left=Math.max(0,FREE-(t.sub-t.disc));return `
+<div class="wrap">${stepper(0)}<h1 class="t-h1" style="margin-bottom:24px">Mon panier</h1>
+<div class="cartg"><div>
+ <div class="jauge ${t.free?'ok':''}">${t.free?'Bravo, la livraison est offerte.':`Plus que ${eur(left)} pour profiter de la livraison offerte (dès 35 €).`}<div class="bar"><i style="width:${t.free?100:Math.min(100,(t.sub-t.disc)/FREE*100)}%"></i></div></div>
+ ${keys.map(k=>{const l=lineInfo(k);return `<div class="line"><div class="media" style="background:var(--bg-subtle)">${l.media}</div><div><h3>${l.name}</h3><p class="t-sm muted">${l.sub}</p><button class="rm" type="button" data-rm="${k}">Retirer</button></div><div class="lp" style="display:grid;gap:8px;justify-items:end"><div class="qty"><button type="button" data-q="${k}" data-d="-1" aria-label="Moins">−</button><span>${state.cart[k]}</span><button type="button" data-q="${k}" data-d="1" aria-label="Plus">+</button></div><b class="price" style="font-size:18px">${eur(l.price*state.cart[k])}</b></div></div>`}).join('')}
+ ${!state.cart.boule?`<div class="card" style="padding:20px;margin-top:24px;display:flex;gap:16px;align-items:center;flex-wrap:wrap"><div class="media" style="width:72px;height:72px;border-radius:12px;background:var(--eveil-100)">${bouleSVG()}</div><div style="flex:1;min-width:180px"><b>Ajoute la boule à thé portable</b><div class="t-sm muted">Pour infuser ton vrac partout · 8,90 €</div></div><button class="btn btn-ghost btn-sm" type="button" data-add="boule">Ajouter</button></div>`:''}
+</div>
+<aside class="recap" aria-label="Récapitulatif"><h2 class="t-h4">Récapitulatif</h2>
+ <form class="field ${state.promo?'is-ok':''}" data-form="promo" novalidate><label for="promo">Code promo</label><div class="promo"><input class="input" id="promo" placeholder="ETUDIANT10" value="${state.promo||''}" aria-describedby="promo-err"><button class="btn btn-ghost btn-sm" type="submit">Appliquer</button></div><span class="err" id="promo-err"></span>${state.promo?`<span class="hint" style="color:var(--feedback-success)">Code ${state.promo} appliqué : −10 % sur ta première commande</span>`:''}</form>
+ <div class="r"><span>Sous-total</span><span>${eur(t.sub)}</span></div>
+ ${t.disc?`<div class="r" style="color:var(--feedback-success)"><span>Code ETUDIANT10</span><span>−${eur(t.disc)}</span></div>`:''}
+ <div class="r"><span>Livraison</span><span>${t.free?'Offerte':eur(t.ship)}</span></div>
+ <div class="r tot"><span>Total</span><span>${eur(t.tot)}</span></div>
+ <a class="btn btn-primary btn-block" href="#livraison">Commander</a>
+ <p class="t-cap" style="text-align:center">Paiement sécurisé · Carte, PayPal, Apple Pay</p>
+</aside></div></div><div style="height:64px"></div>`;};
+
+V.livraison=()=>{const t=totals();return `
+<div class="wrap">${stepper(1)}<div class="cartg">
+<form class="form" data-form="livraison" novalidate><h1 class="t-h2">Livraison</h1>
+ <div class="row2">${field('d-prenom','Prénom','text','req','autocomplete="given-name" value="Inès"')}${field('d-nom','Nom','text','req','autocomplete="family-name" value="Benali"')}</div>
+ ${field('d-email','E-mail (pour la confirmation)','email','req email','autocomplete="email" value="ines.benali@email.fr"')}
+ ${field('d-adr','Adresse','text','req','autocomplete="street-address" value="14 rue de Paris"')}
+ <div class="row2">${field('d-cp','Code postal','text','req cp','inputmode="numeric" autocomplete="postal-code" value="93100"')}${field('d-ville','Ville','text','req','autocomplete="address-level2" value="Montreuil"')}</div>
+ ${field('d-tel','Téléphone (pour le livreur)','tel','req tel','autocomplete="tel" placeholder="06 12 34 56 78"')}
+ <fieldset class="ship" style="border:0;padding:0;margin:0"><legend class="t-label" style="margin-bottom:10px">Mode de livraison</legend>
+  <label class="opt"><input type="radio" name="ship" value="relais" ${state.ship==='relais'?'checked':''}><span class="grow">Point relais<small>2 à 4 jours · choix du relais à l'étape suivante</small></span><b>${t.free?'Offerte':'3,90 €'}</b></label>
+  <label class="opt"><input type="radio" name="ship" value="domicile" ${state.ship==='domicile'?'checked':''}><span class="grow">À domicile<small>48 h</small></span><b>${t.free?'Offerte':'4,90 €'}</b></label></fieldset>
+ <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><a class="btn btn-ghost" href="#panier">← Panier</a><button class="btn btn-primary" type="submit">Continuer vers le paiement</button></div>
+</form>${recapMini()}</div></div><div style="height:64px"></div>`;};
+function recapMini(){const t=totals();return `<aside class="recap" aria-label="Récapitulatif"><h2 class="t-h4">Ta commande</h2>${Object.keys(state.cart).map(k=>`<div class="r"><span>${lineInfo(k).name} × ${state.cart[k]}</span><span>${eur(lineInfo(k).price*state.cart[k])}</span></div>`).join('')}${t.disc?`<div class="r"><span>Réduction</span><span>−${eur(t.disc)}</span></div>`:''}<div class="r"><span>Livraison</span><span>${t.free?'Offerte':eur(t.ship)}</span></div><div class="r tot"><span>Total</span><span>${eur(t.tot)}</span></div></aside>`;}
+
+V.paiement=()=>`
+<div class="wrap">${stepper(2)}<div class="cartg">
+<form class="form" data-form="paiement" novalidate><h1 class="t-h2">Paiement</h1>
+ <div class="chips" role="group" aria-label="Moyen de paiement"><button class="chip" type="button" aria-pressed="true">Carte bancaire</button><button class="chip" type="button" data-toast="PayPal s'ouvrira dans une nouvelle fenêtre (non simulé).">PayPal</button><button class="chip" type="button" data-toast="Apple Pay non simulé dans le prototype.">Apple Pay</button></div>
+ ${field('c-num','Numéro de carte','text','req card','inputmode="numeric" autocomplete="cc-number" placeholder="1234 5678 9012 3456"')}
+ <div class="row2">${field('c-exp','Expiration (MM/AA)','text','req exp','autocomplete="cc-exp" placeholder="09/28"')}${field('c-cvc','Cryptogramme','text','req cvc','inputmode="numeric" autocomplete="cc-csc" placeholder="123"')}</div>
+ ${field('c-nom','Nom sur la carte','text','req','autocomplete="cc-name" value="Ines Benali"')}
+ <div class="field"><label class="check"><input type="checkbox" id="c-cgv" data-rule="checked" aria-describedby="c-cgv-err"> J'ai lu et j'accepte les <a class="link" href="#cgv">conditions générales de vente</a></label><span class="err" id="c-cgv-err"></span></div>
+ <p class="hint">Astuce démo : n'importe quel numéro de 16 chiffres fonctionne.</p>
+ <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><a class="btn btn-ghost" href="#livraison">← Livraison</a><button class="btn btn-primary" type="submit">Payer ${eur(totals().tot)}</button></div>
+</form>${recapMini()}</div></div><div style="height:64px"></div>`;
+
+V.confirmation=()=>`
+<div class="wrap">${stepper(3)}<div class="confirm"><span class="okmark">${ico.check}</span><h1 class="t-h1">Merci Inès, c'est commandé !</h1><p class="t-lg muted" style="max-width:52ch">Commande <b>YZ-24817</b> confirmée. Un e-mail de confirmation vient d'être envoyé à ines.benali@email.fr. Ton colis part sous 48 h.</p><div class="ctas" style="justify-content:center"><a class="btn btn-primary" href="#suivi">Suivre ma commande</a><a class="btn btn-ghost" href="#article">Bien préparer ma première tasse</a></div></div>
+<div class="g3" style="margin-bottom:80px"><div class="proof"><span class="ico">${ico.truck}</span><h3>Livraison jeudi</h3><p>Tu recevras le lien de suivi par e-mail dès l'expédition.</p></div><div class="proof"><span class="ico">${ico.leaf}</span><h3>Ta première semaine</h3><p>Focus le matin, Éveil après le déjeuner. On t'envoie un rappel de préparation.</p></div><div class="proof"><span class="ico">${ico.tin}</span><h3>Parraine une amie</h3><p>Ton code INES-YZ : 5 € offerts à toi et à ta filleule.</p></div></div></div>`;
+
+const FAQ=[['Caféine & recettes',[['Combien de caféine contient une tasse ?','Éveil contient 40 mg, Focus 60 mg et Rush 80 mg par tasse de 25 cl. À titre de repère, un espresso en contient environ 80 mg.'],['Quelle recette choisir ?','Éveil pour une énergie douce, Focus pour la concentration pendant les révisions, Rush pour un vrai coup de boost. Le coffret Découverte permet de goûter les trois.'],['Combien de tasses par jour au maximum ?','Nous conseillons deux tasses par jour maximum, et pas de caféine après 16 h pour préserver ton sommeil.'],['Est-ce que ça remplace le café ?','Oui, pour l\'effet : la caféine est la même molécule. Le goût, lui, est sans amertume et sans sucre ajouté.']]],['Préparation',[['Vrac ou sachets ?','Le vrac (100 g, environ 40 tasses) revient à 0,30 € la tasse. La boîte de 20 sachets est plus pratique à emporter.'],['Comment préparer mon infusion ?','2,5 g de vrac (ou un sachet) pour 25 cl d\'eau à 80 °C, 5 minutes d\'infusion. La boule à thé portable permet de le faire partout.']]],['Commande & livraison',[['Quels sont les délais et frais de livraison ?','Point relais en 2 à 4 jours (3,90 €) ou à domicile en 48 h (4,90 €). La livraison est offerte dès 35 € d\'achat.'],['Comment utiliser le code étudiant ?','Saisis ETUDIANT10 dans ton panier : −10 % sur ta première commande.'],['Puis-je retourner un produit ?','Oui, les retours sont gratuits sous 30 jours.']]],['Abonnement & pros',[['Comment fonctionne l\'abonnement ?','Tu choisis tes recettes et un envoi tous les 1, 2 ou 3 mois. Tu as −15 % sur chaque envoi et la livraison offerte, sans engagement.'],['Puis-je suspendre mon abonnement ?','Oui, depuis ton compte, à tout moment avant l\'envoi suivant.'],['Avez-vous une offre pour les cafés, coworkings et BDE ?','Oui, sur devis : fais ta demande depuis la page Offre pros.']]]];
+V.faq=()=>`
+<div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / FAQ</nav></div>
+<section class="sec-tight" style="padding-top:8px"><div class="wrap">
+ <h1 class="t-h1">Questions fréquentes</h1><p class="t-lg muted" style="margin-block:12px 24px">Caféine, préparation, livraison, abonnement : les réponses aux questions qu'on nous pose le plus.</p>
+ <div class="field" style="max-width:520px;margin-bottom:40px"><label for="fq">Rechercher une question</label><input class="input" id="fq" type="search" placeholder="Ex. : caféine, livraison, abonnement"></div>
+ <div class="faqg"><nav class="faqcat" aria-label="Catégories">${FAQ.map((c,i)=>`<a href="#faq" data-scroll="fc${i}">${c[0]}</a>`).join('')}</nav>
+ <div id="faqlist">${FAQ.map((c,i)=>`<h2 id="fc${i}">${c[0]}</h2>${c[1].map(q=>`<details class="cond"><summary>${q[0]}</summary><p>${q[1]}</p></details>`).join('')}`).join('')}<p id="fqnone" class="muted" hidden style="margin-top:16px">Aucune question ne correspond. <a class="link" href="#contact">Pose-nous la tienne.</a></p></div></div>
+</div></section>
+<section class="sec"><div class="wrap"><div class="band" style="background:var(--bg-brand-subtle)"><div><h2 class="t-h3">Tu n'as pas trouvé ta réponse ?</h2><p class="muted">On répond sous 24 h ouvrées.</p></div><a class="btn btn-primary" href="#contact">Nous contacter</a></div></div></section>`;
+
+V.contact=()=>`
+<div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / Contact</nav></div>
+<section class="sec-tight" style="padding-top:8px;padding-bottom:80px"><div class="wrap">
+ <h1 class="t-h1" style="margin-bottom:28px">Nous contacter</h1>
+ <div class="contact">
+  <div class="coord"><div><h3>E-mail</h3><p>bonjour@yuzaa.fr</p></div><div><h3>Téléphone</h3><p>01 84 60 12 34<br><span style="color:var(--focus-100);font-size:14px">Du lundi au vendredi, 9 h – 18 h</span></p></div><div><h3>Adresse</h3><p>yuzaa SAS<br>12 rue des Plantes<br>69007 Lyon</p></div><div><h3>Réseaux</h3><p>Instagram et TikTok : @yuzaa.energie</p></div></div>
+  <form class="card form" style="padding:32px" data-form="contact" novalidate><div class="alert alert-ok" id="contact-ok" hidden role="status">Message envoyé. Nous te répondons sous 24 h ouvrées.</div>
+   <div class="row2">${field('k-nom','Nom','text','req','autocomplete="name"')}${field('k-email','E-mail','email','req email','autocomplete="email"')}</div>
+   <div class="field"><label for="k-sujet">Sujet</label><select class="input" id="k-sujet"><option>Question sur un produit</option><option>Ma commande</option><option>Mon abonnement</option><option>Partenariat (BDE, entreprise)</option><option>Autre</option></select></div>
+   <div class="field"><label for="k-msg">Message</label><textarea class="input" id="k-msg" rows="5" data-rule="req min20" aria-describedby="k-msg-err"></textarea><span class="err" id="k-msg-err"></span></div>
+   <button class="btn btn-primary" type="submit" style="justify-self:start">Envoyer le message</button></form>
+ </div>
+</div></section>`;
+
+function legal(title,intro,arts){return `<div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / ${title}</nav></div><section class="sec-tight" style="padding-top:8px;padding-bottom:80px"><div class="wrap"><h1 class="t-h1">${title}</h1><p class="t-cap" style="margin-block:10px 32px">Mise à jour le 12 octobre 2026</p><div class="legal"><aside class="toc" aria-label="Sommaire"><b class="t-over">Sommaire</b><ol>${arts.map((a,i)=>`<li><a href="#${title==='Mentions légales'?'mentions':title.startsWith('Conditions générales de vente')?'cgv':'cgu'}" data-scroll="lg${i}">${a[0]}</a></li>`).join('')}</ol></aside><div><p>${intro}</p>${arts.map((a,i)=>`<h2 id="lg${i}">${i+1}. ${a[0]}</h2><p>${a[1]}</p>`).join('')}</div></div></div></section>`;}
+V.cgv=()=>legal('Conditions générales de vente','Les présentes conditions régissent les ventes conclues sur yuzaa.fr entre yuzaa SAS et tout client consommateur.',[['Produits','Infusions 100 % plantes contenant de la caféine naturelle, vendues en vrac (100 g) ou en boîte de 20 sachets, et accessoires.'],['Prix','Les prix sont indiqués en euros TTC. Les frais de livraison sont précisés avant la validation de la commande.'],['Commande et paiement','La commande est confirmée après paiement par carte, PayPal ou Apple Pay. Un e-mail de confirmation est envoyé.'],['Livraison','Point relais 3,90 € (2 à 4 jours) ou domicile 4,90 € (48 h) en France métropolitaine. Livraison offerte dès 35 €.'],['Retours','Retours gratuits sous 30 jours à compter de la réception.'],['Abonnement','−15 % sur chaque envoi et livraison offerte. Envoi tous les 1, 2 ou 3 mois, sans engagement, modifiable ou résiliable depuis l\'espace client.'],['Offre professionnelle','Les ventes aux cafés, coworkings et BDE font l\'objet d\'un devis et de conditions particulières.']]);
+V.cgu=()=>legal('Conditions générales d\'utilisation','Les présentes CGU définissent les règles d\'utilisation du site yuzaa.fr et de l\'espace client.',[['Accès au site','Le site est accessible gratuitement. yuzaa peut suspendre l\'accès pour maintenance.'],['Compte client','Tu es responsable de la confidentialité de ton mot de passe. Un compte est personnel.'],['Avis clients','Seuls les clients ayant acheté le produit peuvent publier un avis. Les avis injurieux sont supprimés.'],['Propriété intellectuelle','Les textes, visuels et le logo yuzaa sont protégés et ne peuvent être réutilisés sans autorisation.'],['Données personnelles','Tes données servent à traiter tes commandes et, avec ton accord, à t\'envoyer la newsletter. Tu peux les modifier ou les supprimer à tout moment.']]);
+V.mentions=()=>legal('Mentions légales','Informations légales relatives à l\'éditeur et à l\'hébergeur du site yuzaa.fr (projet étudiant SAE).',[['Éditeur','yuzaa SAS, 12 rue des Plantes, 69007 Lyon · bonjour@yuzaa.fr'],['Hébergement','Hébergeur à préciser lors de la mise en ligne.'],['Cookies','Seuls les cookies nécessaires au panier et à la mesure d\'audience sont déposés, après consentement.']]);
+
+V.merci=()=>`<section class="sec"><div class="wrap"><div class="confirm"><span class="okmark">${ico.check}</span><span class="t-over over">Inscription confirmée</span><h1 class="t-h1">Bienvenue chez yuzaa !</h1><p class="t-lg muted" style="max-width:54ch">Ton compte est créé et un e-mail de bienvenue vient de partir. Merci de ta confiance : voici <b>−10 % sur ta première commande</b> avec ce code.</p><div class="card" style="padding:18px 28px;font:800 26px var(--font-display);letter-spacing:.06em;color:var(--text-brand)">ETUDIANT10</div><div class="ctas" style="justify-content:center"><a class="btn btn-primary" href="#infusions">Trouver ma dose</a><a class="btn btn-ghost" href="#compte">Voir mon compte</a></div></div><div class="g3"><div class="proof"><span class="ico">${ico.leaf}</span><h3>Goûte les 3 recettes</h3><p>Le coffret Découverte : 3 × 30 g et une boule à thé pour 19,90 €.</p></div><div class="proof"><span class="ico">${ico.lab}</span><h3>Lis le guide des doses</h3><p>40, 60 ou 80 mg : choisis selon ton besoin du moment.</p></div><div class="proof"><span class="ico">${ico.tin}</span><h3>Suis-nous</h3><p>Recettes et routines sur Instagram et TikTok @yuzaa.energie.</p></div></div></div></section>`;
+V['merci-newsletter']=()=>`<section class="sec"><div class="wrap"><div class="confirm"><span class="okmark">${ico.check}</span><span class="t-over over">Newsletter</span><h1 class="t-h1">Merci, c'est noté !</h1><p class="t-lg muted" style="max-width:54ch">Tu recevras un e-mail par mois : nouveaux articles, recettes et offres. Pour ta première commande, pense au code <b>ETUDIANT10</b> : −10 %.</p><div class="ctas" style="justify-content:center"><a class="btn btn-primary" href="#infusions">Découvrir les infusions</a><a class="btn btn-ghost" href="#blog">Lire le blog</a></div></div></div></section>`;
+V['404']=()=>`<section><div class="wrap nf"><div><div class="code">404</div><h1 class="t-h2" style="margin-block:12px">Cette page a trop infusé.</h1><p class="muted" style="max-width:44ch">Le lien est peut-être erroné ou la page a été déplacée. Reprends des forces avec une de ces pages :</p><div class="ctas"><a class="btn btn-primary" href="#accueil">Retour à l'accueil</a><a class="btn btn-ghost" href="#infusions">Nos infusions</a></div><p class="t-sm" style="margin-top:20px"><a class="link" href="#faq">FAQ</a> · <a class="link" href="#contact">Contact</a> · <a class="link" href="#blog">Blog</a></p></div><div class="media" style="aspect-ratio:1/1;background:var(--focus-50)"><svg viewBox="0 0 200 240" role="img" aria-label="Boîte renversée"><g transform="rotate(-18 100 140)">${tin('focus')}</g><path d="M30 225c30-12 60-12 90 0" stroke="#7FC594" stroke-width="6" fill="none" stroke-linecap="round"/></svg></div></div></section>`;
+
+const ROUTES=[['accueil','Accueil'],['infusions','Nos infusions (catalogue)'],['produit-eveil','Produit · Éveil'],['produit-focus','Produit · Focus'],['produit-rush','Produit · Rush'],['coffrets','Coffrets'],['coffret-decouverte','Coffret Découverte'],['coffret-partiels','Pack Partiels'],['coffret-boule','Boule à thé portable'],['coffret-box','Abonnement'],['pros','Offre pros'],['histoire','Histoire'],['blog','Blog'],['article','Article de blog'],['compte','Compte (connexion / inscription)'],['merci','Merci (après inscription)'],['suivi','Suivi de colis'],['panier','Panier'],['livraison','Livraison'],['paiement','Paiement'],['confirmation','Confirmation'],['faq','FAQ'],['contact','Contact'],['cgv','CGV'],['cgu','CGU'],['mentions','Mentions légales'],['merci-newsletter','Merci (newsletter)'],['page-inexistante','Page 404']];
+const TITLES={accueil:'yuzaa · Infusions énergisantes naturelles'};
+
+function view(r){if(V[r])return V[r]();if(r.startsWith('produit-')&&P[r.slice(8)])return produit(r.slice(8));if(r.startsWith('coffret-')&&C[r.slice(8)])return coffret(r.slice(8));return V['404']();}
+function render(keepScroll){const r=(location.hash.slice(1)||'accueil');const m=$('#view');m.innerHTML=view(r);
+ $$('.nav a').forEach(a=>a.classList.toggle('on',a.dataset.nav.split(' ').some(k=>r.startsWith(k))));
+ $('#mnav').dataset.open='false';$('[data-burger]').setAttribute('aria-expanded','false');
+ $('#jump').value=ROUTES.some(x=>x[0]===r)?r:'page-inexistante';
+ const lab=(ROUTES.find(x=>x[0]===r)||[0,'Page introuvable'])[1];document.title=(TITLES[r]||lab+' · yuzaa')+' — prototype';
+ if(!keepScroll){const top=$('#site').getBoundingClientRect().top+scrollY-60;scrollTo({top:Math.max(0,Math.min(scrollY,top))});}
+ count();bindSim();bindFaq();}
+
+/* ---------- Validation des formulaires ---------- */
+const MSG={req:'Ce champ est obligatoire.',email:'Adresse e-mail invalide. Exemple : prenom@email.fr',cp:'Le code postal doit contenir 5 chiffres.',tel:'Numéro invalide. Exemple : 06 12 34 56 78',card:'Le numéro de carte doit contenir 16 chiffres.',exp:'Format attendu : MM/AA, date non dépassée.',cvc:'3 chiffres au dos de ta carte.',pw:'8 caractères minimum, dont au moins un chiffre.',min20:'Ton message doit faire au moins 20 caractères.',checked:'Merci de cocher cette case pour continuer.'};
+const TEST={req:v=>v.trim()!=='',email:v=>/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v.trim()),cp:v=>/^\d{5}$/.test(v.trim()),tel:v=>/^0[1-9](\s?\d{2}){4}$/.test(v.trim()),card:v=>/^\d{16}$/.test(v.replace(/\s/g,'')),exp:v=>{const m=v.trim().match(/^(0[1-9]|1[0-2])\/(\d{2})$/);return !!m&&(+m[2]>26||(+m[2]===26&&+m[1]>=10));},cvc:v=>/^\d{3}$/.test(v.trim()),pw:v=>v.length>=8&&/\d/.test(v),min20:v=>v.trim().length>=20};
+function check(inp){const rules=(inp.dataset.rule||'').split(' ').filter(Boolean);const f=inp.closest('.field');let bad=null;for(const r of rules){if(r==='checked'){if(!inp.checked){bad=r;break;}continue;}if(r!=='req'&&inp.value.trim()==='')continue;if(!TEST[r](inp.value)){bad=r;break;}}
+ if(f){f.classList.toggle('has-error',!!bad);f.classList.toggle('is-ok',!bad&&inp.type!=='checkbox'&&inp.value!=='');const e=f.querySelector('.err');if(e)e.textContent=bad?MSG[bad]:'';}inp.setAttribute('aria-invalid',bad?'true':'false');return !bad;}
+function validate(form){let ok=true,first=null;$$('[data-rule]',form).forEach(i=>{if(!check(i)){ok=false;first=first||i;}});if(first)first.focus();return ok;}
+const H={
+ pros:f=>{$('#pros-ok').hidden=false;f.reset();$$('.field',f).forEach(x=>x.classList.remove('is-ok'));},
+ newsletter:f=>{f.reset();location.hash='merci-newsletter';},
+ login:f=>{state.logged=true;render();toast('Connectée. Bon retour, Inès !');},
+ register:f=>{state.logged=true;location.hash='merci';},
+ livraison:f=>{location.hash='paiement';},
+ paiement:f=>{state.cart={};state.promo=null;count();location.hash='confirmation';},
+ contact:f=>{$('#contact-ok').hidden=false;f.reset();$$('.field',f).forEach(x=>x.classList.remove('is-ok'));}
+};
+
+/* ---------- Événements ---------- */
+const site=$('#site');
+site.addEventListener('submit',e=>{const f=e.target.closest('[data-form]');if(!f)return;e.preventDefault();const n=f.dataset.form;
+ if(n==='promo'){const v=$('#promo').value.trim().toUpperCase();const fld=f;if(v==='ETUDIANT10'){state.promo=v;render(true);toast('Code '+v+' appliqué : −10 %');}else{fld.classList.add('has-error');$('#promo-err').textContent=v?'Ce code n\'existe pas ou a expiré. Essaie ETUDIANT10.':'Saisis un code promo.';}return;}
+ if(validate(f))H[n]&&H[n](f);});
+site.addEventListener('focusout',e=>{const i=e.target;if(i.matches&&i.matches('[data-rule]')&&(i.value!==''||i.closest('.has-error')))check(i);});
+site.addEventListener('input',e=>{const i=e.target;if(i.matches('[data-rule]')&&i.closest('.has-error'))check(i);if(i.name==='ship'){state.ship=i.value;}});
+site.addEventListener('change',e=>{if(e.target.name==='ship'){state.ship=e.target.value;render(true);}});
+site.addEventListener('click',e=>{const t=e.target.closest('button,a');if(!t)return;
+ if(t.dataset.add){let q=1,k=t.dataset.add;if(t.hasAttribute('data-useq')){q=+$('#pq').textContent;const f=($('input[name=fmt]:checked')||{}).value;if(f==='sachets')k='sachets-'+k;else if(f==='abo'){state.sub={eveil:0,focus:0,rush:0};state.sub[k]=q;q=1;k='box';}}if(k==='box'&&state.cart.box){toast('Abonnement mis à jour');count();return;}add(k,q);if(location.hash==='#panier')render(true);return;}
+ if(t.dataset.pq){const el=$('#pq');el.textContent=Math.max(1,+el.textContent+ +t.dataset.pq);return;}
+ if(t.dataset.q){const k=t.dataset.q;state.cart[k]+= +t.dataset.d;if(state.cart[k]<=0)delete state.cart[k];render(true);return;}
+ if(t.dataset.rm){delete state.cart[t.dataset.rm];render(true);toast('Article retiré du panier');return;}
+ if(t.dataset.cq){const d=t.dataset.cq;state.sub[d]=Math.max(0,state.sub[d]+ +t.dataset.d);render(true);return;}
+ if(t.dataset.freq){state.freq=+t.dataset.freq;render(true);return;}
+ if(t.dataset.filter){state.filter=t.dataset.filter;render(true);return;}
+ if(t.dataset.bfilter){state.bfilter=t.dataset.bfilter;render(true);return;}
+ if(t.dataset.car){$('#car').scrollBy({left:+t.dataset.car*300,behavior:'smooth'});return;}
+ if(t.dataset.toast){toast(t.dataset.toast);return;}
+ if(t.hasAttribute('data-logout')){state.logged=false;render();toast('Tu es déconnectée.');return;}
+ if(t.hasAttribute('data-burger')){const m=$('#mnav');const o=m.dataset.open!=='true';m.dataset.open=o;t.setAttribute('aria-expanded',o);return;}
+ if(t.hasAttribute('data-focusnl')){e.preventDefault();$('#nl-email').focus();$('#nl-email').scrollIntoView({block:'center',behavior:'smooth'});return;}
+ if(t.dataset.scroll){e.preventDefault();const el=document.getElementById(t.dataset.scroll);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});return;}
+});
+function bindSim(){const s=$('#sim');if(!s)return;const up=()=>{const n=+s.value,a=n*1.5*23,b=n*0.3*23;$('#simv').textContent=n;$('#sim-a').textContent=Math.round(a)+' €';$('#sim-b').textContent=Math.round(b)+' €';$('#sim-c').textContent=Math.round((a-b)*12)+' €';};s.addEventListener('input',up);up();}
+function bindFaq(){const q=$('#fq');if(!q)return;q.addEventListener('input',()=>{const v=q.value.trim().toLowerCase();let n=0;$$('#faqlist details').forEach(d=>{const m=!v||d.textContent.toLowerCase().includes(v);d.hidden=!m;if(m)n++;if(v&&m)d.open=true;});$('#fqnone').hidden=n>0;});}
+
+/* Barre du prototype */
+$('#jump').innerHTML=ROUTES.map(([v,l])=>`<option value="${v}">${l}</option>`).join('');
+$('#jump').addEventListener('change',e=>{location.hash=e.target.value;});
+$$('[data-mode]').forEach(b=>b.addEventListener('click',()=>{$$('[data-mode]').forEach(x=>x.setAttribute('aria-pressed',x===b));site.classList.toggle('wf',b.dataset.mode==='wf');}));
+$$('[data-dev]').forEach(b=>b.addEventListener('click',()=>{$$('[data-dev]').forEach(x=>x.setAttribute('aria-pressed',x===b));$('#stage').classList.toggle('mobile',b.dataset.dev==='mobile');}));
+$$('[data-logo]').forEach(a=>a.innerHTML=logoHTML(a.dataset.logo==='light'));
+try{const pref=new URLSearchParams(location.search);if(pref.get('mode')==='wf')$('[data-mode="wf"]').click();if(pref.get('dev')==='mobile')$('[data-dev="mobile"]').click();}catch(e){}
+window.addEventListener('hashchange',()=>render());
+render();
+})();
+</script>
+</body>
+</html>
