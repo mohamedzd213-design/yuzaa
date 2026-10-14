@@ -70,12 +70,12 @@ a{color:inherit}
 .btn[disabled]{background:var(--sable-200);color:var(--sable-600);cursor:not-allowed}
 .link{color:var(--text-brand);font-weight:600;text-underline-offset:3px}
 
-/* Badges de dose */
-.dose{display:inline-flex;align-items:center;gap:6px;font:600 12px/1 var(--font-body);letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;border-radius:var(--r-pill)}
-.dose::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
-.dose-eveil{background:var(--eveil-100);color:var(--eveil-700)}
-.dose-focus{background:var(--focus-50);color:var(--focus-700)}
-.dose-rush{background:var(--rush-100);color:var(--rush-700)}
+/* Badges de recette */
+.pastille{display:inline-flex;align-items:center;gap:6px;font:600 12px/1 var(--font-body);letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;border-radius:var(--r-pill)}
+.pastille::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.pastille-eveil{background:var(--eveil-100);color:var(--eveil-700)}
+.pastille-focus{background:var(--focus-50);color:var(--focus-700)}
+.pastille-rush{background:var(--rush-100);color:var(--rush-700)}
 .tag{display:inline-block;font:500 13px/1 var(--font-body);padding:7px 12px;border-radius:var(--r-pill);background:var(--bg-subtle);color:var(--text-secondary)}
 
 /* Formulaires */
@@ -256,7 +256,7 @@ main{min-height:60vh}
 .thumbs .media{aspect-ratio:1/1;border-radius:var(--r-m);cursor:pointer;border:2px solid transparent}
 .thumbs .media.on{border-color:var(--border-brand)}
 .pinfo{display:flex;flex-direction:column;gap:18px}
-.pinfo > .dose{align-self:flex-start}
+.pinfo > .pastille{align-self:flex-start}
 .pinfo h1{font-size:clamp(40px,5cqi,60px);font-weight:800}
 .kw{font-size:18px;color:var(--text-secondary);margin-top:-8px}
 .gauge{display:flex;gap:6px;align-items:center;font-size:13px;font-weight:600}
@@ -469,7 +469,7 @@ details.cond p{margin-top:10px;color:var(--text-secondary);max-width:70ch}
 .site.wf .avatar img{visibility:hidden}
 .site.wf .avatar,.site.wf .proof .ico{background:#E6E6E6!important;color:#555!important}
 .site.wf .pcard,.site.wf .plant,.site.wf .tile,.site.wf .tstep{border:1px solid #BDBDBD}
-.site.wf .btn,.site.wf .chip,.site.wf .pill,.site.wf .dose,.site.wf .tag{border-radius:4px}
+.site.wf .btn,.site.wf .chip,.site.wf .pill,.site.wf .pastille,.site.wf .tag{border-radius:4px}
 .site.wf .stars{color:#9E9E9E}
 .site.wf .dayline{background:#E2E2E2}
 .site.wf .logo svg path{fill:#333;stroke:#333}.site.wf .logo b{color:#111!important}.site.wf .ftr .logo svg path{fill:#fff;stroke:#fff}.site.wf .ftr .logo b{color:#fff!important}
@@ -552,7 +552,7 @@ const C={
 };
 const ARTS=[
  {id:'article',t:'Que contient vraiment votre boisson énergisante ?',cat:'Énergie',min:6,ex:'Sucre, taurine, colorants : décryptage d\'une étiquette de canette, comparée à une tasse d\'infusion.',c:'rush'},
- {id:'article',t:'Quelle dose de caféine selon le moment de la journée ?',cat:'Routine',min:5,ex:'Matin, après-midi, veille d\'examen : notre guide pour choisir entre 40, 60 et 80 mg.',c:'focus'},
+ {id:'article',t:'Combien de caféine selon le moment de la journée ?',cat:'Routine',min:5,ex:'Matin, après-midi, veille d\'examen : notre guide pour choisir entre 40, 60 et 80 mg.',c:'focus'},
  {id:'article',t:'Guayusa, maté, guarana : trois plantes, trois énergies',cat:'Plantes',min:7,ex:'Origine, profil aromatique, teneur en caféine : tout savoir sur les plantes de nos recettes.',c:'eveil'},
  {id:'article',t:'Bien infuser : 80 °C, 5 minutes',cat:'Recettes',min:4,ex:'La température et le temps d\'infusion idéaux pour un goût sans amertume, et notre recette de Rush latte.',c:'focus'},
  {id:'article',t:'Cinq rituels pour tenir une semaine d\'examens',cat:'Routine',min:5,ex:'Une routine simple et efficace, du thermos du matin à la dernière tasse avant 16 h.',c:'eveil'},
@@ -581,12 +581,12 @@ const stars=r=>'★★★★★'.slice(0,Math.round(r))+'☆☆☆☆☆'.slice(
 const gauge=d=>{const n=d==='eveil'?1:d==='focus'?2:3;const p=P[d];return `<div class="gauge" aria-label="${p.mg} mg de caféine">${[1,2,3].map(i=>`<i style="background:${i<=n?p.c5:''}"></i>`).join('')}<span>${p.mg} mg de caféine par tasse</span></div>`;};
 
 /* ---------- Composants ---------- */
-const pcard=(d,disc)=>{const p=P[d];return `<div class="pcard bg-${d}"><a href="#produit-${d}" class="media" aria-label="Voir ${p.name}">${tinSVG(d)}</a><span class="dose dose-${d}">${p.moment} · ${p.mg} mg</span><a href="#produit-${d}" style="text-decoration:none"><h3>${p.name}</h3></a><p class="t-sm muted">${p.plants}. ${p.taste}.</p><div class="row"><span class="price">${eur(p.price)} <small>· 100 g · 0,30 € la tasse</small></span>${disc?`<a class="btn btn-primary btn-sm" href="#produit-${d}">Découvrir</a>`:`<button class="btn btn-primary btn-sm" data-add="${d}" type="button">Ajouter</button>`}</div></div>`;};
+const pcard=(d,disc)=>{const p=P[d];return `<div class="pcard bg-${d}"><a href="#produit-${d}" class="media" aria-label="Voir ${p.name}">${tinSVG(d)}</a><span class="pastille pastille-${d}">${p.moment} · ${p.mg} mg</span><a href="#produit-${d}" style="text-decoration:none"><h3>${p.name}</h3></a><p class="t-sm muted">${p.plants}. ${p.taste}.</p><div class="row"><span class="price">${eur(p.price)} <small>· 100 g · 0,30 € la tasse</small></span>${disc?`<a class="btn btn-primary btn-sm" href="#produit-${d}">Découvrir</a>`:`<button class="btn btn-primary btn-sm" data-add="${d}" type="button">Ajouter</button>`}</div></div>`;};
 const multi=()=>`<svg viewBox="0 0 300 240" role="img" aria-label="Les 3 recettes"><g transform="translate(0 20) scale(.75)">${tin('eveil')}</g><g transform="translate(150 20) scale(.75)">${tin('rush')}</g><g transform="translate(70 0) scale(.85)">${tin('focus')}</g></svg>`;
 const bouleSVG=()=>`<svg viewBox="0 0 300 240" role="img" aria-label="Boule à thé portable"><circle cx="150" cy="130" r="62" fill="#E3DCCB" stroke="#A8A08E" stroke-width="4"/><path d="M88 130h124" stroke="#A8A08E" stroke-width="4"/>${[0,1,2,3,4,5,6].map(i=>`<circle cx="${112+i*13}" cy="108" r="3" fill="#A8A08E"/><circle cx="${112+i*13}" cy="152" r="3" fill="#A8A08E"/>`).join('')}<path d="M150 68V36" stroke="#6B6559" stroke-width="4"/><circle cx="150" cy="30" r="9" fill="none" stroke="#6B6559" stroke-width="4"/><path d="M180 36c20-30 60-30 80-10-30 20-60 25-80 10z" fill="#7FC594"/></svg>`;
 const cmedia=k=>k==='boule'?bouleSVG():multi();
 const cprice=k=>{const c=C[k];return eur(c.price)+(c.old?` <small><s>${eur(c.old)}</s></small>`:'');};
-const ccard=k=>{const c=C[k];return `<div class="pcard bg-${c.c}"><a href="#coffret-${k}" class="media" aria-label="Voir ${c.name}">${cmedia(k)}</a><span class="dose dose-${c.c}">${c.tag}</span><a href="#coffret-${k}" style="text-decoration:none"><h3 style="font-size:26px">${c.name}</h3></a><p class="t-sm muted">${c.contenu}</p><div class="row"><span class="price">${cprice(k)}</span><a class="btn btn-ghost btn-sm" href="#coffret-${k}">Découvrir</a></div></div>`;};
+const ccard=k=>{const c=C[k];return `<div class="pcard bg-${c.c}"><a href="#coffret-${k}" class="media" aria-label="Voir ${c.name}">${cmedia(k)}</a><span class="pastille pastille-${c.c}">${c.tag}</span><a href="#coffret-${k}" style="text-decoration:none"><h3 style="font-size:26px">${c.name}</h3></a><p class="t-sm muted">${c.contenu}</p><div class="row"><span class="price">${cprice(k)}</span><a class="btn btn-ghost btn-sm" href="#coffret-${k}">Découvrir</a></div></div>`;};
 const acard=a=>`<a class="acard" href="#article"><div class="media">${sceneSVG(a.c,a.t)}</div><span class="t-over over">${a.cat} · ${a.min} min</span><h3>${a.t}</h3><p>${a.ex}</p></a>`;
 const field=(id,label,type,rule,extra='')=>`<div class="field"><label for="${id}">${label}</label><input class="input" id="${id}" name="${id}" type="${type}" data-rule="${rule}" aria-describedby="${id}-err" ${extra}><span class="err" id="${id}-err"></span></div>`;
 const stepper=n=>`<div class="stepper" aria-label="Étapes de commande">${['Panier','Livraison','Paiement','Confirmation'].map((s,i)=>`<span class="${i<n?'done':i===n?'on':''}" ${i===n?'aria-current="step"':''}><i>${i<n?'✓':i+1}</i>${s}</span>`).join('')}</div>`;
@@ -608,7 +608,7 @@ V.accueil=()=>`
 <section class="hero"><div class="wrap g2">
  <div><span class="t-over over">Infusions énergisantes · 100 % plantes · Sans sucre ajouté</span>
   <h1 class="t-display">L'énergie des plantes, sans le crash.</h1>
-  <p class="lead">Trois infusions au guayusa, au maté et au guarana, dosées en caféine naturelle pour accompagner vos journées d'étude et de travail. Une énergie progressive, sans sucre ajouté ni arôme artificiel.</p>
+  <p class="lead">Trois infusions au guayusa, au maté et au guarana, riches en caféine naturelle pour accompagner vos journées d'étude et de travail. Une énergie progressive, sans sucre ajouté ni arôme artificiel.</p>
   <div class="ctas"><a class="btn btn-primary" href="#infusions">Découvrir les recettes</a><a class="btn btn-ghost" href="#coffret-decouverte">Coffret Découverte · 19,90 €</a></div>
   <div class="proofs"><span>${ico.nosugar}Sans sucre ajouté</span><span>${ico.leaf}100 % plantes</span><span>${ico.tin}Carton recyclé</span></div>
  </div>
@@ -621,7 +621,7 @@ V.accueil=()=>`
 </div></section>
 
 <section class="sec-tight"><div class="wrap"><div class="day">
- <div class="sec-head" style="margin-bottom:0"><div><span class="t-over over">Guide des doses</span><h2 class="t-h2" style="margin-top:8px">La bonne dose, au bon moment</h2></div><a class="link" href="#article">Lire le guide →</a></div>
+ <div class="sec-head" style="margin-bottom:0"><div><span class="t-over over">Guide de la caféine</span><h2 class="t-h2" style="margin-top:8px">La bonne intensité, au bon moment</h2></div><a class="link" href="#article">Lire le guide →</a></div>
  <div class="dayline" aria-hidden="true"><span class="pin" style="left:8%;color:var(--focus-700)">Focus · 8 h 30</span><span class="pin" style="left:46%;color:var(--eveil-700)">Éveil · 14 h</span><span class="pin" style="left:70%;color:var(--sable-600)">Plus de caféine après 16 h</span></div>
  <div class="hours"><span>7 h</span><span>10 h</span><span>13 h</span><span>16 h</span><span>19 h</span><span>22 h</span></div>
  <div class="daycards"><div class="bg-focus"><b>Le matin</b><span class="t-sm">Focus · 60 mg, pour une matinée de cours ou de travail exigeante.</span></div><div class="bg-eveil"><b>Après le déjeuner</b><span class="t-sm">Éveil · 40 mg, pour relancer l'après-midi en préservant le sommeil.</span></div><div class="bg-rush"><b>Jour d'examen</b><span class="t-sm">Rush · 80 mg, le matin, en remplacement de Focus.</span></div></div>
@@ -676,7 +676,7 @@ V.infusions=()=>`
 <section class="sec"><div class="wrap">
  <h2 class="t-h2">Comparer les recettes</h2><p class="muted" style="margin-block:8px 24px">Repère : un espresso ou une canette de 250 ml contiennent environ 80 mg de caféine.</p>
  <div class="cmpw"><table class="cmp"><thead><tr><th>Recette</th><th>Caféine / tasse</th><th>Plantes</th><th>Goût</th><th>Moment</th><th>Vrac 100 g</th><th>20 sachets</th></tr></thead><tbody>
- ${['eveil','focus','rush'].map(d=>{const p=P[d];return `<tr><td><span class="dose dose-${d}">${p.name}</span></td><td><b>${p.mg} mg</b></td><td>${p.plants}</td><td>${p.taste}</td><td>${p.moment}</td><td>${eur(p.price)}</td><td>6,90 €</td></tr>`}).join('')}
+ ${['eveil','focus','rush'].map(d=>{const p=P[d];return `<tr><td><span class="pastille pastille-${d}">${p.name}</span></td><td><b>${p.mg} mg</b></td><td>${p.plants}</td><td>${p.taste}</td><td>${p.moment}</td><td>${eur(p.price)}</td><td>6,90 €</td></tr>`}).join('')}
  </tbody></table></div>
 </div></section>`;
 
@@ -684,9 +684,9 @@ function produit(d){const p=P[d];const others=['eveil','focus','rush'].filter(x=
 <div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / <a href="#infusions">Nos infusions</a> / ${p.name}</nav></div>
 <section class="sec-tight" style="padding-top:8px"><div class="wrap pgrid">
  <div class="gal"><div class="media main" style="background:${p.c1}">${tinSVG(d)}</div>
-  <div class="thumbs"><div class="media on" style="background:${p.c1}">${tinSVG(d)}</div><div class="media">${plantSVG(d)}</div><div class="media">${sceneSVG(d,'Tasse infusée')}</div><div class="media" style="background:var(--sable-100)">${sceneSVG(d,'Cuillère doseuse')}</div></div></div>
+  <div class="thumbs"><div class="media on" style="background:${p.c1}">${tinSVG(d)}</div><div class="media">${plantSVG(d)}</div><div class="media">${sceneSVG(d,'Tasse infusée')}</div><div class="media" style="background:var(--sable-100)">${sceneSVG(d,'Cuillère de mesure')}</div></div></div>
  <div class="pinfo">
-  <span class="dose dose-${d}">${p.moment}</span>
+  <span class="pastille pastille-${d}">${p.moment}</span>
   <h1>${p.name}</h1>
   <p class="kw">${p.key} · ${p.mg} mg de caféine</p>
   <a href="#avis" class="t-sm" style="color:var(--text-secondary)"><span class="stars">${stars(p.rating)}</span> ${String(p.rating).replace('.',',')}/5 · ${p.n} avis</a>
@@ -742,12 +742,12 @@ function coffret(k){const c=C[k];return `
 <div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / <a href="#coffrets">Coffrets</a> / ${c.name}</nav></div>
 <section class="sec-tight" style="padding-top:8px"><div class="wrap pgrid">
  <div class="media main" style="aspect-ratio:1/1;background:var(--${c.c==='focus'?'focus-50':c.c==='eveil'?'eveil-100':'rush-100'})">${cmedia(k)}</div>
- <div class="pinfo"><span class="dose dose-${c.c}">${c.tag}</span><h1 style="font-size:clamp(36px,4.4cqi,52px)">${c.name}</h1><p class="kw">${c.contenu}</p><p>${c.desc}</p>
+ <div class="pinfo"><span class="pastille pastille-${c.c}">${c.tag}</span><h1 style="font-size:clamp(36px,4.4cqi,52px)">${c.name}</h1><p class="kw">${c.contenu}</p><p>${c.desc}</p>
  <div class="buy"><span class="price" style="font-size:28px;align-self:center;flex:1">${cprice(k)}</span><button class="btn btn-primary" type="button" data-add="${k}">Ajouter au panier</button></div>
  <div class="reas"><span>${ico.truck}Livraison offerte dès 35 €</span><span>${ico.return}Retours gratuits sous 30 jours</span><span>${ico.tin}Boîte en carton recyclé</span></div></div>
 </div></section>
 <section class="sec-tight"><div class="wrap"><h2 class="t-h2" style="margin-bottom:20px">Les recettes</h2><div class="steps4"><div><b>Éveil</b><p>Énergie douce, 40 mg.</p></div><div><b>Focus</b><p>Concentration, 60 mg.</p></div><div><b>Rush</b><p>Coup de boost, 80 mg.</p></div><div><b>80 °C</b><p>5 minutes d'infusion, 2,5 g par tasse.</p></div></div></div></section>
-<section class="sec-tight"><div class="wrap"><div class="card" style="padding:28px"><h2 class="t-h4">Qualité</h2><p class="muted" style="margin-top:8px;max-width:70ch">100 % plantes, sans sucre ajouté. La dose de caféine de chaque recette est indiquée sur sa boîte, en carton recyclé.</p></div></div></section>
+<section class="sec-tight"><div class="wrap"><div class="card" style="padding:28px"><h2 class="t-h4">Qualité</h2><p class="muted" style="margin-top:8px;max-width:70ch">100 % plantes, sans sucre ajouté. La teneur en caféine de chaque recette est indiquée sur sa boîte, en carton recyclé.</p></div></div></section>
 <section class="sec-tight"><div class="wrap"><div class="sec-head"><h2 class="t-h2">Suggestions</h2></div><div class="g3">${k==='boule'?ccard('decouverte')+pcard('focus')+pcard('eveil'):k==='decouverte'?ccard('partiels')+ccard('boule')+pcard('focus'):pcard('focus')+pcard('eveil')+pcard('rush')}</div></div></section>
 <section class="sec-tight"><div class="wrap" style="max-width:860px"><details class="cond"><summary>Conditions</summary><p>Point relais 3,90 € (2 à 4 jours) ou domicile 4,90 € (48 h), offerte dès 35 €. Retours gratuits sous 30 jours.</p></details></div></section>`;}
 
@@ -791,7 +791,7 @@ V.histoire=()=>`
 <div class="wrap"><div class="team" style="margin-top:40px">${TEAM.map(([n,r,img])=>`<div class="member"><span class="avatar"><img src="${img}" alt="${n}, ${r}" width="120" height="120" loading="lazy"></span><b>${n}</b><small>${r}</small></div>`).join('')}</div></div></section>
 <section class="sec" id="engagements"><div class="wrap">
  <h2 class="t-h2" style="margin-bottom:24px">Nos engagements</h2>
- <div class="g4"><div class="eng"><span class="dose dose-focus">Direct</span><h3>Vente en direct</h3><p>Sur notre site, sans intermédiaire, pour maintenir la tasse à 0,30 €.</p></div><div class="eng"><span class="dose dose-focus">Plantes</span><h3>100 % plantes</h3><p>Sans sucre ajouté, sans arôme artificiel.</p></div><div class="eng"><span class="dose dose-eveil">Recettes</span><h3>Recettes transparentes</h3><p>Plantes et dose de caféine clairement indiquées sur chaque boîte.</p></div><div class="eng"><span class="dose dose-rush">Zéro-plastique</span><h3>Carton recyclé</h3><p>Tous nos produits sont emballés dans des boîtes en carton recyclé.</p></div></div>
+ <div class="g4"><div class="eng"><span class="pastille pastille-focus">Direct</span><h3>Vente en direct</h3><p>Sur notre site, sans intermédiaire, pour maintenir la tasse à 0,30 €.</p></div><div class="eng"><span class="pastille pastille-focus">Plantes</span><h3>100 % plantes</h3><p>Sans sucre ajouté, sans arôme artificiel.</p></div><div class="eng"><span class="pastille pastille-eveil">Recettes</span><h3>Recettes transparentes</h3><p>Plantes et teneur en caféine clairement indiquées sur chaque boîte.</p></div><div class="eng"><span class="pastille pastille-rush">Zéro-plastique</span><h3>Carton recyclé</h3><p>Tous nos produits sont emballés dans des boîtes en carton recyclé.</p></div></div>
 </div></section>
 <section class="sec-tight" style="padding-bottom:80px"><div class="wrap"><div class="band"><div><h2 class="t-h3">Trouvez votre recette</h2><p class="muted">Le coffret Découverte réunit les trois recettes et une boule à thé, pour 19,90 €.</p></div><a class="btn btn-energy" href="#coffret-decouverte">Découvrir le coffret</a></div></div></section>`;
 
@@ -948,7 +948,7 @@ V.cgv=()=>legal('Conditions générales de vente','Les présentes conditions ré
 V.cgu=()=>legal('Conditions générales d\'utilisation','Les présentes CGU définissent les règles d\'utilisation du site yuzaa.fr et de l\'espace client.',[['Accès au site','Le site est accessible gratuitement. yuzaa peut suspendre l\'accès pour maintenance.'],['Compte client','Vous êtes responsable de la confidentialité de votre mot de passe. Chaque compte est personnel.'],['Avis clients','Seuls les clients ayant acheté le produit peuvent publier un avis. Les avis injurieux sont supprimés.'],['Propriété intellectuelle','Les textes, visuels et le logo yuzaa sont protégés et ne peuvent être réutilisés sans autorisation.'],['Données personnelles','Vos données servent à traiter vos commandes et, avec votre accord, à vous adresser la newsletter. Vous pouvez les modifier ou les supprimer à tout moment.']]);
 V.mentions=()=>legal('Mentions légales','Informations légales relatives à l\'éditeur et à l\'hébergeur du site yuzaa.fr (projet étudiant SAE).',[['Éditeur','yuzaa SAS, 12 rue des Plantes, 69007 Lyon · bonjour@yuzaa.fr'],['Hébergement','Hébergeur à préciser lors de la mise en ligne.'],['Cookies','Seuls les cookies nécessaires au panier et à la mesure d\'audience sont déposés, après consentement.']]);
 
-V.merci=()=>`<section class="sec"><div class="wrap"><div class="confirm"><span class="okmark">${ico.check}</span><span class="t-over over">Inscription confirmée</span><h1 class="t-h1">Bienvenue chez yuzaa</h1><p class="t-lg muted" style="max-width:54ch">Votre compte est créé et un e-mail de bienvenue vient de vous être envoyé. Pour votre première commande, profitez de <b>−10 %</b> avec ce code :</p><div class="card" style="padding:18px 28px;font:800 26px var(--font-display);letter-spacing:.06em;color:var(--text-brand)">ETUDIANT10</div><div class="ctas" style="justify-content:center"><a class="btn btn-primary" href="#infusions">Découvrir les recettes</a><a class="btn btn-ghost" href="#compte">Accéder à mon compte</a></div></div><div class="g3"><div class="proof"><span class="ico">${ico.leaf}</span><h3>Goûtez les trois recettes</h3><p>Le coffret Découverte : 3 × 30 g et une boule à thé pour 19,90 €.</p></div><div class="proof"><span class="ico">${ico.lab}</span><h3>Consultez le guide des doses</h3><p>40, 60 ou 80 mg : choisissez selon votre besoin.</p></div><div class="proof"><span class="ico">${ico.tin}</span><h3>Suivez-nous</h3><p>Recettes et conseils sur Instagram et TikTok @yuzaa.energie.</p></div></div></div></section>`;
+V.merci=()=>`<section class="sec"><div class="wrap"><div class="confirm"><span class="okmark">${ico.check}</span><span class="t-over over">Inscription confirmée</span><h1 class="t-h1">Bienvenue chez yuzaa</h1><p class="t-lg muted" style="max-width:54ch">Votre compte est créé et un e-mail de bienvenue vient de vous être envoyé. Pour votre première commande, profitez de <b>−10 %</b> avec ce code :</p><div class="card" style="padding:18px 28px;font:800 26px var(--font-display);letter-spacing:.06em;color:var(--text-brand)">ETUDIANT10</div><div class="ctas" style="justify-content:center"><a class="btn btn-primary" href="#infusions">Découvrir les recettes</a><a class="btn btn-ghost" href="#compte">Accéder à mon compte</a></div></div><div class="g3"><div class="proof"><span class="ico">${ico.leaf}</span><h3>Goûtez les trois recettes</h3><p>Le coffret Découverte : 3 × 30 g et une boule à thé pour 19,90 €.</p></div><div class="proof"><span class="ico">${ico.lab}</span><h3>Consultez le guide de la caféine</h3><p>40, 60 ou 80 mg : choisissez selon votre besoin.</p></div><div class="proof"><span class="ico">${ico.tin}</span><h3>Suivez-nous</h3><p>Recettes et conseils sur Instagram et TikTok @yuzaa.energie.</p></div></div></div></section>`;
 V['merci-newsletter']=()=>`<section class="sec"><div class="wrap"><div class="confirm"><span class="okmark">${ico.check}</span><span class="t-over over">Newsletter</span><h1 class="t-h1">Merci pour votre inscription</h1><p class="t-lg muted" style="max-width:54ch">Vous recevrez un e-mail par mois : nouveaux articles, recettes et offres. Pour votre première commande, utilisez le code <b>ETUDIANT10</b> : −10 %.</p><div class="ctas" style="justify-content:center"><a class="btn btn-primary" href="#infusions">Découvrir les infusions</a><a class="btn btn-ghost" href="#blog">Lire le blog</a></div></div></div></section>`;
 V['404']=()=>`<section><div class="wrap nf"><div><div class="code">404</div><h1 class="t-h2" style="margin-block:12px">Cette page est introuvable.</h1><p class="muted" style="max-width:44ch">Le lien est peut-être erroné ou la page a été déplacée. Voici quelques pages utiles :</p><div class="ctas"><a class="btn btn-primary" href="#accueil">Retour à l'accueil</a><a class="btn btn-ghost" href="#infusions">Nos infusions</a></div><p class="t-sm" style="margin-top:20px"><a class="link" href="#faq">FAQ</a> · <a class="link" href="#contact">Contact</a> · <a class="link" href="#blog">Blog</a></p></div><div class="media" style="aspect-ratio:1/1;background:var(--focus-50)"><svg viewBox="0 0 200 240" role="img" aria-label="Boîte renversée"><g transform="rotate(-18 100 140)">${tin('focus')}</g><path d="M30 225c30-12 60-12 90 0" stroke="#7FC594" stroke-width="6" fill="none" stroke-linecap="round"/></svg></div></div></section>`;
 
