@@ -477,7 +477,7 @@ details.cond p{margin-top:10px;color:var(--text-secondary);max-width:70ch}
 <body data-site="1">
 <div class="stage" id="stage">
 <div class="site" id="site">
-  <div class="announce">Livraison offerte dès <b>35 €</b> · <b>−10 %</b> sur ta première commande avec le code <b>ETUDIANT10</b></div>
+  <div class="announce">Livraison offerte dès <b>35 €</b> · <b>−10 %</b> sur votre première commande avec le code <b>ETUDIANT10</b></div>
   <header class="hdr">
     <div class="wrap">
       <a class="logo" href="#accueil" aria-label="yuzaa, accueil" data-logo></a>
@@ -506,11 +506,11 @@ details.cond p{margin-top:10px;color:var(--text-secondary);max-width:70ch}
       <div class="ftop">
         <div>
           <a class="logo" href="#accueil" aria-label="yuzaa, accueil" data-logo="light"></a>
-          <p style="margin-top:14px;font-size:14px;max-width:34ch">Infusions énergisantes 100 % plantes, pensées pour les longues journées d'étude. L'énergie des plantes, sans sucre ajouté.</p>
+          <p style="margin-top:14px;font-size:14px;max-width:34ch">Infusions énergisantes 100 % plantes, sans sucre ajouté. Une énergie naturelle pour vos journées d'étude et de travail.</p>
           <form class="form" data-form="newsletter" novalidate style="margin-top:20px">
             <div class="field">
-              <label for="nl-email" style="color:#fff">Recevoir la newsletter (1 e-mail par mois)</label>
-              <div class="nl"><input class="input" id="nl-email" name="email" type="email" placeholder="ton@email.fr" data-rule="req email" autocomplete="email"><button class="btn btn-light btn-sm" type="submit">S'inscrire</button></div>
+              <label for="nl-email" style="color:#fff">Recevez nos conseils et offres (un e-mail par mois)</label>
+              <div class="nl"><input class="input" id="nl-email" name="email" type="email" placeholder="votre@email.fr" data-rule="req email" autocomplete="email"><button class="btn btn-light btn-sm" type="submit">S'inscrire</button></div>
               <span class="err" id="nl-email-err"></span>
             </div>
           </form>
@@ -518,7 +518,7 @@ details.cond p{margin-top:10px;color:var(--text-secondary);max-width:70ch}
         </div>
         <div><h4>Boutique</h4><ul><li><a href="#infusions">Nos infusions</a></li><li><a href="#produit-eveil">Éveil · 40 mg</a></li><li><a href="#produit-focus">Focus · 60 mg</a></li><li><a href="#produit-rush">Rush · 80 mg</a></li><li><a href="#coffrets">Coffrets &amp; accessoires</a></li><li><a href="#coffret-boule">Boule à thé</a></li></ul></div>
         <div><h4>yuzaa</h4><ul><li><a href="#histoire">Notre histoire</a></li><li><a href="#histoire">Producteurs</a></li><li><a href="#histoire">Engagements</a></li><li><a href="#blog">Blog</a></li><li><a href="#pros">Offre pros</a></li></ul></div>
-        <div><h4>Aide</h4><ul><li><a href="#faq">FAQ caféine</a></li><li><a href="#contact">Contact</a></li><li><a href="#suivi">Suivi de colis</a></li><li><a href="#cgv">Livraison &amp; retours</a></li></ul></div>
+        <div><h4>Aide</h4><ul><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li><li><a href="#suivi">Suivi de colis</a></li><li><a href="#cgv">Livraison &amp; retours</a></li></ul></div>
         <div><h4>Légal</h4><ul><li><a href="#cgv">CGV</a></li><li><a href="#cgu">CGU</a></li><li><a href="#mentions">Mentions légales</a></li><li><a href="#mentions">Confidentialité</a></li></ul></div>
       </div>
       <div class="fbot"><span>© 2026 yuzaa · Tous droits réservés</span><span>Paiement sécurisé · Carte, PayPal, Apple Pay</span></div>
@@ -536,24 +536,24 @@ const eur=n=>n.toFixed(2).replace('.',',')+' €';
 /* ---------- Données ---------- */
 const P={
  eveil:{id:'eveil',name:'Éveil',mg:40,key:'Infusion guayusa, citronnelle & menthe',plants:'Guayusa, citronnelle, menthe',plantMain:'guayusa',moment:'Énergie douce',mom:'apres-midi',taste:'Frais, citronné, mentholé',price:11.9,c1:'#FFF6E8',c3:'#FFE0B5',c5:'#F5BC75',c7:'#A3600F',rating:4.8,n:128,
-  desc:"Une énergie douce et progressive, idéale pour lancer une session de travail ou relancer l'après-midi. Le guayusa, feuille d'Amazonie naturellement riche en caféine, s'associe à la fraîcheur de la citronnelle et de la menthe pour une infusion légère, sans amertume."},
+  desc:"Une énergie douce et progressive pour lancer une session de travail ou relancer l'après-midi. Le guayusa, feuille amazonienne naturellement riche en caféine, s'associe à la fraîcheur de la citronnelle et de la menthe pour une infusion légère et désaltérante."},
  focus:{id:'focus',name:'Focus',mg:60,key:'Infusion maté vert, gingembre & citron',plants:'Maté vert, gingembre, citron',plantMain:'maté',moment:'Concentration',mom:'matin',taste:'Vif, notes de gingembre et de citron',price:11.9,c1:'#EEF6EF',c3:'#7FC594',c5:'#2A8046',c7:'#1B5A31',rating:4.7,n:214,
-  desc:"Pensée pour les matinées de cours et les longues sessions de révisions. Le maté vert apporte une énergie stable et durable, le gingembre et le citron une note vive et tonique. Sans sucre ajouté, pour rester concentré sans le coup de barre du café."},
+  desc:"Conçue pour les matinées exigeantes et les longues sessions de travail. Le maté vert offre une énergie stable, relevée par la vivacité du gingembre et du citron. Une alternative au café, sans amertume ni sucre ajouté."},
  rush:{id:'rush',name:'Rush',mg:80,key:'Infusion guarana, maté torréfié & cacao',plants:'Guarana, maté torréfié, cacao',plantMain:'guarana',moment:'Coup de boost',mom:'rush',taste:'Torréfié, notes de cacao',price:11.9,c1:'#FDE4DF',c3:'#F28A7C',c5:'#D93A2B',c7:'#9E2318',rating:4.6,n:97,
-  desc:"Notre recette la plus intense, pour les veilles d'examen et les journées qui n'en finissent pas. Le guarana s'allie au maté torréfié et au cacao pour une infusion ronde aux notes chocolatées, à savourer chaude ou en latte."}
+  desc:"Notre recette la plus intense, réservée aux journées décisives. Le guarana rencontre le maté torréfié et le cacao dans une infusion ronde aux notes chocolatées, à déguster nature ou en latte."}
 };
 const C={
- decouverte:{id:'decouverte',name:'Coffret Découverte',price:19.9,c:'focus',tag:'Idéal pour commencer',contenu:'3 × 30 g de vrac (Éveil, Focus, Rush) et une boule à thé portable.',desc:"La façon la plus simple de trouver ta recette : environ 12 tasses de chaque infusion, et un infuseur nomade pour les emporter partout."},
- partiels:{id:'partiels',name:'Pack Partiels',price:32.9,old:35.7,c:'rush',tag:'Spécial examens',contenu:'3 × 100 g de vrac (Éveil, Focus, Rush), soit environ 120 tasses.',desc:"Tout ce qu'il faut pour traverser la période d'examens : Éveil pour démarrer en douceur, Focus pour les longues sessions, Rush pour la dernière ligne droite. 2,80 € d'économie par rapport à l'achat à l'unité."},
- boule:{id:'boule',name:'Boule à thé portable',price:8.9,c:'eveil',tag:'Accessoire',contenu:'Infuseur nomade pour préparer ton vrac où que tu sois : bibliothèque, amphi, bureau.',desc:"Remplis-la d'une cuillère de vrac, plonge-la dans ton mug ou ta gourde d'eau chaude, puis retire-la après 5 minutes. Simple, propre, sans sachet jetable."}
+ decouverte:{id:'decouverte',name:'Coffret Découverte',price:19.9,c:'focus',tag:'Idéal pour commencer',contenu:'3 × 30 g de vrac (Éveil, Focus, Rush) et une boule à thé portable.',desc:"Le moyen le plus simple de trouver votre recette : environ 12 tasses de chaque infusion et un infuseur nomade pour les emporter partout."},
+ partiels:{id:'partiels',name:'Pack Partiels',price:32.9,old:35.7,c:'rush',tag:'Spécial examens',contenu:'3 × 100 g de vrac (Éveil, Focus, Rush), soit environ 120 tasses.',desc:"Les trois recettes en format 100 g pour couvrir toute une période d'examens : Éveil pour démarrer, Focus pour durer, Rush pour la dernière ligne droite. 2,80 € d'économie par rapport à l'achat à l'unité."},
+ boule:{id:'boule',name:'Boule à thé portable',price:8.9,c:'eveil',tag:'Accessoire',contenu:'Infuseur nomade pour préparer votre infusion où que vous soyez : bibliothèque, salle de cours, bureau.',desc:"Remplissez-la d'une cuillère de vrac, plongez-la dans votre tasse ou votre gourde d'eau chaude, puis retirez-la après 5 minutes. Pratique, réutilisable, sans sachet jetable."}
 };
 const ARTS=[
- {id:'article',t:'Que contient vraiment ta boisson énergisante ?',cat:'Énergie',min:6,ex:'Sucre, taurine, colorants : nous avons décrypté l\'étiquette d\'une canette et l\'avons comparée à une tasse d\'infusion.',c:'rush'},
- {id:'article',t:'Quelle dose de caféine pour quel moment de la journée ?',cat:'Routine',min:5,ex:'Matin, après le déjeuner, veille de rendu : notre guide pour choisir entre 40, 60 et 80 mg.',c:'focus'},
- {id:'article',t:'Guayusa, maté, guarana : trois plantes, trois énergies',cat:'Plantes',min:7,ex:'D\'où viennent nos plantes, comment elles libèrent leur caféine et ce qui les distingue du café.',c:'eveil'},
- {id:'article',t:'Bien infuser : 80 °C, 5 minutes, et pourquoi ça compte',cat:'Recettes',min:4,ex:'La bonne température pour garder le goût sans amertume, et notre recette de Rush latte.',c:'focus'},
- {id:'article',t:'5 rituels pour tenir une semaine de révisions',cat:'Routine',min:5,ex:'Thermos du matin, pause déjeuner, dernière tasse avant 16 h : une routine simple pour tenir sur la durée.',c:'eveil'},
- {id:'article',t:'Rush latte au lait d\'avoine : la recette en 3 étapes',cat:'Recettes',min:3,ex:'Une infusion serrée, du lait mousseux et une pointe de cacao : la version gourmande de notre recette la plus intense.',c:'rush'}
+ {id:'article',t:'Que contient vraiment votre boisson énergisante ?',cat:'Énergie',min:6,ex:'Sucre, taurine, colorants : décryptage d\'une étiquette de canette, comparée à une tasse d\'infusion.',c:'rush'},
+ {id:'article',t:'Quelle dose de caféine selon le moment de la journée ?',cat:'Routine',min:5,ex:'Matin, après-midi, veille d\'examen : notre guide pour choisir entre 40, 60 et 80 mg.',c:'focus'},
+ {id:'article',t:'Guayusa, maté, guarana : trois plantes, trois énergies',cat:'Plantes',min:7,ex:'Origine, profil aromatique, teneur en caféine : tout savoir sur les plantes de nos recettes.',c:'eveil'},
+ {id:'article',t:'Bien infuser : 80 °C, 5 minutes',cat:'Recettes',min:4,ex:'La température et le temps d\'infusion idéaux pour un goût sans amertume, et notre recette de Rush latte.',c:'focus'},
+ {id:'article',t:'Cinq rituels pour tenir une semaine d\'examens',cat:'Routine',min:5,ex:'Une routine simple et efficace, du thermos du matin à la dernière tasse avant 16 h.',c:'eveil'},
+ {id:'article',t:'Rush latte au lait d\'avoine : la recette',cat:'Recettes',min:3,ex:'Une infusion serrée, un lait mousseux, une pointe de cacao : la version gourmande de Rush.',c:'rush'}
 ];
 const state={cart:{focus:1,eveil:1},promo:null,logged:false,ship:'relais',filter:'tout',bfilter:'Tous'};
 
@@ -594,65 +594,65 @@ function lineInfo(k){if(P[k])return{name:P[k].name,sub:P[k].key+' · vrac 100 g'
 function totals(){let sub=0;for(const[k,q]of Object.entries(state.cart)){sub+=lineInfo(k).price*q;}const disc=state.promo?sub*0.1:0;const free=(sub-disc)>=FREE;const ship=sub===0?0:free?0:(state.ship==='relais'?3.9:4.9);return{sub,disc,ship,free,tot:sub-disc+ship};}
 function count(){const n=Object.values(state.cart).reduce((a,b)=>a+b,0);const el=$('#count');el.textContent=n;el.hidden=n===0;}
 function toast(html){const t=$('#toast');t.innerHTML=html;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),2800);}
-function add(k,q=1){state.cart[k]=(state.cart[k]||0)+q;count();toast(`<span>${lineInfo(k).name} ajouté au panier</span><a href="#panier">Voir le panier</a>`);}
+function add(k,q=1){state.cart[k]=(state.cart[k]||0)+q;count();toast(`<span>${lineInfo(k).name} a été ajouté au panier</span><a href="#panier">Voir le panier</a>`);}
 
 /* ---------- Pages ---------- */
 const V={};
 V.accueil=()=>`
 <section class="hero"><div class="wrap g2">
  <div><span class="t-over over">Infusions énergisantes · 100 % plantes · Sans sucre ajouté</span>
-  <h1 class="t-display">Respirer, puis foncer.</h1>
-  <p class="lead">La caféine naturelle du guayusa, du maté et du guarana, réunie dans trois infusions pensées pour tes révisions. Une énergie claire et durable, sans le crash du café ni le sucre des boissons énergisantes.</p>
-  <div class="ctas"><a class="btn btn-primary" href="#infusions">Trouver ma recette</a><a class="btn btn-ghost" href="#coffret-decouverte">Goûter les 3 recettes</a></div>
+  <h1 class="t-display">L'énergie des plantes, sans le crash.</h1>
+  <p class="lead">Trois infusions au guayusa, au maté et au guarana, dosées en caféine naturelle pour accompagner vos journées d'étude et de travail. Une énergie progressive, sans sucre ajouté ni arôme artificiel.</p>
+  <div class="ctas"><a class="btn btn-primary" href="#infusions">Découvrir les recettes</a><a class="btn btn-ghost" href="#coffret-decouverte">Coffret Découverte · 19,90 €</a></div>
   <div class="proofs"><span>${ico.nosugar}Sans sucre ajouté</span><span>${ico.leaf}100 % plantes</span><span>${ico.tin}Carton recyclé</span></div>
  </div>
  <div class="media">${heroSVG()}</div>
 </div></section>
 
 <section class="sec"><div class="wrap">
- <div class="sec-head"><div><span class="t-over over">Nos recettes</span><h2 class="t-h2" style="margin-top:8px">Trois recettes, trois niveaux d'énergie</h2><p>Énergie douce, concentration ou coup de boost : chaque recette affiche sa dose de caféine, 40, 60 ou 80 mg par tasse. Tu choisis en connaissance de cause.</p></div><a class="link" href="#infusions">Comparer les recettes →</a></div>
+ <div class="sec-head"><div><span class="t-over over">La gamme</span><h2 class="t-h2" style="margin-top:8px">Trois recettes, une énergie maîtrisée</h2><p>Chaque recette indique précisément sa teneur en caféine : 40, 60 ou 80 mg par tasse. Choisissez celle qui correspond à votre besoin.</p></div><a class="link" href="#infusions">Comparer les recettes →</a></div>
  <div class="g3">${pcard('eveil',1)}${pcard('focus',1)}${pcard('rush',1)}</div>
 </div></section>
 
 <section class="sec-tight"><div class="wrap"><div class="day">
- <div class="sec-head" style="margin-bottom:0"><div><span class="t-over over">Guide des doses</span><h2 class="t-h2" style="margin-top:8px">Ta journée, bien dosée</h2></div><a class="link" href="#article">Lire le guide complet →</a></div>
+ <div class="sec-head" style="margin-bottom:0"><div><span class="t-over over">Guide des doses</span><h2 class="t-h2" style="margin-top:8px">La bonne dose, au bon moment</h2></div><a class="link" href="#article">Lire le guide →</a></div>
  <div class="dayline" aria-hidden="true"><span class="pin" style="left:8%;color:var(--focus-700)">Focus · 8 h 30</span><span class="pin" style="left:46%;color:var(--eveil-700)">Éveil · 14 h</span><span class="pin" style="left:70%;color:var(--sable-600)">Plus de caféine après 16 h</span></div>
  <div class="hours"><span>7 h</span><span>10 h</span><span>13 h</span><span>16 h</span><span>19 h</span><span>22 h</span></div>
- <div class="daycards"><div class="bg-focus"><b>Le matin</b><span class="t-sm">Focus (60 mg) pour aborder une matinée de cours ou de révisions.</span></div><div class="bg-eveil"><b>Après le déjeuner</b><span class="t-sm">Éveil (40 mg) pour relancer l'après-midi sans perturber le sommeil.</span></div><div class="bg-rush"><b>Veille de partiel</b><span class="t-sm">Rush (80 mg) le matin, à la place de Focus, pour les jours décisifs.</span></div></div>
+ <div class="daycards"><div class="bg-focus"><b>Le matin</b><span class="t-sm">Focus · 60 mg, pour une matinée de cours ou de travail exigeante.</span></div><div class="bg-eveil"><b>Après le déjeuner</b><span class="t-sm">Éveil · 40 mg, pour relancer l'après-midi en préservant le sommeil.</span></div><div class="bg-rush"><b>Jour d'examen</b><span class="t-sm">Rush · 80 mg, le matin, en remplacement de Focus.</span></div></div>
 </div></div></section>
 
 <section class="sec"><div class="wrap"><div class="sim">
- <div><span class="t-over" style="color:var(--eveil-300)">Simulateur d'économies</span><h2 class="t-h2" style="margin-top:8px">Combien te coûtent tes canettes ?</h2><p style="margin-top:12px">Une canette coûte en moyenne 1,50 € au distributeur, une tasse yuzaa 0,30 €. Fais le calcul.</p>
+ <div><span class="t-over" style="color:var(--eveil-300)">Comparatif</span><h2 class="t-h2" style="margin-top:8px">Le vrai coût de vos canettes</h2><p style="margin-top:12px">Une canette coûte en moyenne 1,50 € au distributeur, une tasse yuzaa 0,30 €. Faites le calcul.</p>
   <label for="sim" style="display:block;margin-top:24px;font-weight:600">Canettes par jour : <output id="simv">2</output></label><input type="range" id="sim" min="1" max="5" value="2" step="1"></div>
- <div class="simout"><div><span class="t-sm">Canettes / mois</span><span class="big" id="sim-a">69 €</span></div><div><span class="t-sm">yuzaa / mois</span><span class="big" id="sim-b">14 €</span></div><div class="save"><span class="t-sm" style="font-weight:600">Économie sur un an</span><span class="big" id="sim-c">662 €</span><span class="t-cap" style="color:var(--sable-800)">Base : 23 jours ouvrés par mois, une tasse par canette remplacée.</span></div></div>
+ <div class="simout"><div><span class="t-sm">Canettes / mois</span><span class="big" id="sim-a">69 €</span></div><div><span class="t-sm">yuzaa / mois</span><span class="big" id="sim-b">14 €</span></div><div class="save"><span class="t-sm" style="font-weight:600">Économie annuelle</span><span class="big" id="sim-c">662 €</span><span class="t-cap" style="color:var(--sable-800)">Base : 23 jours ouvrés par mois, une tasse pour une canette.</span></div></div>
 </div></div></section>
 
 <section class="sec-tight"><div class="wrap">
- <div class="sec-head"><div><span class="t-over over">Pourquoi yuzaa</span><h2 class="t-h2" style="margin-top:8px">L'énergie, sans les compromis</h2></div></div>
+ <div class="sec-head"><div><span class="t-over over">Pourquoi yuzaa</span><h2 class="t-h2" style="margin-top:8px">Une énergie transparente</h2></div></div>
  <div class="g4">
-  <div class="proof"><span class="ico">${ico.lab}</span><h3>Caféine affichée</h3><p>40, 60 ou 80 mg par tasse : la dose est indiquée sur chaque recette, pour choisir selon ton besoin.</p></div>
+  <div class="proof"><span class="ico">${ico.lab}</span><h3>Caféine affichée</h3><p>Une teneur précise sur chaque recette : 40, 60 ou 80 mg par tasse.</p></div>
   <div class="proof"><span class="ico">${ico.nosugar}</span><h3>Zéro sucre ajouté</h3><p>Ni sucre, ni édulcorant, ni arôme artificiel. Uniquement des plantes.</p></div>
-  <div class="proof"><span class="ico">${ico.leaf}</span><h3>100 % plantes</h3><p>Guayusa, maté et guarana, associés à la citronnelle, au gingembre ou au cacao. Rien de plus.</p></div>
-  <div class="proof"><span class="ico">${ico.tin}</span><h3>Carton recyclé</h3><p>Tous nos produits sont conditionnés en carton recyclé. Retours gratuits sous 30 jours.</p></div>
+  <div class="proof"><span class="ico">${ico.leaf}</span><h3>100 % plantes</h3><p>Guayusa, maté et guarana, associés à la citronnelle, au gingembre ou au cacao.</p></div>
+  <div class="proof"><span class="ico">${ico.tin}</span><h3>Emballage responsable</h3><p>Des boîtes en carton recyclé et des retours gratuits sous 30 jours.</p></div>
  </div>
 </div></section>
 
 <section class="sec"><div class="wrap">
- <div class="sec-head"><div><span class="t-over over">Avis clients</span><h2 class="t-h2" style="margin-top:8px">4,7/5 sur 439 avis</h2></div><a class="link" href="#produit-focus">Voir tous les avis →</a></div>
+ <div class="sec-head"><div><span class="t-over over">Avis clients</span><h2 class="t-h2" style="margin-top:8px">4,7/5 · 439 avis vérifiés</h2></div><a class="link" href="#produit-focus">Voir tous les avis →</a></div>
  <div class="g3">
-  <div class="review"><span class="stars" aria-label="5 sur 5">★★★★★</span><p>« J'ai remplacé mes deux canettes par Focus le matin et Éveil à 14 h. Je dors enfin correctement. »</p><footer>Inès, 22 ans · alternante en marketing</footer></div>
-  <div class="review"><span class="stars" aria-label="5 sur 5">★★★★★</span><p>« Je ne supporte pas le café. Rush, avec ses notes torréfiées et cacaotées, m'a accompagné pendant tous mes partiels. »</p><footer>Malik, 20 ans · étudiant en L3</footer></div>
-  <div class="review"><span class="stars" aria-label="4 sur 5">★★★★☆</span><p>« Le coffret Découverte m'a permis de tester les trois recettes, et la boule à thé me suit désormais à la BU. »</p><footer>Clara, 19 ans · étudiante en L2</footer></div>
+  <div class="review"><span class="stars" aria-label="5 sur 5">★★★★★</span><p>« J'ai remplacé mes deux canettes quotidiennes par Focus le matin et Éveil l'après-midi. Mon énergie est plus régulière et je dors mieux. »</p><footer>Inès, 22 ans · alternante en marketing</footer></div>
+  <div class="review"><span class="stars" aria-label="5 sur 5">★★★★★</span><p>« Je ne bois pas de café. Rush, avec ses notes torréfiées et cacaotées, est devenu mon allié pendant les examens. »</p><footer>Malik, 20 ans · étudiant en licence</footer></div>
+  <div class="review"><span class="stars" aria-label="4 sur 5">★★★★☆</span><p>« Le coffret Découverte m'a permis de trouver ma recette. La boule à thé me suit désormais à la bibliothèque. »</p><footer>Clara, 19 ans · étudiante en licence</footer></div>
  </div>
 </div></section>
 
 <section class="sec-tight"><div class="wrap">
- <div class="sec-head"><div><span class="t-over over">Coffrets &amp; accessoires</span><h2 class="t-h2" style="margin-top:8px">Goûter, faire le plein, emporter partout</h2></div><a class="link" href="#coffrets">Tous les coffrets →</a></div>
+ <div class="sec-head"><div><span class="t-over over">Coffrets &amp; accessoires</span><h2 class="t-h2" style="margin-top:8px">Découvrir, s'équiper, faire le plein</h2></div><a class="link" href="#coffrets">Tous les coffrets →</a></div>
  <div class="g3">${ccard('decouverte')}${ccard('partiels')}${ccard('boule')}</div>
 </div></section>
 
 <section class="sec"><div class="wrap">
- <div class="sec-head"><div><span class="t-over over">Le blog</span><h2 class="t-h2" style="margin-top:8px">Bien doser son énergie</h2></div><a class="link" href="#blog">Tous les articles →</a></div>
+ <div class="sec-head"><div><span class="t-over over">Le journal</span><h2 class="t-h2" style="margin-top:8px">Conseils &amp; rituels</h2></div><a class="link" href="#blog">Tous les articles →</a></div>
  <div class="g3">${ARTS.slice(0,3).map(acard).join('')}</div>
 </div></section>`;
 
@@ -660,7 +660,7 @@ V.infusions=()=>`
 <div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / Nos infusions</nav></div>
 <section class="sec-tight" style="padding-top:8px"><div class="wrap">
  <h1 class="t-h1">Nos infusions énergisantes</h1>
- <p class="t-lg muted" style="max-width:62ch;margin-top:12px">Trois recettes 100 % plantes, trois doses de caféine naturelle. Disponibles en vrac (100 g, environ 40 tasses) ou en boîte de 20 sachets. Pour les goûter toutes, commence par le coffret Découverte.</p>
+ <p class="t-lg muted" style="max-width:62ch;margin-top:12px">Trois recettes 100 % plantes, trois niveaux de caféine naturelle. Disponibles en vrac (100 g, environ 40 tasses) ou en boîte de 20 sachets. Pour découvrir la gamme, commencez par le coffret Découverte.</p>
  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;margin-block:32px 24px">
   <div class="chips" role="group" aria-label="Filtrer par moment">${[['tout','Toutes'],['apres-midi','Énergie douce'],['matin','Concentration'],['rush','Coup de boost']].map(([v,l])=>`<button class="chip" type="button" data-filter="${v}" aria-pressed="${state.filter===v}">${l}</button>`).join('')}</div>
   <select class="input" style="width:auto" aria-label="Trier"><option>Trier : caféine croissante</option><option>Trier : mieux notées</option></select>
@@ -668,8 +668,8 @@ V.infusions=()=>`
  <div class="g3" id="plist">${['eveil','focus','rush'].filter(d=>state.filter==='tout'||P[d].mom===state.filter).map(pcard).join('')}${state.filter==='tout'?ccard('decouverte')+ccard('partiels')+ccard('boule'):''}</div>
 </div></section>
 <section class="sec"><div class="wrap">
- <h2 class="t-h2">Comparer les recettes</h2><p class="muted" style="margin-block:8px 24px">Repère : un espresso comme une canette de 250 ml contiennent environ 80 mg de caféine.</p>
- <div class="cmpw"><table class="cmp"><thead><tr><th>Recette</th><th>Caféine / tasse</th><th>Plantes</th><th>Goût</th><th>Pour</th><th>Vrac 100 g</th><th>20 sachets</th></tr></thead><tbody>
+ <h2 class="t-h2">Comparer les recettes</h2><p class="muted" style="margin-block:8px 24px">Repère : un espresso ou une canette de 250 ml contiennent environ 80 mg de caféine.</p>
+ <div class="cmpw"><table class="cmp"><thead><tr><th>Recette</th><th>Caféine / tasse</th><th>Plantes</th><th>Goût</th><th>Moment</th><th>Vrac 100 g</th><th>20 sachets</th></tr></thead><tbody>
  ${['eveil','focus','rush'].map(d=>{const p=P[d];return `<tr><td><span class="dose dose-${d}">${p.name}</span></td><td><b>${p.mg} mg</b></td><td>${p.plants}</td><td>${p.taste}</td><td>${p.moment}</td><td>${eur(p.price)}</td><td>6,90 €</td></tr>`}).join('')}
  </tbody></table></div>
 </div></section>`;
@@ -687,47 +687,47 @@ function produit(d){const p=P[d];const others=['eveil','focus','rush'].filter(x=
   <p>${p.desc}</p>
   ${gauge(d)}
   <fieldset class="opts" style="border:0;padding:0;margin:0"><legend class="t-label" style="margin-bottom:10px">Format</legend>
-   <label class="opt"><input type="radio" name="fmt" value="vrac" checked><span class="grow">Vrac · 100 g<small>Environ 40 tasses, soit 0,30 € la tasse</small></span><b>${eur(p.price)}</b></label>
-   <label class="opt"><input type="radio" name="fmt" value="sachets"><span class="grow">Boîte de 20 sachets<small>Idéal à emporter en cours ou au bureau</small></span><b>6,90 €</b></label>
+   <label class="opt"><input type="radio" name="fmt" value="vrac" checked><span class="grow">Vrac · 100 g<small>Environ 40 tasses · 0,30 € la tasse</small></span><b>${eur(p.price)}</b></label>
+   <label class="opt"><input type="radio" name="fmt" value="sachets"><span class="grow">Boîte de 20 sachets<small>Format pratique à emporter</small></span><b>6,90 €</b></label>
   </fieldset>
   <div class="buy"><div class="qty"><button type="button" data-pq="-1" aria-label="Retirer une boîte">−</button><span id="pq">1</span><button type="button" data-pq="1" aria-label="Ajouter une boîte">+</button></div><button class="btn btn-primary" style="flex:1" type="button" data-add="${d}" data-useq>Ajouter au panier</button></div>
-  <div class="reas"><span>${ico.truck}Livraison offerte dès 35 € · point relais 3,90 € · domicile 4,90 €</span><span>${ico.return}Retours gratuits sous 30 jours</span><span>${ico.tin}Boîte en carton recyclé</span></div>
+  <div class="reas"><span>${ico.truck}Livraison offerte dès 35 € · point relais 3,90 € · domicile 4,90 €</span><span>${ico.return}Retours gratuits sous 30 jours</span><span>${ico.tin}Paiement sécurisé · carte, PayPal, Apple Pay</span></div>
  </div>
 </div></section>
 <div class="mbuy"><div><b>${p.name}</b><div class="t-sm muted">${eur(p.price)} · vrac 100 g</div></div><button class="btn btn-primary" type="button" data-add="${d}">Ajouter</button></div>
 
 <section class="sec-tight"><div class="wrap">
- <h2 class="t-h2" style="margin-bottom:20px">Mode d'emploi</h2>
- <div class="steps4"><div><b>2,5 g</b><p>Une cuillère de vrac ou un sachet pour une tasse de 25 cl.</p></div><div><b>80 °C</b><p>Une eau frémissante, jamais bouillante, pour préserver le goût.</p></div><div><b>5 min</b><p>Laisse infuser 5 minutes, puis retire la boule à thé.</p></div><div><b>2 max</b><p>Deux tasses par jour maximum, la dernière avant 16 h.</p></div></div>
+ <h2 class="t-h2" style="margin-bottom:20px">Préparation</h2>
+ <div class="steps4"><div><b>2,5 g</b><p>Une cuillère de vrac ou un sachet pour 25 cl d'eau.</p></div><div><b>80 °C</b><p>Une eau frémissante, jamais bouillante, pour préserver les arômes.</p></div><div><b>5 min</b><p>Laissez infuser, puis retirez l'infuseur.</p></div><div><b>2 tasses</b><p>Maximum par jour, la dernière avant 16 h.</p></div></div>
 </div></section>
 
 <section class="sec-tight"><div class="wrap quality">
- <div class="card"><h2 class="t-h4">Composition</h2><dl class="kv"><dt>Ingrédients</dt><dd>${p.plants}*</dd><dt>Caféine</dt><dd>${p.mg} mg par tasse de 25 cl</dd><dt>Sucre</dt><dd>0 g, sans édulcorant</dd><dt>Formats</dt><dd>Vrac 100 g (≈ 40 tasses) · 20 sachets</dd><dt>Emballage</dt><dd>Boîte en carton recyclé</dd><dt>Allergènes</dt><dd>Aucun</dd></dl><p class="t-cap" style="margin-top:14px">* 100 % plantes, sans sucre ajouté. Déconseillé aux femmes enceintes et aux enfants.</p></div>
- <div class="card bg-sable" style="border:0"><h2 class="t-h4">Ta dose de caféine</h2><dl class="kv"><dt>Par tasse</dt><dd>${p.mg} mg</dd><dt>Repère</dt><dd>${d==='eveil'?'La moitié d\'un espresso':d==='focus'?'Les trois quarts d\'un espresso':'Un espresso'}</dd><dt>Conseil</dt><dd>2 tasses par jour au maximum, pas après 16 h</dd></dl><a class="link" href="#faq" style="display:inline-block;margin-top:16px">Toutes les questions sur la caféine →</a></div>
+ <div class="card"><h2 class="t-h4">Composition</h2><dl class="kv"><dt>Ingrédients</dt><dd>${p.plants}*</dd><dt>Caféine</dt><dd>${p.mg} mg par tasse de 25 cl</dd><dt>Sucre</dt><dd>0 g, sans édulcorant</dd><dt>Formats</dt><dd>Vrac 100 g (≈ 40 tasses) · 20 sachets</dd><dt>Emballage</dt><dd>Boîte en carton recyclé</dd><dt>Allergènes</dt><dd>Aucun</dd></dl><p class="t-cap" style="margin-top:14px">* 100 % plantes, sans sucre ajouté. Déconseillé aux femmes enceintes ou allaitantes et aux moins de 16 ans.</p></div>
+ <div class="card bg-sable" style="border:0"><h2 class="t-h4">Teneur en caféine</h2><dl class="kv"><dt>Par tasse</dt><dd>${p.mg} mg</dd><dt>Repère</dt><dd>${d==='eveil'?'La moitié d\'un espresso':d==='focus'?'Les trois quarts d\'un espresso':'Un espresso'}</dd><dt>Conseil</dt><dd>2 tasses par jour maximum, pas après 16 h</dd></dl><a class="link" href="#faq" style="display:inline-block;margin-top:16px">Toutes vos questions sur la caféine →</a></div>
 </div></section>
 
 <section class="sec-tight" id="avis"><div class="wrap">
- <div class="sec-head"><div><h2 class="t-h2">Avis sur ${p.name}</h2><p>${String(p.rating).replace('.',',')}/5 · ${p.n} avis vérifiés après achat</p></div><button class="btn btn-ghost btn-sm" type="button" data-toast="Merci ! Le formulaire d'avis s'ouvrira après ta commande.">Écrire un avis</button></div>
- <div class="g3"><div class="review"><span class="stars">★★★★★</span><p>« Aucune amertume, je le bois sans sucre. Je tiens jusqu'à midi sans coup de barre. »</p><footer>Sarah · étudiante en master</footer></div><div class="review"><span class="stars">★★★★★</span><p>« La dose est indiquée sur la boîte : je sais enfin ce que je consomme. »</p><footer>Yanis · alternant développeur</footer></div><div class="review"><span class="stars">★★★★☆</span><p>« Très bon goût. Avec la boule à thé, je le prépare directement à la BU. »</p><footer>Léa · alternante commerce</footer></div></div>
+ <div class="sec-head"><div><h2 class="t-h2">Avis clients · ${p.name}</h2><p>${String(p.rating).replace('.',',')}/5 · ${p.n} avis vérifiés après achat</p></div><button class="btn btn-ghost btn-sm" type="button" data-toast="Vous pourrez laisser un avis après réception de votre commande.">Écrire un avis</button></div>
+ <div class="g3"><div class="review"><span class="stars">★★★★★</span><p>« Aucune amertume, je le bois sans sucre. Je reste concentrée jusqu'à midi. »</p><footer>Sarah · étudiante en master</footer></div><div class="review"><span class="stars">★★★★★</span><p>« La teneur en caféine est indiquée sur la boîte : je sais exactement ce que je consomme. »</p><footer>Yanis · alternant développeur</footer></div><div class="review"><span class="stars">★★★★☆</span><p>« Excellent goût. Avec la boule à thé, je le prépare directement à la bibliothèque. »</p><footer>Léa · alternante commerce</footer></div></div>
 </div></section>
 
 <section class="sec-tight"><div class="wrap">
- <div class="sec-head"><h2 class="t-h2">Tu aimeras aussi</h2><div class="cnav"><button type="button" data-car="-1" aria-label="Précédent">←</button><button type="button" data-car="1" aria-label="Suivant">→</button></div></div>
+ <div class="sec-head"><h2 class="t-h2">Vous aimerez aussi</h2><div class="cnav"><button type="button" data-car="-1" aria-label="Précédent">←</button><button type="button" data-car="1" aria-label="Suivant">→</button></div></div>
  <div class="carousel" id="car">${others.map(pcard).join('')}${ccard('boule')}${ccard('decouverte')}${ccard('partiels')}</div>
 </div></section>
 
 <section class="sec-tight"><div class="wrap" style="max-width:860px">
  <h2 class="t-h3" style="margin-bottom:12px">Conditions</h2>
  <details class="cond"><summary>Livraison</summary><p>Point relais en 2 à 4 jours (3,90 €) ou à domicile en 48 h (4,90 €). Offerte dès 35 € d'achat.</p></details>
- <details class="cond"><summary>Retours et remboursement</summary><p>Retours gratuits sous 30 jours. Le remboursement est effectué dès réception du colis.</p></details>
- <details class="cond"><summary>Précautions</summary><p>Contient de la caféine. Ne pas dépasser deux tasses par jour. Déconseillé aux femmes enceintes ou allaitantes et aux moins de 16 ans.</p></details>
+ <details class="cond"><summary>Retours et remboursements</summary><p>Retours gratuits sous 30 jours. Le remboursement est effectué dès réception du colis.</p></details>
+ <details class="cond"><summary>Précautions d'emploi</summary><p>Contient de la caféine. Ne pas dépasser deux tasses par jour. Déconseillé aux femmes enceintes ou allaitantes et aux moins de 16 ans.</p></details>
 </div></section>`;}
 
 V.coffrets=()=>`
 <div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / Coffrets</nav></div>
 <section class="sec-tight" style="padding-top:8px"><div class="wrap">
  <h1 class="t-h1">Coffrets &amp; accessoires</h1>
- <p class="t-lg muted" style="max-width:62ch;margin-top:12px">Pour découvrir les trois recettes, faire le plein avant les examens ou emporter ton infusion partout.</p>
+ <p class="t-lg muted" style="max-width:62ch;margin-top:12px">Découvrir la gamme, faire le plein avant les examens ou infuser en déplacement : choisissez la formule qui vous correspond.</p>
  <div class="g3" style="margin-top:36px">${ccard('decouverte')}${ccard('partiels')}${ccard('boule')}</div>
 </div></section>
 <section class="sec"><div class="wrap"><div class="band"><div style="max-width:56ch"><span class="t-over" style="color:var(--eveil-700)">Offre pros</span><h2 class="t-h3" style="margin-top:8px">Vous gérez un café, un coworking ou un BDE ?</h2><p class="muted">Des formats et des tarifs adaptés à votre établissement ou à vos événements, sur devis.</p></div><a class="btn btn-ghost" href="#pros">Demander un devis</a></div></div></section>`;
@@ -762,9 +762,9 @@ V.pros=()=>`
 V.histoire=()=>`
 <section class="hero"><div class="wrap" style="padding-block:72px 64px;max-width:900px">
  <span class="t-over over">Notre histoire</span><h1 class="t-display" style="margin-block:14px 18px">Nés d'un scan Yuka.</h1>
- <p class="lead" style="max-width:60ch">yuzaa est une marque française née de l'expérience de cinq étudiants qui enchaînaient les canettes pendant leurs révisions. Notre objectif : retrouver l'énergie dont on a besoin, sans le crash du café ni le sucre des boissons énergisantes.</p>
+ <p class="lead" style="max-width:60ch">yuzaa est une marque française née de l'expérience de cinq étudiants qui enchaînaient les canettes pendant leurs révisions. Notre conviction : l'énergie dont on a besoin peut venir des plantes, sans le crash du café ni le sucre des boissons énergisantes.</p>
 </div></section>
-<section class="sec-tight"><div class="wrap"><blockquote class="quote" style="margin:0">« Je fais attention à tout ce que je mange, sauf à ce qui me fait tenir la journée. »<cite>Ce paradoxe, on l'a entendu dans presque toutes nos interviews d'étudiants.</cite></blockquote></div></section>
+<section class="sec-tight"><div class="wrap"><blockquote class="quote" style="margin:0">« Je fais attention à tout ce que je mange, sauf à ce qui me fait tenir la journée. »<cite>Une phrase entendue dans presque tous nos entretiens avec des étudiants.</cite></blockquote></div></section>
 <section class="sec-tight"><div class="wrap g2" style="align-items:start">
  <div class="media" style="aspect-ratio:4/5">${sceneSVG('focus','Atelier yuzaa')}</div>
  <div><h2 class="t-h2" style="margin-bottom:20px">Notre parcours</h2><div class="tl">
@@ -775,7 +775,7 @@ V.histoire=()=>`
  </div></div>
 </div></section>
 <section class="sec" id="producteurs"><div class="wrap">
- <div class="sec-head"><div><span class="t-over over">Producteurs</span><h2 class="t-h2" style="margin-top:8px">Trois plantes, trois énergies</h2><p>Trois plantes naturellement riches en caféine, une par recette.</p></div></div>
+ <div class="sec-head"><div><span class="t-over over">Producteurs</span><h2 class="t-h2" style="margin-top:8px">Trois plantes, trois énergies</h2><p>Trois plantes naturellement riches en caféine, chacune au cœur d'une recette.</p></div></div>
  <div class="g3"><div class="plant bg-eveil"><div class="media">${plantSVG('eveil')}</div><h3>Guayusa</h3><p class="t-sm">La base d'Éveil. Une énergie douce, associée à la citronnelle et à la menthe.</p></div><div class="plant bg-focus"><div class="media">${plantSVG('focus')}</div><h3>Maté</h3><p class="t-sm">Vert dans Focus avec le gingembre et le citron, torréfié dans Rush. Une énergie stable et durable.</p></div><div class="plant bg-rush"><div class="media">${plantSVG('rush')}</div><h3>Guarana</h3><p class="t-sm">Le cœur de Rush, avec le cacao. Notre plante la plus riche en caféine.</p></div></div>
 </div></section>
 <section class="sec-tight"><div class="wrap g2">
@@ -787,37 +787,37 @@ V.histoire=()=>`
  <h2 class="t-h2" style="margin-bottom:24px">Nos engagements</h2>
  <div class="g4"><div class="eng"><span class="dose dose-focus">Direct</span><h3>Vente en direct</h3><p>Sur notre site, sans intermédiaire, pour maintenir la tasse à 0,30 €.</p></div><div class="eng"><span class="dose dose-focus">Plantes</span><h3>100 % plantes</h3><p>Sans sucre ajouté, sans arôme artificiel.</p></div><div class="eng"><span class="dose dose-eveil">Recettes</span><h3>Recettes transparentes</h3><p>Plantes et dose de caféine clairement indiquées sur chaque boîte.</p></div><div class="eng"><span class="dose dose-rush">Zéro-plastique</span><h3>Carton recyclé</h3><p>Tous nos produits sont emballés dans des boîtes en carton recyclé.</p></div></div>
 </div></section>
-<section class="sec-tight" style="padding-bottom:80px"><div class="wrap"><div class="band"><div><h2 class="t-h3">Prêt·e à trouver ta recette ?</h2><p class="muted">Le coffret Découverte réunit les 3 recettes et une boule à thé, pour 19,90 €.</p></div><a class="btn btn-energy" href="#coffret-decouverte">Goûter les 3 recettes</a></div></div></section>`;
+<section class="sec-tight" style="padding-bottom:80px"><div class="wrap"><div class="band"><div><h2 class="t-h3">Trouvez votre recette</h2><p class="muted">Le coffret Découverte réunit les trois recettes et une boule à thé, pour 19,90 €.</p></div><a class="btn btn-energy" href="#coffret-decouverte">Découvrir le coffret</a></div></div></section>`;
 
 V.blog=()=>{const cats=['Tous','Énergie','Plantes','Recettes','Routine'];const list=ARTS.slice(1).filter(a=>state.bfilter==='Tous'||a.cat===state.bfilter);return `
 <div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / Blog</nav></div>
 <section class="sec-tight" style="padding-top:8px"><div class="wrap">
- <h1 class="t-h1">Le blog yuzaa</h1><p class="t-lg muted" style="max-width:60ch;margin-top:12px">Caféine, plantes, recettes et routines : nos conseils pour doser ton énergie sans sacrifier ton sommeil.</p>
+ <h1 class="t-h1">Le journal yuzaa</h1><p class="t-lg muted" style="max-width:60ch;margin-top:12px">Caféine, plantes, recettes et rituels : nos conseils pour gérer votre énergie sans sacrifier votre sommeil.</p>
  <a class="feat" href="#article" style="margin-top:40px"><div class="media">${sceneSVG('rush',ARTS[0].t)}</div><div><span class="t-over over">À la une · ${ARTS[0].cat}</span><h2 class="t-h2" style="margin-block:10px 12px">${ARTS[0].t}</h2><p class="muted">${ARTS[0].ex}</p><span class="link" style="display:inline-block;margin-top:16px">Lire l'article →</span></div></a>
 </div></section>
 <section class="sec-tight"><div class="wrap">
  <div class="chips" role="group" aria-label="Filtrer les articles" style="margin-bottom:28px">${cats.map(c=>`<button class="chip" type="button" data-bfilter="${c}" aria-pressed="${state.bfilter===c}">${c}</button>`).join('')}</div>
  <div class="g3">${list.length?list.map(acard).join(''):'<p class="muted">Aucun article dans cette catégorie pour le moment.</p>'}</div>
 </div></section>
-<section class="sec"><div class="wrap"><div class="band" style="background:var(--bg-brand-subtle)"><div><h2 class="t-h3">Un article par mois, directement dans ta boîte mail</h2><p class="muted">Et −10 % sur ta première commande.</p></div><a class="btn btn-primary" href="#nl-email" data-focusnl>S'inscrire à la newsletter</a></div></div></section>`;};
+<section class="sec"><div class="wrap"><div class="band" style="background:var(--bg-brand-subtle)"><div><h2 class="t-h3">Recevez nos conseils chaque mois</h2><p class="muted">Et profitez de −10 % sur votre première commande.</p></div><a class="btn btn-primary" href="#nl-email" data-focusnl>S'inscrire à la newsletter</a></div></div></section>`;};
 
 V.article=()=>`
 <div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / <a href="#blog">Blog</a> / Énergie</nav></div>
 <section class="sec-tight" style="padding-top:8px"><div class="wrap" style="max-width:900px">
- <span class="t-over over">Énergie · 6 min de lecture</span><h1 class="t-h1" style="margin-top:10px">Que contient vraiment ta boisson énergisante ?</h1>
+ <span class="t-over over">Énergie · 6 min de lecture</span><h1 class="t-h1" style="margin-top:10px">Que contient vraiment votre boisson énergisante ?</h1>
  <div class="meta"><span>Par Zeina, pôle produit</span><span>12 octobre 2026</span></div>
 </div></section>
 <div class="wrap"><div class="media" style="aspect-ratio:21/8">${sceneSVG('rush','Canette et tasse d\'infusion')}</div></div>
 <section class="sec-tight"><div class="wrap agrid">
  <aside class="toc" aria-label="Sommaire"><b class="t-over">Sommaire</b><ol><li><a href="#article" data-scroll="a1">Ce que dit l'étiquette</a></li><li><a href="#article" data-scroll="a2">Sucre et caféine : le comparatif</a></li><li><a href="#article" data-scroll="a3">Pourquoi le pic, puis la chute</a></li><li><a href="#article" data-scroll="a4">Par quoi la remplacer</a></li></ol></aside>
  <article class="prose">
-  <p>En période de révisions, les étudiants que nous avons interrogés boivent en moyenne deux à trois canettes par jour. Mais que contiennent-elles vraiment ?</p>
+  <p>En période de révisions, les étudiants que nous avons interrogés consomment en moyenne deux à trois canettes par jour. Que contiennent-elles réellement ?</p>
   <h2 id="a1">Ce que dit l'étiquette</h2><p>Une canette de 250 ml contient en moyenne 27 g de sucre, soit environ 7 morceaux, 80 mg de caféine, de la taurine, des arômes et des colorants. Sur Yuka, la plupart sont jugées « mauvaises ».</p>
   <h2 id="a2">Sucre et caféine : le comparatif</h2>
   <div class="cmpw" style="margin-bottom:18px"><table class="cmp"><thead><tr><th></th><th>Canette 250 ml</th><th>yuzaa Focus</th></tr></thead><tbody><tr><td>Caféine</td><td>80 mg</td><td>60 mg</td></tr><tr><td>Sucre</td><td>27 g</td><td>0 g</td></tr><tr><td>Additifs</td><td>6 à 10</td><td>0</td></tr><tr><td>Prix</td><td>≈ 1,50 €</td><td>0,30 €</td></tr></tbody></table></div>
-  <h2 id="a3">Pourquoi le pic, puis la chute</h2><p>Le sucre rapide et la caféine de synthèse arrivent ensemble dans le sang. L'effet est immédiat, puis la glycémie retombe : c'est le fameux coup de barre de 16 h. Sans sucre ajouté, une infusion évite ce pic de glycémie.</p>
-  <div class="callout"><div><b>Trouve ta recette</b><p class="t-sm muted" style="margin:0">Éveil 40 mg, Focus 60 mg, Rush 80 mg.</p></div><a class="btn btn-primary btn-sm" href="#infusions">Comparer les infusions</a></div>
-  <h2 id="a4">Par quoi la remplacer</h2><p>Commence par remplacer une seule canette, celle du matin, par une tasse de Focus. Glisse ta boule à thé dans ton sac et garde Éveil pour l'après-midi.</p>
+  <h2 id="a3">Pourquoi le pic, puis la chute</h2><p>Le sucre rapide et la caféine arrivent simultanément dans le sang : l'effet est immédiat, puis la glycémie chute. C'est le coup de barre de 16 h. Sans sucre ajouté, une infusion évite ce pic de glycémie.</p>
+  <div class="callout"><div><b>Trouvez votre recette</b><p class="t-sm muted" style="margin:0">Éveil 40 mg, Focus 60 mg, Rush 80 mg.</p></div><a class="btn btn-primary btn-sm" href="#infusions">Comparer les infusions</a></div>
+  <h2 id="a4">Par quoi la remplacer</h2><p>Commencez par remplacer une seule canette, celle du matin, par une tasse de Focus. Glissez votre boule à thé dans votre sac et réservez Éveil pour l'après-midi.</p>
  </article>
 </div></section>
 <section class="sec"><div class="wrap"><div class="sec-head"><h2 class="t-h2">À lire ensuite</h2></div><div class="g3">${ARTS.slice(1,4).map(acard).join('')}</div></div></section>`;
@@ -827,16 +827,16 @@ V.compte=()=>state.logged?dashboard():`
 <section class="sec-tight" style="padding-top:8px"><div class="wrap">
  <h1 class="t-h1" style="margin-bottom:28px">Mon compte</h1>
  <div class="auth">
-  <form class="card form" data-form="login" novalidate><h2 class="t-h4">J'ai déjà un compte</h2><div class="alert alert-err" id="login-msg" hidden></div>
+  <form class="card form" data-form="login" novalidate><h2 class="t-h4">Déjà client ?</h2><div class="alert alert-err" id="login-msg" hidden></div>
    ${field('l-email','E-mail','email','req email','autocomplete="email" value="ines.benali@email.fr"')}
    ${field('l-pw','Mot de passe','password','req pw','autocomplete="current-password" value="yuzaa2026"')}
    <a class="link t-sm" href="#compte">Mot de passe oublié ?</a>
    <button class="btn btn-primary btn-block" type="submit">Se connecter</button></form>
-  <form class="card form" data-form="register" novalidate><h2 class="t-h4">Créer un compte</h2><p class="t-sm muted" style="margin-top:-8px">Suis tes commandes et retrouve tes adresses en un clic.</p>
+  <form class="card form" data-form="register" novalidate><h2 class="t-h4">Créer un compte</h2><p class="t-sm muted" style="margin-top:-8px">Suivez vos commandes et retrouvez vos adresses en un clic.</p>
    <div class="row2">${field('r-prenom','Prénom','text','req','autocomplete="given-name"')}${field('r-nom','Nom','text','req','autocomplete="family-name"')}</div>
    ${field('r-email','E-mail','email','req email','autocomplete="email"')}
    ${field('r-pw','Mot de passe','password','req pw','autocomplete="new-password"')}<span class="hint" style="margin-top:-10px">8 caractères minimum, dont un chiffre.</span>
-   <label class="check"><input type="checkbox" id="r-etu"> Recevoir la newsletter (recettes et offres, 1 e-mail par mois)</label>
+   <label class="check"><input type="checkbox" id="r-etu"> Recevoir la newsletter (conseils et offres, un e-mail par mois)</label>
    <div class="field"><label class="check"><input type="checkbox" id="r-cgu" data-rule="checked" aria-describedby="r-cgu-err"> J'accepte les <a class="link" href="#cgu">conditions générales d'utilisation</a></label><span class="err" id="r-cgu-err"></span></div>
    <button class="btn btn-primary btn-block" type="submit">Créer mon compte</button></form>
  </div>
@@ -847,7 +847,7 @@ function dashboard(){return `
 <section class="sec-tight" style="padding-top:8px"><div class="wrap dash">
  <nav class="side" aria-label="Menu du compte"><a class="on" href="#compte">Tableau de bord</a><a href="#compte" data-scroll="cmd">Commandes</a><a href="#suivi">Suivi de colis</a><a href="#compte" data-scroll="prof">Profil &amp; adresses</a><button type="button" data-logout>Se déconnecter</button></nav>
  <div class="dmain">
-  <div class="welcome"><h1 class="t-h3">Bonjour Inès</h1><p class="muted">Ta dernière commande est en route : livraison prévue jeudi 16 octobre.</p></div>
+  <div class="welcome"><h1 class="t-h3">Bonjour Inès</h1><p class="muted">Votre dernière commande est en cours de livraison : arrivée prévue jeudi 16 octobre.</p></div>
   <div class="tiles"><div class="tile bg-focus"><span class="t-sm">Commandes</span><b>3</b><a class="link t-sm" href="#suivi">Suivre la dernière</a></div><div class="tile bg-eveil"><span class="t-sm">Livraisons offertes</span><b>2</b><span class="t-cap">Commandes de plus de 35 €</span></div><div class="tile bg-rush"><span class="t-sm">Recette préférée</span><b>Focus</b><span class="t-cap">Commandée 3 fois</span></div></div>
   <div class="card" style="padding:24px" id="cmd"><h2 class="t-h4" style="margin-bottom:12px">Historique des commandes</h2><div style="overflow-x:auto"><table class="otable"><thead><tr><th>N°</th><th>Date</th><th>Contenu</th><th>Total</th><th>Statut</th></tr></thead><tbody><tr><td>YZ-24817</td><td>12/10/2026</td><td>Boule à thé, Rush</td><td>24,70 €</td><td><a href="#suivi" class="pill p-run">En livraison</a></td></tr><tr><td>YZ-23102</td><td>03/10/2026</td><td>Pack Partiels</td><td>32,90 €</td><td><span class="pill p-ok">Livrée</span></td></tr><tr><td>YZ-21877</td><td>18/09/2026</td><td>Coffret Découverte</td><td>21,81 €</td><td><span class="pill p-ok">Livrée</span></td></tr></tbody></table></div></div>
   <div class="g2" id="prof" style="gap:20px;align-items:stretch"><div class="card" style="padding:24px"><h2 class="t-h4">Profil</h2><dl class="kv"><dt>Nom</dt><dd>Inès Benali</dd><dt>E-mail</dt><dd>ines.benali@email.fr</dd><dt>Newsletter</dt><dd>Inscrite</dd></dl></div><div class="card" style="padding:24px"><h2 class="t-h4">Adresse</h2><p class="muted" style="margin-top:12px">Inès Benali<br>14 rue de Paris<br>93100 Montreuil</p><a class="link t-sm" href="#compte" style="display:inline-block;margin-top:10px">Modifier</a></div></div>
@@ -858,78 +858,78 @@ V.suivi=()=>`
 <div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / <a href="#compte">Mon compte</a> / Suivi de colis</nav></div>
 <section class="hero" style="background:var(--bg-brand-subtle)"><div class="wrap" style="padding-block:40px"><span class="t-over over">Commande YZ-24817</span><h1 class="t-h1" style="margin-top:8px">Livraison prévue jeudi 16 octobre</h1><p class="muted" style="margin-top:8px">Livraison à domicile (48 h) · 14 rue de Paris, 93100 Montreuil</p></div></section>
 <section class="sec-tight"><div class="wrap">
- <div class="track"><div class="tstep bg-focus"><span class="pill p-ok" style="justify-self:start">✓ 13 oct.</span><b>Préparée</b><span class="t-sm muted">Ta commande a été emballée dans sa boîte en carton recyclé.</span></div><div class="tstep bg-eveil now" aria-current="step"><span class="pill p-run" style="justify-self:start">En cours</span><b>Expédiée</b><span class="t-sm muted">Prise en charge par le transporteur le 14 oct.</span></div><div class="tstep bg-sable"><span class="pill" style="justify-self:start;background:var(--sable-200)">À venir</span><b>Livrée</b><span class="t-sm muted">Estimée le 16 oct. avant 13 h.</span></div></div>
- <div class="g2" style="margin-top:28px;align-items:start;gap:24px"><div class="card" style="padding:24px"><h2 class="t-h4">Historique</h2><div class="events"><div><span>14/10 · 09:12</span>Colis pris en charge par le transporteur</div><div><span>13/10 · 17:40</span>Colis préparé et étiqueté</div><div><span>12/10 · 21:05</span>Paiement confirmé</div></div><a class="link t-sm" href="#contact" style="display:inline-block;margin-top:14px">Un problème avec ta livraison ?</a></div>
+ <div class="track"><div class="tstep bg-focus"><span class="pill p-ok" style="justify-self:start">✓ 13 oct.</span><b>Préparée</b><span class="t-sm muted">Votre commande a été préparée dans sa boîte en carton recyclé.</span></div><div class="tstep bg-eveil now" aria-current="step"><span class="pill p-run" style="justify-self:start">En cours</span><b>Expédiée</b><span class="t-sm muted">Prise en charge par le transporteur le 14 oct.</span></div><div class="tstep bg-sable"><span class="pill" style="justify-self:start;background:var(--sable-200)">À venir</span><b>Livrée</b><span class="t-sm muted">Estimée le 16 oct. avant 13 h.</span></div></div>
+ <div class="g2" style="margin-top:28px;align-items:start;gap:24px"><div class="card" style="padding:24px"><h2 class="t-h4">Historique</h2><div class="events"><div><span>14/10 · 09:12</span>Colis pris en charge par le transporteur</div><div><span>13/10 · 17:40</span>Colis préparé et étiqueté</div><div><span>12/10 · 21:05</span>Paiement confirmé</div></div><a class="link t-sm" href="#contact" style="display:inline-block;margin-top:14px">Un problème avec votre livraison ?</a></div>
  <div class="card" style="padding:24px"><h2 class="t-h4">Articles</h2><div class="line" style="grid-template-columns:64px 1fr auto"><div class="media" style="width:64px;height:64px;background:var(--eveil-100)">${bouleSVG()}</div><div><b>Boule à thé portable</b><div class="t-sm muted">× 1</div></div><span>8,90 €</span></div><div class="line" style="grid-template-columns:64px 1fr auto"><div class="media" style="width:64px;height:64px;background:${P.rush.c1}">${tinSVG('rush')}</div><div><b>Rush</b><div class="t-sm muted">Vrac 100 g × 1</div></div><span>11,90 €</span></div></div></div>
 </div></section>`;
 
-V.panier=()=>{const keys=Object.keys(state.cart);if(!keys.length)return `<div class="wrap">${stepper(0)}<div class="empty"><div class="media" style="width:160px;height:190px;background:none">${tinSVG('focus')}</div><h1 class="t-h3">Ton panier est vide</h1><p class="muted">Il n'y a encore rien ici. Commence par trouver la recette qui te correspond.</p><a class="btn btn-primary" href="#infusions">Voir les infusions</a></div></div>`;
+V.panier=()=>{const keys=Object.keys(state.cart);if(!keys.length)return `<div class="wrap">${stepper(0)}<div class="empty"><div class="media" style="width:160px;height:190px;background:none">${tinSVG('focus')}</div><h1 class="t-h3">Votre panier est vide</h1><p class="muted">Découvrez nos trois recettes pour trouver celle qui vous correspond.</p><a class="btn btn-primary" href="#infusions">Découvrir les infusions</a></div></div>`;
  const t=totals();const left=Math.max(0,FREE-(t.sub-t.disc));return `
 <div class="wrap">${stepper(0)}<h1 class="t-h1" style="margin-bottom:24px">Mon panier</h1>
 <div class="cartg"><div>
- <div class="jauge ${t.free?'ok':''}">${t.free?'La livraison t\'est offerte.':`Plus que ${eur(left)} pour profiter de la livraison offerte (dès 35 €).`}<div class="bar"><i style="width:${t.free?100:Math.min(100,(t.sub-t.disc)/FREE*100)}%"></i></div></div>
+ <div class="jauge ${t.free?'ok':''}">${t.free?'Livraison offerte.':`Plus que ${eur(left)} pour bénéficier de la livraison offerte.`}<div class="bar"><i style="width:${t.free?100:Math.min(100,(t.sub-t.disc)/FREE*100)}%"></i></div></div>
  ${keys.map(k=>{const l=lineInfo(k);return `<div class="line"><div class="media" style="background:var(--bg-subtle)">${l.media}</div><div><h3>${l.name}</h3><p class="t-sm muted">${l.sub}</p><button class="rm" type="button" data-rm="${k}">Retirer</button></div><div class="lp" style="display:grid;gap:8px;justify-items:end"><div class="qty"><button type="button" data-q="${k}" data-d="-1" aria-label="Moins">−</button><span>${state.cart[k]}</span><button type="button" data-q="${k}" data-d="1" aria-label="Plus">+</button></div><b class="price" style="font-size:18px">${eur(l.price*state.cart[k])}</b></div></div>`}).join('')}
- ${!state.cart.boule?`<div class="card" style="padding:20px;margin-top:24px;display:flex;gap:16px;align-items:center;flex-wrap:wrap"><div class="media" style="width:72px;height:72px;border-radius:12px;background:var(--eveil-100)">${bouleSVG()}</div><div style="flex:1;min-width:180px"><b>Ajoute la boule à thé portable</b><div class="t-sm muted">Pour infuser ton vrac partout · 8,90 €</div></div><button class="btn btn-ghost btn-sm" type="button" data-add="boule">Ajouter</button></div>`:''}
+ ${!state.cart.boule?`<div class="card" style="padding:20px;margin-top:24px;display:flex;gap:16px;align-items:center;flex-wrap:wrap"><div class="media" style="width:72px;height:72px;border-radius:12px;background:var(--eveil-100)">${bouleSVG()}</div><div style="flex:1;min-width:180px"><b>Complétez avec la boule à thé portable</b><div class="t-sm muted">Pour infuser votre vrac partout · 8,90 €</div></div><button class="btn btn-ghost btn-sm" type="button" data-add="boule">Ajouter</button></div>`:''}
 </div>
 <aside class="recap" aria-label="Récapitulatif"><h2 class="t-h4">Récapitulatif</h2>
- <form class="field ${state.promo?'is-ok':''}" data-form="promo" novalidate><label for="promo">Code promo</label><div class="promo"><input class="input" id="promo" placeholder="ETUDIANT10" value="${state.promo||''}" aria-describedby="promo-err"><button class="btn btn-ghost btn-sm" type="submit">Appliquer</button></div><span class="err" id="promo-err"></span>${state.promo?`<span class="hint" style="color:var(--feedback-success)">Code ${state.promo} appliqué : −10 % sur ta première commande</span>`:''}</form>
+ <form class="field ${state.promo?'is-ok':''}" data-form="promo" novalidate><label for="promo">Code promo</label><div class="promo"><input class="input" id="promo" placeholder="ETUDIANT10" value="${state.promo||''}" aria-describedby="promo-err"><button class="btn btn-ghost btn-sm" type="submit">Appliquer</button></div><span class="err" id="promo-err"></span>${state.promo?`<span class="hint" style="color:var(--feedback-success)">Code ${state.promo} appliqué : −10 % sur votre première commande</span>`:''}</form>
  <div class="r"><span>Sous-total</span><span>${eur(t.sub)}</span></div>
  ${t.disc?`<div class="r" style="color:var(--feedback-success)"><span>Code ETUDIANT10</span><span>−${eur(t.disc)}</span></div>`:''}
  <div class="r"><span>Livraison</span><span>${t.free?'Offerte':eur(t.ship)}</span></div>
  <div class="r tot"><span>Total</span><span>${eur(t.tot)}</span></div>
- <a class="btn btn-primary btn-block" href="#livraison">Commander</a>
- <p class="t-cap" style="text-align:center">Paiement sécurisé · Carte, PayPal, Apple Pay</p>
+ <a class="btn btn-primary btn-block" href="#livraison">Valider mon panier</a>
+ <p class="t-cap" style="text-align:center">Paiement sécurisé · Carte bancaire, PayPal, Apple Pay</p>
 </aside></div></div><div style="height:64px"></div>`;};
 
 V.livraison=()=>{const t=totals();return `
 <div class="wrap">${stepper(1)}<div class="cartg">
 <form class="form" data-form="livraison" novalidate><h1 class="t-h2">Livraison</h1>
  <div class="row2">${field('d-prenom','Prénom','text','req','autocomplete="given-name" value="Inès"')}${field('d-nom','Nom','text','req','autocomplete="family-name" value="Benali"')}</div>
- ${field('d-email','E-mail (pour la confirmation)','email','req email','autocomplete="email" value="ines.benali@email.fr"')}
+ ${field('d-email','E-mail (confirmation de commande)','email','req email','autocomplete="email" value="ines.benali@email.fr"')}
  ${field('d-adr','Adresse','text','req','autocomplete="street-address" value="14 rue de Paris"')}
  <div class="row2">${field('d-cp','Code postal','text','req cp','inputmode="numeric" autocomplete="postal-code" value="93100"')}${field('d-ville','Ville','text','req','autocomplete="address-level2" value="Montreuil"')}</div>
- ${field('d-tel','Téléphone (pour le livreur)','tel','req tel','autocomplete="tel" placeholder="06 12 34 56 78"')}
+ ${field('d-tel','Téléphone (pour le transporteur)','tel','req tel','autocomplete="tel" placeholder="06 12 34 56 78"')}
  <fieldset class="ship" style="border:0;padding:0;margin:0"><legend class="t-label" style="margin-bottom:10px">Mode de livraison</legend>
-  <label class="opt"><input type="radio" name="ship" value="relais" ${state.ship==='relais'?'checked':''}><span class="grow">Point relais<small>2 à 4 jours · choix du relais à l'étape suivante</small></span><b>${t.free?'Offerte':'3,90 €'}</b></label>
-  <label class="opt"><input type="radio" name="ship" value="domicile" ${state.ship==='domicile'?'checked':''}><span class="grow">À domicile<small>48 h</small></span><b>${t.free?'Offerte':'4,90 €'}</b></label></fieldset>
- <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><a class="btn btn-ghost" href="#panier">← Panier</a><button class="btn btn-primary" type="submit">Continuer vers le paiement</button></div>
+  <label class="opt"><input type="radio" name="ship" value="relais" ${state.ship==='relais'?'checked':''}><span class="grow">Point relais<small>2 à 4 jours ouvrés · sélection du relais à l'étape suivante</small></span><b>${t.free?'Offerte':'3,90 €'}</b></label>
+  <label class="opt"><input type="radio" name="ship" value="domicile" ${state.ship==='domicile'?'checked':''}><span class="grow">À domicile<small>Sous 48 h</small></span><b>${t.free?'Offerte':'4,90 €'}</b></label></fieldset>
+ <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><a class="btn btn-ghost" href="#panier">← Retour au panier</a><button class="btn btn-primary" type="submit">Continuer vers le paiement</button></div>
 </form>${recapMini()}</div></div><div style="height:64px"></div>`;};
-function recapMini(){const t=totals();return `<aside class="recap" aria-label="Récapitulatif"><h2 class="t-h4">Ta commande</h2>${Object.keys(state.cart).map(k=>`<div class="r"><span>${lineInfo(k).name} × ${state.cart[k]}</span><span>${eur(lineInfo(k).price*state.cart[k])}</span></div>`).join('')}${t.disc?`<div class="r"><span>Réduction</span><span>−${eur(t.disc)}</span></div>`:''}<div class="r"><span>Livraison</span><span>${t.free?'Offerte':eur(t.ship)}</span></div><div class="r tot"><span>Total</span><span>${eur(t.tot)}</span></div></aside>`;}
+function recapMini(){const t=totals();return `<aside class="recap" aria-label="Récapitulatif"><h2 class="t-h4">Votre commande</h2>${Object.keys(state.cart).map(k=>`<div class="r"><span>${lineInfo(k).name} × ${state.cart[k]}</span><span>${eur(lineInfo(k).price*state.cart[k])}</span></div>`).join('')}${t.disc?`<div class="r"><span>Réduction</span><span>−${eur(t.disc)}</span></div>`:''}<div class="r"><span>Livraison</span><span>${t.free?'Offerte':eur(t.ship)}</span></div><div class="r tot"><span>Total</span><span>${eur(t.tot)}</span></div></aside>`;}
 
 V.paiement=()=>`
 <div class="wrap">${stepper(2)}<div class="cartg">
 <form class="form" data-form="paiement" novalidate><h1 class="t-h2">Paiement</h1>
- <div class="chips" role="group" aria-label="Moyen de paiement"><button class="chip" type="button" aria-pressed="true">Carte bancaire</button><button class="chip" type="button" data-toast="PayPal s'ouvrira dans une nouvelle fenêtre (non simulé).">PayPal</button><button class="chip" type="button" data-toast="Apple Pay non simulé dans le prototype.">Apple Pay</button></div>
+ <div class="chips" role="group" aria-label="Moyen de paiement"><button class="chip" type="button" aria-pressed="true">Carte bancaire</button><button class="chip" type="button" data-toast="PayPal s'ouvrira dans une nouvelle fenêtre.">PayPal</button><button class="chip" type="button" data-toast="Apple Pay sera disponible au lancement du site.">Apple Pay</button></div>
  ${field('c-num','Numéro de carte','text','req card','inputmode="numeric" autocomplete="cc-number" placeholder="1234 5678 9012 3456"')}
  <div class="row2">${field('c-exp','Expiration (MM/AA)','text','req exp','autocomplete="cc-exp" placeholder="09/28"')}${field('c-cvc','Cryptogramme','text','req cvc','inputmode="numeric" autocomplete="cc-csc" placeholder="123"')}</div>
  ${field('c-nom','Nom sur la carte','text','req','autocomplete="cc-name" value="Ines Benali"')}
- <div class="field"><label class="check"><input type="checkbox" id="c-cgv" data-rule="checked" aria-describedby="c-cgv-err"> J'ai lu et j'accepte les <a class="link" href="#cgv">conditions générales de vente</a></label><span class="err" id="c-cgv-err"></span></div>
- <p class="hint">Astuce démo : n'importe quel numéro de 16 chiffres fonctionne.</p>
- <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><a class="btn btn-ghost" href="#livraison">← Livraison</a><button class="btn btn-primary" type="submit">Payer ${eur(totals().tot)}</button></div>
+ <div class="field"><label class="check"><input type="checkbox" id="c-cgv" data-rule="checked" aria-describedby="c-cgv-err"> J'accepte les <a class="link" href="#cgv">conditions générales de vente</a></label><span class="err" id="c-cgv-err"></span></div>
+ <p class="hint">Démonstration : tout numéro de 16 chiffres est accepté.</p>
+ <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><a class="btn btn-ghost" href="#livraison">← Retour à la livraison</a><button class="btn btn-primary" type="submit">Payer ${eur(totals().tot)}</button></div>
 </form>${recapMini()}</div></div><div style="height:64px"></div>`;
 
 V.confirmation=()=>`
-<div class="wrap">${stepper(3)}<div class="confirm"><span class="okmark">${ico.check}</span><h1 class="t-h1">Merci Inès, ta commande est confirmée !</h1><p class="t-lg muted" style="max-width:52ch">Commande <b>YZ-24817</b> confirmée. Un e-mail récapitulatif vient d'être envoyé à ines.benali@email.fr. Ton colis sera expédié sous 48 h.</p><div class="ctas" style="justify-content:center"><a class="btn btn-primary" href="#suivi">Suivre ma commande</a><a class="btn btn-ghost" href="#article">Bien préparer ma première tasse</a></div></div>
-<div class="g3" style="margin-bottom:80px"><div class="proof"><span class="ico">${ico.truck}</span><h3>Livraison jeudi</h3><p>Tu recevras le lien de suivi par e-mail dès l'expédition.</p></div><div class="proof"><span class="ico">${ico.leaf}</span><h3>Ta première semaine</h3><p>Focus le matin, Éveil après le déjeuner. Nous t'enverrons nos conseils de préparation.</p></div><div class="proof"><span class="ico">${ico.tin}</span><h3>Parraine une amie</h3><p>Ton code INES-YZ : 5 € offerts à toi et à ta filleule.</p></div></div></div>`;
+<div class="wrap">${stepper(3)}<div class="confirm"><span class="okmark">${ico.check}</span><h1 class="t-h1">Merci Inès, votre commande est confirmée.</h1><p class="t-lg muted" style="max-width:52ch">Commande <b>YZ-24817</b> confirmée. Un e-mail récapitulatif vient de vous être envoyé à ines.benali@email.fr. Votre colis sera expédié sous 48 h.</p><div class="ctas" style="justify-content:center"><a class="btn btn-primary" href="#suivi">Suivre ma commande</a><a class="btn btn-ghost" href="#article">Bien préparer ma première tasse</a></div></div>
+<div class="g3" style="margin-bottom:80px"><div class="proof"><span class="ico">${ico.truck}</span><h3>Livraison jeudi</h3><p>Vous recevrez le lien de suivi par e-mail dès l'expédition.</p></div><div class="proof"><span class="ico">${ico.leaf}</span><h3>Votre première semaine</h3><p>Focus le matin, Éveil après le déjeuner : nos conseils de préparation arrivent par e-mail.</p></div><div class="proof"><span class="ico">${ico.tin}</span><h3>Parrainez un proche</h3><p>Avec votre code INES-YZ, offrez 5 € et recevez 5 €.</p></div></div></div>`;
 
-const FAQ=[['Caféine & recettes',[['Combien de caféine contient une tasse ?','Éveil contient 40 mg de caféine, Focus 60 mg et Rush 80 mg par tasse de 25 cl. À titre de repère, un espresso en contient environ 80 mg.'],['Quelle recette choisir ?','Éveil pour une énergie douce, Focus pour rester concentré pendant les révisions, Rush pour un vrai coup de boost. Le coffret Découverte permet de goûter les trois.'],['Combien de tasses par jour au maximum ?','Nous recommandons deux tasses par jour au maximum, et pas de caféine après 16 h pour préserver ton sommeil.'],['Est-ce que ça remplace le café ?','Oui, pour l\'effet : la caféine est la même molécule, qu\'elle vienne du café ou des plantes. Le goût, en revanche, est sans amertume et sans sucre ajouté.'],['À qui les infusions sont-elles déconseillées ?','Nos infusions contiennent de la caféine : elles sont déconseillées aux femmes enceintes ou allaitantes, aux moins de 16 ans et aux personnes sensibles à la caféine.']]],['Préparation',[['Vrac ou sachets ?','Le vrac (100 g, environ 40 tasses) revient à 0,30 € la tasse. La boîte de 20 sachets est plus pratique à emporter.'],['Comment préparer mon infusion ?','2,5 g de vrac (ou un sachet) pour 25 cl d\'eau à 80 °C, 5 minutes d\'infusion. La boule à thé portable permet de la préparer partout.']]],['Commande & livraison',[['Quels sont les délais et frais de livraison ?','Point relais en 2 à 4 jours (3,90 €) ou à domicile en 48 h (4,90 €). La livraison est offerte dès 35 € d\'achat.'],['Comment utiliser le code étudiant ?','Saisis ETUDIANT10 dans ton panier pour bénéficier de −10 % sur ta première commande.'],['Puis-je retourner un produit ?','Oui, les retours sont gratuits sous 30 jours à compter de la réception.']]],['Offre pros',[['Avez-vous une offre pour les cafés, coworkings et BDE ?','Oui, sur devis. Faites votre demande depuis la page Offre pros : nous revenons vers vous sous 48 h ouvrées.'],['Puis-je commander pour un événement ?','Oui : stand, semaine d\'examens, salon… Précisez votre besoin dans le formulaire de devis.']]]];
+const FAQ=[['Caféine & recettes',[['Combien de caféine contient une tasse ?','Éveil contient 40 mg de caféine, Focus 60 mg et Rush 80 mg par tasse de 25 cl. À titre de repère, un espresso en contient environ 80 mg.'],['Quelle recette choisir ?','Éveil pour une énergie douce, Focus pour la concentration, Rush pour les journées les plus exigeantes. Le coffret Découverte permet de goûter les trois.'],['Combien de tasses par jour au maximum ?','Nous recommandons deux tasses par jour au maximum, et pas de caféine après 16 h afin de préserver votre sommeil.'],['Les infusions remplacent-elles le café ?','Oui, pour l\'effet : la caféine est la même molécule, qu\'elle provienne du café ou des plantes. Le goût, lui, est sans amertume et sans sucre ajouté.'],['À qui les infusions sont-elles déconseillées ?','Nos infusions contiennent de la caféine : elles sont déconseillées aux femmes enceintes ou allaitantes, aux moins de 16 ans et aux personnes sensibles à la caféine.']]],['Préparation',[['Vrac ou sachets ?','Le vrac (100 g, environ 40 tasses) revient à 0,30 € la tasse. La boîte de 20 sachets est plus pratique à emporter.'],['Comment préparer mon infusion ?','2,5 g de vrac (ou un sachet) pour 25 cl d\'eau à 80 °C, 5 minutes d\'infusion. La boule à thé portable vous permet de la préparer partout.']]],['Commande & livraison',[['Quels sont les délais et frais de livraison ?','Point relais en 2 à 4 jours ouvrés (3,90 €) ou à domicile sous 48 h (4,90 €). La livraison est offerte dès 35 € d\'achat.'],['Comment utiliser le code étudiant ?','Saisissez ETUDIANT10 dans votre panier pour bénéficier de −10 % sur votre première commande.'],['Puis-je retourner un produit ?','Oui, les retours sont gratuits sous 30 jours à compter de la réception.']]],['Offre pros',[['Proposez-vous une offre pour les cafés, coworkings et BDE ?','Oui, sur devis. Faites votre demande depuis la page Offre pros : nous revenons vers vous sous 48 h ouvrées.'],['Puis-je commander pour un événement ?','Oui : stand, semaine d\'examens, salon… Précisez votre besoin dans le formulaire de devis.']]]];
 V.faq=()=>`
 <div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / FAQ</nav></div>
 <section class="sec-tight" style="padding-top:8px"><div class="wrap">
- <h1 class="t-h1">Questions fréquentes</h1><p class="t-lg muted" style="margin-block:12px 24px">Caféine, préparation, livraison : retrouve les réponses aux questions les plus fréquentes.</p>
+ <h1 class="t-h1">Questions fréquentes</h1><p class="t-lg muted" style="margin-block:12px 24px">Caféine, préparation, livraison : retrouvez les réponses aux questions les plus fréquentes.</p>
  <div class="field" style="max-width:520px;margin-bottom:40px"><label for="fq">Rechercher une question</label><input class="input" id="fq" type="search" placeholder="Ex. : caféine, livraison, retours"></div>
  <div class="faqg"><nav class="faqcat" aria-label="Catégories">${FAQ.map((c,i)=>`<a href="#faq" data-scroll="fc${i}">${c[0]}</a>`).join('')}</nav>
- <div id="faqlist">${FAQ.map((c,i)=>`<h2 id="fc${i}">${c[0]}</h2>${c[1].map(q=>`<details class="cond"><summary>${q[0]}</summary><p>${q[1]}</p></details>`).join('')}`).join('')}<p id="fqnone" class="muted" hidden style="margin-top:16px">Aucune question ne correspond. <a class="link" href="#contact">Pose-nous la tienne.</a></p></div></div>
+ <div id="faqlist">${FAQ.map((c,i)=>`<h2 id="fc${i}">${c[0]}</h2>${c[1].map(q=>`<details class="cond"><summary>${q[0]}</summary><p>${q[1]}</p></details>`).join('')}`).join('')}<p id="fqnone" class="muted" hidden style="margin-top:16px">Aucune question ne correspond. <a class="link" href="#contact">Posez-nous la vôtre.</a></p></div></div>
 </div></section>
-<section class="sec"><div class="wrap"><div class="band" style="background:var(--bg-brand-subtle)"><div><h2 class="t-h3">Tu n'as pas trouvé ta réponse ?</h2><p class="muted">Notre équipe te répond sous 24 h ouvrées.</p></div><a class="btn btn-primary" href="#contact">Nous contacter</a></div></div></section>`;
+<section class="sec"><div class="wrap"><div class="band" style="background:var(--bg-brand-subtle)"><div><h2 class="t-h3">Vous n'avez pas trouvé votre réponse ?</h2><p class="muted">Notre équipe vous répond sous 24 h ouvrées.</p></div><a class="btn btn-primary" href="#contact">Nous contacter</a></div></div></section>`;
 
 V.contact=()=>`
 <div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / Contact</nav></div>
 <section class="sec-tight" style="padding-top:8px;padding-bottom:80px"><div class="wrap">
  <h1 class="t-h1" style="margin-bottom:28px">Nous contacter</h1>
  <div class="contact">
-  <div class="coord"><div><h3>E-mail</h3><p>bonjour@yuzaa.fr</p></div><div><h3>Téléphone</h3><p>01 84 60 12 34<br><span style="color:var(--focus-100);font-size:14px">Du lundi au vendredi, 9 h – 18 h</span></p></div><div><h3>Adresse</h3><p>yuzaa SAS<br>12 rue des Plantes<br>69007 Lyon</p></div><div><h3>Réseaux</h3><p>Instagram et TikTok : @yuzaa.energie</p></div></div>
-  <form class="card form" style="padding:32px" data-form="contact" novalidate><div class="alert alert-ok" id="contact-ok" hidden role="status">Message envoyé. Notre équipe te répond sous 24 h ouvrées.</div>
+  <div class="coord"><div><h3>E-mail</h3><p>bonjour@yuzaa.fr</p></div><div><h3>Téléphone</h3><p>01 84 60 12 34<br><span style="color:var(--focus-100);font-size:14px">Du lundi au vendredi, de 9 h à 18 h</span></p></div><div><h3>Adresse</h3><p>yuzaa SAS<br>12 rue des Plantes<br>69007 Lyon</p></div><div><h3>Réseaux</h3><p>Instagram et TikTok : @yuzaa.energie</p></div></div>
+  <form class="card form" style="padding:32px" data-form="contact" novalidate><div class="alert alert-ok" id="contact-ok" hidden role="status">Message envoyé. Notre équipe vous répond sous 24 h ouvrées.</div>
    <div class="row2">${field('k-nom','Nom','text','req','autocomplete="name"')}${field('k-email','E-mail','email','req email','autocomplete="email"')}</div>
    <div class="field"><label for="k-sujet">Sujet</label><select class="input" id="k-sujet"><option>Question sur un produit</option><option>Ma commande</option><option>Offre pros (café, coworking, BDE)</option><option>Autre</option></select></div>
    <div class="field"><label for="k-msg">Message</label><textarea class="input" id="k-msg" rows="5" data-rule="req min20" aria-describedby="k-msg-err"></textarea><span class="err" id="k-msg-err"></span></div>
@@ -939,12 +939,12 @@ V.contact=()=>`
 
 function legal(title,intro,arts){return `<div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / ${title}</nav></div><section class="sec-tight" style="padding-top:8px;padding-bottom:80px"><div class="wrap"><h1 class="t-h1">${title}</h1><p class="t-cap" style="margin-block:10px 32px">Mise à jour le 12 octobre 2026</p><div class="legal"><aside class="toc" aria-label="Sommaire"><b class="t-over">Sommaire</b><ol>${arts.map((a,i)=>`<li><a href="#${title==='Mentions légales'?'mentions':title.startsWith('Conditions générales de vente')?'cgv':'cgu'}" data-scroll="lg${i}">${a[0]}</a></li>`).join('')}</ol></aside><div><p>${intro}</p>${arts.map((a,i)=>`<h2 id="lg${i}">${i+1}. ${a[0]}</h2><p>${a[1]}</p>`).join('')}</div></div></div></section>`;}
 V.cgv=()=>legal('Conditions générales de vente','Les présentes conditions régissent les ventes conclues sur yuzaa.fr entre yuzaa SAS et tout client consommateur.',[['Produits','Infusions 100 % plantes contenant de la caféine naturelle, vendues en vrac (100 g) ou en boîte de 20 sachets, et accessoires.'],['Prix','Les prix sont indiqués en euros TTC. Les frais de livraison sont précisés avant la validation de la commande.'],['Commande et paiement','La commande est confirmée après paiement par carte, PayPal ou Apple Pay. Un e-mail de confirmation est envoyé.'],['Livraison','Point relais 3,90 € (2 à 4 jours) ou domicile 4,90 € (48 h) en France métropolitaine. Livraison offerte dès 35 €.'],['Retours','Retours gratuits sous 30 jours à compter de la réception.'],['Offre professionnelle','Les ventes aux cafés, coworkings et BDE font l\'objet d\'un devis et de conditions particulières.']]);
-V.cgu=()=>legal('Conditions générales d\'utilisation','Les présentes CGU définissent les règles d\'utilisation du site yuzaa.fr et de l\'espace client.',[['Accès au site','Le site est accessible gratuitement. yuzaa peut suspendre l\'accès pour maintenance.'],['Compte client','Tu es responsable de la confidentialité de ton mot de passe. Un compte est personnel.'],['Avis clients','Seuls les clients ayant acheté le produit peuvent publier un avis. Les avis injurieux sont supprimés.'],['Propriété intellectuelle','Les textes, visuels et le logo yuzaa sont protégés et ne peuvent être réutilisés sans autorisation.'],['Données personnelles','Tes données servent à traiter tes commandes et, avec ton accord, à t\'envoyer la newsletter. Tu peux les modifier ou les supprimer à tout moment.']]);
+V.cgu=()=>legal('Conditions générales d\'utilisation','Les présentes CGU définissent les règles d\'utilisation du site yuzaa.fr et de l\'espace client.',[['Accès au site','Le site est accessible gratuitement. yuzaa peut suspendre l\'accès pour maintenance.'],['Compte client','Vous êtes responsable de la confidentialité de votre mot de passe. Chaque compte est personnel.'],['Avis clients','Seuls les clients ayant acheté le produit peuvent publier un avis. Les avis injurieux sont supprimés.'],['Propriété intellectuelle','Les textes, visuels et le logo yuzaa sont protégés et ne peuvent être réutilisés sans autorisation.'],['Données personnelles','Vos données servent à traiter vos commandes et, avec votre accord, à vous adresser la newsletter. Vous pouvez les modifier ou les supprimer à tout moment.']]);
 V.mentions=()=>legal('Mentions légales','Informations légales relatives à l\'éditeur et à l\'hébergeur du site yuzaa.fr (projet étudiant SAE).',[['Éditeur','yuzaa SAS, 12 rue des Plantes, 69007 Lyon · bonjour@yuzaa.fr'],['Hébergement','Hébergeur à préciser lors de la mise en ligne.'],['Cookies','Seuls les cookies nécessaires au panier et à la mesure d\'audience sont déposés, après consentement.']]);
 
-V.merci=()=>`<section class="sec"><div class="wrap"><div class="confirm"><span class="okmark">${ico.check}</span><span class="t-over over">Inscription confirmée</span><h1 class="t-h1">Bienvenue chez yuzaa !</h1><p class="t-lg muted" style="max-width:54ch">Ton compte est créé et un e-mail de bienvenue vient de partir. Merci de ta confiance : voici <b>−10 % sur ta première commande</b> avec ce code.</p><div class="card" style="padding:18px 28px;font:800 26px var(--font-display);letter-spacing:.06em;color:var(--text-brand)">ETUDIANT10</div><div class="ctas" style="justify-content:center"><a class="btn btn-primary" href="#infusions">Trouver ma dose</a><a class="btn btn-ghost" href="#compte">Voir mon compte</a></div></div><div class="g3"><div class="proof"><span class="ico">${ico.leaf}</span><h3>Goûte les 3 recettes</h3><p>Le coffret Découverte : 3 × 30 g et une boule à thé pour 19,90 €.</p></div><div class="proof"><span class="ico">${ico.lab}</span><h3>Lis le guide des doses</h3><p>40, 60 ou 80 mg : choisis selon ton besoin du moment.</p></div><div class="proof"><span class="ico">${ico.tin}</span><h3>Suis-nous</h3><p>Recettes et routines sur Instagram et TikTok @yuzaa.energie.</p></div></div></div></section>`;
-V['merci-newsletter']=()=>`<section class="sec"><div class="wrap"><div class="confirm"><span class="okmark">${ico.check}</span><span class="t-over over">Newsletter</span><h1 class="t-h1">Merci, c'est noté !</h1><p class="t-lg muted" style="max-width:54ch">Tu recevras un e-mail par mois : nouveaux articles, recettes et offres. Pour ta première commande, pense au code <b>ETUDIANT10</b> : −10 %.</p><div class="ctas" style="justify-content:center"><a class="btn btn-primary" href="#infusions">Découvrir les infusions</a><a class="btn btn-ghost" href="#blog">Lire le blog</a></div></div></div></section>`;
-V['404']=()=>`<section><div class="wrap nf"><div><div class="code">404</div><h1 class="t-h2" style="margin-block:12px">Cette page a trop infusé.</h1><p class="muted" style="max-width:44ch">Le lien est peut-être erroné ou la page a été déplacée. Reprends des forces avec une de ces pages :</p><div class="ctas"><a class="btn btn-primary" href="#accueil">Retour à l'accueil</a><a class="btn btn-ghost" href="#infusions">Nos infusions</a></div><p class="t-sm" style="margin-top:20px"><a class="link" href="#faq">FAQ</a> · <a class="link" href="#contact">Contact</a> · <a class="link" href="#blog">Blog</a></p></div><div class="media" style="aspect-ratio:1/1;background:var(--focus-50)"><svg viewBox="0 0 200 240" role="img" aria-label="Boîte renversée"><g transform="rotate(-18 100 140)">${tin('focus')}</g><path d="M30 225c30-12 60-12 90 0" stroke="#7FC594" stroke-width="6" fill="none" stroke-linecap="round"/></svg></div></div></section>`;
+V.merci=()=>`<section class="sec"><div class="wrap"><div class="confirm"><span class="okmark">${ico.check}</span><span class="t-over over">Inscription confirmée</span><h1 class="t-h1">Bienvenue chez yuzaa</h1><p class="t-lg muted" style="max-width:54ch">Votre compte est créé et un e-mail de bienvenue vient de vous être envoyé. Pour votre première commande, profitez de <b>−10 %</b> avec ce code :</p><div class="card" style="padding:18px 28px;font:800 26px var(--font-display);letter-spacing:.06em;color:var(--text-brand)">ETUDIANT10</div><div class="ctas" style="justify-content:center"><a class="btn btn-primary" href="#infusions">Découvrir les recettes</a><a class="btn btn-ghost" href="#compte">Accéder à mon compte</a></div></div><div class="g3"><div class="proof"><span class="ico">${ico.leaf}</span><h3>Goûtez les trois recettes</h3><p>Le coffret Découverte : 3 × 30 g et une boule à thé pour 19,90 €.</p></div><div class="proof"><span class="ico">${ico.lab}</span><h3>Consultez le guide des doses</h3><p>40, 60 ou 80 mg : choisissez selon votre besoin.</p></div><div class="proof"><span class="ico">${ico.tin}</span><h3>Suivez-nous</h3><p>Recettes et conseils sur Instagram et TikTok @yuzaa.energie.</p></div></div></div></section>`;
+V['merci-newsletter']=()=>`<section class="sec"><div class="wrap"><div class="confirm"><span class="okmark">${ico.check}</span><span class="t-over over">Newsletter</span><h1 class="t-h1">Merci pour votre inscription</h1><p class="t-lg muted" style="max-width:54ch">Vous recevrez un e-mail par mois : nouveaux articles, recettes et offres. Pour votre première commande, utilisez le code <b>ETUDIANT10</b> : −10 %.</p><div class="ctas" style="justify-content:center"><a class="btn btn-primary" href="#infusions">Découvrir les infusions</a><a class="btn btn-ghost" href="#blog">Lire le blog</a></div></div></div></section>`;
+V['404']=()=>`<section><div class="wrap nf"><div><div class="code">404</div><h1 class="t-h2" style="margin-block:12px">Cette page est introuvable.</h1><p class="muted" style="max-width:44ch">Le lien est peut-être erroné ou la page a été déplacée. Voici quelques pages utiles :</p><div class="ctas"><a class="btn btn-primary" href="#accueil">Retour à l'accueil</a><a class="btn btn-ghost" href="#infusions">Nos infusions</a></div><p class="t-sm" style="margin-top:20px"><a class="link" href="#faq">FAQ</a> · <a class="link" href="#contact">Contact</a> · <a class="link" href="#blog">Blog</a></p></div><div class="media" style="aspect-ratio:1/1;background:var(--focus-50)"><svg viewBox="0 0 200 240" role="img" aria-label="Boîte renversée"><g transform="rotate(-18 100 140)">${tin('focus')}</g><path d="M30 225c30-12 60-12 90 0" stroke="#7FC594" stroke-width="6" fill="none" stroke-linecap="round"/></svg></div></div></section>`;
 
 const ROUTES=[['accueil','Accueil'],['infusions','Nos infusions (catalogue)'],['produit-eveil','Produit · Éveil'],['produit-focus','Produit · Focus'],['produit-rush','Produit · Rush'],['coffrets','Coffrets'],['coffret-decouverte','Coffret Découverte'],['coffret-partiels','Pack Partiels'],['coffret-boule','Boule à thé portable'],['pros','Offre pros'],['histoire','Histoire'],['blog','Blog'],['article','Article de blog'],['compte','Compte (connexion / inscription)'],['merci','Merci (après inscription)'],['suivi','Suivi de colis'],['panier','Panier'],['livraison','Livraison'],['paiement','Paiement'],['confirmation','Confirmation'],['faq','FAQ'],['contact','Contact'],['cgv','CGV'],['cgu','CGU'],['mentions','Mentions légales'],['merci-newsletter','Merci (newsletter)'],['page-inexistante','Page 404']];
 const TITLES={accueil:'yuzaa · Infusions énergisantes naturelles'};
@@ -959,7 +959,7 @@ function render(keepScroll){const r=(location.hash.slice(1)||'accueil');const m=
  count();bindSim();bindFaq();}
 
 /* ---------- Validation des formulaires ---------- */
-const MSG={req:'Ce champ est obligatoire.',email:'Adresse e-mail invalide. Exemple : prenom@email.fr',cp:'Le code postal doit contenir 5 chiffres.',tel:'Numéro invalide. Exemple : 06 12 34 56 78',card:'Le numéro de carte doit contenir 16 chiffres.',exp:'Format attendu : MM/AA, date non dépassée.',cvc:'3 chiffres au dos de ta carte.',pw:'8 caractères minimum, dont au moins un chiffre.',min20:'Ton message doit faire au moins 20 caractères.',checked:'Merci de cocher cette case pour continuer.'};
+const MSG={req:'Ce champ est obligatoire.',email:'Adresse e-mail invalide. Exemple : prenom@email.fr',cp:'Le code postal doit contenir 5 chiffres.',tel:'Numéro invalide. Exemple : 06 12 34 56 78',card:'Le numéro de carte doit contenir 16 chiffres.',exp:'Format attendu : MM/AA, date non dépassée.',cvc:'Les 3 chiffres au dos de votre carte.',pw:'8 caractères minimum, dont au moins un chiffre.',min20:'Votre message doit contenir au moins 20 caractères.',checked:'Veuillez cocher cette case pour continuer.'};
 const TEST={req:v=>v.trim()!=='',email:v=>/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v.trim()),cp:v=>/^\d{5}$/.test(v.trim()),tel:v=>/^0[1-9](\s?\d{2}){4}$/.test(v.trim()),card:v=>/^\d{16}$/.test(v.replace(/\s/g,'')),exp:v=>{const m=v.trim().match(/^(0[1-9]|1[0-2])\/(\d{2})$/);return !!m&&(+m[2]>26||(+m[2]===26&&+m[1]>=10));},cvc:v=>/^\d{3}$/.test(v.trim()),pw:v=>v.length>=8&&/\d/.test(v),min20:v=>v.trim().length>=20};
 function check(inp){const rules=(inp.dataset.rule||'').split(' ').filter(Boolean);const f=inp.closest('.field');let bad=null;for(const r of rules){if(r==='checked'){if(!inp.checked){bad=r;break;}continue;}if(r!=='req'&&inp.value.trim()==='')continue;if(!TEST[r](inp.value)){bad=r;break;}}
  if(f){f.classList.toggle('has-error',!!bad);f.classList.toggle('is-ok',!bad&&inp.type!=='checkbox'&&inp.value!=='');const e=f.querySelector('.err');if(e)e.textContent=bad?MSG[bad]:'';}inp.setAttribute('aria-invalid',bad?'true':'false');return !bad;}
@@ -967,7 +967,7 @@ function validate(form){let ok=true,first=null;$$('[data-rule]',form).forEach(i=
 const H={
  pros:f=>{$('#pros-ok').hidden=false;f.reset();$$('.field',f).forEach(x=>x.classList.remove('is-ok'));},
  newsletter:f=>{f.reset();location.hash='merci-newsletter';},
- login:f=>{state.logged=true;render();toast('Connectée. Bon retour, Inès !');},
+ login:f=>{state.logged=true;render();toast('Bon retour, Inès !');},
  register:f=>{state.logged=true;location.hash='merci';},
  livraison:f=>{location.hash='paiement';},
  paiement:f=>{state.cart={};state.promo=null;count();location.hash='confirmation';},
@@ -977,7 +977,7 @@ const H={
 /* ---------- Événements ---------- */
 const site=$('#site');
 site.addEventListener('submit',e=>{const f=e.target.closest('[data-form]');if(!f)return;e.preventDefault();const n=f.dataset.form;
- if(n==='promo'){const v=$('#promo').value.trim().toUpperCase();const fld=f;if(v==='ETUDIANT10'){state.promo=v;render(true);toast('Code '+v+' appliqué : −10 %');}else{fld.classList.add('has-error');$('#promo-err').textContent=v?'Ce code n\'existe pas ou a expiré. Essaie ETUDIANT10.':'Saisis un code promo.';}return;}
+ if(n==='promo'){const v=$('#promo').value.trim().toUpperCase();const fld=f;if(v==='ETUDIANT10'){state.promo=v;render(true);toast('Code '+v+' appliqué : −10 %');}else{fld.classList.add('has-error');$('#promo-err').textContent=v?'Ce code n\'est pas valide ou a expiré.':'Veuillez saisir un code promo.';}return;}
  if(validate(f))H[n]&&H[n](f);});
 site.addEventListener('focusout',e=>{const i=e.target;if(i.matches&&i.matches('[data-rule]')&&(i.value!==''||i.closest('.has-error')))check(i);});
 site.addEventListener('input',e=>{const i=e.target;if(i.matches('[data-rule]')&&i.closest('.has-error'))check(i);if(i.name==='ship'){state.ship=i.value;}});
@@ -991,7 +991,7 @@ site.addEventListener('click',e=>{const t=e.target.closest('button,a');if(!t)ret
  if(t.dataset.bfilter){state.bfilter=t.dataset.bfilter;render(true);return;}
  if(t.dataset.car){$('#car').scrollBy({left:+t.dataset.car*300,behavior:'smooth'});return;}
  if(t.dataset.toast){toast(t.dataset.toast);return;}
- if(t.hasAttribute('data-logout')){state.logged=false;render();toast('Tu es déconnectée.');return;}
+ if(t.hasAttribute('data-logout')){state.logged=false;render();toast('Vous êtes déconnecté(e).');return;}
  if(t.hasAttribute('data-burger')){const m=$('#mnav');const o=m.dataset.open!=='true';m.dataset.open=o;t.setAttribute('aria-expanded',o);return;}
  if(t.hasAttribute('data-focusnl')){e.preventDefault();$('#nl-email').focus();$('#nl-email').scrollIntoView({block:'center',behavior:'smooth'});return;}
  if(t.dataset.scroll){e.preventDefault();const el=document.getElementById(t.dataset.scroll);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});return;}
