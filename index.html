@@ -952,6 +952,125 @@ img.pk-tilt{transform:rotate(-14deg)}
 .nlpop-media{position:relative;overflow:hidden;padding:0;min-height:100%;background:radial-gradient(120% 90% at 50% 45%,#EAF4EC 0%,var(--focus-100) 70%)}
 .nlpop-media img{position:absolute;inset:0;width:100%;height:100%;max-width:100%;object-fit:contain;object-position:center;padding:32px 22px;box-sizing:border-box;animation:none;transform:none;filter:drop-shadow(0 14px 16px rgba(27,26,22,.2))}
 @container site (max-width:760px){.nlpop-media{display:block;aspect-ratio:16/7;min-height:0}.nlpop-media img{padding:16px 24px 6px}}
+
+/* v16 direction artistique : rythme, typographie, composants, détails (raffinement visuel uniquement) */
+:root{--sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:24px;--sp-6:32px;--sp-7:48px;--sp-8:64px;--sp-9:96px;--sp-10:120px;--ease-out:cubic-bezier(.22,.61,.36,1);--hair:rgba(27,26,22,.08);--hair-2:rgba(27,26,22,.12);--ring:0 0 0 2px var(--sable-0),0 0 0 4px var(--focus-500)}
+.site:not(.wf){-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;font-kerning:normal}
+/* 1. Typographie */
+.site:not(.wf) h1,.site:not(.wf) h2,.site:not(.wf) h3,.site:not(.wf) .t-h1,.site:not(.wf) .t-h2,.site:not(.wf) .t-h3,.site:not(.wf) .t-h4,.site:not(.wf) .t-display{text-wrap:balance}
+.site:not(.wf) p,.site:not(.wf) li,.site:not(.wf) dd{text-wrap:pretty}
+.site:not(.wf) .sec-head p,.site:not(.wf) .lead,.site:not(.wf) .t-lg{max-width:62ch}
+.site:not(.wf) .prose p,.site:not(.wf) .prose li{max-width:68ch}
+.site:not(.wf) .t-over{font-size:12px;font-weight:600;letter-spacing:.14em;line-height:1.4}
+.site:not(.wf) .sec-head .t-over,.site:not(.wf) .sec-head .over{margin-bottom:var(--sp-3)}
+.site:not(.wf) .price,.site:not(.wf) .r,.site:not(.wf) .qty,.site:not(.wf) .kv dd{font-variant-numeric:tabular-nums}
+.site:not(.wf) .proof h3,.site:not(.wf) .steps4 h3,.site:not(.wf) .card h3{letter-spacing:-.01em}
+.site:not(.wf) .proof p,.site:not(.wf) .acard p,.site:not(.wf) .steps4 p{line-height:1.65}
+.site:not(.wf) .crumb{letter-spacing:.01em}
+.site:not(.wf) .crumb a{text-decoration-color:var(--hair-2);text-underline-offset:3px}
+.site:not(.wf) .crumb a:hover{color:var(--text-primary);text-decoration-color:currentColor}
+/* 2. Rythme vertical (échelle 4/8) */
+.site:not(.wf) .sec-head{margin-bottom:var(--sp-7)}
+.site:not(.wf) .card .ill-card,.site:not(.wf) .card>.media:first-child{margin-bottom:var(--sp-5)}
+.site:not(.wf) .kv{gap:var(--sp-3) var(--sp-5)}
+.site:not(.wf) .ctas{gap:var(--sp-3)}
+/* 3. Composants : cartes */
+.site:not(.wf) .card,.site:not(.wf) .proof,.site:not(.wf) .review,.site:not(.wf) .steps4>div{box-shadow:0 0 0 1px var(--hair),var(--sh-1)}
+.site:not(.wf) .proof,.site:not(.wf) .acard,.site:not(.wf) .pcard,.site:not(.wf) .hcard,.site:not(.wf) .card{transition:transform .45s var(--ease-out),box-shadow .45s var(--ease-out)}
+.site:not(.wf) .proof:hover{transform:translateY(-3px);box-shadow:0 0 0 1px var(--hair),var(--sh-2)}
+.site:not(.wf) .proof .ico{width:48px;height:48px;border-radius:14px;margin-bottom:var(--sp-2)}
+.site:not(.wf) .proof .ico svg{width:22px;height:22px}
+/* Pastilles */
+.site:not(.wf) .pastille{font-size:11px;font-weight:600;letter-spacing:.1em;padding:6px 11px 6px 9px;gap:7px;box-shadow:inset 0 0 0 1px rgba(27,26,22,.06)}
+.site:not(.wf) .pastille::before{width:6px;height:6px}
+/* Boutons : mouvement sobre, hauteur tactile */
+.site:not(.wf) .btn{min-height:48px;transition:background-color .3s var(--ease-out),color .3s var(--ease-out),border-color .3s var(--ease-out),box-shadow .3s var(--ease-out),transform .3s var(--ease-out),filter .3s var(--ease-out)}
+.site:not(.wf) .btn-sm{min-height:40px}
+.site:not(.wf) .btn-primary:hover,.site:not(.wf) .btn-energy:hover{filter:brightness(.92);transform:translateY(-1px)}
+.site:not(.wf) .btn-ghost:hover,.site:not(.wf) .btn-light:hover{transform:translateY(-1px)}
+.site:not(.wf) .btn:active{transform:translateY(0) scale(.985);filter:brightness(.88);transition-duration:.08s}
+.site:not(.wf) .btn[disabled],.site:not(.wf) .btn[aria-disabled="true"]{opacity:.5;transform:none;filter:none;box-shadow:none;cursor:not-allowed}
+/* Champs */
+.site:not(.wf) .input{min-height:50px;border-width:1px;border-color:var(--sable-400);transition:border-color .25s,box-shadow .25s,background-color .25s}
+.site:not(.wf) .input:hover{border-color:var(--sable-600)}
+.site:not(.wf) .input::placeholder{color:var(--sable-600);opacity:.75}
+.site:not(.wf) .input:focus,.site:not(.wf) .input:focus-visible{outline:none;border-color:var(--focus-500);box-shadow:0 0 0 4px rgba(42,128,70,.14)}
+.site:not(.wf) .field label,.site:not(.wf) label.t-sm{letter-spacing:.005em}
+.site:not(.wf) .chip{min-height:44px;transition:background-color .25s,border-color .25s,color .25s}
+.site:not(.wf) .chip:hover{border-color:var(--sable-400)}
+/* FAQ / accordéons */
+.site:not(.wf) details.cond{border-top-color:var(--hair-2)}
+.site:not(.wf) details.cond:last-child{border-bottom-color:var(--hair-2)}
+.site:not(.wf) details.cond summary{padding-block:6px;align-items:center;gap:var(--sp-4);transition:color .25s}
+.site:not(.wf) details.cond summary:hover{color:var(--text-brand)}
+.site:not(.wf) details.cond summary::after{display:grid;place-items:center;flex:none;width:30px;height:30px;border-radius:50%;font-size:18px;line-height:1;box-shadow:inset 0 0 0 1px var(--hair-2);transition:background-color .25s,transform .35s var(--ease-out)}
+.site:not(.wf) details.cond summary:hover::after{background:var(--bg-brand-subtle)}
+.site:not(.wf) details.cond summary::-webkit-details-marker{display:none}
+/* 4. Images : cadrage net, zoom discret */
+.site:not(.wf) .media img{display:block}
+.site:not(.wf) .pcard .media img,.site:not(.wf) .acard .media img,.site:not(.wf) .acard .media svg,.site:not(.wf) .feat .media img,.site:not(.wf) .feat .media svg{transition:transform .9s var(--ease-out)}
+.site:not(.wf) .pcard:hover .media img,.site:not(.wf) .acard:hover .media img,.site:not(.wf) .acard:hover .media svg,.site:not(.wf) .feat:hover .media img,.site:not(.wf) .feat:hover .media svg{transform:scale(1.035)}
+.site:not(.wf) .acard .media,.site:not(.wf) .feat .media{box-shadow:0 0 0 1px var(--hair)}
+.site:not(.wf) .acard h3{transition:color .25s}
+.site:not(.wf) .acard:hover h3{color:var(--text-brand)}
+.site:not(.wf) .thumbs .media{transition:border-color .25s,box-shadow .25s,transform .35s var(--ease-out)}
+.site:not(.wf) .thumbs .media:hover{transform:translateY(-2px)}
+/* 6. Icônes : un seul trait */
+.site:not(.wf) svg[viewBox="0 0 24 24"][stroke]{stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+/* En-tête : verre dépoli et filet au défilement */
+.site:not(.wf) .hdr{background:rgba(255,255,255,.86);-webkit-backdrop-filter:saturate(1.5) blur(16px);backdrop-filter:saturate(1.5) blur(16px);border-bottom-color:transparent;transition:box-shadow .35s var(--ease-out),border-color .35s,background-color .35s}
+.site:not(.wf) .hdr.is-scrolled{background:rgba(255,255,255,.92);border-bottom-color:var(--hair);box-shadow:0 12px 32px -26px rgba(27,26,22,.45)}
+.site:not(.wf) .nav a{letter-spacing:.005em;transition:background-color .25s,color .25s}
+.site:not(.wf) .nav a:hover{color:var(--text-brand)}
+.site:not(.wf) .ibtn{transition:background-color .25s,color .25s}
+.site:not(.wf) .ibtn:hover{color:var(--text-brand)}
+.site:not(.wf) .announce{font-size:12.5px;letter-spacing:.02em;padding-block:9px}
+/* Pied de page */
+.site:not(.wf) .ftr{padding-block:var(--sp-9) var(--sp-6)}
+.site:not(.wf) .ftr h4{font-size:11px;letter-spacing:.16em;margin-bottom:var(--sp-5)}
+.site:not(.wf) .ftr ul{gap:var(--sp-3)}
+.site:not(.wf) .ftr a{transition:color .25s,text-decoration-color .25s;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:4px;text-decoration-thickness:1px}
+.site:not(.wf) .ftr a:hover{color:#fff;text-decoration-color:rgba(255,255,255,.6)}
+.site:not(.wf) .ftr .nl{align-items:stretch}
+.site:not(.wf) .ftr .nl .input{min-height:46px;border-color:rgba(255,255,255,.2);border-radius:999px;padding-inline:18px}
+.site:not(.wf) .ftr .nl .input:focus{border-color:var(--focus-300);box-shadow:0 0 0 4px rgba(127,197,148,.18)}
+.site:not(.wf) .ftr .nl .btn{min-height:46px}
+.site:not(.wf) .ftr .nl .input::placeholder{color:var(--focus-300);opacity:1}
+.site:not(.wf) .ftr .nl .input:hover{border-color:rgba(255,255,255,.4)}
+.site:not(.wf) .nlpop .nl .input{min-height:52px;border:1px solid var(--sable-400);border-radius:12px;padding-inline:16px}
+.site:not(.wf) .nlpop .nl .input:hover{border-color:var(--sable-600)}
+.site:not(.wf) .nlpop .nl .input:focus{border-color:var(--focus-500);box-shadow:0 0 0 4px rgba(42,128,70,.14)}
+.site:not(.wf) .social{gap:var(--sp-2);margin-top:var(--sp-5)}
+.site:not(.wf) .social a{width:42px;height:42px;background:transparent;box-shadow:inset 0 0 0 1px rgba(255,255,255,.22);text-decoration:none;transition:background-color .25s,box-shadow .25s}
+.site:not(.wf) .social a:hover{background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1px rgba(255,255,255,.5)}
+.site:not(.wf) .fbot{border-top-color:rgba(255,255,255,.14);margin-top:var(--sp-8);padding-top:var(--sp-5);align-items:center}
+/* Séparateurs subtils */
+.site:not(.wf) hr{border:0;height:1px;background:var(--hair-2)}
+.site:not(.wf) .recap .r.tot,.site:not(.wf) .r.tot{border-top-color:var(--hair-2)}
+/* 8. Accessibilité : focus visible partout */
+.site:not(.wf) :is(a,button,summary,select,textarea,[tabindex],.chip,.ibtn):focus-visible{outline:2px solid var(--focus-500);outline-offset:3px;border-radius:inherit}
+.site:not(.wf) .ftr :is(a,button):focus-visible,.site:not(.wf) .sh-cta :is(a,button):focus-visible,.site:not(.wf) .announce :is(a,button):focus-visible{outline-color:#fff}
+.site:not(.wf) :is(input[type=radio],input[type=checkbox]):focus-visible{outline:2px solid var(--focus-500);outline-offset:2px}
+.site:not(.wf) ::selection{background:var(--focus-100);color:var(--focus-900)}
+/* 7. Tablette */
+@container site (max-width:1024px){.site:not(.wf) .wrap{padding-inline:32px}.site:not(.wf) .sec{padding-block:96px}.site:not(.wf) .sec-tight{padding-block:64px}}
+@container site (min-width:761px) and (max-width:1024px){.site:not(.wf) .hdr .wrap{gap:16px}.site:not(.wf) .nav{gap:2px}.site:not(.wf) .nav a{white-space:nowrap;padding:10px 11px;font-size:14.5px}.site:not(.wf) .ftop{grid-template-columns:repeat(4,1fr);row-gap:var(--sp-7)}.site:not(.wf) .ftop>:first-child{grid-column:1/-1;max-width:480px}}
+/* 7. Mobile : air maîtrisé, cibles tactiles */
+@container site (max-width:760px){
+.site:not(.wf) .wrap{padding-inline:20px}
+.site:not(.wf) .sec-head{margin-bottom:var(--sp-6)}
+.site:not(.wf) .card,.site:not(.wf) .pillar,.site:not(.wf) .plant,.site:not(.wf) .eng-card{padding:28px 24px}
+.site:not(.wf) .proof,.site:not(.wf) .review{padding:26px 24px}
+.site:not(.wf) .g3,.site:not(.wf) .g4{gap:16px}
+.site:not(.wf) .ftr{padding-block:var(--sp-8) var(--sp-5)}
+.site:not(.wf) .ftr ul{gap:2px}
+.site:not(.wf) .ftr ul a{display:inline-block;padding-block:9px}
+.site:not(.wf) .btn-sm{min-height:44px}
+.site:not(.wf) .crumb a{display:inline-block;padding-block:6px}
+.site:not(.wf) details.cond summary{min-height:44px}
+}
+/* 5. Mouvement réduit */
+@media (prefers-reduced-motion:reduce){.site:not(.wf) *,.site:not(.wf) *::before,.site:not(.wf) *::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}.site:not(.wf) .pcard:hover .media img,.site:not(.wf) .acard:hover .media img,.site:not(.wf) .feat:hover .media img,.site:not(.wf) .proof:hover{transform:none}}
 </style>
 <style>html,body{background:var(--sable-50)}.stage{padding:0}.site{max-width:none;box-shadow:none;border-radius:0}</style>
 </head>
