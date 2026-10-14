@@ -1071,6 +1071,166 @@ img.pk-tilt{transform:rotate(-14deg)}
 }
 /* 5. Mouvement réduit */
 @media (prefers-reduced-motion:reduce){.site:not(.wf) *,.site:not(.wf) *::before,.site:not(.wf) *::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}.site:not(.wf) .pcard:hover .media img,.site:not(.wf) .acard:hover .media img,.site:not(.wf) .feat:hover .media img,.site:not(.wf) .proof:hover{transform:none}}
+
+/* v17 restylage DTC (design system Nature & Énergie) */
+:root{--r-card:22px;--sh-card:0 1px 2px rgba(27,26,22,.05),0 14px 34px -20px rgba(27,26,22,.26);--sh-lift:0 2px 6px rgba(27,26,22,.06),0 30px 60px -30px rgba(27,26,22,.42)}
+/* 1. Typographie éditoriale */
+.site:not(.wf){font-size:16.5px}
+.site:not(.wf){overflow:hidden;overflow:clip}
+.site:not(.wf) p{line-height:1.65}
+.site:not(.wf) .t-display{letter-spacing:-.048em;line-height:.94}
+.site:not(.wf) .t-h1{font-size:clamp(40px,5.2cqi,68px);font-weight:800;letter-spacing:-.04em;line-height:1.02}
+.site:not(.wf) .t-h2{font-size:clamp(32px,4.1cqi,54px);font-weight:800;letter-spacing:-.036em;line-height:1.04}
+.site:not(.wf) .t-h3{font-size:clamp(24px,2.5cqi,32px);font-weight:750;letter-spacing:-.022em;line-height:1.12}
+.site:not(.wf) .t-h4{font-size:22px;font-weight:750;letter-spacing:-.015em}
+.site:not(.wf) .t-lg{font-size:clamp(17px,1.55cqi,20px);line-height:1.6}
+.site:not(.wf) .t-over{font-size:12px;font-weight:700;letter-spacing:.16em;display:inline-flex;align-items:center;gap:10px}
+.site:not(.wf) .t-over::before{content:"";flex:none;width:18px;height:2px;border-radius:2px;background:currentColor;opacity:.6}
+.site:not(.wf) .sec-head h2{max-width:22ch}
+.site:not(.wf) .sec-head{align-items:flex-end}
+.site:not(.wf) .price{white-space:nowrap;font-variant-numeric:tabular-nums}
+/* 2. Rythme des sections */
+.site:not(.wf) .sec{padding-block:clamp(88px,9cqi,128px)}
+.site:not(.wf) .sec-tight{padding-block:clamp(64px,6.5cqi,96px)}
+/* 3. Boutons */
+.site:not(.wf) .btn{min-height:52px;padding:0 30px;font-size:16px;font-weight:700;letter-spacing:0;gap:10px}
+.site:not(.wf) .btn-sm{min-height:42px;padding:0 20px;font-size:14.5px}
+.site:not(.wf) .btn-primary{background:var(--focus-700);border-color:var(--focus-700);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 12px 24px -14px rgba(15,51,32,.7)}
+.site:not(.wf) .btn-primary:hover{background:var(--focus-900);border-color:var(--focus-900);filter:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 16px 30px -14px rgba(15,51,32,.75)}
+.site:not(.wf) .btn-ghost{border-width:1.5px}
+/* En-tête */
+.site:not(.wf) .hdr .wrap{height:76px}
+.site:not(.wf) .nav a{position:relative;font-weight:550}
+.site:not(.wf) .nav a.on{background:transparent;color:var(--text-brand)}
+.site:not(.wf) .nav a.on::after{content:"";position:absolute;left:50%;bottom:1px;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:currentColor}
+.site:not(.wf) .hdr .ibtn[href$="panier"]{background:var(--focus-700);color:#fff;box-shadow:0 8px 18px -10px rgba(15,51,32,.7)}
+.site:not(.wf) .hdr .ibtn[href$="panier"]:hover{background:var(--focus-900);color:#fff}
+/* Hero : titre affirmé, cartes produits mises en scène, réassurance */
+.site:not(.wf) .h3-head h1{font-size:clamp(48px,min(6.6vw,10vh),104px);letter-spacing:-.052em;line-height:.9}
+.site:not(.wf) .h3-aside .lead{font-size:18px;color:var(--text-primary);opacity:.78}
+.site:not(.wf) .hcard{min-height:clamp(420px,56vh,600px);border-radius:28px;box-shadow:inset 0 0 0 1px rgba(27,26,22,.05),0 22px 48px -34px rgba(27,26,22,.5)}
+.site:not(.wf) .hc-body{gap:8px;padding:4px 28px 26px}
+.site:not(.wf) .hc-name{font-size:clamp(34px,3.3vw,54px);letter-spacing:-.04em}
+.site:not(.wf) .hc-rate,.site:not(.wf) .prate{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--text-primary)}
+.site:not(.wf) .hc-rate .stars,.site:not(.wf) .prate .stars{font-size:14px;letter-spacing:1.5px}
+.site:not(.wf) .hc-row .price{font:800 24px/1 var(--font-display);letter-spacing:-.02em}
+.site:not(.wf) .hc-row .price small{font:500 13px var(--font-body);color:var(--text-secondary);letter-spacing:0}
+.site:not(.wf) .hc-btn{min-height:44px;padding:0 22px;box-shadow:0 10px 22px -12px rgba(27,26,22,.55)}
+.site:not(.wf) .hcard:hover .hc-btn{filter:brightness(.9)}
+.site:not(.wf) .h3-trust{list-style:none;margin:0;padding:18px 0 0;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 36px;border-top:1px solid var(--hair);font-size:14px;font-weight:600;color:var(--text-primary)}
+.site:not(.wf) .h3-trust li{display:inline-flex;align-items:center;gap:8px}
+.site:not(.wf) .h3-trust svg{width:19px;height:19px;color:var(--text-brand)}
+.site:not(.wf) .h3-trust .stars{font-size:14px;letter-spacing:1px}
+/* Étoiles */
+.site:not(.wf) .stars{color:#E8A33D}
+.site:not(.wf) .stars-lg{display:block;font-size:22px;letter-spacing:4px;margin-top:14px;line-height:1}
+/* Arguments « Pourquoi yuzaa » : colonnes éditoriales */
+.site:not(.wf) .g4>.proof{background:transparent;box-shadow:none;border-radius:0;padding:28px 0 0;border:0;border-top:2px solid var(--sable-900);gap:12px}
+.site:not(.wf) .g4>.proof:hover{transform:none;box-shadow:none}
+.site:not(.wf) .g4>.proof h3{font-size:21px;font-weight:750}
+.site:not(.wf) .g4>.proof p{font-size:15px}
+.site:not(.wf) .g4{gap:40px}
+/* Cartes produits et coffrets */
+.site:not(.wf) .pcard[class*="bg-"]{background:var(--bg-surface);padding:0 0 26px;gap:10px;border:0;border-radius:var(--r-card);overflow:hidden;box-shadow:0 0 0 1px var(--hair),var(--sh-card)}
+.site:not(.wf) .pcard>:not(.media){margin-inline:26px}
+.site:not(.wf) .pcard>.media{border-radius:0;aspect-ratio:5/4;margin-bottom:12px;background:radial-gradient(78% 70% at 50% 42%,#fff 0%,var(--c1,var(--sable-50)) 58%,var(--c3,var(--sable-100)) 150%)}
+.site:not(.wf) .pcard>.media img.pk{padding:9% 11% 7%;filter:drop-shadow(0 20px 18px rgba(27,26,22,.24))}
+.site:not(.wf) .pcard .pastille{align-self:flex-start}
+.site:not(.wf) .pcard h3{font-size:30px;font-weight:800;letter-spacing:-.035em;line-height:1}
+.site:not(.wf) .pcard .row{margin-top:auto;padding-top:14px;border-top:1px solid var(--hair);align-items:center}
+.site:not(.wf) .pcard .price{font:800 23px/1 var(--font-display);letter-spacing:-.02em;color:var(--text-primary)}
+.site:not(.wf) .pcard .price small{display:block;margin-top:6px;font:500 12.5px/1.3 var(--font-body);letter-spacing:0;color:var(--text-secondary)}
+.site:not(.wf) .pcard .price small s{font-size:inherit}
+.site:not(.wf) .pcard:hover{transform:translateY(-6px);box-shadow:0 0 0 1px var(--hair),var(--sh-lift)}
+/* Avis */
+.site:not(.wf) .review{padding:34px 32px 28px;border:0;border-radius:var(--r-card);gap:18px;box-shadow:0 0 0 1px var(--hair),var(--sh-card)}
+.site:not(.wf) .review .stars{font-size:18px;letter-spacing:3px}
+.site:not(.wf) .review p{font:500 clamp(17px,1.45cqi,19px)/1.48 var(--font-display);letter-spacing:-.012em;color:var(--text-primary)}
+.site:not(.wf) .review footer{font-size:13.5px;font-weight:600;color:var(--text-primary);padding-top:16px;border-top:1px solid var(--hair)}
+/* Cartes génériques et tableau */
+.site:not(.wf) .card{border-radius:var(--r-card)}
+.site:not(.wf) .cmpw{border-radius:var(--r-card);box-shadow:0 0 0 1px var(--hair),var(--sh-card);border:0}
+.site:not(.wf) .cmp th{font-size:11.5px;letter-spacing:.12em}
+.site:not(.wf) .cmp td{padding-block:20px}
+/* 4. Fiche produit */
+.site:not(.wf) .pgrid{gap:clamp(40px,6cqi,88px)}
+.site:not(.wf) .gal .main{border-radius:28px;background-image:radial-gradient(72% 64% at 50% 44%,rgba(255,255,255,.95) 0%,rgba(255,255,255,0) 72%)!important;box-shadow:inset 0 0 0 1px rgba(27,26,22,.04)}
+.site:not(.wf) .gal .main img.pk{padding:10%;filter:drop-shadow(0 30px 28px rgba(27,26,22,.26))}
+.site:not(.wf) .thumbs .media{border-radius:16px}
+.site:not(.wf) .pinfo{gap:20px}
+.site:not(.wf) .pinfo h1{font-size:clamp(48px,5.6cqi,76px);letter-spacing:-.05em;line-height:.95}
+.site:not(.wf) .pinfo .kw{font-size:18px;margin-top:-10px}
+.site:not(.wf) .prate-link{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--text-primary)!important;text-underline-offset:4px}
+.site:not(.wf) .prate-link .stars{font-size:16px;letter-spacing:2px}
+.site:not(.wf) .pprice{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 14px;padding-top:18px;border-top:1px solid var(--hair-2)}
+.site:not(.wf) .pprice b{font:800 38px/1 var(--font-display);letter-spacing:-.03em;color:var(--text-primary)}
+.site:not(.wf) .pprice span{font-size:14px;color:var(--text-secondary)}
+.site:not(.wf) .opt{padding:16px 18px;border-radius:16px;border-width:1px;border-color:var(--sable-200);transition:border-color .25s,background-color .25s,box-shadow .25s}
+.site:not(.wf) .opt:hover{border-color:var(--sable-400)}
+.site:not(.wf) .opt:has(input:checked){border-color:var(--focus-500);box-shadow:inset 0 0 0 1px var(--focus-500)}
+.site:not(.wf) .buy{gap:12px}
+.site:not(.wf) .buy .btn-primary{min-height:58px;font-size:17px}
+.site:not(.wf) .pinfo .qty{min-height:58px;border-width:1px;border-color:var(--sable-400)}
+.site:not(.wf) .qty button{width:46px;height:46px}
+.site:not(.wf) .pinfo .reas{background:var(--bg-subtle);border-radius:18px;padding:18px 20px;gap:10px;color:var(--text-primary);font-weight:500}
+.site:not(.wf) .pinfo .reas .paysec{margin-top:4px}
+/* Barre d'achat collante (fiches produit et coffrets) */
+.site:not(.wf) .mbuy{display:flex;position:sticky;bottom:14px;z-index:30;gap:16px;align-items:center;justify-content:space-between;width:min(560px,calc(100% - 24px));margin:-74px auto 14px;padding:9px 9px 9px 22px;border:0;border-radius:999px;background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5);box-shadow:0 0 0 1px var(--hair),0 20px 44px -16px rgba(27,26,22,.45);transform:translateY(calc(100% + 30px));opacity:0;pointer-events:none;transition:transform .5s var(--ease-out),opacity .3s}
+.site:not(.wf) .mbuy.show{transform:none;opacity:1;pointer-events:auto}
+.site:not(.wf) .mbuy b{font:750 17px/1.1 var(--font-display);letter-spacing:-.01em}
+.site:not(.wf) .mbuy .btn{min-height:48px;padding:0 28px}
+/* Panier épuré */
+.site:not(.wf) .cartg{grid-template-columns:1fr 400px;gap:clamp(32px,5cqi,72px)}
+.site:not(.wf) .jauge{border-radius:16px;padding:18px 22px}
+.site:not(.wf) .line{grid-template-columns:112px 1fr auto;gap:22px;padding:24px 0;border-bottom-color:var(--hair-2)}
+.site:not(.wf) .line .media{width:112px;height:112px;border-radius:18px}
+.site:not(.wf) .line h3{font-size:20px;font-weight:750;letter-spacing:-.015em}
+.site:not(.wf) .recap{background:var(--bg-subtle);border:0;border-radius:24px;padding:32px;gap:16px}
+.site:not(.wf) .recap h2{font-size:24px}
+.site:not(.wf) .recap .tot{font-size:28px;border-top-color:var(--hair-2);padding-top:18px}
+.site:not(.wf) .recap .btn-primary{min-height:58px;font-size:17px}
+.site:not(.wf) .upsell{border-radius:20px}
+/* Pop-up */
+.site:not(.wf) .nlpop-box{border-radius:28px;box-shadow:0 40px 100px -30px rgba(0,0,0,.5)}
+.site:not(.wf) .nlpop-body{padding:48px 44px 36px;gap:16px}
+.site:not(.wf) .nlpop-body h2{font-size:clamp(28px,3.2vw,38px);letter-spacing:-.035em;line-height:1.04}
+/* 7. Tablette */
+@container site (min-width:761px) and (max-width:1024px){.site:not(.wf) .g4{gap:28px}.site:not(.wf) .cartg{grid-template-columns:1fr 340px}.site:not(.wf) .h3-trust{gap:10px 24px;font-size:13px}}
+/* 7. Mobile */
+@container site (max-width:760px){
+.site:not(.wf){font-size:16px}
+.site:not(.wf) .sec{padding-block:80px}
+.site:not(.wf) .sec-tight{padding-block:60px}
+.site:not(.wf) .t-h1{font-size:40px}
+.site:not(.wf) .t-h2{font-size:32px;line-height:1.06}
+.site:not(.wf) .h3-head h1{font-size:46px}
+.site:not(.wf) .hcard{min-height:0}.site:not(.wf) .h3-head .t-over{display:none}.site:not(.wf) .hc-btn{min-height:40px;padding:0 15px;font-size:14px}.site:not(.wf) .hc-row{gap:8px;margin-right:4px}.site:not(.wf) .hc-name{font-size:30px}
+.site:not(.wf) .hc-body{padding:4px 18px 16px;gap:4px}
+.site:not(.wf) .hc-row .price{font-size:20px}
+.site:not(.wf) .hc-row .price small{display:none}
+.site:not(.wf) .hc-rate{font-size:12px}
+.site:not(.wf) .h3-trust{display:grid;grid-template-columns:1fr 1fr;gap:12px 10px;font-size:12.5px;text-align:left;padding-top:16px}
+.site:not(.wf) .h3-trust svg{width:17px;height:17px}
+.site:not(.wf) .g4{gap:0}
+.site:not(.wf) .g4>.proof{display:grid;grid-template-columns:44px 1fr;column-gap:16px;row-gap:4px;padding:22px 0;border-top:1px solid var(--hair-2)}
+.site:not(.wf) .g4>.proof:last-child{border-bottom:1px solid var(--hair-2)}
+.site:not(.wf) .g4>.proof .ico{grid-row:span 2;width:44px;height:44px;margin:0}
+.site:not(.wf) .g4>.proof h3{font-size:18px;align-self:center}
+.site:not(.wf) .pcard>:not(.media){margin-inline:22px}
+.site:not(.wf) .pcard h3{font-size:28px}
+.site:not(.wf) .review{padding:28px 24px 24px}
+.site:not(.wf) .pinfo h1{font-size:48px}
+.site:not(.wf) .pprice b{font-size:32px}
+.site:not(.wf) .gal .main{border-radius:22px}
+.site:not(.wf) .mbuy{bottom:10px;width:calc(100% - 20px);margin:-70px auto 10px;padding:8px 8px 8px 18px}
+.site:not(.wf) .mbuy .btn{padding:0 22px}
+.site:not(.wf) .cartg{grid-template-columns:1fr}
+.site:not(.wf) .line{grid-template-columns:80px 1fr;gap:16px}
+.site:not(.wf) .line .media{width:80px;height:80px;border-radius:14px}
+.site:not(.wf) .recap{padding:24px}
+.site:not(.wf) .nlpop-body{padding:28px 24px 24px}
+}
+@media (prefers-reduced-motion:reduce){.site:not(.wf) .pcard:hover,.site:not(.wf) .hcard:hover{transform:none}.site:not(.wf) .mbuy{transition:none}}
 </style>
 <style>html,body{background:var(--sable-50)}.stage{padding:0}.site{max-width:none;box-shadow:none;border-radius:0}</style>
 </head>
@@ -1304,24 +1464,25 @@ const ico={
  tin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="6" y="6" width="12" height="15" rx="2"/><path d="M5 6h14M9 3h6"/><path d="M9 12h6"/></svg>',
  truck:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>',
  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>',
+ lock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/></svg>',
  return:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h11a5 5 0 0 1 0 10H8"/><path d="M8 5L4 9l4 4"/></svg>'
 };
 const stars=r=>'★★★★★'.slice(0,Math.round(r))+'☆☆☆☆☆'.slice(0,5-Math.round(r));
 const gauge=d=>{const n=d==='eveil'?1:d==='focus'?2:3;const p=P[d];return `<div class="gauge" aria-label="${p.mg} mg de caféine">${[1,2,3].map(i=>`<i style="background:${i<=n?p.c5:''}"></i>`).join('')}<span><span data-count="${p.mg}">${p.mg}</span> mg de caféine par tasse</span></div>`;};
 
 /* ---------- Composants ---------- */
-const pcard=(d,disc)=>{const p=P[d];return `<div class="pcard bg-${d}"><a href="#produit-${d}" class="media" aria-label="Voir ${p.name}">${tinSVG(d)}</a><span class="pastille pastille-${d}">${p.moment} · ${p.mg} mg</span><a href="#produit-${d}" style="text-decoration:none"><h3>${p.name}</h3></a><p class="t-sm muted">${p.plants}. ${p.taste}.</p><div class="row"><span class="price">${eur(p.price)} <small>· 100 g · 0,30 € la tasse</small></span><a class="btn btn-primary btn-sm" href="#produit-${d}">Découvrir</a></div></div>`;};
+const pcard=(d,disc)=>{const p=P[d];return `<div class="pcard bg-${d}" style="--c1:${p.c1};--c3:${p.c3};--c7:${p.c7}"><a href="#produit-${d}" class="media" aria-label="Voir ${p.name}">${tinSVG(d)}</a><span class="pastille pastille-${d}">${p.moment} · ${p.mg} mg</span><a href="#produit-${d}" style="text-decoration:none"><h3>${p.name}</h3></a><span class="prate"><span class="stars" aria-hidden="true">${stars(p.rating)}</span>${String(p.rating).replace('.',',')}/5 · ${p.n} avis</span><p class="t-sm muted">${p.plants}. ${p.taste}.</p><div class="row"><span class="price">${eur(p.price)} <small>100 g · 0,30 € la tasse</small></span><a class="btn btn-primary btn-sm" href="#produit-${d}">Découvrir</a></div></div>`;};
 const multi=()=>pkImg(IMG.trio,'Les trois tubes Éveil, Focus et Rush');
 const bouleSVG=()=>`<img class="ph" src="${IMG.bouleA}" alt="Boule à thé portable yuzaa en inox, devant sa boîte en carton recyclé" loading="lazy" decoding="async">`;
 const bouleGal=()=>{const a=['bouleA','Boule à thé portable en inox devant sa boîte yuzaa'],b=['bouleB','Boule à thé portable et sa boîte yuzaa, vue de côté'];const im=([k,t])=>`<img class="ph" src="${IMG[k]}" alt="${t}" decoding="async">`;return `<div class="gal"><div class="media main" id="gmain" style="aspect-ratio:1/1">${im(a)}</div><div class="thumbs"><button type="button" class="media on" data-gal aria-label="Voir la photo 1">${im(a)}</button><button type="button" class="media" data-gal aria-label="Voir la photo 2">${im(b)}</button></div></div>`;};
 const cmedia=k=>k==='boule'?bouleSVG():multi();
 const cprice=k=>{const c=C[k];return eur(c.price)+(c.old?` <small><s>${eur(c.old)}</s></small>`:'');};
-const ccard=k=>{const c=C[k];return `<div class="pcard bg-${c.c}"><a href="#coffret-${k}" class="media" aria-label="Voir ${c.name}">${cmedia(k)}</a><span class="pastille pastille-${c.c}">${c.tag}</span><a href="#coffret-${k}" style="text-decoration:none"><h3 style="font-size:26px">${c.name}</h3></a><p class="t-sm muted">${c.contenu}</p><div class="row"><span class="price">${cprice(k)}</span><a class="btn btn-ghost btn-sm" href="#coffret-${k}">Découvrir</a></div></div>`;};
+const ccard=k=>{const c=C[k];const q=P[c.c]||P.eveil;return `<div class="pcard bg-${c.c}" style="--c1:${q.c1};--c3:${q.c3};--c7:${q.c7}"><a href="#coffret-${k}" class="media" aria-label="Voir ${c.name}">${cmedia(k)}</a><span class="pastille pastille-${c.c}">${c.tag}</span><a href="#coffret-${k}" style="text-decoration:none"><h3 style="font-size:26px">${c.name}</h3></a><p class="t-sm muted">${c.contenu}</p><div class="row"><span class="price">${cprice(k)}</span><a class="btn btn-ghost btn-sm" href="#coffret-${k}">Découvrir</a></div></div>`;};
 const acard=a=>`<a class="acard" href="#article-${a.id}"><div class="media">${artIll(a)}</div><span class="t-over over">${a.cat} · ${a.min} min</span><h3>${a.t}</h3><p>${a.ex}</p></a>`;
 const field=(id,label,type,rule,extra='')=>`<div class="field"><label for="${id}">${label}</label><input class="input" id="${id}" name="${id}" type="${type}" data-rule="${rule}" aria-describedby="${id}-err" ${extra}><span class="err" id="${id}-err"></span></div>`;
 const STEPS=['Panier','Connexion','Livraison','Paiement','Confirmation'];
 const stepper=n=>`<div class="stepper" aria-label="Étapes de commande">${STEPS.map((s,i)=>`<span class="${i<n?'done':i===n?'on':''}" ${i===n?'aria-current="step"':''}><i>${i<n?'✓':i+1}</i><em style="font-style:normal">${s}</em></span>`).join('')}</div>`;
-const heroCard=d=>{const p=P[d];return `<a class="hcard hc-${d}" href="#produit-${d}" style="--c1:${p.c1};--c3:${p.c3};--c7:${p.c7}" aria-label="Découvrir ${p.name} : ${p.moment.toLowerCase()}, ${p.mg} mg de caféine, ${eur(p.price)}"><span class="media hc-media">${pkImg(IMG[d+'F'],'','pk-hc')}</span><span class="hc-body"><span class="pastille pastille-${d}">${p.moment} · ${p.mg} mg</span><h2 class="hc-name">${p.name}</h2><span class="hc-plants">${p.plants}</span><span class="hc-row"><span class="price">${eur(p.price)} <small>· 100 g</small></span><span class="btn btn-sm hc-btn">Découvrir</span></span></span></a>`;};
+const heroCard=d=>{const p=P[d];return `<a class="hcard hc-${d}" href="#produit-${d}" style="--c1:${p.c1};--c3:${p.c3};--c7:${p.c7}" aria-label="Découvrir ${p.name} : ${p.moment.toLowerCase()}, ${p.mg} mg de caféine, ${eur(p.price)}"><span class="media hc-media">${pkImg(IMG[d+'F'],'','pk-hc')}</span><span class="hc-body"><span class="pastille pastille-${d}">${p.moment} · ${p.mg} mg</span><h2 class="hc-name">${p.name}</h2><span class="hc-plants">${p.plants}</span><span class="hc-rate"><span class="stars" aria-hidden="true">${stars(p.rating)}</span>${String(p.rating).replace('.',',')}/5 · ${p.n} avis</span><span class="hc-row"><span class="price">${eur(p.price)} <small>· 100 g</small></span><span class="btn btn-sm hc-btn">Découvrir</span></span></span></a>`;};
 const cmpTable=links=>`<div class="cmpw"><table class="cmp"><thead><tr><th>Recette</th><th>Caféine / tasse</th><th>Plantes</th><th>Goût</th><th>Moment</th><th>Vrac 100 g</th><th>20 sachets</th>${links?'<th aria-label="Fiche produit"></th>':''}</tr></thead><tbody>${['eveil','focus','rush'].map(d=>{const p=P[d];return `<tr><td><span class="pastille pastille-${d}">${p.name}</span></td><td><b><span data-count="${p.mg}">${p.mg}</span> mg</b></td><td>${p.plants}</td><td>${p.taste}</td><td>${p.moment}</td><td>${eur(p.price)}</td><td>6,90 €</td>${links?`<td><a class="link" href="#produit-${d}">Découvrir</a></td>`:''}</tr>`}).join('')}</tbody></table></div>`;
 const simBlock=()=>`<section class="sec-tight" id="canettes"><div class="wrap"><div class="sim">
  <div><span class="t-over" style="color:var(--eveil-300)">Comparatif</span><h2 class="t-h2" style="margin-top:8px">Le vrai coût de vos canettes</h2><p style="margin-top:12px">Une canette coûte en moyenne 1,50 € au distributeur, une tasse yuzaa 0,30 €. Faites le calcul.</p>${ill('price','','ill-sim')}
@@ -1408,6 +1569,7 @@ V.accueil=()=>`
  </div>
  <div class="h3-grid">${['eveil','focus','rush'].map(heroCard).join('')}</div>
  <p class="h3-foot">Vous hésitez ? <a class="link" href="#coffret-decouverte">Goûtez les trois avec le Coffret Découverte, 19,90 €</a><span class="h3-sep" aria-hidden="true">·</span><a class="link" href="#accueil" data-anchor="faq-accueil">Questions fréquentes</a></p>
+ <ul class="h3-trust" aria-label="Nos garanties"><li>${ico.truck}Livraison offerte dès 35 €</li><li>${ico.return}Retours gratuits 30 jours</li><li>${ico.lock}Paiement sécurisé</li><li><span class="stars" aria-hidden="true">★★★★★</span>4,7/5 · 439 avis</li></ul>
 </div></section>
 
 <section class="sec-tight"><div class="wrap">
@@ -1436,7 +1598,7 @@ ${degres()}
 </div></section>
 
 <section class="sec-tight" id="avis"><div class="wrap">
- <div class="sec-head"><div><span class="t-over over">Avis clients</span><h2 class="t-h2" style="margin-top:8px">4,7/5 · 439 avis vérifiés</h2></div><a class="link" href="#produit-focus" data-anchor="avis">Voir tous les avis →</a></div>
+ <div class="sec-head"><div><span class="t-over over">Avis clients</span><span class="stars stars-lg" aria-hidden="true">★★★★★</span><h2 class="t-h2" style="margin-top:8px">4,7/5 · 439 avis vérifiés</h2></div><a class="link" href="#produit-focus" data-anchor="avis">Voir tous les avis →</a></div>
  <div class="g3">
   <div class="review"><span class="stars" aria-label="5 sur 5">★★★★★</span><p>« J'ai remplacé mes deux canettes quotidiennes par Focus le matin et Éveil l'après-midi. Mon énergie est plus régulière et je dors mieux. »</p><footer>Inès, 22 ans · alternante en marketing</footer></div>
   <div class="review"><span class="stars" aria-label="5 sur 5">★★★★★</span><p>« Je ne bois pas de café. Rush, avec ses notes torréfiées et cacaotées, est devenu mon allié pendant les examens. »</p><footer>Malik, 20 ans · étudiant en licence</footer></div>
@@ -1483,7 +1645,8 @@ function produit(d){const p=P[d];const others=['eveil','focus','rush'].filter(x=
   <span class="pastille pastille-${d}">${p.moment}</span>
   <h1>${p.name}</h1>
   <p class="kw">${p.key} · ${p.mg} mg de caféine</p>
-  <a href="#produit-${d}" data-anchor="avis" class="t-sm" style="color:var(--text-secondary)"><span class="stars">${stars(p.rating)}</span> ${String(p.rating).replace('.',',')}/5 · ${p.n} avis</a>
+  <a href="#produit-${d}" data-anchor="avis" class="t-sm prate-link" style="color:var(--text-secondary)"><span class="stars">${stars(p.rating)}</span> ${String(p.rating).replace('.',',')}/5 · ${p.n} avis</a>
+  <div class="pprice"><b id="pp-price">${eur(p.price)}</b><span id="pp-unit">Vrac 100 g · environ 40 tasses · 0,30 € la tasse</span></div>
   <p>${p.desc}</p>
   ${gauge(d)}
   <fieldset class="opts" style="border:0;padding:0;margin:0"><legend class="t-label" style="margin-bottom:10px">Format</legend>
@@ -1491,10 +1654,9 @@ function produit(d){const p=P[d];const others=['eveil','focus','rush'].filter(x=
    <label class="opt"><input type="radio" name="fmt" value="sachets"><span class="grow">Boîte de 20 sachets<small>Format pratique à emporter</small></span><b>6,90 €</b></label>
   </fieldset>
   <div class="buy"><div class="qty"><button type="button" data-pq="-1" aria-label="Retirer une boîte">−</button><span id="pq">1</span><button type="button" data-pq="1" aria-label="Ajouter une boîte">+</button></div><button class="btn btn-primary" style="flex:1" type="button" data-add="${d}" data-useq>Ajouter au panier</button></div>
-  <div class="reas"><span>${ico.truck}Livraison à domicile en 48 h · offerte dès 35 €</span><span>${ico.return}Retours gratuits sous 30 jours</span><span>${ico.tin}Paiement sécurisé · carte, PayPal, Apple Pay</span><span class="paysec"><span class="payb" role="img" aria-label="Visa, Mastercard, PayPal, Apple Pay"><i title="Visa"><svg viewBox="0 6.5 24 11" style="width:30px;height:14px" aria-hidden="true"><path fill="#1A1F71" d="M9.112 8.262L5.97 15.758H3.92L2.374 9.775c-.094-.368-.175-.503-.461-.658C1.447 8.864.677 8.627 0 8.479l.046-.217h3.3a.904.904 0 01.894.764l.817 4.338 2.018-5.102zm8.033 5.049c.008-1.979-2.736-2.088-2.717-2.972.006-.269.262-.555.822-.628a3.66 3.66 0 011.913.336l.34-1.59a5.207 5.207 0 00-1.814-.333c-1.917 0-3.266 1.02-3.278 2.479-.012 1.079.963 1.68 1.698 2.04.756.367 1.01.603 1.006.931-.005.504-.602.725-1.16.734-.975.015-1.54-.263-1.992-.473l-.351 1.642c.453.208 1.289.39 2.156.398 2.037 0 3.37-1.006 3.377-2.564m5.061 2.447H24l-1.565-7.496h-1.656a.883.883 0 00-.826.55l-2.909 6.946h2.036l.405-1.12h2.488zm-2.163-2.656l1.02-2.815.588 2.815zm-8.16-4.84l-1.603 7.496H8.34l1.605-7.496z"/></svg></i><i title="Mastercard"><svg viewBox="0 0 38 24" style="width:34px;height:22px" aria-hidden="true"><circle cx="15" cy="12" r="7.5" fill="#EB001B"/><circle cx="23" cy="12" r="7.5" fill="#F79E1B"/><path d="M19 5.6a7.5 7.5 0 0 1 0 12.8a7.5 7.5 0 0 1 0-12.8z" fill="#FF5F00"/></svg></i><i title="PayPal"><svg viewBox="0 0 24 24" style="width:16px;height:16px" aria-hidden="true"><path fill="#003087" d="M7.016 19.198h-4.2a.562.562 0 0 1-.555-.65L5.093.584A.692.692 0 0 1 5.776 0h7.222c3.417 0 5.904 2.488 5.846 5.5-.006.25-.027.5-.066.747A6.794 6.794 0 0 1 12.071 12H8.743a.69.69 0 0 0-.682.583l-.325 2.056-.013.083-.692 4.39-.015.087zM19.79 6.142c-.01.087-.01.175-.023.261a7.76 7.76 0 0 1-7.695 6.598H9.007l-.283 1.795-.013.083-.692 4.39-.134.843-.014.088H6.86l-.497 3.15a.562.562 0 0 0 .555.65h3.612c.34 0 .63-.249.683-.585l.952-6.031a.692.692 0 0 1 .683-.584h2.126a6.793 6.793 0 0 0 6.707-5.752c.306-1.95-.466-3.744-1.89-4.906z"/></svg></i><i title="Apple Pay"><svg viewBox="0 4 24 16" style="width:33px;height:22px" aria-hidden="true"><path fill="#000" d="M2.15 4.318a42.16 42.16 0 0 0-.454.003c-.15.005-.303.013-.452.04a1.44 1.44 0 0 0-1.06.772c-.07.138-.114.278-.14.43-.028.148-.037.3-.04.45A10.2 10.2 0 0 0 0 6.222v11.557c0 .07.002.138.003.207.004.15.013.303.04.452.027.15.072.291.142.429a1.436 1.436 0 0 0 .63.63c.138.07.278.115.43.142.148.027.3.036.45.04l.208.003h20.194l.207-.003c.15-.004.303-.013.452-.04.15-.027.291-.071.428-.141a1.432 1.432 0 0 0 .631-.631c.07-.138.115-.278.141-.43.027-.148.036-.3.04-.45.002-.07.003-.138.003-.208l.001-.246V6.221c0-.07-.002-.138-.004-.207a2.995 2.995 0 0 0-.04-.452 1.446 1.446 0 0 0-1.2-1.201 3.022 3.022 0 0 0-.452-.04 10.448 10.448 0 0 0-.453-.003zm0 .512h19.942c.066 0 .131.002.197.003.115.004.25.01.375.032.109.02.2.05.287.094a.927.927 0 0 1 .407.407.997.997 0 0 1 .094.288c.022.123.028.258.031.374.002.065.003.13.003.197v11.552c0 .065 0 .13-.003.196-.003.115-.009.25-.032.375a.927.927 0 0 1-.5.693 1.002 1.002 0 0 1-.286.094 2.598 2.598 0 0 1-.373.032l-.2.003H1.906c-.066 0-.133-.002-.196-.003a2.61 2.61 0 0 1-.375-.032c-.109-.02-.2-.05-.288-.094a.918.918 0 0 1-.406-.407 1.006 1.006 0 0 1-.094-.288 2.531 2.531 0 0 1-.032-.373 9.588 9.588 0 0 1-.002-.197V6.224c0-.065 0-.131.002-.197.004-.114.01-.248.032-.375.02-.108.05-.199.094-.287a.925.925 0 0 1 .407-.406 1.03 1.03 0 0 1 .287-.094c.125-.022.26-.029.375-.032.065-.002.131-.002.196-.003zm4.71 3.7c-.3.016-.668.199-.88.456-.191.22-.36.58-.316.918.338.03.675-.169.888-.418.205-.258.345-.603.308-.955zm2.207.42v5.493h.852v-1.877h1.18c1.078 0 1.835-.739 1.835-1.812 0-1.07-.742-1.805-1.808-1.805zm.852.719h.982c.739 0 1.161.396 1.161 1.089 0 .692-.422 1.092-1.164 1.092h-.979zm-3.154.3c-.45.01-.83.28-1.05.28-.235 0-.593-.264-.981-.257a1.446 1.446 0 0 0-1.23.747c-.527.908-.139 2.255.374 2.995.249.366.549.769.944.754.373-.014.52-.242.973-.242.454 0 .586.242.98.235.41-.007.667-.366.915-.733.286-.417.403-.82.41-.841-.007-.008-.79-.308-.797-1.209-.008-.754.615-1.113.644-1.135-.352-.52-.9-.578-1.09-.593a1.123 1.123 0 0 0-.092-.002zm8.204.397c-.99 0-1.606.533-1.652 1.256h.777c.072-.358.369-.586.845-.586.502 0 .803.266.803.711v.309l-1.097.064c-.951.054-1.488.484-1.488 1.184 0 .72.548 1.207 1.332 1.207.526 0 1.032-.281 1.264-.727h.019v.659h.788v-2.76c0-.803-.62-1.317-1.591-1.317zm1.94.072l1.446 4.009c0 .003-.073.24-.073.247-.125.41-.33.571-.711.571-.069 0-.206 0-.267-.015v.666c.06.011.267.019.335.019.83 0 1.226-.312 1.568-1.283l1.5-4.214h-.868l-1.012 3.259h-.015l-1.013-3.26zm-1.167 2.189v.316c0 .521-.45.917-1.024.917-.442 0-.731-.228-.731-.579 0-.342.278-.56.769-.593z"/></svg></i></span></span></div>
+  <div class="reas"><span>${ico.truck}Livraison à domicile en 48 h · offerte dès 35 €</span><span>${ico.return}Retours gratuits sous 30 jours</span><span>${ico.lock}Paiement sécurisé · carte, PayPal, Apple Pay</span><span class="paysec"><span class="payb" role="img" aria-label="Visa, Mastercard, PayPal, Apple Pay"><i title="Visa"><svg viewBox="0 6.5 24 11" style="width:30px;height:14px" aria-hidden="true"><path fill="#1A1F71" d="M9.112 8.262L5.97 15.758H3.92L2.374 9.775c-.094-.368-.175-.503-.461-.658C1.447 8.864.677 8.627 0 8.479l.046-.217h3.3a.904.904 0 01.894.764l.817 4.338 2.018-5.102zm8.033 5.049c.008-1.979-2.736-2.088-2.717-2.972.006-.269.262-.555.822-.628a3.66 3.66 0 011.913.336l.34-1.59a5.207 5.207 0 00-1.814-.333c-1.917 0-3.266 1.02-3.278 2.479-.012 1.079.963 1.68 1.698 2.04.756.367 1.01.603 1.006.931-.005.504-.602.725-1.16.734-.975.015-1.54-.263-1.992-.473l-.351 1.642c.453.208 1.289.39 2.156.398 2.037 0 3.37-1.006 3.377-2.564m5.061 2.447H24l-1.565-7.496h-1.656a.883.883 0 00-.826.55l-2.909 6.946h2.036l.405-1.12h2.488zm-2.163-2.656l1.02-2.815.588 2.815zm-8.16-4.84l-1.603 7.496H8.34l1.605-7.496z"/></svg></i><i title="Mastercard"><svg viewBox="0 0 38 24" style="width:34px;height:22px" aria-hidden="true"><circle cx="15" cy="12" r="7.5" fill="#EB001B"/><circle cx="23" cy="12" r="7.5" fill="#F79E1B"/><path d="M19 5.6a7.5 7.5 0 0 1 0 12.8a7.5 7.5 0 0 1 0-12.8z" fill="#FF5F00"/></svg></i><i title="PayPal"><svg viewBox="0 0 24 24" style="width:16px;height:16px" aria-hidden="true"><path fill="#003087" d="M7.016 19.198h-4.2a.562.562 0 0 1-.555-.65L5.093.584A.692.692 0 0 1 5.776 0h7.222c3.417 0 5.904 2.488 5.846 5.5-.006.25-.027.5-.066.747A6.794 6.794 0 0 1 12.071 12H8.743a.69.69 0 0 0-.682.583l-.325 2.056-.013.083-.692 4.39-.015.087zM19.79 6.142c-.01.087-.01.175-.023.261a7.76 7.76 0 0 1-7.695 6.598H9.007l-.283 1.795-.013.083-.692 4.39-.134.843-.014.088H6.86l-.497 3.15a.562.562 0 0 0 .555.65h3.612c.34 0 .63-.249.683-.585l.952-6.031a.692.692 0 0 1 .683-.584h2.126a6.793 6.793 0 0 0 6.707-5.752c.306-1.95-.466-3.744-1.89-4.906z"/></svg></i><i title="Apple Pay"><svg viewBox="0 4 24 16" style="width:33px;height:22px" aria-hidden="true"><path fill="#000" d="M2.15 4.318a42.16 42.16 0 0 0-.454.003c-.15.005-.303.013-.452.04a1.44 1.44 0 0 0-1.06.772c-.07.138-.114.278-.14.43-.028.148-.037.3-.04.45A10.2 10.2 0 0 0 0 6.222v11.557c0 .07.002.138.003.207.004.15.013.303.04.452.027.15.072.291.142.429a1.436 1.436 0 0 0 .63.63c.138.07.278.115.43.142.148.027.3.036.45.04l.208.003h20.194l.207-.003c.15-.004.303-.013.452-.04.15-.027.291-.071.428-.141a1.432 1.432 0 0 0 .631-.631c.07-.138.115-.278.141-.43.027-.148.036-.3.04-.45.002-.07.003-.138.003-.208l.001-.246V6.221c0-.07-.002-.138-.004-.207a2.995 2.995 0 0 0-.04-.452 1.446 1.446 0 0 0-1.2-1.201 3.022 3.022 0 0 0-.452-.04 10.448 10.448 0 0 0-.453-.003zm0 .512h19.942c.066 0 .131.002.197.003.115.004.25.01.375.032.109.02.2.05.287.094a.927.927 0 0 1 .407.407.997.997 0 0 1 .094.288c.022.123.028.258.031.374.002.065.003.13.003.197v11.552c0 .065 0 .13-.003.196-.003.115-.009.25-.032.375a.927.927 0 0 1-.5.693 1.002 1.002 0 0 1-.286.094 2.598 2.598 0 0 1-.373.032l-.2.003H1.906c-.066 0-.133-.002-.196-.003a2.61 2.61 0 0 1-.375-.032c-.109-.02-.2-.05-.288-.094a.918.918 0 0 1-.406-.407 1.006 1.006 0 0 1-.094-.288 2.531 2.531 0 0 1-.032-.373 9.588 9.588 0 0 1-.002-.197V6.224c0-.065 0-.131.002-.197.004-.114.01-.248.032-.375.02-.108.05-.199.094-.287a.925.925 0 0 1 .407-.406 1.03 1.03 0 0 1 .287-.094c.125-.022.26-.029.375-.032.065-.002.131-.002.196-.003zm4.71 3.7c-.3.016-.668.199-.88.456-.191.22-.36.58-.316.918.338.03.675-.169.888-.418.205-.258.345-.603.308-.955zm2.207.42v5.493h.852v-1.877h1.18c1.078 0 1.835-.739 1.835-1.812 0-1.07-.742-1.805-1.808-1.805zm.852.719h.982c.739 0 1.161.396 1.161 1.089 0 .692-.422 1.092-1.164 1.092h-.979zm-3.154.3c-.45.01-.83.28-1.05.28-.235 0-.593-.264-.981-.257a1.446 1.446 0 0 0-1.23.747c-.527.908-.139 2.255.374 2.995.249.366.549.769.944.754.373-.014.52-.242.973-.242.454 0 .586.242.98.235.41-.007.667-.366.915-.733.286-.417.403-.82.41-.841-.007-.008-.79-.308-.797-1.209-.008-.754.615-1.113.644-1.135-.352-.52-.9-.578-1.09-.593a1.123 1.123 0 0 0-.092-.002zm8.204.397c-.99 0-1.606.533-1.652 1.256h.777c.072-.358.369-.586.845-.586.502 0 .803.266.803.711v.309l-1.097.064c-.951.054-1.488.484-1.488 1.184 0 .72.548 1.207 1.332 1.207.526 0 1.032-.281 1.264-.727h.019v.659h.788v-2.76c0-.803-.62-1.317-1.591-1.317zm1.94.072l1.446 4.009c0 .003-.073.24-.073.247-.125.41-.33.571-.711.571-.069 0-.206 0-.267-.015v.666c.06.011.267.019.335.019.83 0 1.226-.312 1.568-1.283l1.5-4.214h-.868l-1.012 3.259h-.015l-1.013-3.26zm-1.167 2.189v.316c0 .521-.45.917-1.024.917-.442 0-.731-.228-.731-.579 0-.342.278-.56.769-.593z"/></svg></i></span></span></div>
  </div>
 </div></section>
-<div class="mbuy"><div><b>${p.name}</b><div class="t-sm muted">${eur(p.price)} · vrac 100 g</div></div><button class="btn btn-primary" type="button" data-add="${d}">Ajouter</button></div>
 
 ${degres(d)}
 
@@ -1520,7 +1682,8 @@ ${simBlock()}
  <details class="cond"><summary>Livraison</summary><p>Livraison à domicile en 48 h en France métropolitaine : 4,90 €, offerte dès 35 € d'achat. Expédition sous 24 h ouvrées.</p></details>
  <details class="cond"><summary>Retours et remboursements</summary><p>Retours gratuits sous 30 jours. Le remboursement est effectué dès réception du colis.</p></details>
  <details class="cond"><summary>Précautions d'emploi</summary><p>Contient de la caféine. Ne pas dépasser deux tasses par jour. Déconseillé aux femmes enceintes ou allaitantes et aux moins de 16 ans.</p></details>
-</div></section>`;}
+</div></section>
+<div class="mbuy"><div><b>${p.name}</b><div class="t-sm muted">${eur(p.price)} · vrac 100 g</div></div><button class="btn btn-primary" type="button" data-add="${d}">Ajouter</button></div>`;}
 
 V.coffrets=()=>`
 <div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / Coffrets</nav></div>
@@ -1540,11 +1703,11 @@ function coffret(k){const c=C[k];return `
  <div class="buy"><span class="price" style="font-size:28px;align-self:center;flex:1">${cprice(k)}</span><button class="btn btn-primary" type="button" data-add="${k}">Ajouter au panier</button></div>
  <div class="reas"><span>${ico.truck}Livraison à domicile en 48 h · offerte dès 35 €</span><span>${ico.return}Retours gratuits sous 30 jours</span><span>${ico.tin}Boîte en carton recyclé</span></div></div>
 </div></section>
-<div class="mbuy"><div><b>${c.name}</b><div class="t-sm muted">${eur(c.price)}</div></div><button class="btn btn-primary" type="button" data-add="${k}">Ajouter</button></div>
 ${k!=='boule'?`<section class="sec-tight"><div class="wrap">${cofCompare(k)}</div></section>`:''}
 <section class="sec-tight"><div class="wrap"><h2 class="t-h2" style="margin-bottom:20px">Les recettes</h2><div class="steps4"><div>${pkImg(IMG.eveilF,'Éveil : boîte de sachets et tube de vrac','pk-step')}<b>Éveil</b><p>Énergie douce, 40 mg.</p></div><div>${pkImg(IMG.focusF,'Focus : boîte de sachets et tube de vrac','pk-step')}<b>Focus</b><p>Concentration, 60 mg.</p></div><div>${pkImg(IMG.rushF,'Rush : boîte de sachets et tube de vrac','pk-step')}<b>Rush</b><p>Coup de boost, 80 mg.</p></div><div><span class="pk-step">${ILL.deg('focus')}</span><b>80 °C</b><p>5 minutes d'infusion, 2,5 g par tasse.</p></div></div></div></section>
 <section class="sec-tight"><div class="wrap"><div class="sec-head"><h2 class="t-h2">Suggestions</h2></div><div class="g3">${k==='boule'?ccard('decouverte')+pcard('focus')+pcard('eveil'):k==='decouverte'?ccard('partiels')+ccard('boule')+pcard('focus'):pcard('focus')+pcard('eveil')+pcard('rush')}</div></div></section>
-<section class="sec-tight"><div class="wrap" style="max-width:860px"><details class="cond"><summary>Conditions</summary><p>Livraison à domicile en 48 h : 4,90 €, offerte dès 35 € d'achat. Retours gratuits sous 30 jours. <a class="link" href="#faq" data-anchor="faq-commande">Toutes les réponses dans la FAQ</a></p></details></div></section>`;}
+<section class="sec-tight"><div class="wrap" style="max-width:860px"><details class="cond"><summary>Conditions</summary><p>Livraison à domicile en 48 h : 4,90 €, offerte dès 35 € d'achat. Retours gratuits sous 30 jours. <a class="link" href="#faq" data-anchor="faq-commande">Toutes les réponses dans la FAQ</a></p></details></div></section>
+<div class="mbuy"><div><b>${c.name}</b><div class="t-sm muted">${eur(c.price)}</div></div><button class="btn btn-primary" type="button" data-add="${k}">Ajouter</button></div>`;}
 
 V.pros=()=>`
 <div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / Pour les pros</nav></div>
@@ -1663,7 +1826,7 @@ V.blog=()=>{const cats=['Tous','Énergie','Plantes','Recettes','Routine'];const 
 <section class="sec"><div class="wrap"><div class="band" style="background:var(--bg-brand-subtle)">${ill('kettle','','ill-band')}<div><h2 class="t-h3">Recevez nos conseils chaque mois</h2><p class="muted">Et profitez de −10 % sur votre première commande.</p></div><a class="btn btn-primary" href="#nl-email" data-focusnl>S'inscrire à la newsletter</a></div></div></section>`;};
 
 const artFill=t=>(t||'').replace(/@@([a-z-]+)@@/g,(m,id)=>alink(id)).replace(/%%([a-z]+)%%/g,(m,k)=>inl(k));
-const PERKS=()=>`<div class="perks">${[[ico.truck,'Livraison offerte','Dès 35 €, à domicile en 48 h'],[ico.check,'Paiement sécurisé','Carte, PayPal, Apple Pay'],[ico.return,'Retours gratuits','Sous 30 jours'],[ico.tin,'Carton recyclé','Boîtes, tubes et colis']].map(([i,t,s])=>`<div><span class="ico">${i}</span><b>${t}</b><small>${s}</small></div>`).join('')}</div>`;
+const PERKS=()=>`<div class="perks">${[[ico.truck,'Livraison offerte','Dès 35 €, à domicile en 48 h'],[ico.lock,'Paiement sécurisé','Carte, PayPal, Apple Pay'],[ico.return,'Retours gratuits','Sous 30 jours'],[ico.tin,'Carton recyclé','Boîtes, tubes et colis']].map(([i,t,s])=>`<div><span class="ico">${i}</span><b>${t}</b><small>${s}</small></div>`).join('')}</div>`;
 function article(id){const a=ARTS.find(x=>x.id===id)||ARTS[0];const [an,ar,ai]=TEAM[a.au];const rel=ARTS.filter(x=>x!==a&&!a.top.includes(x.id)).slice(0,3);return ` <div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / <a href="#blog">Blog</a> / ${a.cat}</nav></div>
 <section class="sec-tight" style="padding-top:8px"><div class="wrap art-w">
  <a class="pastille pastille-${a.c} art-cat" href="#blog">${a.cat}</a><h1 class="t-h1" style="margin-top:12px">${a.t}</h1>
@@ -1859,7 +2022,7 @@ function goAnchor(id){const el=document.getElementById(id);if(!el)return;if(el.t
 function view(r){if(V[r])return V[r]();if(r.startsWith('produit-')&&P[r.slice(8)])return produit(r.slice(8));if(r.startsWith('coffret-')&&C[r.slice(8)])return coffret(r.slice(8));if(r.startsWith('article-')&&ARTS.some(a=>a.id===r.slice(8)))return article(r.slice(8));return V['404']();}
 function render(keepScroll){const r=cur();
  if(!DEMO&&['connexion','livraison','paiement'].includes(r)){if(!Object.keys(state.cart).length){location.replace('#panier');return;}if(r!=='connexion'&&!state.logged){location.replace('#connexion');return;}}
- const m=$('#view');m.innerHTML=view(r);
+ const m=$('#view');m.innerHTML=view(r);setTimeout(buyBar,60);setTimeout(buyBar,600);
  $$('.nav a').forEach(a=>a.classList.toggle('on',a.dataset.nav.split(' ').some(k=>r.startsWith(k))));
  $('#mnav').dataset.open='false';$('[data-burger]').setAttribute('aria-expanded','false');
  const art=r.startsWith('article-')?ARTS.find(a=>'article-'+a.id===r):null;
@@ -1880,8 +2043,10 @@ function animate(){const v=$('#view');v.classList.remove('pg-in');if(still()||!i
  const seen=new Map();$$(RV,v).forEach(el=>{if(el.closest('.hero')||el.parentElement.closest('.rv'))return;const par=el.parentElement;const i=seen.get(par)||0;seen.set(par,i+1);el.style.setProperty('--rd',(Math.min(i,5)*.09)+'s');el.classList.add('rv');io.observe(el);});
  $$('[data-count]',v).forEach(el=>io.observe(el));}
 let ticking=false;
-function onScroll(){if(ticking)return;ticking=true;requestAnimationFrame(()=>{ticking=false;const h=$('.hdr');if(h)h.classList.toggle('is-scrolled',scrollY>8);const m=$('.hero .media svg,.hero .media img');if(m&&!still()){const r=m.getBoundingClientRect();if(r.bottom>0)m.style.setProperty('--px',Math.round(-r.top*.08)+'px');}});}
-window.addEventListener('scroll',onScroll,{passive:true});
+function onScroll(){if(ticking)return;ticking=true;requestAnimationFrame(()=>{ticking=false;const h=$('.hdr');if(h)h.classList.toggle('is-scrolled',scrollY>8);buyBar();const m=$('.hero .media svg,.hero .media img');if(m&&!still()){const r=m.getBoundingClientRect();if(r.bottom>0)m.style.setProperty('--px',Math.round(-r.top*.08)+'px');}});}
+window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',()=>buyBar());window.addEventListener('load',()=>buyBar());
+function buyBar(){const m=$('.mbuy');if(!m)return;const b=$('.pinfo .buy [data-add]');let out=true;if(b){const r=b.getBoundingClientRect();out=r.bottom<72||r.top>innerHeight;}const f=$('.ftr');if(f&&f.getBoundingClientRect().top<innerHeight)out=false;m.classList.toggle('show',out);}
+document.addEventListener('change',e=>{const t=e.target;if(t.name!=='fmt')return;const pp=$('#pp-price'),pu=$('#pp-unit');if(!pp)return;const d=(cur().match(/^produit-(\w+)/)||[])[1];const p=P[d];if(!p)return;if(t.value==='sachets'){pp.textContent='6,90 €';pu.textContent='Boîte de 20 sachets · format pratique à emporter';}else{pp.textContent=eur(p.price);pu.textContent='Vrac 100 g · environ 40 tasses · 0,30 € la tasse';}});
 function fly(btn){if(still())return;const cart=$('.hdr .ibtn[href="#panier"]');if(!cart)return;const a=btn.getBoundingClientRect(),b=cart.getBoundingClientRect();if(!b.width)return;const d=document.createElement('span');d.className='fly';d.style.left=(a.left+a.width/2-8)+'px';d.style.top=(a.top+a.height/2-8)+'px';document.body.appendChild(d);
  requestAnimationFrame(()=>requestAnimationFrame(()=>{d.style.transform=`translate(${b.left+b.width/2-a.left-a.width/2}px,${b.top+b.height/2-a.top-a.height/2}px) scale(.45)`;d.style.opacity='.3';}));
  setTimeout(()=>{d.remove();cart.classList.remove('bump');void cart.offsetWidth;cart.classList.add('bump');},760);}
