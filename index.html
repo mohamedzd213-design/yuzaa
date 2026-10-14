@@ -422,6 +422,36 @@ details.cond p{margin-top:10px;color:var(--text-secondary);max-width:70ch}
 .nf{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding-block:56px}
 .nf .code{font:800 clamp(80px,14cqi,160px)/0.9 var(--font-display);color:var(--focus-300);letter-spacing:-.04em}
 
+
+/* Pop-up newsletter */
+.nlpop{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:20px;background:rgba(18,30,22,.55);backdrop-filter:blur(3px);opacity:0;transition:opacity .35s}
+.nlpop[hidden]{display:none}
+.nlpop.on{opacity:1}
+.nlpop-box{position:relative;display:grid;grid-template-columns:300px 1fr;width:min(780px,100%);max-height:calc(100vh - 40px);overflow:auto;background:var(--bg-surface);border-radius:var(--r-l);box-shadow:0 30px 80px -20px rgba(0,0,0,.45);transform:translateY(24px) scale(.97);transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.nlpop.on .nlpop-box{transform:none}
+.nlpop-media{background:var(--focus-100);display:grid;place-items:center;padding:24px}
+.nlpop-media svg{width:100%;height:auto}
+.nlpop-body{padding:44px 40px 32px;display:flex;flex-direction:column;gap:14px}
+.nlpop-body[hidden]{display:none}
+.nlpop-body h2{font:800 clamp(26px,3vw,34px)/1.1 var(--font-display);letter-spacing:-.02em}
+.nlpop-body p{color:var(--text-secondary)}
+.nlpop-body label{font-weight:600;font-size:14px}
+.nlpop .nl{margin-top:6px}
+.nlpop .nl .input{background:var(--bg-surface);border-color:var(--border-strong,#BDB4A2);color:var(--text-primary);flex:1;min-width:0}
+.nlpop .nl .input::placeholder{color:var(--sable-500,#9A917F)}
+.nlpop-legal{font-size:12px}
+.nlpop-no{align-self:flex-start;background:none;border:0;padding:0;color:var(--text-secondary);font:500 14px var(--font-body);text-decoration:underline;cursor:pointer}
+.nlpop-x{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:0;background:var(--bg-subtle);color:var(--text-primary);display:grid;place-items:center;cursor:pointer;z-index:1}
+.nlpop-x:hover{background:var(--sable-200)}
+.nlpop-code{font:800 30px/1 var(--font-display);letter-spacing:.06em;color:var(--text-brand)!important;background:var(--bg-brand-subtle);border:2px dashed var(--focus-500);border-radius:var(--r-m);padding:16px;text-align:center}
+@container site (max-width:760px){
+  .nlpop{place-items:end center;padding:0}
+  .nlpop-box{grid-template-columns:1fr;border-radius:24px 24px 0 0;max-height:92vh}
+  .nlpop-media{display:none}
+  .nlpop-body{padding:36px 22px 28px}
+  .nlpop .nl{flex-direction:column}
+}
+
 /* Toast */
 .toast{visibility:hidden;position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,140%);background:var(--sable-900);color:#fff;padding:14px 18px;border-radius:14px;display:flex;gap:14px;align-items:center;font-size:15px;transition:transform .25s;z-index:60;max-width:calc(100vw - 32px)}
 .toast.on{visibility:visible;transform:translate(-50%,0)}
@@ -575,6 +605,34 @@ details.cond p{margin-top:10px;color:var(--text-secondary);max-width:70ch}
       <div class="fbot"><span>© 2026 yuzaa · Tous droits réservés</span><span>Paiement sécurisé · Carte, PayPal, Apple Pay</span></div>
     </div>
   </footer>
+  <div class="nlpop" id="nlpop" hidden>
+    <div class="nlpop-box" role="dialog" aria-modal="true" aria-labelledby="nlpop-t">
+      <button class="nlpop-x" type="button" data-nlclose aria-label="Fermer la fenêtre"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <div class="nlpop-media" aria-hidden="true"></div>
+      <div class="nlpop-body" id="nlpop-form">
+        <span class="t-over over">Bienvenue chez yuzaa</span>
+        <h2 id="nlpop-t">−10 % sur votre première commande</h2>
+        <p>Inscrivez-vous à notre newsletter : recevez votre code de bienvenue, puis nos conseils, recettes et nouveautés, une fois par mois.</p>
+        <form class="form" data-form="nlpop" novalidate>
+          <div class="field">
+            <label for="pop-email">Votre adresse e-mail</label>
+            <div class="nl"><input class="input" id="pop-email" name="email" type="email" placeholder="votre@email.fr" data-rule="req email" autocomplete="email"><button class="btn btn-primary" type="submit">Recevoir mon code</button></div>
+            <span class="err"></span>
+          </div>
+        </form>
+        <p class="nlpop-legal">Désinscription en un clic. Vos données ne sont jamais revendues.</p>
+        <button class="nlpop-no" type="button" data-nlclose>Non merci</button>
+      </div>
+      <div class="nlpop-body" id="nlpop-ok" hidden>
+        <span class="t-over over">Inscription confirmée</span>
+        <h2>Bienvenue dans la communauté yuzaa</h2>
+        <p>Voici votre code de bienvenue, à saisir dans votre panier :</p>
+        <p class="nlpop-code">ETUDIANT10</p>
+        <p>−10 % sur votre première commande. Nous l'avons aussi envoyé à votre adresse e-mail.</p>
+        <a class="btn btn-primary" href="#infusions" data-nlclose>Découvrir les recettes</a>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -606,7 +664,7 @@ const ARTS=[
  {id:'article',t:'Cinq rituels pour tenir une semaine d\'examens',cat:'Routine',min:5,ex:'Une routine simple et efficace, du thermos du matin à la dernière tasse avant 16 h.',c:'eveil'},
  {id:'article',t:'Rush latte au lait d\'avoine : la recette',cat:'Recettes',min:3,ex:'Une infusion serrée, un lait mousseux, une pointe de cacao : la version gourmande de Rush.',c:'rush'}
 ];
-const state={cart:{focus:1,eveil:1},promo:null,logged:false,ship:'relais',filter:'tout',bfilter:'Tous'};
+const state={cart:{},promo:null,logged:false,ship:'relais',filter:'tout',bfilter:'Tous'};
 
 /* ---------- Illustrations SVG ---------- */
 const leaf=(fill,bolt)=>`<path d="M9 39C9 18 22 6 44 4c0 23-13 35-35 35z" fill="${fill}"/><path d="M3 45l9-9" stroke="${fill}" stroke-width="3.5" stroke-linecap="round"/><path d="M29 11l-10 14h7l-4 12 11-15h-7l3-11z" fill="${bolt}"/>`;
@@ -1031,6 +1089,13 @@ function fly(btn){if(still())return;const cart=$('.hdr .ibtn[href="#panier"]');i
  setTimeout(()=>{d.remove();cart.classList.remove('bump');void cart.offsetWidth;cart.classList.add('bump');},760);}
 function added(btn){if(!btn.isConnected||btn.classList.contains('is-added'))return;const w=btn.offsetWidth,h=btn.innerHTML;btn.style.minWidth=w+'px';btn.classList.add('is-added');btn.innerHTML='✓ Ajouté';setTimeout(()=>{if(!btn.isConnected)return;btn.classList.remove('is-added');btn.innerHTML=h;btn.style.minWidth='';},1400);}
 
+
+/* ---------- Pop-up newsletter (site uniquement, une fois par visite) ---------- */
+let popLast=null;
+function popOpen(){const m=$('#nlpop');if(!m)return;$('.nlpop-media',m).innerHTML=multi();popLast=document.activeElement;m.hidden=false;requestAnimationFrame(()=>requestAnimationFrame(()=>m.classList.add('on')));setTimeout(()=>{const i=$('#pop-email');if(i)i.focus({preventScroll:true});},350);try{sessionStorage.setItem('yz-nl','1');}catch(e){}}
+function popClose(){const m=$('#nlpop');if(!m||m.hidden)return;m.classList.remove('on');setTimeout(()=>{m.hidden=true;},still()?0:350);if(popLast&&popLast.focus)popLast.focus({preventScroll:true});}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')popClose();});
+
 /* ---------- Validation des formulaires ---------- */
 const MSG={req:'Ce champ est obligatoire.',email:'Adresse e-mail invalide. Exemple : prenom@email.fr',cp:'Le code postal doit contenir 5 chiffres.',tel:'Numéro invalide. Exemple : 06 12 34 56 78',card:'Le numéro de carte doit contenir 16 chiffres.',exp:'Format attendu : MM/AA, date non dépassée.',cvc:'Les 3 chiffres au dos de votre carte.',pw:'8 caractères minimum, dont au moins un chiffre.',min20:'Votre message doit contenir au moins 20 caractères.',checked:'Veuillez cocher cette case pour continuer.'};
 const TEST={req:v=>v.trim()!=='',email:v=>/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v.trim()),cp:v=>/^\d{5}$/.test(v.trim()),tel:v=>/^0[1-9](\s?\d{2}){4}$/.test(v.trim()),card:v=>/^\d{16}$/.test(v.replace(/\s/g,'')),exp:v=>{const m=v.trim().match(/^(0[1-9]|1[0-2])\/(\d{2})$/);return !!m&&(+m[2]>26||(+m[2]===26&&+m[1]>=10));},cvc:v=>/^\d{3}$/.test(v.trim()),pw:v=>v.length>=8&&/\d/.test(v),min20:v=>v.trim().length>=20};
@@ -1040,6 +1105,7 @@ function validate(form){let ok=true,first=null;$$('[data-rule]',form).forEach(i=
 const H={
  pros:f=>{$('#pros-ok').hidden=false;f.reset();$$('.field',f).forEach(x=>x.classList.remove('is-ok'));},
  newsletter:f=>{f.reset();location.hash='merci-newsletter';},
+ nlpop:f=>{f.reset();$('#nlpop-form').hidden=true;$('#nlpop-ok').hidden=false;},
  login:f=>{state.logged=true;render();toast('Bon retour, Inès !');},
  register:f=>{state.logged=true;location.hash='merci';},
  livraison:f=>{location.hash='paiement';},
@@ -1055,7 +1121,8 @@ site.addEventListener('submit',e=>{const f=e.target.closest('[data-form]');if(!f
 site.addEventListener('focusout',e=>{const i=e.target;if(i.matches&&i.matches('[data-rule]')&&(i.value!==''||i.closest('.has-error')))check(i);});
 site.addEventListener('input',e=>{const i=e.target;if(i.matches('[data-rule]')&&i.closest('.has-error'))check(i);if(i.name==='ship'){state.ship=i.value;}});
 site.addEventListener('change',e=>{if(e.target.name==='ship'){state.ship=e.target.value;render(true);}});
-site.addEventListener('click',e=>{const t=e.target.closest('button,a');if(!t)return;
+site.addEventListener('click',e=>{if(e.target.id==='nlpop'){popClose();return;}const t=e.target.closest('button,a');if(!t)return;
+ if(t.hasAttribute('data-nlclose')){popClose();if(t.tagName!=='A')return;}
  if(t.dataset.add){let q=1,k=t.dataset.add;if(t.hasAttribute('data-useq')){q=+$('#pq').textContent;const f=($('input[name=fmt]:checked')||{}).value;if(f==='sachets')k='sachets-'+k;}fly(t);add(k,q);if(location.hash==='#panier')render(true);else added(t);return;}
  if(t.dataset.pq){const el=$('#pq');el.textContent=Math.max(1,+el.textContent+ +t.dataset.pq);return;}
  if(t.dataset.q){const k=t.dataset.q;state.cart[k]+= +t.dataset.d;if(state.cart[k]<=0)delete state.cart[k];render(true);return;}
@@ -1080,6 +1147,7 @@ $$('[data-dev]').forEach(b=>b.addEventListener('click',()=>{$$('[data-dev]').for
 $$('[data-logo]').forEach(a=>a.innerHTML=logoHTML(a.dataset.logo==='light'));
 try{const pref=new URLSearchParams(location.search);if(pref.get('mode')==='wf')$('[data-mode="wf"]').click();if(pref.get('dev')==='mobile')$('[data-dev="mobile"]').click();}catch(e){}
 window.addEventListener('hashchange',()=>render());
+if(document.body.dataset.site){let seen=null;try{seen=sessionStorage.getItem('yz-nl');}catch(e){}if(!seen)setTimeout(popOpen,1200);}
 render();
 })();
 </script>
