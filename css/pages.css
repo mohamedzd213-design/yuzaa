@@ -426,6 +426,11 @@ html.cdr-lock{overflow:hidden}
 .site:not(.wf) .ftr .input{color:#fff}
 .site:not(.wf) .announce .an{position:static!important;inset:auto;animation:none!important;opacity:1!important;transform:none!important}
 @media (max-width:760px){.site:not(.wf) .announce{height:38px}.site:not(.wf) .announce .an{padding:0 20px;font-size:11px;letter-spacing:.14em}}
+/* v21 : au survol,« Ajouter au panier » prend la couleur de la recette (packagings) */
+.btn[data-tone=eveil]{--tb:#2A8046;--tt:#fff}
+.btn[data-tone=focus]{--tb:#F5BC75;--tt:#111}
+.btn[data-tone=rush]{--tb:#D93A2B;--tt:#fff}
+.site:not(.wf) .btn.btn-primary[data-tone]:hover,.site:not(.wf) .btn.btn-primary[data-tone]:focus-visible{background:var(--tb);border-color:var(--tb);color:var(--tt)}
 
 /* Site public : pleine largeur */
 html,body{background:var(--sable-50)}.stage{padding:0}.site{max-width:none;box-shadow:none;border-radius:0}
