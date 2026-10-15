@@ -28,8 +28,9 @@ function placeOrder(method){const t=totals();const o={n:'YZ-'+(24000+Math.floor(
  if(me){me.orders.unshift(o);saveAcc();}state.last=o;state.cart={};state.promo=null;count();go('confirmation');}
 const H={
  pros:f=>{$('#pros-ok').hidden=false;f.reset();$$('.field',f).forEach(x=>x.classList.remove('is-ok'));},
- newsletter:f=>{f.reset();go('merci-newsletter');},
- nlpop:f=>{f.reset();$('#nlpop-form').hidden=true;$('#nlpop-ok').hidden=false;},
+ newsletter:f=>{setSub($('#nl-email').value.trim());f.reset();go('merci-newsletter');},
+ nlpop:f=>{setSub($('#pop-email').value.trim());f.reset();$('#nlpop-form').hidden=true;$('#nlpop-ok').hidden=false;try{sessionStorage.setItem('yz-nl','1');}catch(e){}wRefresh();},
+ nlcart:f=>{setSub($('#wtk-email').value.trim());wRefresh();toast('Inscription confirmée : votre code '+WCODE+' est prêt.');},
  login:async f=>{const email=val('l-email').toLowerCase(),a=ACC[email];
   if(!a){formMsg('login-msg','Aucun compte n\'est associé à cette adresse e-mail. Créez le vôtre en quelques secondes avec le formulaire « Nouveau client ».');return;}
   const h=await pwHash(a.salt||'',$('#l-pw').value);if(a.pw&&h&&h!==a.pw){formMsg('login-msg','Mot de passe incorrect. Vérifiez votre saisie et réessayez.');return;}
@@ -38,7 +39,7 @@ const H={
   if(ACC[email]){formMsg('reg-msg','Un compte existe déjà avec cette adresse e-mail. Connectez-vous avec le formulaire « Déjà client ? ».');return;}
   const salt=Math.random().toString(36).slice(2,12);
   const a={prenom:cap(val('r-prenom')),nom:cap(val('r-nom')),email,tel:'',adr:'',cp:'',ville:'',news:$('#r-news').checked,salt,pw:await pwHash(salt,$('#r-pw').value),orders:[],since:new Date().toISOString()};
-  ACC[email]=a;login(a,f.dataset.next||'merci','Compte créé. Bienvenue, '+esc(a.prenom)+' !');},
+  ACC[email]=a;if(a.news)setSub(email);login(a,f.dataset.next||'merci','Compte créé. Bienvenue, '+esc(a.prenom)+' !');},
  profil:f=>{const email=val('p-mail').toLowerCase();if(email!==me.email&&ACC[email]){$('#p-mail').closest('.field').classList.add('has-error');$('#p-mail-err').textContent='Cette adresse est déjà utilisée par un autre compte.';return;}
   if(email!==me.email){delete ACC[me.email];me.email=email;ACC[email]=me;}
   me.prenom=cap(val('p-prenom'));me.nom=cap(val('p-nom'));me.tel=val('p-tel');me.news=$('#p-news').checked;saveAcc();render(true);toast('Profil mis à jour');},
@@ -52,7 +53,7 @@ const H={
 const site=$('#site');
 site.addEventListener('submit',e=>{const f=e.target.closest('[data-form]');if(!f)return;e.preventDefault();const n=f.dataset.form;
  if(n==='promo'){const v=$('#promo').value.trim().toUpperCase();const err=m=>{f.classList.add('has-error');$('#promo-err').textContent=m;};
-  if(!v)return err('Veuillez saisir un code promo.');if(v!=='BIENVENUE10')return err('Ce code n\'est pas valide ou a expiré.');if(me&&me.orders.length)return err('Ce code est réservé à la première commande.');
+  if(!v)return err('Veuillez saisir un code promo.');if(v!==WCODE)return err('Ce code n\'est pas valide ou a expiré.');if(!isSub())return err('Ce code est réservé aux inscrits à la newsletter. Inscrivez-vous juste en dessous pour le recevoir.');if(me&&me.orders.length)return err('Ce code est réservé à la première commande.');
   state.promo=v;render(true);toast('Code '+v+' appliqué : −10 %');return;}
  if(validate(f))H[n]&&H[n](f);});
 site.addEventListener('focusout',e=>{const i=e.target;if(i.matches&&i.matches('[data-rule]')&&(i.value!==''||i.closest('.has-error')))check(i);});
@@ -78,6 +79,8 @@ site.addEventListener('click',e=>{if(e.target.id==='nlpop'){popClose();return;}i
  if(t.hasAttribute('data-unpromo')){state.promo=null;render(true);toast('Code promo retiré');return;}
  if(t.hasAttribute('data-logout')){me=null;state.logged=false;saveAcc();const r=cur();if(['compte-commandes','compte-profil','suivi'].includes(r))go('compte');else render();toast('Vous êtes déconnecté(e).');return;}
  if(t.hasAttribute('data-burger')){const m=$('#mnav');const o=m.dataset.open!=='true';m.dataset.open=o;t.setAttribute('aria-expanded',o);return;}
+ if(t.hasAttribute('data-nlopen')){e.preventDefault();$('#nlpop-form').hidden=false;$('#nlpop-ok').hidden=true;cdrClose();popOpen();return;}
+ if(t.hasAttribute('data-applycode')){if(me&&me.orders.length){toast('Ce code est réservé à la première commande.');return;}state.promo=WCODE;wRefresh();toast('Code '+WCODE+' appliqué : −10 %');return;}
  if(t.hasAttribute('data-focusnl')){e.preventDefault();$('#nl-email').focus();$('#nl-email').scrollIntoView({block:'center',behavior:'smooth'});return;}
  if(t.dataset.scroll){e.preventDefault();const el=document.getElementById(t.dataset.scroll);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});return;}
 });
@@ -87,5 +90,5 @@ function bindFaq(){const q=$('#fq');if(!q)return;q.addEventListener('input',()=>
 $$('[data-logo]').forEach(a=>a.innerHTML=logoHTML(a.dataset.logo==='light'));
 window.addEventListener('hashchange',()=>render());
 window.addEventListener('popstate',()=>render());
-if(document.body.dataset.site){let seen=null;try{seen=sessionStorage.getItem('yz-nl');}catch(e){}if(!seen)setTimeout(popOpen,1200);}
+if(document.body.dataset.site){let seen=null;try{seen=sessionStorage.getItem('yz-nl');}catch(e){}if(!seen&&!isSub())setTimeout(popOpen,1200);}
 render();
