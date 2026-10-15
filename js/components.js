@@ -80,7 +80,8 @@ const miniTrack=s=>`<ol class="mtrack"><li class="done">Confirmée</li><li class
 const FREE=35;
 function lineInfo(k){if(P[k])return{name:P[k].name,sub:P[k].key+' · vrac 100 g',price:P[k].price,media:tinSVG(k)};if(k.startsWith('sachets-')){const d=k.slice(8);return{name:P[d].name+' · sachets',sub:'Boîte de 20 sachets',price:6.9,media:tinSVG(d)};}const c=C[k];return{name:c.name,sub:c.contenu,price:c.price,media:cmedia(k)};}
 function totals(){let sub=0;for(const[k,q]of Object.entries(state.cart)){sub+=lineInfo(k).price*q;}const disc=state.promo?sub*0.1:0;const free=(sub-disc)>=FREE;const ship=sub===0?0:free?0:4.9;return{sub,disc,ship,free,tot:sub-disc+ship};}
-function count(){const n=Object.values(state.cart).reduce((a,b)=>a+b,0);const el=$('#count');el.textContent=n;el.hidden=n===0;}
+function count(){const n=Object.values(state.cart).reduce((a,b)=>a+b,0);const el=$('#count');el.textContent=n;el.hidden=n===0;saveCart();}
+function saveCart(){if(!DEMO)LS.set('yz-cart',{cart:state.cart,promo:state.promo});}
 function toast(html){const t=$('#toast');t.innerHTML=html;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),2800);}
 function add(k,q=1){state.cart[k]=(state.cart[k]||0)+q;count();cdrOpen(k);}
 /* Panneau panier latéral */

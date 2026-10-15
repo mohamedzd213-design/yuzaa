@@ -256,7 +256,7 @@
 .site:not(.wf) .ftr .wrap{max-width:1360px;padding-inline:clamp(20px,4cqi,56px)}
 .site:not(.wf) .ftr .sig{font:800 clamp(42px,4.6cqi,68px)/.92 var(--font-display);letter-spacing:-.05em;color:var(--f);margin-top:28px}
 .site:not(.wf) .ftr p{color:rgba(239,232,218,.75)}
-.site:not(.wf) .ftr h4{color:#A9B1A4;font-size:11.5px;letter-spacing:.16em}
+.site:not(.wf) .ftr :is(h2,h4){color:#A9B1A4;font-size:11.5px;letter-spacing:.16em}
 .site:not(.wf) .ftr a{color:var(--y-cream)}
 .site:not(.wf) .ftr a:hover{color:#fff}
 .site:not(.wf) .ftr .nl .input{background:rgba(255,255,255,.05);border-color:rgba(239,232,218,.22);color:#fff}

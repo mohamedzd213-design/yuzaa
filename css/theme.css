@@ -75,7 +75,7 @@
 .site:not(.wf) .announce{font-size:12.5px;letter-spacing:.02em;padding-block:9px}
 /* Pied de page */
 .site:not(.wf) .ftr{padding-block:var(--sp-9) var(--sp-6)}
-.site:not(.wf) .ftr h4{font-size:11px;letter-spacing:.16em;margin-bottom:var(--sp-5)}
+.site:not(.wf) .ftr :is(h2,h4){font-size:11px;letter-spacing:.16em;margin-bottom:var(--sp-5)}
 .site:not(.wf) .ftr ul{gap:var(--sp-3)}
 .site:not(.wf) .ftr a{transition:color .25s,text-decoration-color .25s;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:4px;text-decoration-thickness:1px}
 .site:not(.wf) .ftr a:hover{color:#fff;text-decoration-color:rgba(255,255,255,.6)}

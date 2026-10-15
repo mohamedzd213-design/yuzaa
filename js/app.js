@@ -90,5 +90,6 @@ function bindFaq(){const q=$('#fq');if(!q)return;q.addEventListener('input',()=>
 $$('[data-logo]').forEach(a=>a.innerHTML=logoHTML(a.dataset.logo==='light'));
 window.addEventListener('hashchange',()=>render());
 window.addEventListener('popstate',()=>render());
+{const c=DEMO?null:LS.get('yz-cart');if(c&&c.cart&&typeof c.cart==='object')for(const [k,q] of Object.entries(c.cart))if((P[k]||C[k]||(k.startsWith('sachets-')&&P[k.slice(8)]))&&Number.isInteger(q)&&q>0&&q<100)state.cart[k]=q;if(c&&c.promo===WCODE&&isSub())state.promo=WCODE;count();}
 if(document.body.dataset.site){let seen=null;try{seen=sessionStorage.getItem('yz-nl');}catch(e){}if(!seen&&!isSub())setTimeout(popOpen,1200);}
 render();
