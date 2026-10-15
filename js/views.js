@@ -4,14 +4,14 @@
 const V={};
 const hmStars=n=>`<span class="hm-stars" aria-hidden="true">${'★★★★★'.slice(0,n)}${'☆☆☆☆☆'.slice(0,5-n)}</span>`;
 const hmArrow='<svg class="hm-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
-const hmRecipe=d=>{const p=P[d];return `<article class="hm-rc rc-${d}">
- <a class="hm-rc-media" href="#produit-${d}" aria-label="Découvrir ${p.name}"><span class="hm-arch"></span>${pkImg(IMG[d+'F'],`${p.name} : boîte de 20 sachets et tube de vrac 100 g`)}</a>
+const hmRecipe=d=>{const p=P[d];return `<article class="hm-rc rc-${d}" id="rc-${d}">
+ <a class="hm-rc-media" href="#accueil" data-anchor="rc-${d}" aria-label="Découvrir ${p.name}"><span class="hm-arch"></span>${pkImg(IMG[d+'F'],`${p.name} : boîte de 20 sachets et tube de vrac 100 g`)}</a>
  <div class="hm-rc-body">
   <span class="hm-tag">${p.moment} · ${p.mg} mg</span>
   <h3 class="hm-rc-name"><a href="#produit-${d}">${p.name}</a></h3>
   <p class="hm-rc-plants">${p.plants}</p>
   <p class="hm-rc-rate">${hmStars(Math.round(p.rating))}<span>${String(p.rating).replace('.',',')}/5 · ${p.n} avis</span></p>
-  <div class="hm-rc-buy"><p class="hm-rc-price">${eur(p.price)} <small>100 g · 0,30&nbsp;€ la tasse</small></p><a class="hm-btn hm-btn-rc" href="#produit-${d}">Découvrir${hmArrow}</a></div>
+  <div class="hm-rc-buy"><p class="hm-rc-price">${eur(p.price)} <small>100 g · 0,30&nbsp;€ la tasse</small></p><a class="hm-btn hm-btn-rc" href="#accueil" data-anchor="rc-${d}">Découvrir${hmArrow}</a></div>
  </div>
 </article>`;};
 const hmVs=(k,lab,li)=>{const c=C[k];return `<article class="hm-vs rc-${c.c}"><a class="hm-vs-media" href="#coffret-${k}" aria-label="Voir ${c.name}"><span class="hm-arch"></span>${cmedia(k)}</a><div class="hm-vs-body"><span class="hm-tag">${lab}</span><h3>${c.name}</h3><p class="hm-vs-price">${cprice(k)}</p><ul>${li.map(x=>`<li>${ico.check}<span>${x}</span></li>`).join('')}</ul><a class="hm-btn hm-btn-line" href="#coffret-${k}">Découvrir${hmArrow}</a></div></article>`;};
