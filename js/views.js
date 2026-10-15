@@ -466,7 +466,7 @@ const FAQ=[
   ['q-retours','Puis-je retourner un produit ?',`Oui, les retours sont gratuits sous 30 jours à compter de la réception.`]]],
  ['faq-pros','Offre pros',[
   ['q-pros','Proposez-vous une offre pour les cafés, coworkings et BDE ?',`Oui, sur devis. Faites votre demande depuis la page <a class="link" href="#pros">Pour les pros</a> : nous revenons vers vous sous 48 h ouvrées.`],
-  ['q-event','Puis-je commander pour un événement ?',`Oui : stand, semaine d'examens, salon… Précisez votre besoin dans le formulaire de devis.`]]]];
+  ['q-event','Puis-je commander pour un événement ?',`Oui : stand, semaine d'examens, salon… Précisez votre besoin dans le <a class="link" href="#pros">formulaire de devis</a>.`]]]];
 const FQ={};FAQ.forEach(c=>c[2].forEach(([i,q,a])=>FQ[i]=[q,a]));
 V.faq=()=>`
 <div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / FAQ</nav></div>
