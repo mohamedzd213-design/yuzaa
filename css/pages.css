@@ -431,6 +431,9 @@ html.cdr-lock{overflow:hidden}
 .btn[data-tone=focus]{--tb:#F5BC75;--tt:#111}
 .btn[data-tone=rush]{--tb:#D93A2B;--tt:#fff}
 .site:not(.wf) .btn.btn-primary[data-tone]:hover,.site:not(.wf) .btn.btn-primary[data-tone]:focus-visible{background:var(--tb);border-color:var(--tb);color:var(--tt)}
+/* v22 : photos produits (Gemini) en plein cadre */
+.site img.pk.ph{object-fit:cover!important;padding:0!important;filter:none!important;animation:none!important;border-radius:inherit}
+.site .pcard:hover .media img.pk.ph{transform:scale(1.03)!important}
 
 /* Site public : pleine largeur */
 html,body{background:var(--sable-50)}.stage{padding:0}.site{max-width:none;box-shadow:none;border-radius:0}

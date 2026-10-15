@@ -128,7 +128,7 @@ function produit(d){const p=P[d];const others=['eveil','focus','rush'].filter(x=
 <div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / <a href="#infusions">Nos infusions</a> / ${p.name}</nav></div>
 <section class="sec-tight" style="padding-top:8px"><div class="wrap pgrid">
  <div class="gal"><div class="media main rc-${d}" id="gmain">${tinSVG(d)}</div>
-  <div class="thumbs"><button type="button" class="media on rc-${d}" data-gal aria-label="Voir la face avant">${tinSVG(d)}</button><button type="button" class="media rc-${d}" data-gal aria-label="Voir la face arrière">${backImg(d)}</button><button type="button" class="media rc-${d}" data-gal aria-label="Voir la plante">${botSVG(d)}</button></div></div>
+  <div class="thumbs"><button type="button" class="media on rc-${d}" data-gal aria-label="Voir le produit">${tinSVG(d)}</button><button type="button" class="media rc-${d}" data-gal aria-label="Voir le détail de la boîte">${backImg(d)}</button><button type="button" class="media rc-${d}" data-gal aria-label="Voir la plante">${botSVG(d)}</button></div></div>
  <div class="pinfo">
   <span class="pastille pastille-${d}">${p.moment}</span>
   <h1>${p.name}</h1>
