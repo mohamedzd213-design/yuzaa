@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /compte
+Disallow: /panier
+
+Sitemap: https://yuzaa.vercel.app/sitemap.xml
