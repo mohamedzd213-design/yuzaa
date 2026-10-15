@@ -5,13 +5,13 @@ const V={};
 const hmStars=n=>`<span class="hm-stars" aria-hidden="true">${'★★★★★'.slice(0,n)}${'☆☆☆☆☆'.slice(0,5-n)}</span>`;
 const hmArrow='<svg class="hm-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 const hmRecipe=d=>{const p=P[d];return `<article class="hm-rc rc-${d}" id="rc-${d}">
- <a class="hm-rc-media" href="#accueil" data-anchor="rc-${d}" aria-label="Découvrir ${p.name}"><span class="hm-arch"></span>${pkImg(IMG[d+'F'],`${p.name} : boîte de 20 sachets et tube de vrac 100 g`)}</a>
+ <a class="hm-rc-media" href="#infusions" aria-label="Découvrir ${p.name}"><span class="hm-arch"></span>${pkImg(IMG[d+'F'],`${p.name} : boîte de 20 sachets et tube de vrac 100 g`)}</a>
  <div class="hm-rc-body">
   <span class="hm-tag">${p.moment} · ${p.mg} mg</span>
   <h3 class="hm-rc-name"><a href="#produit-${d}">${p.name}</a></h3>
   <p class="hm-rc-plants">${p.plants}</p>
   <p class="hm-rc-rate">${hmStars(Math.round(p.rating))}<span>${String(p.rating).replace('.',',')}/5 · ${p.n} avis</span></p>
-  <div class="hm-rc-buy"><p class="hm-rc-price">${eur(p.price)} <small>100 g · 0,30&nbsp;€ la tasse</small></p><a class="hm-btn hm-btn-rc" href="#accueil" data-anchor="rc-${d}">Découvrir${hmArrow}</a></div>
+  <div class="hm-rc-buy"><p class="hm-rc-price">${eur(p.price)} <small>100 g · 0,30&nbsp;€ la tasse</small></p><a class="hm-btn hm-btn-rc" href="#infusions">Découvrir${hmArrow}</a></div>
  </div>
 </article>`;};
 const hmVs=(k,lab,li)=>{const c=C[k];return `<article class="hm-vs rc-${c.c}"><a class="hm-vs-media" href="#coffret-${k}" aria-label="Voir ${c.name}"><span class="hm-arch"></span>${cmedia(k)}</a><div class="hm-vs-body"><span class="hm-tag">${lab}</span><h3>${c.name}</h3><p class="hm-vs-price">${cprice(k)}</p><ul>${li.map(x=>`<li>${ico.check}<span>${x}</span></li>`).join('')}</ul><a class="hm-btn hm-btn-line" href="#coffret-${k}">Découvrir${hmArrow}</a></div></article>`;};
@@ -40,7 +40,7 @@ V.accueil=()=>`<div class="hm">
   <span class="hm-eyebrow">Infusions énergisantes · 100 % plantes · Sans sucre ajouté</span>
   <h1 class="hm-h1" id="hero-t">Osez l'énergie végétale.</h1>
   <p class="hm-lead">Guayusa, maté et guarana : trois recettes riches en caféine naturelle, pour une énergie progressive, sans sucre ajouté ni arôme artificiel.</p>
-  <div class="hm-ctas"><a class="hm-btn hm-btn-ink hm-btn-lg" href="#infusions">Découvrir les infusions${hmArrow}</a><a class="hm-btn hm-btn-line hm-btn-lg" href="#coffret-decouverte">Coffret Découverte · 19,90&nbsp;€</a></div>
+  <div class="hm-ctas"><a class="hm-btn hm-btn-ink hm-btn-lg" href="#accueil" data-anchor="comparer">Découvrir les infusions${hmArrow}</a><a class="hm-btn hm-btn-line hm-btn-lg" href="#coffret-decouverte">Coffret Découverte · 19,90&nbsp;€</a></div>
   <a class="hm-proof-rate" href="#accueil" data-anchor="avis">${hmStars(5)}<span><b>4,7/5</b> · 439 avis vérifiés</span></a>
   <ul class="hm-proofs"><li>${ico.nosugar}Sans sucre ajouté</li><li>${ico.leaf}100 % plantes</li><li>${ico.tin}Carton recyclé</li></ul>
  </div>
