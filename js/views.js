@@ -39,8 +39,8 @@ V.accueil=()=>`<div class="hm">
 <section class="hm-hero" aria-labelledby="hero-t"><div class="hm-wrap hm-hero-g">
  <div class="hm-hero-txt">
   <span class="hm-eyebrow">En vrac ou en sachets · Sans sucre ajouté</span>
-  <h1 class="hm-h1" id="hero-t">L'infusion énergisante aux&nbsp;plantes, pour un boost naturel</h1>
-  <p class="hm-lead">Guayusa, maté ou guarana : de la caféine naturelle pour vos journées chargées, sans sucre ajouté ni arôme artificiel.</p>
+  <h1 class="hm-h1" id="hero-t">L'infusion énergisante aux&nbsp;plantes</h1>
+  <p class="hm-lead">Guayusa, maté ou guarana : un boost de caféine naturelle pour vos journées chargées, sans sucre ajouté.</p>
   <div class="hm-ctas"><a class="hm-btn hm-btn-ink hm-btn-lg" href="#accueil" data-anchor="comparer">Découvrir les infusions${hmArrow}</a><a class="hm-btn hm-btn-line hm-btn-lg" href="#coffret-decouverte">Coffret Découverte · 19,90&nbsp;€</a></div>
   <a class="hm-proof-rate" href="#accueil" data-anchor="avis">${hmStars(5)}<span><b>4,7/5</b> · 439 avis vérifiés</span></a>
   <ul class="hm-proofs"><li>${ico.nosugar}Sans sucre ajouté</li><li>${ico.leaf}100 % plantes</li><li>${ico.tin}Carton recyclé</li></ul>

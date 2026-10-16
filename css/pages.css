@@ -557,8 +557,8 @@ html.cdr-lock{overflow:hidden}
 @media (max-width:760px){.site:not(.wf) .hm-steps li,.site:not(.wf) .hm-steps li+li{padding:16px 0;border-left:0;column-gap:16px}.site:not(.wf) .hm-pl-media{aspect-ratio:16/9}.site:not(.wf) .hm-pl-body{padding:18px 20px 22px}}
 
 /* v29 : H1 descriptif du hero (plus long que l'ancien slogan) */
-.site:not(.wf) .hm-h1{font-size:clamp(46px,5.3cqi,86px);line-height:.94;letter-spacing:-.035em;max-width:13ch}
-@container site (max-width:760px){.site:not(.wf) .hm-h1{font-size:clamp(38px,11cqi,52px);line-height:.96;max-width:none}}
+.site:not(.wf) .hm-h1{font-size:clamp(50px,6.4cqi,104px);line-height:.92;letter-spacing:-.04em;max-width:none}
+@container site (max-width:760px){.site:not(.wf) .hm-h1{font-size:clamp(42px,12.5cqi,58px);line-height:.96;max-width:none}}
 
 /* Site public : pleine largeur */
 html,body{background:var(--sable-50)}.stage{padding:0}.site{max-width:none;box-shadow:none;border-radius:0}
