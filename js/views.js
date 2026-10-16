@@ -221,7 +221,7 @@ V.histoire=()=>`
   <p class="lead">En Amazonie et en Amérique du Sud, on boit depuis des siècles du guayusa, du maté et du guarana pour commencer la journée, travailler ou se retrouver. yuzaa remet ce savoir dans votre tasse.</p>
   <nav class="subnav" aria-label="Sur cette page"><a href="#histoire" data-anchor="constat">Notre histoire</a><a href="#histoire" data-anchor="producteurs">Nos producteurs</a><a href="#histoire" data-anchor="equipe">L'équipe</a><a href="#engagements">Nos engagements</a></nav>
  </div>
- <div class="media">${leavesSVG()}</div>
+ <div class="media">${pkImg(IMG.histA,'Feuilles séchées et coupées dans un bol en céramique, prêtes à infuser','',true)}</div>
 </div></section>
 
 <section class="sec" id="constat"><div class="wrap g2 sh-why">
@@ -233,24 +233,24 @@ V.histoire=()=>`
  <div class="sh-stats">${ill('swap','','ill-card')}<div class="stat"><span class="t-sm">Une canette de 250 ml</span><b><span data-count="27">27</span> g</b><span class="t-sm">de sucre en moyenne</span></div><div class="stat is-brand"><span class="t-sm">Une tasse yuzaa</span><b>0 g</b><span class="t-sm">de sucre ajouté</span></div><div class="stat is-warm"><span class="t-sm">Le prix d'une tasse</span><b>0,30 €</b><span class="t-sm">contre 1,50 € la canette</span></div></div>
 </div></section>
 
-<section class="sec-tight"><div class="wrap"><div class="band" style="background:var(--bg-brand-subtle)">${ill('mix','','ill-band')}<div style="max-width:60ch"><span class="t-over over">Notre mission</span><h2 class="t-h3" style="margin-top:8px">Une énergie naturelle, simple et transparente.</h2><p class="muted">100 % plantes, sans sucre ajouté, en carton recyclé : les engagements qui guident chacune de nos recettes.</p></div><a class="btn btn-primary" href="#engagements">Découvrir nos engagements</a></div></div></section>
+<section class="sec-tight"><div class="wrap"><div class="band" style="background:var(--bg-brand-subtle)"><figure class="illf ill-band ill-photo">${pkImg(IMG.histB,'Bol de feuilles séchées posé sur une coupelle tressée')}</figure><div style="max-width:60ch"><span class="t-over over">Notre mission</span><h2 class="t-h3" style="margin-top:8px">Une énergie naturelle, simple et transparente.</h2><p class="muted">100 % plantes, sans sucre ajouté, en carton recyclé : les engagements qui guident chacune de nos recettes.</p></div><a class="btn btn-primary" href="#engagements">Découvrir nos engagements</a></div></div></section>
 
 <section class="sec" id="producteurs"><div class="wrap">
  <div class="sec-head"><div><span class="t-over over">Nos producteurs</span><h2 class="t-h2" style="margin-top:8px">Trois plantes, trois terres, trois rituels</h2><p>Chaque recette yuzaa commence par une plante et par l'histoire des peuples qui l'ont fait connaître.</p></div></div>
  <div class="origins">
-  <article class="origin"><div class="media">${landSVG('eveil')}</div><div>
+  <article class="origin"><div class="media">${pkImg(IMG.histG,'Feuillage vert et frais, évocation de la guayusa d\'Éveil')}</div><div>
    <span class="pastille pastille-eveil">Amazonie équatorienne · Éveil</span>
    <h3>Guayusa, la feuille de l'aube</h3>
    <p>Au pied des Andes, les familles kichwa se réveillent avant le soleil. Autour du feu, elles partagent une infusion de guayusa et se racontent leurs rêves de la nuit.</p>
    <p>Cette feuille d'un houx amazonien apporte une énergie douce et progressive. C'est la base d'Éveil, avec la citronnelle et la menthe.</p>
    <a class="link" href="#produit-eveil">Découvrir Éveil →</a></div></article>
-  <article class="origin"><div class="media">${landSVG('focus')}</div><div>
+  <article class="origin"><div class="media">${pkImg(IMG.histM,'Maté servi dans une calebasse avec sa bombilla, à côté d\'une bouilloire et d\'un bol de yerba')}</div><div>
    <span class="pastille pastille-focus">Forêts d'Amérique du Sud · Focus et Rush</span>
    <h3>Maté, la boisson du partage</h3>
    <p>Des forêts du Paraguay aux plaines d'Argentine, le maté se boit à plusieurs. La calebasse passe de main en main, pendant les études, au travail ou entre amis.</p>
    <p>Vert, il offre une concentration stable : c'est le cœur de Focus, avec le gingembre et le citron. Torréfié, il donne à Rush ses notes profondes.</p>
    <a class="link" href="#produit-focus">Découvrir Focus →</a></div></article>
-  <article class="origin"><div class="media">${landSVG('rush')}</div><div>
+  <article class="origin"><div class="media">${pkImg(IMG.histR,'Mains tenant des fruits de guarana fraîchement cueillis')}</div><div>
    <span class="pastille pastille-rush">Amazonie brésilienne · Rush</span>
    <h3>Guarana, la graine qui ouvre les yeux</h3>
    <p>Sur les rives de l'Amazone, le peuple sateré-mawé cultive le guarana depuis des générations. Ses fruits rouges, entrouverts sur une graine noire, ressemblent à des yeux grands ouverts.</p>

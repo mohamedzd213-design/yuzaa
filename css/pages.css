@@ -470,6 +470,10 @@ html.cdr-lock{overflow:hidden}
 @container site (max-width:1024px){.site:not(.wf) .hm-hero-vis .hm-chip-a{bottom:-7%;left:3%}}
 .site:not(.wf) .hm-hero-vis .hm-seal{top:-9%;right:-3%}
 @container site (max-width:760px){.site:not(.wf) .hm-hero-vis .hm-seal{width:72px;top:-7%;right:-1%}}
+/* v25 : photos de la page Histoire */
+.site:not(.wf) .origin .media:has(img.ph){aspect-ratio:4/3;background:#fff!important;overflow:hidden;padding:0;position:relative}
+.site:not(.wf) .origin .media img.ph{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none;object-fit:cover;filter:none!important}
+.site:not(.wf) .ill-band.ill-photo{flex:none}
 
 /* Site public : pleine largeur */
 html,body{background:var(--sable-50)}.stage{padding:0}.site{max-width:none;box-shadow:none;border-radius:0}
