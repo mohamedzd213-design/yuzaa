@@ -38,7 +38,7 @@ const hmSim=()=>`<section class="hm-sec hm-sim-s" id="canettes"><div class="hm-w
 V.accueil=()=>`<div class="hm">
 <section class="hm-hero" aria-labelledby="hero-t"><div class="hm-wrap hm-hero-g">
  <div class="hm-hero-txt">
-  <span class="hm-eyebrow">En vrac ou en sachets · Sans sucre ajouté</span>
+  <span class="hm-eyebrow">Trois recettes · Éveil, Focus, Rush</span>
   <h1 class="hm-h1" id="hero-t">L'infusion énergisante aux&nbsp;plantes</h1>
   <p class="hm-lead">Guayusa, maté ou guarana : un boost de caféine naturelle pour vos journées chargées, sans sucre ajouté.</p>
   <div class="hm-ctas"><a class="hm-btn hm-btn-ink hm-btn-lg" href="#accueil" data-anchor="comparer">Découvrir les infusions${hmArrow}</a><a class="hm-btn hm-btn-line hm-btn-lg" href="#coffret-decouverte">Coffret Découverte · 19,90&nbsp;€</a></div>
