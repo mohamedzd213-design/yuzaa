@@ -305,13 +305,13 @@ V.blog=()=>{const cats=['Tous','Énergie','Plantes','Recettes','Routine'];const 
 <div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / Blog</nav></div>
 <section class="sec-tight" style="padding-top:8px"><div class="wrap">
  <h1 class="t-h1">Le journal yuzaa</h1><p class="t-lg muted" style="max-width:60ch;margin-top:12px">Caféine, plantes, recettes et rituels : nos conseils pour gérer votre énergie sans sacrifier votre sommeil.</p>
- <a class="feat" href="#article-${ARTS[0].id}" style="margin-top:40px"><div class="media">${artIll(ARTS[0])}</div><div><span class="t-over over">À la une · ${ARTS[0].cat}</span><h2 class="t-h2" style="margin-block:10px 12px">${ARTS[0].t}</h2><p class="muted">${ARTS[0].ex}</p><span class="link" style="display:inline-block;margin-top:16px">Lire l'article →</span></div></a>
+ <a class="feat" href="#article-${ARTS[0].id}" style="margin-top:40px"><div class="media">${artIll(ARTS[0],'W')}</div><div><span class="t-over over">À la une · ${ARTS[0].cat}</span><h2 class="t-h2" style="margin-block:10px 12px">${ARTS[0].t}</h2><p class="muted">${ARTS[0].ex}</p><span class="link" style="display:inline-block;margin-top:16px">Lire l'article →</span></div></a>
 </div></section>
 <section class="sec-tight"><div class="wrap">
  <div class="chips" role="group" aria-label="Filtrer les articles" style="margin-bottom:28px">${cats.map(c=>`<button class="chip" type="button" data-bfilter="${c}" aria-pressed="${state.bfilter===c}">${c}</button>`).join('')}</div>
  <div class="g3">${list.length?list.map(acard).join(''):'<p class="muted">Aucun article dans cette catégorie pour le moment.</p>'}</div>
 </div></section>
-<section class="sec"><div class="wrap"><div class="band" style="background:var(--bg-brand-subtle)">${ill('kettle','','ill-band')}<div><h2 class="t-h3">Recevez nos conseils chaque mois</h2><p class="muted">Et profitez de −10 % sur votre première commande.</p></div><a class="btn btn-primary" href="#nl-email" data-focusnl>S'inscrire à la newsletter</a></div></div></section>`;};
+<section class="sec"><div class="wrap"><div class="band" style="background:var(--bg-brand-subtle)"><figure class="illf ill-band ill-photo">${pkImg(IMG.blogNl,'Bureau en bois près d\'une fenêtre : ordinateur portable, carnet ouvert et tasse d\'infusion fumante à côté d\'une plante')}</figure><div><h2 class="t-h3">Recevez nos conseils chaque mois</h2><p class="muted">Et profitez de −10 % sur votre première commande.</p></div><a class="btn btn-primary" href="#nl-email" data-focusnl>S'inscrire à la newsletter</a></div></div></section>`;};
 
 const artFill=t=>(t||'').replace(/@@([a-z-]+)@@/g,(m,id)=>alink(id)).replace(/%%([a-z]+)%%/g,(m,k)=>inl(k));
 const PERKS=()=>`<div class="perks">${[[ico.truck,'Livraison offerte','Dès 35 €, à domicile en 48 h'],[ico.lock,'Paiement sécurisé','Carte, PayPal, Apple Pay'],[ico.return,'Retours gratuits','Sous 30 jours'],[ico.tin,'Carton recyclé','Boîtes, tubes et colis']].map(([i,t,s])=>`<div><span class="ico">${i}</span><b>${t}</b><small>${s}</small></div>`).join('')}</div>`;
@@ -320,7 +320,7 @@ function article(id){const a=ARTS.find(x=>x.id===id)||ARTS[0];const [an,ar,ai]=T
  <a class="pastille pastille-${a.c} art-cat" href="#blog">${a.cat}</a><h1 class="t-h1" style="margin-top:12px">${a.t}</h1>
  <div class="meta"><span class="meta-au"><img src="${ai}" alt="" width="28" height="28">Par ${an}, ${ar.toLowerCase()}</span><span>${a.min} min de lecture</span></div>
 </div></section>
-<div class="wrap art-w"><div class="media art-hero" style="aspect-ratio:16/9">${artIll(a)}</div></div>
+<div class="wrap art-w"><div class="media art-hero" style="aspect-ratio:16/9">${artIll(a,'W',true)}</div></div>
 <section class="sec-tight"><div class="wrap art-w"><article class="prose art">
  <p class="chapo">${a.chapo}</p><a class="art-cta" href="#${a.cta[0]}">${a.cta[1]} <span aria-hidden="true">→</span></a>
  <nav class="art-som" aria-label="Sommaire"><b class="t-over">Sommaire</b><ol>${a.toc.map(([i,t])=>`<li><a href="#article-${a.id}" data-scroll="${i}">${t}</a></li>`).join('')}</ol></nav>

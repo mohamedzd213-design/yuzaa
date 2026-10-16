@@ -474,6 +474,12 @@ html.cdr-lock{overflow:hidden}
 .site:not(.wf) .origin .media:has(img.ph){aspect-ratio:4/3;background:#fff!important;overflow:hidden;padding:0;position:relative}
 .site:not(.wf) .origin .media img.ph{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none;object-fit:cover;filter:none!important}
 .site:not(.wf) .ill-band.ill-photo{flex:none}
+/* v26 : photos des articles du blog */
+.site:not(.wf) :is(.acard .media,.hm-art-media,.feat .media,.art-hero):has(img.ph){position:relative;overflow:hidden;background:#EFEEEA!important;padding:0}
+.site:not(.wf) :is(.acard .media,.hm-art-media,.feat .media,.art-hero):has(img.ph)>:not(img){display:none}
+.site:not(.wf) :is(.acard .media,.hm-art-media,.feat .media,.art-hero) img.ph{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none;margin:0;object-fit:cover;filter:none!important;transition:transform .8s var(--y-ease)}
+.site:not(.wf) :is(.acard,.hm-art,.feat):hover img.ph{transform:scale(1.04)}
+@media (prefers-reduced-motion:reduce){.site:not(.wf) :is(.acard,.hm-art,.feat):hover img.ph{transform:none}}
 
 /* Site public : pleine largeur */
 html,body{background:var(--sable-50)}.stage{padding:0}.site{max-width:none;box-shadow:none;border-radius:0}
