@@ -481,5 +481,80 @@ html.cdr-lock{overflow:hidden}
 .site:not(.wf) :is(.acard,.hm-art,.feat):hover img.ph{transform:scale(1.04)}
 @media (prefers-reduced-motion:reduce){.site:not(.wf) :is(.acard,.hm-art,.feat):hover img.ph{transform:none}}
 
+/* v28 : retours du 16/10 — blocs verts compacts,plantes,provenance,infobulles */
+/* Bloc « 80 degrés » : vert Éveil,plus compact,un seul 80 */
+.site:not(.wf) .hm-deg{background:#1D5A28!important;color:#fff;padding-block:clamp(36px,4.5cqi,64px)!important}
+.site:not(.wf) .hm-deg .hm-eyebrow,.site:not(.wf) .hm-deg-sub{color:rgba(255,255,255,.72)}
+.site:not(.wf) .hm-deg .hm-eyebrow::before{background:rgba(255,255,255,.72)}
+.site:not(.wf) .hm-deg p{color:rgba(255,255,255,.84)}
+.site:not(.wf) .hm-deg .hm-link{color:#fff;margin-top:0;display:inline}
+.site:not(.wf) .hm-deg-head{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4cqi,64px);align-items:end}
+.site:not(.wf) .hm-deg .hm-h2{margin:10px 0 0;font-size:clamp(28px,3.2cqi,44px)}
+.site:not(.wf) .hm-deg-head p{margin:0;max-width:52ch}
+.site:not(.wf) .hm-deg-sub{margin:clamp(28px,3cqi,40px) 0 0;padding-bottom:14px;border-bottom-color:rgba(255,255,255,.2)}
+.site:not(.wf) .hm-steps li{padding:20px 22px 0 0;gap:6px}
+.site:not(.wf) .hm-steps li+li{padding-left:22px;border-left-color:rgba(255,255,255,.2)}
+.site:not(.wf) .hm-steps b{width:32px;height:32px;font-size:14px;margin-bottom:6px;background:#fff;color:#1D5A28}
+.site:not(.wf) .hm-steps h4{font-size:18px}
+.site:not(.wf) .hm-steps p{font-size:14px;line-height:1.5}
+/* Autres gros blocs noirs : même vert */
+.site:not(.wf) .hm-boule{background:#1D5A28;color:#fff;padding:10px 16px 10px 10px}
+.site:not(.wf) .hm-boule-img img{width:88px;height:88px}
+.site:not(.wf) .hm-boule{grid-template-columns:88px 1fr auto}
+.site:not(.wf) .sh-cta{background:#1D5A28!important;color:#fff;padding:clamp(28px,3.5cqi,44px)!important}
+.site:not(.wf) .sh-cta .t-over{color:rgba(255,255,255,.75)!important}
+/* Moments cliquables (accueil) */
+.site:not(.wf) .hm-moments>a{background:#EFEEEA;border-radius:var(--y-r-m);padding:24px 26px;display:grid;gap:8px;align-content:start;text-decoration:none;color:inherit;transition:transform .25s var(--y-ease),box-shadow .25s var(--y-ease)}
+.site:not(.wf) .hm-moments>a:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(17,17,17,.08)}
+.site:not(.wf) .hm-moments>a:focus-visible{outline:2px solid #111;outline-offset:3px}
+/* Section « Nos plantes » (accueil) */
+.site:not(.wf) .hm-pl-intro{margin-top:12px;max-width:60ch;color:var(--y-mute)}
+.site:not(.wf) .hm-pl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8cqi,24px);margin-top:clamp(24px,3cqi,40px)}
+.site:not(.wf) .hm-pl{display:grid;grid-template-rows:auto 1fr;background:#fff;border-radius:var(--y-r-l);overflow:hidden;text-decoration:none;color:inherit;box-shadow:0 0 0 1px var(--y-line);transition:transform .3s var(--y-ease),box-shadow .3s var(--y-ease)}
+.site:not(.wf) .hm-pl:hover{transform:translateY(-4px);box-shadow:0 0 0 1px var(--y-line),0 18px 36px rgba(17,17,17,.08)}
+.site:not(.wf) .hm-pl:focus-visible{outline:2px solid #111;outline-offset:3px}
+.site:not(.wf) .hm-pl-media{display:block;aspect-ratio:4/3;overflow:hidden;position:relative;background:#EFEEEA}
+.site:not(.wf) .hm-pl-media img{position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:cover;padding:0!important;filter:none!important;transition:transform .8s var(--y-ease)}
+.site:not(.wf) .hm-pl:hover .hm-pl-media img{transform:scale(1.04)}
+.site:not(.wf) .hm-pl-body{display:grid;gap:8px;align-content:start;padding:22px 24px 26px}
+.site:not(.wf) .hm-pl-o{font:600 12px/1.2 var(--font-body);letter-spacing:.12em;text-transform:uppercase;color:var(--y-mute)}
+.site:not(.wf) .hm-pl-body b{font:700 24px/1.1 var(--font-display);letter-spacing:-.02em}
+.site:not(.wf) .hm-pl-t{font-size:15px;line-height:1.55;color:var(--y-ink-2,#333)}
+.site:not(.wf) .hm-pl .hm-link{margin-top:6px}
+@media (prefers-reduced-motion:reduce){.site:not(.wf) :is(.hm-pl,.hm-moments>a,.hm-pl-media img){transition:none}.site:not(.wf) .hm-pl:hover,.site:not(.wf) .hm-moments>a:hover{transform:none}.site:not(.wf) .hm-pl:hover .hm-pl-media img{transform:none}}
+/* Carte « Composition & provenance » (fiche produit) */
+.site:not(.wf) .prov{display:grid;gap:14px;align-content:start}
+.site:not(.wf) .prov-top{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
+.site:not(.wf) .prov-bio{display:inline-flex;align-items:center;gap:6px;padding:6px 12px 6px 10px;border-radius:999px;background:#DCEBD3;color:#1D5A28;font:700 13px/1 var(--font-body)}
+.site:not(.wf) .prov-bio svg{width:16px;height:16px}
+.site:not(.wf) .prov-list{list-style:none;margin:4px 0 0;padding:0;display:grid}
+.site:not(.wf) .prov-list li{display:grid;grid-template-columns:12px 1fr auto;gap:14px;align-items:center;padding:14px 0;border-top:1px solid var(--y-line)}
+.site:not(.wf) .prov-list li:last-child{border-bottom:1px solid var(--y-line)}
+.site:not(.wf) .prov-dot{width:12px;height:12px;border-radius:50%}
+.site:not(.wf) .prov-n{display:grid;gap:2px}
+.site:not(.wf) .prov-n b{font:700 17px/1.2 var(--font-display)}
+.site:not(.wf) .prov-n small{font-size:13.5px;color:var(--y-mute)}
+.site:not(.wf) .prov-o{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:14.5px;white-space:nowrap}
+.site:not(.wf) .prov-o svg{color:var(--y-mute);flex:none}
+/* Infobulles des ingrédients */
+.site:not(.wf) .quality .card{overflow:visible}
+.site:not(.wf) .ingw{position:relative;display:inline}
+.site:not(.wf) .ingt{all:unset;cursor:help;font-weight:600;text-decoration:underline dotted 1.5px;text-underline-offset:3px}
+.site:not(.wf) .ingt:focus-visible{outline:2px solid #111;outline-offset:2px;border-radius:3px}
+.site:not(.wf) .ingtip{position:absolute;left:0;top:calc(100% + 10px);z-index:30;width:min(300px,calc(100vw - 24px));display:grid;gap:6px;padding:16px 18px;background:#fff;color:#111;border-radius:14px;box-shadow:0 0 0 1px rgba(17,17,17,.08),0 18px 40px rgba(17,17,17,.16);font-weight:400;text-align:left;opacity:0;visibility:hidden;transform:translateY(4px);transition:opacity .16s ease,transform .16s ease,visibility 0s linear .16s;pointer-events:none}
+.site:not(.wf) .ingtip b{font:700 17px/1.2 var(--font-display)}
+.site:not(.wf) .ingtip small{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#1D5A28;font-weight:600}
+.site:not(.wf) .ingtip span{font-size:14px;line-height:1.5;color:#333}
+.site:not(.wf) .ingw:hover .ingtip,.site:not(.wf) .ingw.open .ingtip,.site:not(.wf) .ingw:has(.ingt:focus-visible) .ingtip{opacity:1;visibility:visible;transform:none;transition:opacity .16s ease,transform .16s ease,visibility 0s}
+@media (hover:none){.site:not(.wf) .ingw:hover:not(.open) .ingtip{opacity:0;visibility:hidden}}
+@media (prefers-reduced-motion:reduce){.site:not(.wf) .ingtip{transition:none;transform:none}}
+@media (max-width:900px){.site:not(.wf) .hm-pl-grid{grid-template-columns:1fr}.site:not(.wf) .hm-deg-head{grid-template-columns:1fr;align-items:start}}
+@media (max-width:1024px) and (min-width:761px){.site:not(.wf) .hm-pl-grid{grid-template-columns:repeat(3,1fr)}.site:not(.wf) .hm-pl-body{padding:18px}}
+.site:not(.wf) .prov>.link{justify-self:start}
+.site:not(.wf) .prov-fig{margin:0 0 6px}
+.site:not(.wf) .sh-cta :is(.t-over,.over)::before{background:rgba(255,255,255,.75)}
+.site:not(.wf) .sh-cta img{border-radius:16px}
+@media (max-width:760px){.site:not(.wf) .hm-steps li,.site:not(.wf) .hm-steps li+li{padding:16px 0;border-left:0;column-gap:16px}.site:not(.wf) .hm-pl-media{aspect-ratio:16/9}.site:not(.wf) .hm-pl-body{padding:18px 20px 22px}}
+
 /* Site public : pleine largeur */
 html,body{background:var(--sable-50)}.stage{padding:0}.site{max-width:none;box-shadow:none;border-radius:0}

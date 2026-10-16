@@ -85,6 +85,12 @@ site.addEventListener('click',e=>{if(e.target.id==='nlpop'){popClose();return;}i
  if(t.dataset.scroll){e.preventDefault();const el=document.getElementById(t.dataset.scroll);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});return;}
 });
 function bindSim(){const s=$('#sim');if(!s)return;const up=()=>{const n=+s.value,a=n*1.5*23,b=n*0.3*23;$('#simv').textContent=n;$('#sim-a').textContent=Math.round(a)+' €';$('#sim-b').textContent=Math.round(b)+' €';$('#sim-c').textContent=Math.round((a-b)*12)+' €';};s.addEventListener('input',up);up();}
+/* Infobulles des ingrédients (façon aperçu Wikipédia) : survol, focus clavier, toucher */
+function ingPlace(w){const t=w&&w.querySelector('.ingtip');if(!t)return;t.style.left='0px';const r=t.getBoundingClientRect();let dx=0;if(r.right>innerWidth-12)dx=innerWidth-12-r.right;if(r.left+dx<12)dx=12-r.left;t.style.left=dx+'px';}
+document.addEventListener('mouseover',e=>{const w=e.target.closest&&e.target.closest('.ingw');if(w)ingPlace(w);});
+document.addEventListener('focusin',e=>{const w=e.target.closest&&e.target.closest('.ingw');if(w)ingPlace(w);});
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('.ingt');$$('.ingw.open').forEach(w=>{if(!b||w!==b.parentElement)w.classList.remove('open');});if(b&&matchMedia('(hover:none)').matches){const w=b.parentElement;ingPlace(w);w.classList.toggle('open');}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){$$('.ingw.open').forEach(w=>w.classList.remove('open'));const a=document.activeElement;if(a&&a.classList&&a.classList.contains('ingt'))a.blur();}});
 function bindFaq(){const q=$('#fq');if(!q)return;q.addEventListener('input',()=>{const v=q.value.trim().toLowerCase();let n=0;$$('#faqlist details').forEach(d=>{const m=!v||d.textContent.toLowerCase().includes(v);d.hidden=!m;if(m)n++;if(v&&m)d.open=true;});$('#fqnone').hidden=n>0;});}
 
 $$('[data-logo]').forEach(a=>a.innerHTML=logoHTML(a.dataset.logo==='light'));

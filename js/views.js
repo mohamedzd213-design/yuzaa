@@ -17,17 +17,18 @@ const hmRecipe=d=>{const p=P[d];return `<article class="hm-rc rc-${d}" id="rc-${
 const hmVs=(k,lab,li)=>{const c=C[k];return `<article class="hm-vs rc-${c.c}"><a class="hm-vs-media" href="#coffret-${k}" aria-label="Voir ${c.name}"><span class="hm-arch"></span>${cmedia(k)}</a><div class="hm-vs-body"><span class="hm-tag">${lab}</span><h3>${c.name}</h3><p class="hm-vs-price">${cprice(k)}</p><ul>${li.map(x=>`<li>${ico.check}<span>${x}</span></li>`).join('')}</ul><a class="hm-btn hm-btn-line" href="#coffret-${k}">Découvrir${hmArrow}</a></div></article>`;};
 const hmMarquee=()=>{const it=[[ico.truck,'Livraison offerte dès 35&nbsp;€'],[ico.return,'Retours gratuits 30 jours'],[ico.lock,'Paiement sécurisé'],[ico.nosugar,'Sans sucre ajouté'],[ico.leaf,'100 % plantes'],[ico.tin,'Carton recyclé']];const row=it.map(([i,t])=>`<li>${i}${t}</li>`).join('');return `<div class="hm-marquee" aria-label="Nos garanties"><ul class="hm-mq-track">${row}</ul><ul class="hm-mq-track" aria-hidden="true">${row}</ul></div>`;};
 const hmDeg=(d='eveil')=>`<section class="hm-sec hm-deg" id="degres"><div class="hm-wrap">
- <div class="hm-deg-top">
-  <div class="hm-deg-num" aria-hidden="true"><span data-count="80">80</span><sup>°C</sup><span class="hm-deg-mug">${ILL.deg(d)}</span></div>
-  <div class="hm-deg-txt"><span class="hm-eyebrow">Le bon degré</span><h2 class="hm-h2">80 degrés, la température juste</h2><p>Une eau bouillante brûle les feuilles et libère leur amertume. À 80 °C, le guayusa, le maté et le guarana livrent tous leurs arômes, en douceur. Sans thermomètre : portez l'eau à ébullition, puis laissez-la reposer 2 minutes.</p><a class="hm-link" href="#faq" data-anchor="q-80">Pourquoi 80 °C ? La réponse dans la FAQ&nbsp;→</a></div>
- </div>
+ <div class="hm-deg-head"><div><span class="hm-eyebrow">Le bon degré</span><h2 class="hm-h2">80 degrés, la température juste</h2></div><p>Une eau bouillante brûle les feuilles et libère leur amertume. Sans thermomètre : portez l'eau à ébullition, puis laissez-la reposer 2 minutes. <a class="hm-link" href="#faq" data-anchor="q-80">Pourquoi cette température&nbsp;?&nbsp;→</a></p></div>
  <h3 class="hm-deg-sub">Usage · Comment ça marche</h3>
  <ol class="hm-steps">
-  <li><b>1</b><h4>Chauffez l'eau à 80 °C</h4><p>Frémissante, jamais bouillante : le secret d'une infusion sans amertume.</p></li>
+  <li><b>1</b><h4>Chauffez l'eau</h4><p>Frémissante, jamais bouillante : le secret d'une infusion sans amertume.</p></li>
   <li><b>2</b><h4>2,5 g pour 25 cl</h4><p>Une cuillère à café de vrac dans votre boule à thé, ou un sachet.</p></li>
   <li><b>3</b><h4>Infusez 5 minutes</h4><p>Retirez l'infuseur : votre tasse est prête, chaude ou sur glaçons.</p></li>
   <li><b>4</b><h4>Deux tasses par jour</h4><p>Focus le matin, Éveil l'après-midi, Rush les jours décisifs. Dernière tasse avant 16 h.</p></li>
  </ol>
+</div></section>`;
+const hmPlantes=()=>`<section class="hm-sec hm-plantes" id="plantes"><div class="hm-wrap">
+ <div class="hm-head"><div><span class="hm-eyebrow">Nos plantes</span><h2 class="hm-h2">Guayusa, maté, guarana : d'où vient l'énergie ?</h2><p class="hm-pl-intro">Trois plantes riches en caféine naturelle, bues depuis des siècles en Amérique du Sud. Chacune donne son caractère à une recette.</p></div><a class="hm-link" href="#histoire" data-anchor="producteurs">Leur histoire&nbsp;→</a></div>
+ <div class="hm-pl-grid">${[['eveil','histG','La guayusa','Équateur','Feuille d\'un houx d\'Amazonie, partagée à l\'aube par les familles kichwa. Sa caféine se libère en douceur, pour une énergie progressive et sans amertume.'],['focus','histM','Le maté','Brésil','Feuille d\'un houx d\'Amérique du Sud, bue en calebasse entre amis. Vert, il accompagne les longues heures de concentration ; torréfié, il prend des notes profondes.'],['rush','histR','Le guarana','Amazonie brésilienne','Graine rouge d\'une liane amazonienne, parmi les plus riches en caféine au monde. C\'est elle qui donne à Rush son intensité.']].map(([d,k,n,o,t])=>`<a class="hm-pl rc-${d}" href="#produit-${d}"><span class="hm-pl-media">${pkImg(IMG[k],n.replace(/^L[ae] /,'')+' : plante à l\'origine de la recette '+P[d].name)}</span><span class="hm-pl-body"><span class="hm-pl-o">${o} · ${P[d].name}</span><b>${n}</b><span class="hm-pl-t">${t}</span><span class="hm-link">Découvrir ${P[d].name}&nbsp;→</span></span></a>`).join('')}</div>
 </div></section>`;
 const hmSim=()=>`<section class="hm-sec hm-sim-s" id="canettes"><div class="hm-wrap"><div class="hm-sim">
  <div class="hm-sim-l"><span class="hm-eyebrow">Comparatif</span><h2 class="hm-h2">Le vrai coût de vos canettes</h2><p>Une canette coûte en moyenne 1,50&nbsp;€ au distributeur, une tasse yuzaa 0,30&nbsp;€. Faites le calcul.</p>
@@ -39,7 +40,7 @@ V.accueil=()=>`<div class="hm">
  <div class="hm-hero-txt">
   <span class="hm-eyebrow">Infusions énergisantes · 100 % plantes · Sans sucre ajouté</span>
   <h1 class="hm-h1" id="hero-t">Osez l'énergie végétale.</h1>
-  <p class="hm-lead">Guayusa, maté et guarana : trois recettes riches en caféine naturelle, pour une énergie progressive, sans sucre ajouté ni arôme artificiel.</p>
+  <p class="hm-lead">Besoin d'un coup de boost ? Découvrez une alternative aux boissons énergisantes : trois infusions à la caféine naturelle, 100&nbsp;% plantes, sans sucre ajouté ni arôme artificiel.</p>
   <div class="hm-ctas"><a class="hm-btn hm-btn-ink hm-btn-lg" href="#accueil" data-anchor="comparer">Découvrir les infusions${hmArrow}</a><a class="hm-btn hm-btn-line hm-btn-lg" href="#coffret-decouverte">Coffret Découverte · 19,90&nbsp;€</a></div>
   <a class="hm-proof-rate" href="#accueil" data-anchor="avis">${hmStars(5)}<span><b>4,7/5</b> · 439 avis vérifiés</span></a>
   <ul class="hm-proofs"><li>${ico.nosugar}Sans sucre ajouté</li><li>${ico.leaf}100 % plantes</li><li>${ico.tin}Carton recyclé</li></ul>
@@ -69,13 +70,15 @@ ${hmMarquee()}
  </ol>
 </div></section>
 
+${hmPlantes()}
+
 ${hmDeg('eveil')}
 
 <section class="hm-sec hm-day-s"><div class="hm-wrap"><div class="hm-day">
  <div class="hm-head"><div><span class="hm-eyebrow">Guide de la caféine</span><h2 class="hm-h2">La bonne intensité, au bon moment</h2></div><a class="hm-link" href="#article-cafeine-moment">Lire le guide&nbsp;→</a></div>
  <div class="hm-dayline" aria-hidden="true"><i class="hm-dl-f"></i><i class="hm-dl-e"></i><i class="hm-dl-n"></i><span class="hm-pin" style="left:8%">Focus · 8 h 30</span><span class="hm-pin" style="left:46%">Éveil · 14 h</span><span class="hm-pin hm-pin-n" style="left:60%">Plus de caféine après 16 h</span></div>
  <div class="hm-hours" aria-hidden="true"><span>7 h</span><span>10 h</span><span>13 h</span><span>16 h</span><span>19 h</span><span>22 h</span></div>
- <div class="hm-moments"><div class="rc-focus"><b>Le matin</b><span>Focus · 60 mg, pour une matinée de cours ou de travail exigeante.</span></div><div class="rc-eveil"><b>Après le déjeuner</b><span>Éveil · 40 mg, pour relancer l'après-midi en préservant le sommeil.</span></div><div class="rc-rush"><b>Jour d'examen</b><span>Rush · 80 mg, le matin, en remplacement de Focus.</span></div></div>
+ <div class="hm-moments"><a class="rc-focus" href="#produit-focus"><b>Le matin</b><span>Focus · 60 mg, pour une matinée de cours ou de travail exigeante.</span></a><a class="rc-eveil" href="#produit-eveil"><b>Après le déjeuner</b><span>Éveil · 40 mg, pour relancer l'après-midi en préservant le sommeil.</span></a><a class="rc-rush" href="#produit-rush"><b>Jour d'examen</b><span>Rush · 80 mg, le matin, en remplacement de Focus.</span></a></div>
  <p class="hm-note">Combien de tasses par jour ? <a class="hm-link" href="#faq" data-anchor="q-tasses">Nos repères dans la FAQ</a></p>
 </div></div></section>
 
@@ -132,11 +135,11 @@ function produit(d){const p=P[d];const others=['eveil','focus','rush'].filter(x=
  <div class="pinfo">
   <span class="pastille pastille-${d}">${p.moment}</span>
   <h1>${p.name}</h1>
-  <p class="kw">${p.key} · ${p.mg} mg de caféine</p>
+  ${gauge(d)}
+  <p class="kw">${p.key}</p>
   <a href="#produit-${d}" data-anchor="avis" class="t-sm prate-link" style="color:var(--text-secondary)"><span class="stars">${stars(p.rating)}</span> ${String(p.rating).replace('.',',')}/5 · ${p.n} avis</a>
   <div class="pprice"><b id="pp-price">${eur(p.price)}</b><span id="pp-unit">Vrac 100 g · environ 40 tasses · 0,30 € la tasse</span></div>
   <p>${p.desc}</p>
-  ${gauge(d)}
   <fieldset class="opts" style="border:0;padding:0;margin:0"><legend class="t-label" style="margin-bottom:10px">Format</legend>
    <label class="opt"><input type="radio" name="fmt" value="vrac" checked><span class="grow">Vrac · 100 g<small>Environ 40 tasses · 0,30 € la tasse</small></span><b>${eur(p.price)}</b></label>
    <label class="opt"><input type="radio" name="fmt" value="sachets"><span class="grow">Boîte de 20 sachets<small>Format pratique à emporter</small></span><b>6,90 €</b></label>
@@ -146,31 +149,28 @@ function produit(d){const p=P[d];const others=['eveil','focus','rush'].filter(x=
  </div>
 </div></section>
 
-<div class="hm">${hmDeg(d)}</div>
-
 <section class="sec-tight"><div class="wrap quality">
- <div class="card"><figure class="illf ill-card ill-photo">${ingImg(d)}</figure><h2 class="t-h4">Composition</h2><dl class="kv"><dt>Ingrédients</dt><dd>${p.plants}*</dd><dt>Caféine</dt><dd>${p.mg} mg par tasse de 25 cl</dd><dt>Sucre</dt><dd>0 g, sans édulcorant</dd><dt>Formats</dt><dd>Vrac 100 g (≈ 40 tasses) · 20 sachets</dd><dt>Emballage</dt><dd>Boîte en carton recyclé</dd><dt>Allergènes</dt><dd>Aucun</dd></dl><p class="t-cap" style="margin-top:14px">* 100 % plantes, sans sucre ajouté. Déconseillé aux femmes enceintes ou allaitantes et aux moins de 16 ans.</p></div>
- <div class="card bg-sable" style="border:0"><h2 class="t-h4">Teneur en caféine</h2><dl class="kv"><dt>Par tasse</dt><dd><span data-count="${p.mg}">${p.mg}</span> mg</dd><dt>Repère</dt><dd>${d==='eveil'?'La moitié d\'un espresso':d==='focus'?'Les trois quarts d\'un espresso':'Un espresso'}</dd><dt>Conseil</dt><dd>2 tasses par jour maximum, pas après 16 h</dd></dl><a class="link" href="#faq" data-anchor="faq-cafeine" style="display:inline-block;margin-top:16px">Toutes vos questions sur la caféine →</a></div>
+ <div class="card"><figure class="illf ill-card ill-photo">${ingImg(d)}</figure><h2 class="t-h4">Composition</h2><dl class="kv"><dt>Ingrédients</dt><dd class="ingdd">${ingTips(d)}*</dd><dt>Caféine</dt><dd>${p.mg} mg par tasse de 25 cl</dd><dt>Sucre</dt><dd>0 g, sans édulcorant</dd><dt>Formats</dt><dd>Vrac 100 g (≈ 40 tasses) · 20 sachets</dd><dt>Emballage</dt><dd>Boîte en carton recyclé</dd><dt>Allergènes</dt><dd>Aucun</dd><dt>Précautions</dt><dd>Contient de la caféine. 2 tasses par jour maximum, pas après 16 h. Déconseillé aux femmes enceintes ou allaitantes et aux moins de 16 ans.</dd></dl><p class="t-cap" style="margin-top:14px">* Ingrédients issus de l'agriculture biologique. Survolez une plante pour en savoir plus.</p></div>
+ ${provCard(d)}
 </div></section>
-
-<section class="sec-tight" id="avis"><div class="wrap">
- <div class="sec-head"><div><h2 class="t-h2">Avis clients · ${p.name}</h2><p>${String(p.rating).replace('.',',')}/5 · ${p.n} avis vérifiés après achat</p></div><button class="btn btn-ghost btn-sm" type="button" data-toast="Vous pourrez laisser un avis après réception de votre commande.">Écrire un avis</button></div>
- <div class="g3"><div class="review"><span class="stars">★★★★★</span><p>« Aucune amertume, je le bois sans sucre. Je reste concentrée jusqu'à midi. »</p><footer>Sarah · étudiante en master</footer></div><div class="review"><span class="stars">★★★★★</span><p>« La teneur en caféine est indiquée sur la boîte : je sais exactement ce que je consomme. »</p><footer>Yanis · alternant développeur</footer></div><div class="review"><span class="stars">★★★★☆</span><p>« Excellent goût. Avec la boule à thé, je le prépare directement à la bibliothèque. »</p><footer>Léa · alternante commerce</footer></div></div>
- ${askFaq()}
-</div></section>
-<div class="hm">${hmSim()}</div>
 
 <section class="sec-tight"><div class="wrap">
  <div class="sec-head"><div><h2 class="t-h2">Vous aimerez aussi</h2><p class="sec-links"><a class="link" href="#infusions">Voir toute la gamme</a><a class="link" href="#coffrets">Coffrets &amp; accessoires</a></p></div><div class="cnav"><button type="button" data-car="-1" aria-label="Précédent">←</button><button type="button" data-car="1" aria-label="Suivant">→</button></div></div>
  <div class="carousel" id="car">${others.map(x=>pcard(x)).join('')}${ccard('boule')}${ccard('decouverte')}${ccard('partiels')}</div>
 </div></section>
 
-<section class="sec-tight"><div class="wrap" style="max-width:860px">
- <h2 class="t-h3" style="margin-bottom:12px">Conditions</h2>
- <details class="cond"><summary>Livraison</summary><p>Livraison à domicile en 48 h en France métropolitaine : 4,90 €, offerte dès 35 € d'achat. Expédition sous 24 h ouvrées.</p></details>
- <details class="cond"><summary>Retours et remboursements</summary><p>Retours gratuits sous 30 jours. Le remboursement est effectué dès réception du colis.</p></details>
- <details class="cond"><summary>Précautions d'emploi</summary><p>Contient de la caféine. Ne pas dépasser deux tasses par jour. Déconseillé aux femmes enceintes ou allaitantes et aux moins de 16 ans.</p></details>
+<div class="hm">${hmDeg(d)}</div>
+
+
+<section class="sec-tight" id="avis"><div class="wrap">
+ <div class="sec-head"><div><h2 class="t-h2">Avis clients · ${p.name}</h2><p>${String(p.rating).replace('.',',')}/5 · ${p.n} avis vérifiés après achat</p></div><button class="btn btn-ghost btn-sm" type="button" data-toast="Vous pourrez laisser un avis après réception de votre commande.">Écrire un avis</button></div>
+ <div class="g3"><div class="review"><span class="stars">★★★★★</span><p>« Aucune amertume, je le bois sans sucre. Je reste concentrée jusqu'à midi. »</p><footer>Sarah · étudiante en master</footer></div><div class="review"><span class="stars">★★★★★</span><p>« La teneur en caféine est indiquée sur la boîte : je sais exactement ce que je consomme. »</p><footer>Yanis · alternant développeur</footer></div><div class="review"><span class="stars">★★★★☆</span><p>« Excellent goût. Avec la boule à thé, je le prépare directement à la bibliothèque. »</p><footer>Léa · alternante commerce</footer></div></div>
+ ${askFaq()}
 </div></section>
+
+
+
+
 <div class="mbuy"><div><b>${p.name}</b><div class="t-sm muted">${eur(p.price)} · vrac 100 g</div></div><button class="btn btn-primary" type="button" data-add="${d}" data-tone="${d}" data-useq>Ajouter</button></div>`;}
 
 V.coffrets=()=>`
