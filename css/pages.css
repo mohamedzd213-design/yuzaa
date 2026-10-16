@@ -560,5 +560,59 @@ html.cdr-lock{overflow:hidden}
 .site:not(.wf) .hm-h1{font-size:clamp(50px,6.4cqi,104px);line-height:.92;letter-spacing:-.04em;max-width:none}
 @container site (max-width:760px){.site:not(.wf) .hm-h1{font-size:clamp(42px,12.5cqi,58px);line-height:.96;max-width:none}}
 
+/* v30 : hauteur des sections sur ordinateur (tenir dans l'écran,nav flottante 88 px) */
+.site:not(.wf){--navh:88px}
+.site:not(.wf) [id]{scroll-margin-top:calc(var(--navh) + 20px)}
+@media (min-width:1025px){
+ .site:not(.wf) .hm-sec{padding-block:clamp(40px,7vh,100px)}
+ .site:not(.wf) .sec{padding-block:clamp(40px,7vh,100px)}
+ .site:not(.wf) .sec-tight{padding-block:clamp(36px,6vh,72px)}
+ .site:not(.wf) .hm-h2{font-size:clamp(36px,min(4.6cqi,7.4vh),72px)}
+ .site:not(.wf) .hm-head{margin-bottom:clamp(28px,min(4.4cqi,5.6vh),72px)}
+ .site:not(.wf) .hm-why-list li{padding:clamp(20px,3.4vh,34px) 32px clamp(22px,3.8vh,40px) 0}
+ .site:not(.wf) .hm-why-list li:nth-child(even){padding-left:32px;padding-right:0}
+ .site:not(.wf) .hm-day{padding:clamp(28px,min(4.5cqi,5vh),72px)}
+ .site:not(.wf) .hm-dayline{margin-top:clamp(52px,7.5vh,72px)}
+ .site:not(.wf) .hm-moments{margin-top:clamp(24px,3.6vh,40px)}
+ .site:not(.wf) .hm-rv{padding:clamp(22px,min(2.6cqi,3.6vh),40px);gap:16px}
+ .site:not(.wf) .hm-pl-media,.site:not(.wf) .hm-art-media{aspect-ratio:3/2}
+ .site:not(.wf) .hm-vss .hm-vs-media{aspect-ratio:16/9}
+ .site:not(.wf) .hm-vss .hm-vs-media img.ph{object-position:50% 72%!important}
+ /* pages : en-têtes,fiches,histoire,blog,article */
+ .site:not(.wf) main .sec-head{margin-bottom:clamp(26px,4.5vh,48px)}
+ .site:not(.wf) main .pillar{padding:clamp(24px,3.6vh,40px)}
+ .site:not(.wf) main .pgrid .pinfo{gap:clamp(8px,1.3vh,20px)}
+ .site:not(.wf) main .pgrid .pinfo h1{font-size:clamp(44px,min(6.4cqi,8.4vh),104px)!important;margin-top:clamp(2px,.8vh,14px)}
+ .site:not(.wf) .crumb{padding-top:clamp(10px,1.6vh,28px)}
+ .site:not(.wf) main .pgrid .pprice{padding-block:clamp(10px,1.6vh,18px)}
+ .site:not(.wf) main .pgrid .opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+ .site:not(.wf) main .pgrid .opts legend{grid-column:1/-1}
+ .site:not(.wf) main .pgrid .opts .opt{margin:0;padding:clamp(10px,1.5vh,16px) 14px;gap:10px}
+ .site:not(.wf) main .pgrid .opts{column-gap:8px}
+ .site:not(.wf) main .pgrid>.media.main,.site:not(.wf) main .pgrid .gal{position:sticky;top:calc(var(--navh) + 16px);align-self:start}
+ .site:not(.wf) main .sh-hero{padding-block:clamp(8px,1.5vh,28px) clamp(36px,6vh,80px)}
+ .site:not(.wf) main .sh-hero>.wrap.g2{padding-block:clamp(12px,2.5vh,72px) 0;align-items:center}
+ .site:not(.wf) main .sh-hero h1.t-display{font-size:clamp(48px,min(5.6cqi,10vh),104px)}
+ .site:not(.wf) main .sh-hero .media{max-height:calc(100vh - 132px - 80px);aspect-ratio:auto;height:min(calc(100vh - 212px),calc((100cqi - 2*var(--pad) - 48px)/2*.75))}
+ .site:not(.wf) main .sh-why .sh-stats figure{aspect-ratio:16/9}
+ .site:not(.wf) main .sh-why .sh-stats{grid-template-columns:repeat(3,1fr);align-content:start}
+ .site:not(.wf) main .sh-why .sh-stats figure{grid-column:1/-1}
+ .site:not(.wf) main .sh-why .stat{padding:clamp(16px,2.6vh,26px)}
+ .site:not(.wf) main .feat .media{aspect-ratio:2/1}
+ .site:not(.wf) main .media.art-hero{aspect-ratio:21/9!important}
+ .site:not(.wf) main .vs-col .vs-media{aspect-ratio:16/9}
+ .site:not(.wf) main .vs-col .vs-media img.ph{object-position:50% 72%!important}
+ .site:not(.wf) .hm-plantes .hm-h2{max-width:22ch}
+ .site:not(.wf) main .quality .card{padding:clamp(24px,3.6vh,40px)}
+ .site:not(.wf) main .quality .ill-photo{aspect-ratio:16/9}
+ .site:not(.wf) main .pillar .ill-card{aspect-ratio:2/1}
+ .site:not(.wf) .hm-hero{padding-block:clamp(16px,3vh,40px) clamp(28px,5vh,56px)}
+ .site:not(.wf) .hm-hero .hm-h1{font-size:clamp(46px,min(6.4cqi,10.5vh),104px);margin:clamp(14px,2.4vh,24px) 0 clamp(16px,2.8vh,28px)}
+ .site:not(.wf) .hm-hero .hm-ctas{margin-top:clamp(20px,3.6vh,36px)}
+ .site:not(.wf) .hm-hero .hm-proof-rate{margin-top:clamp(16px,2.8vh,30px)}
+ .site:not(.wf) .hm-hero .hm-proofs{margin-top:clamp(12px,2vh,20px);padding-top:clamp(12px,2vh,20px)}
+ .site:not(.wf) .hm-hero-vis{max-width:calc((100vh - 132px - 96px) * 4 / 3);justify-self:center;width:100%}
+}
+
 /* Site public : pleine largeur */
 html,body{background:var(--sable-50)}.stage{padding:0}.site{max-width:none;box-shadow:none;border-radius:0}
