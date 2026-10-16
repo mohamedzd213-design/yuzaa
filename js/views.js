@@ -304,7 +304,7 @@ V.engagements=()=>`
 V.blog=()=>{const cats=['Tous','Énergie','Plantes','Recettes','Routine'];const list=ARTS.slice(1).filter(a=>state.bfilter==='Tous'||a.cat===state.bfilter);return `
 <div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / Blog</nav></div>
 <section class="sec-tight" style="padding-top:8px"><div class="wrap">
- <h1 class="t-h1">Le journal yuzaa</h1><p class="t-lg muted" style="max-width:60ch;margin-top:12px">Caféine, plantes, recettes et rituels : nos conseils pour gérer votre énergie sans sacrifier votre sommeil.</p>
+ <div class="blog-intro"><div><h1 class="t-h1">Le journal yuzaa</h1><p class="t-lg muted" style="max-width:60ch;margin-top:12px">Caféine, plantes, recettes et rituels : nos conseils pour gérer votre énergie sans sacrifier votre sommeil.</p></div><figure class="illf ill-photo blog-intro-fig">${pkImg(IMG.blogBureau,'Bureau en bois près d\'une fenêtre : ordinateur portable, plante, tasse d\'infusion à la menthe et canette écrasée, sous l\'enseigne lumineuse yuzaa',' ',true)}</figure></div>
  <a class="feat" href="#article-${ARTS[0].id}" style="margin-top:40px"><div class="media">${artIll(ARTS[0],'W')}</div><div><span class="t-over over">À la une · ${ARTS[0].cat}</span><h2 class="t-h2" style="margin-block:10px 12px">${ARTS[0].t}</h2><p class="muted">${ARTS[0].ex}</p><span class="link" style="display:inline-block;margin-top:16px">Lire l'article →</span></div></a>
 </div></section>
 <section class="sec-tight"><div class="wrap">

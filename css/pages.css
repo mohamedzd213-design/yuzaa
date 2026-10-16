@@ -481,5 +481,10 @@ html.cdr-lock{overflow:hidden}
 .site:not(.wf) :is(.acard,.hm-art,.feat):hover img.ph{transform:scale(1.04)}
 @media (prefers-reduced-motion:reduce){.site:not(.wf) :is(.acard,.hm-art,.feat):hover img.ph{transform:none}}
 
+/* v27 : photo du bureau dans l'introduction du Blog */
+.site:not(.wf) .blog-intro{display:grid;grid-template-columns:1fr minmax(0,.9fr);gap:48px;align-items:center}
+.site:not(.wf) .blog-intro-fig{margin:0;width:100%}
+@media (max-width:900px){.site:not(.wf) .blog-intro{grid-template-columns:1fr;gap:24px}}
+
 /* Site public : pleine largeur */
 html,body{background:var(--sable-50)}.stage{padding:0}.site{max-width:none;box-shadow:none;border-radius:0}
