@@ -444,6 +444,32 @@ html.cdr-lock{overflow:hidden}
  .site:not(.wf) .mnav[data-open="true"]{display:grid;gap:2px;padding:8px 24px 20px;border-top:1px solid var(--border-default)}
  .site:not(.wf) .mnav a{padding:14px 4px;text-decoration:none;font:600 20px var(--font-display);border-bottom:1px solid var(--border-default)}
 }
+/* v24 : photos produits Gemini (fond blanc) — ratio 4:3 homogène,cadrage centré,plein cadre */
+.site:not(.wf) :is(.pcard>.media,.hm-rc-media,.hm-vs-media,.gal .media,.vs-col .vs-media,.hm-hero-arch){aspect-ratio:4/3}
+.site:not(.wf) :is(.pcard>.media,.hm-rc-media,.hm-vs-media,.gal .media,.vs-col .vs-media,.nlpop-media,.hm-hero-arch):has(img.ph){background:#fff!important;overflow:hidden}
+.site:not(.wf) :is(.pcard>.media,.gal .media.main):has(img.ph)::before,.site:not(.wf) :has(>img.ph)>:is(.hm-arch,.hm-sun,.hm-floor){display:none}
+.site:not(.wf) :is(.pcard>.media,.hm-rc-media,.hm-vs-media,.gal .media,.vs-col .vs-media,.hm-hero-arch) img.ph{position:absolute;inset:0;left:0;bottom:0;width:100%!important;height:100%!important;max-width:none;margin:0;object-fit:cover;object-position:50% 50%;transform:none;filter:none!important}
+.site:not(.wf) .hm-rc-media:has(img.ph){overflow:hidden;border-radius:var(--y-r-l,22px) var(--y-r-l,22px) 0 0}
+.site:not(.wf) .hm-rc:hover .hm-rc-media img.ph,.site:not(.wf) .hm-vs:hover .hm-vs-media img.ph,.site .pcard:hover .media img.pk.ph{transform:scale(1.035)!important;transition:transform .8s var(--y-ease)}
+.site:not(.wf) .hm-hero-arch:has(img.ph){border-radius:var(--y-r-xl);box-shadow:0 40px 70px -48px rgba(19,35,26,.45)}
+.site:not(.wf) img.pk.ph:not([class*=pk-]):not(.pk-hero){height:auto}
+@media (prefers-reduced-motion:reduce){.site:not(.wf) :is(.hm-rc,.hm-vs,.pcard):hover img.ph{transform:none!important}}
+.site:not(.wf) .ill-photo{aspect-ratio:4/3;overflow:hidden;border-radius:var(--y-r-l,22px);background:#fff;padding:0}
+.site:not(.wf) .ill-photo img.ph,.site:not(.wf) .bot-trio img.ph{width:100%!important;height:100%!important;object-fit:cover;display:block}
+.site:not(.wf) .hm-steps b{background:#fff;color:#111}
+.site:not(.wf) .carousel .pcard .row{flex-wrap:wrap;gap:12px}
+.site:not(.wf) .carousel .pcard .row .btn{flex:none;white-space:nowrap}
+.site:not(.wf) :is(.media.main,main .hero .media):has(img.ph){aspect-ratio:4/3;background:#fff!important;overflow:hidden;padding:0}
+.site:not(.wf) :is(.media.main,main .hero .media):has(img.ph)::before{display:none}
+.site:not(.wf) :is(.media.main,main .hero .media) img.ph{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none;margin:0;object-fit:cover;transform:none;filter:none!important}
+.site:not(.wf) .pcard .row{flex-wrap:wrap;row-gap:12px}
+.site:not(.wf) .pcard .row .btn{flex:none;white-space:nowrap}
+.site:not(.wf) .promo .input{min-width:0;flex:1 1 auto}
+.site:not(.wf) .promo .btn{flex:none;white-space:nowrap}
+.site:not(.wf) .hm-hero-vis .hm-chip-a{top:auto;bottom:-5%;left:-4%}
+@container site (max-width:1024px){.site:not(.wf) .hm-hero-vis .hm-chip-a{bottom:-7%;left:3%}}
+.site:not(.wf) .hm-hero-vis .hm-seal{top:-9%;right:-3%}
+@container site (max-width:760px){.site:not(.wf) .hm-hero-vis .hm-seal{width:72px;top:-7%;right:-1%}}
 
 /* Site public : pleine largeur */
 html,body{background:var(--sable-50)}.stage{padding:0}.site{max-width:none;box-shadow:none;border-radius:0}

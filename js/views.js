@@ -5,7 +5,7 @@ const V={};
 const hmStars=n=>`<span class="hm-stars" aria-hidden="true">${'★★★★★'.slice(0,n)}${'☆☆☆☆☆'.slice(0,5-n)}</span>`;
 const hmArrow='<svg class="hm-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 const hmRecipe=d=>{const p=P[d];return `<article class="hm-rc rc-${d}" id="rc-${d}">
- <a class="hm-rc-media" href="#produit-${d}" aria-label="Découvrir ${p.name}"><span class="hm-arch"></span>${pkImg(IMG[d+'F'],`${p.name} : boîte de 20 sachets et tube de vrac 100 g`)}</a>
+ <a class="hm-rc-media" href="#produit-${d}" aria-label="Découvrir ${p.name}"><span class="hm-arch"></span>${tinSVG(d)}</a>
  <div class="hm-rc-body">
   <span class="hm-tag">${p.moment} · ${p.mg} mg</span>
   <h3 class="hm-rc-name"><a href="#produit-${d}">${p.name}</a></h3>
@@ -44,10 +44,10 @@ V.accueil=()=>`<div class="hm">
   <a class="hm-proof-rate" href="#accueil" data-anchor="avis">${hmStars(5)}<span><b>4,7/5</b> · 439 avis vérifiés</span></a>
   <ul class="hm-proofs"><li>${ico.nosugar}Sans sucre ajouté</li><li>${ico.leaf}100 % plantes</li><li>${ico.tin}Carton recyclé</li></ul>
  </div>
- <div class="hm-hero-vis" aria-hidden="true">
-  <div class="hm-hero-arch"><span class="hm-sun"></span><img src="${IMG.hero}" alt="" class="hm-hero-img" decoding="async"><span class="hm-floor"></span></div>
-  <svg class="hm-seal" viewBox="0 0 120 120"><defs><path id="hmc" d="M60 60m-44 0a44 44 0 1 1 88 0a44 44 0 1 1-88 0"/></defs><text><textPath href="#hmc">100 % PLANTES · SANS SUCRE AJOUTÉ · </textPath></text><g transform="translate(43 42) scale(.72)"><path d="M9 39C9 18 22 6 44 4c0 23-13 35-35 35z" fill="currentColor"/></g></svg>
-  <span class="hm-chip hm-chip-a"><b>40 · 60 · 80</b> mg de caféine par tasse</span>
+ <div class="hm-hero-vis">
+  <div class="hm-hero-arch"><span class="hm-sun" aria-hidden="true"></span><img src="${IMG.hero}" alt="La gamme yuzaa : boîtes et tubes Éveil, Focus et Rush entourés de leurs ingrédients" class="hm-hero-img ph" width="1200" height="900" fetchpriority="high" decoding="async"><span class="hm-floor" aria-hidden="true"></span></div>
+  <svg class="hm-seal" aria-hidden="true" viewBox="0 0 120 120"><defs><path id="hmc" d="M60 60m-44 0a44 44 0 1 1 88 0a44 44 0 1 1-88 0"/></defs><text><textPath href="#hmc">100 % PLANTES · SANS SUCRE AJOUTÉ · </textPath></text><g transform="translate(43 42) scale(.72)"><path d="M9 39C9 18 22 6 44 4c0 23-13 35-35 35z" fill="currentColor"/></g></svg>
+  <span class="hm-chip hm-chip-a" aria-hidden="true"><b>40 · 60 · 80</b> mg de caféine par tasse</span>
  </div>
 </div></section>
 ${hmMarquee()}
@@ -127,8 +127,8 @@ V.infusions=()=>`
 function produit(d){const p=P[d];const others=['eveil','focus','rush'].filter(x=>x!==d);return `
 <div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / <a href="#infusions">Nos infusions</a> / ${p.name}</nav></div>
 <section class="sec-tight" style="padding-top:8px"><div class="wrap pgrid">
- <div class="gal"><div class="media main rc-${d}" id="gmain">${tinSVG(d)}</div>
-  <div class="thumbs"><button type="button" class="media on rc-${d}" data-gal aria-label="Voir le produit">${tinSVG(d)}</button><button type="button" class="media rc-${d}" data-gal aria-label="Voir le détail de la boîte">${backImg(d)}</button><button type="button" class="media rc-${d}" data-gal aria-label="Voir la plante">${botSVG(d)}</button></div></div>
+ <div class="gal"><div class="media main rc-${d}" id="gmain">${sceneImg(d,true)}</div>
+  <div class="thumbs"><button type="button" class="media on rc-${d}" data-gal aria-label="Voir la photo avec les ingrédients">${sceneImg(d)}</button><button type="button" class="media rc-${d}" data-gal aria-label="Voir le packaging">${backImg(d)}</button><button type="button" class="media rc-${d}" data-gal aria-label="Voir les ingrédients">${ingImg(d)}</button></div></div>
  <div class="pinfo">
   <span class="pastille pastille-${d}">${p.moment}</span>
   <h1>${p.name}</h1>
@@ -149,7 +149,7 @@ function produit(d){const p=P[d];const others=['eveil','focus','rush'].filter(x=
 <div class="hm">${hmDeg(d)}</div>
 
 <section class="sec-tight"><div class="wrap quality">
- <div class="card">${ill('flat',d,'ill-card')}<h2 class="t-h4">Composition</h2><dl class="kv"><dt>Ingrédients</dt><dd>${p.plants}*</dd><dt>Caféine</dt><dd>${p.mg} mg par tasse de 25 cl</dd><dt>Sucre</dt><dd>0 g, sans édulcorant</dd><dt>Formats</dt><dd>Vrac 100 g (≈ 40 tasses) · 20 sachets</dd><dt>Emballage</dt><dd>Boîte en carton recyclé</dd><dt>Allergènes</dt><dd>Aucun</dd></dl><p class="t-cap" style="margin-top:14px">* 100 % plantes, sans sucre ajouté. Déconseillé aux femmes enceintes ou allaitantes et aux moins de 16 ans.</p></div>
+ <div class="card"><figure class="illf ill-card ill-photo">${ingImg(d)}</figure><h2 class="t-h4">Composition</h2><dl class="kv"><dt>Ingrédients</dt><dd>${p.plants}*</dd><dt>Caféine</dt><dd>${p.mg} mg par tasse de 25 cl</dd><dt>Sucre</dt><dd>0 g, sans édulcorant</dd><dt>Formats</dt><dd>Vrac 100 g (≈ 40 tasses) · 20 sachets</dd><dt>Emballage</dt><dd>Boîte en carton recyclé</dd><dt>Allergènes</dt><dd>Aucun</dd></dl><p class="t-cap" style="margin-top:14px">* 100 % plantes, sans sucre ajouté. Déconseillé aux femmes enceintes ou allaitantes et aux moins de 16 ans.</p></div>
  <div class="card bg-sable" style="border:0"><h2 class="t-h4">Teneur en caféine</h2><dl class="kv"><dt>Par tasse</dt><dd><span data-count="${p.mg}">${p.mg}</span> mg</dd><dt>Repère</dt><dd>${d==='eveil'?'La moitié d\'un espresso':d==='focus'?'Les trois quarts d\'un espresso':'Un espresso'}</dd><dt>Conseil</dt><dd>2 tasses par jour maximum, pas après 16 h</dd></dl><a class="link" href="#faq" data-anchor="faq-cafeine" style="display:inline-block;margin-top:16px">Toutes vos questions sur la caféine →</a></div>
 </div></section>
 
@@ -186,13 +186,13 @@ V.coffrets=()=>`
 function coffret(k){const c=C[k];return `
 <div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / <a href="#coffrets">Coffrets</a> / ${c.name}</nav></div>
 <section class="sec-tight" style="padding-top:8px"><div class="wrap pgrid">
- ${k==='boule'?bouleGal():`<div class="media main rc-${c.c}" style="aspect-ratio:1/1">${cmedia(k)}</div>`}
+ ${k==='boule'?bouleGal():`<div class="media main rc-${c.c}" style="aspect-ratio:4/3">${cmedia(k)}</div>`}
  <div class="pinfo"><span class="pastille pastille-${c.c}">${c.tag}</span><h1 style="font-size:clamp(36px,4.4cqi,52px)">${c.name}</h1>${c.sub?`<p class="cof-sub">${c.sub}</p>`:''}<p class="kw">${c.contenu}</p><p>${c.desc}</p>
  <div class="buy"><span class="price" style="font-size:28px;align-self:center;flex:1">${cprice(k)}</span><button class="btn btn-primary" type="button" data-add="${k}">Ajouter au panier</button></div>
  <div class="reas"><span>${ico.truck}Livraison à domicile en 48 h · offerte dès 35 €</span><span>${ico.return}Retours gratuits sous 30 jours</span><span>${ico.tin}Boîte en carton recyclé</span></div></div>
 </div></section>
 ${k!=='boule'?`<section class="sec-tight"><div class="wrap">${cofCompare(k)}</div></section>`:''}
-<section class="sec-tight"><div class="wrap"><h2 class="t-h2" style="margin-bottom:20px">Les recettes</h2><div class="steps4"><a class="step-l rc-eveil" href="#produit-eveil">${pkImg(IMG.eveilF,'Éveil : boîte de sachets et tube de vrac','pk-step')}<b>Éveil</b><p>Énergie douce, 40 mg.</p></a><a class="step-l rc-focus" href="#produit-focus">${pkImg(IMG.focusF,'Focus : boîte de sachets et tube de vrac','pk-step')}<b>Focus</b><p>Concentration, 60 mg.</p></a><a class="step-l rc-rush" href="#produit-rush">${pkImg(IMG.rushF,'Rush : boîte de sachets et tube de vrac','pk-step')}<b>Rush</b><p>Coup de boost, 80 mg.</p></a><a class="step-l" href="#faq" data-anchor="q-80"><span class="pk-step">${ILL.deg('focus')}</span><b>80 °C</b><p>5 minutes d'infusion, 2,5 g par tasse.</p></a></div></div></section>
+<section class="sec-tight"><div class="wrap"><h2 class="t-h2" style="margin-bottom:20px">Les recettes</h2><div class="steps4"><a class="step-l rc-eveil" href="#produit-eveil">${pkImg(IMG.eveilF,'Éveil : boîte de vrac, tube et sachets','pk-step')}<b>Éveil</b><p>Énergie douce, 40 mg.</p></a><a class="step-l rc-focus" href="#produit-focus">${pkImg(IMG.focusF,'Focus : boîte de vrac, tube et sachets','pk-step')}<b>Focus</b><p>Concentration, 60 mg.</p></a><a class="step-l rc-rush" href="#produit-rush">${pkImg(IMG.rushF,'Rush : boîte de vrac, tube et sachets','pk-step')}<b>Rush</b><p>Coup de boost, 80 mg.</p></a><a class="step-l" href="#faq" data-anchor="q-80"><span class="pk-step">${ILL.deg('focus')}</span><b>80 °C</b><p>5 minutes d'infusion, 2,5 g par tasse.</p></a></div></div></section>
 <section class="sec-tight"><div class="wrap"><div class="sec-head"><h2 class="t-h2">Suggestions</h2></div><div class="g3">${k==='boule'?ccard('decouverte')+pcard('focus')+pcard('eveil'):k==='decouverte'?ccard('partiels')+ccard('boule')+pcard('focus'):pcard('focus')+pcard('eveil')+pcard('rush')}</div></div></section>
 <section class="sec-tight"><div class="wrap" style="max-width:860px"><details class="cond"><summary>Conditions</summary><p>Livraison à domicile en 48 h : 4,90 €, offerte dès 35 € d'achat. Retours gratuits sous 30 jours. <a class="link" href="#faq" data-anchor="faq-commande">Toutes les réponses dans la FAQ</a></p></details></div></section>
 <div class="mbuy"><div><b>${c.name}</b><div class="t-sm muted">${eur(c.price)}</div></div><button class="btn btn-primary" type="button" data-add="${k}">Ajouter</button></div>`;}
@@ -298,7 +298,7 @@ V.engagements=()=>`
 </div></section>
 <section class="sec-tight" style="padding-bottom:88px"><div class="wrap"><div class="sh-cta">
  <div><span class="t-over" style="color:var(--eveil-300)">Infusez vos journées</span><h2 class="t-h2" style="margin-top:8px">D'où viennent nos plantes ?</h2><p>Guayusa d'Amazonie équatorienne, maté d'Amérique du Sud, guarana d'Amazonie brésilienne : découvrez nos producteurs et leurs rituels.</p></div>
- <div class="cta-side"><div class="bot-trio">${['eveil','focus','rush'].map(d=>`<span>${botSVG(d)}</span>`).join('')}</div><div class="ctas"><a class="btn btn-light" href="#histoire" data-anchor="producteurs">Histoire &amp; producteurs</a><a class="btn sh-ghost" href="#infusions">Découvrir les recettes</a></div></div>
+ <div class="cta-side"><div class="bot-trio">${['eveil','focus','rush'].map(d=>`<span>${ingImg(d)}</span>`).join('')}</div><div class="ctas"><a class="btn btn-light" href="#histoire" data-anchor="producteurs">Histoire &amp; producteurs</a><a class="btn sh-ghost" href="#infusions">Découvrir les recettes</a></div></div>
 </div></div></section>`;
 
 V.blog=()=>{const cats=['Tous','Énergie','Plantes','Recettes','Routine'];const list=ARTS.slice(1).filter(a=>state.bfilter==='Tous'||a.cat===state.bfilter);return `
