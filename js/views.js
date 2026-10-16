@@ -181,7 +181,7 @@ V.coffrets=()=>`
  <h2 class="sr">Nos coffrets et accessoires</h2><div class="g3" style="margin-top:36px">${ccard('decouverte')}${ccard('partiels')}${ccard('boule')}</div>
 </div></section>
 <section class="sec-tight"><div class="wrap">${cofCompare('')}</div></section>
-<section class="sec"><div class="wrap"><div class="band">${ill('cafe','','ill-band')}<div style="max-width:56ch"><span class="t-over" style="color:var(--eveil-700)">Pour les pros</span><h2 class="t-h3" style="margin-top:8px">Vous gérez un café, un coworking ou un BDE ?</h2><p class="muted">Des formats et des tarifs adaptés à votre établissement ou à vos événements, sur devis.</p></div><a class="btn btn-ghost" href="#pros">Demander un devis</a></div></div></section>`;
+<section class="sec"><div class="wrap"><div class="band">${ill('cafe','','ill-band')}<div style="max-width:56ch"><span class="t-over" style="color:var(--eveil-700)">Nos offres B2B</span><h2 class="t-h3" style="margin-top:8px">Vous gérez un café, un coworking ou un BDE ?</h2><p class="muted">Des formats et des tarifs adaptés à votre établissement ou à vos événements, sur devis.</p></div><a class="btn btn-ghost" href="#pros">Demander un devis</a></div></div></section>`;
 
 function coffret(k){const c=C[k];return `
 <div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / <a href="#coffrets">Coffrets</a> / ${c.name}</nav></div>
@@ -198,9 +198,9 @@ ${k!=='boule'?`<section class="sec-tight"><div class="wrap">${cofCompare(k)}</di
 <div class="mbuy"><div><b>${c.name}</b><div class="t-sm muted">${eur(c.price)}</div></div><button class="btn btn-primary" type="button" data-add="${k}">Ajouter</button></div>`;}
 
 V.pros=()=>`
-<div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / Pour les pros</nav></div>
+<div class="wrap"><nav class="crumb" aria-label="Fil d'Ariane"><a href="#accueil">Accueil</a> / Nos offres B2B</nav></div>
 <section class="sec-tight" style="padding-top:8px"><div class="wrap">
- <span class="t-over over">Offre professionnelle</span><h1 class="t-h1" style="margin-top:8px">Pour les pros</h1><p class="t-lg muted" style="max-width:62ch;margin-top:12px">Proposez yuzaa à vos clients, à vos membres ou à vos adhérents. Formats, volumes et tarifs sur devis.</p>
+ <span class="t-over over">Offre professionnelle</span><h1 class="t-h1" style="margin-top:8px">Nos offres B2B</h1><p class="t-lg muted" style="max-width:62ch;margin-top:12px">Proposez yuzaa à vos clients, à vos membres ou à vos adhérents. Formats, volumes et tarifs sur devis.</p>
  <h2 class="sr">Nos offres par type d'établissement</h2><div class="g3" style="margin-top:32px"><div class="plant bg-focus">${ill('cafe','','ill-card')}<h3>Cafés</h3><p class="t-sm">Du vrac en grand format pour votre carte, et une alternative au café pour ceux qui n'en boivent pas.</p></div><div class="plant bg-eveil">${ill('desk','','ill-card')}<h3>Coworkings</h3><p class="t-sm">Une station d'infusions en libre-service pour accompagner les longues journées de travail.</p></div><div class="plant bg-rush">${ill('stand','','ill-card')}<h3>BDE</h3><p class="t-sm">Des tarifs dédiés pour vos ventes et vos stands, et des échantillons pour les semaines d'examens.</p></div></div>
 </div></section>
 <section class="sec-tight" style="padding-bottom:80px"><div class="wrap" style="max-width:820px">
@@ -464,8 +464,8 @@ const FAQ=[
   ['q-code','Comment obtenir le code de bienvenue ?',`Inscrivez-vous à la newsletter (pop-up d'accueil, pied de page, panier ou création de compte) : votre code de −10 % s'affiche aussitôt et vous est envoyé par e-mail. Il est valable sur votre première commande, à saisir dans le champ « Code promo » du panier. Il n'est jamais appliqué automatiquement.`],
   ['q-paiement','Quels moyens de paiement acceptez-vous ?',`Carte bancaire, PayPal et Apple Pay. Le paiement est entièrement sécurisé.`],
   ['q-retours','Puis-je retourner un produit ?',`Oui, les retours sont gratuits sous 30 jours à compter de la réception.`]]],
- ['faq-pros','Offre pros',[
-  ['q-pros','Proposez-vous une offre pour les cafés, coworkings et BDE ?',`Oui, sur devis. Faites votre demande depuis la page <a class="link" href="#pros">Pour les pros</a> : nous revenons vers vous sous 48 h ouvrées.`],
+ ['faq-pros','Offres B2B',[
+  ['q-pros','Proposez-vous une offre pour les cafés, coworkings et BDE ?',`Oui, sur devis. Faites votre demande depuis la page <a class="link" href="#pros">Nos offres B2B</a> : nous revenons vers vous sous 48 h ouvrées.`],
   ['q-event','Puis-je commander pour un événement ?',`Oui : stand, semaine d'examens, salon… Précisez votre besoin dans le <a class="link" href="#pros">formulaire de devis</a>.`]]]];
 const FQ={};FAQ.forEach(c=>c[2].forEach(([i,q,a])=>FQ[i]=[q,a]));
 V.faq=()=>`
@@ -486,7 +486,7 @@ V.contact=()=>`
   <div class="coord"><h2 class="sr">Nos coordonnées</h2><div><h3>E-mail</h3><p>bonjour@yuzaa.fr</p></div><div><h3>Téléphone</h3><p>01 84 60 12 34<br><span style="color:var(--focus-100);font-size:14px">Du lundi au vendredi, de 9 h à 18 h</span></p></div><div><h3>Adresse</h3><p>yuzaa SAS<br>12 rue des Plantes<br>69007 Lyon</p></div><div><h3>Réseaux</h3><p>Instagram et TikTok : @yuzaa.energie</p></div>${ill('mug','eveil','ill-card')}</div>
   <form class="card form" style="padding:32px" data-form="contact" novalidate><div class="alert alert-ok" id="contact-ok" hidden role="status">Message envoyé. Notre équipe vous répond sous 24 h ouvrées.</div>
    <div class="row2">${field('k-nom','Nom','text','req','autocomplete="name"')}${field('k-email','E-mail','email','req email','autocomplete="email"')}</div>
-   <div class="field"><label for="k-sujet">Sujet</label><select class="input" id="k-sujet"><option>Question sur un produit</option><option>Ma commande</option><option>Offre pros (café, coworking, BDE)</option><option>Autre</option></select></div>
+   <div class="field"><label for="k-sujet">Sujet</label><select class="input" id="k-sujet"><option>Question sur un produit</option><option>Ma commande</option><option>Offres B2B (café, coworking, BDE)</option><option>Autre</option></select></div>
    <div class="field"><label for="k-msg">Message</label><textarea class="input" id="k-msg" rows="5" data-rule="req min20" aria-describedby="k-msg-err"></textarea><span class="err" id="k-msg-err"></span></div>
    <button class="btn btn-primary" type="submit" style="justify-self:start">Envoyer le message</button></form>
  </div>
