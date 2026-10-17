@@ -626,5 +626,17 @@ html.cdr-lock{overflow:hidden}
 @media (max-width:760px){.totop{width:46px;height:46px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px))}.totop.lift{bottom:calc(82px + env(safe-area-inset-bottom,0px))}}
 @media (prefers-reduced-motion:reduce){.totop{transition:none}}
 
+/* v32 : nav compacte au défilement,cachée en descendant,de retour en remontant (choix MOMO 2026-10-17) */
+.site:not(.wf) .hdr{transition:transform .35s cubic-bezier(.2,.7,.2,1),padding .3s}
+.site:not(.wf) .hdr .wrap{transition:height .3s,box-shadow .3s}
+.site:not(.wf) .hdr.is-scrolled{padding-top:8px}
+.site:not(.wf) .hdr.is-scrolled .wrap{height:58px}
+.site:not(.wf) .hdr.is-scrolled .logo{transform:scale(.88);transform-origin:left center;transition:transform .3s}
+.site:not(.wf) .hdr.is-scrolled .nav a{padding-block:7px}
+.site:not(.wf) .hdr.is-scrolled .icons .ibtn:last-child{height:44px}
+.site:not(.wf) .hdr.is-hidden{transform:translateY(-115%)}
+.site:not(.wf){--navh:66px}
+@media (prefers-reduced-motion:reduce){.site:not(.wf) .hdr,.site:not(.wf) .hdr .wrap{transition:none}}
+
 /* Site public : pleine largeur */
 html,body{background:var(--sable-50)}.stage{padding:0}.site{max-width:none;box-shadow:none;border-radius:0}
