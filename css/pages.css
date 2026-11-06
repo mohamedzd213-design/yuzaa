@@ -638,5 +638,26 @@ html.cdr-lock{overflow:hidden}
 .site:not(.wf){--navh:66px}
 @media (prefers-reduced-motion:reduce){.site:not(.wf) .hdr,.site:not(.wf) .hdr .wrap{transition:none}}
 
+/* v33 : retours MOMO 2026-11-06 — boutons,pied de page,avis et comparatif en vert */
+.site:not(.wf){--yz-g:#1D5A28;--yz-g2:#154420}
+.site:not(.wf) .btn-primary,.site:not(.wf) .hm-btn-ink,.cdr .btn-primary{background:var(--yz-g,#1D5A28)!important;border-color:var(--yz-g,#1D5A28)!important;color:#fff!important}
+.site:not(.wf) .btn-primary:hover,.site:not(.wf) .hm-btn-ink:hover,.site:not(.wf) .btn-primary:focus-visible,.site:not(.wf) .hm-btn-ink:focus-visible,.cdr .btn-primary:hover{background:var(--yz-g2,#154420)!important;border-color:var(--yz-g2,#154420)!important;transform:translateY(-2px);box-shadow:0 18px 32px -16px rgba(29,90,40,.75)!important}
+.site:not(.wf) .hm-btn-line:hover,.site:not(.wf) .btn-ghost:hover,.site:not(.wf) .btn-secondary:hover{background:var(--yz-g)!important;border-color:var(--yz-g)!important;color:#fff!important;transform:translateY(-2px)}
+.site:not(.wf) .btn,.site:not(.wf) .hm-btn{transition:background-color .25s,border-color .25s,color .25s,transform .25s,box-shadow .25s}
+.site:not(.wf) .ftr{background:var(--yz-g)!important;color:#fff}
+.site:not(.wf) .ftr-reas{list-style:none;margin:0 0 40px;padding:0 0 24px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 32px;border-bottom:1px solid rgba(255,255,255,.22);font-size:14px;font-weight:600;color:#fff}
+.site:not(.wf) .ftr-reas li{display:inline-flex;align-items:center;gap:8px}
+.site:not(.wf) .ftr-reas li::before{content:"";width:6px;height:6px;border-radius:50%;background:#fff;opacity:.7}
+.site:not(.wf) .hm-rv:first-child{background:var(--yz-g)!important}
+.site:not(.wf) .hm-reviews .hm-stars,.site:not(.wf) .hm-rv-score .hm-stars,.site:not(.wf) .hm-reviews .stars{color:var(--yz-g)!important}
+.site:not(.wf) .hm-rv:first-child .hm-stars{color:#fff!important}
+.site:not(.wf) .hm-sim-save{background:var(--yz-g)!important;color:#fff}
+.site:not(.wf) .hm-sim-save b{color:#fff}
+.site:not(.wf) .hdr .icons .ibtn:last-child{background:var(--yz-g)!important;color:#fff!important;transition:background-color .25s,transform .25s}
+.site:not(.wf) .hdr .icons .ibtn:last-child:hover{background:var(--yz-g2)!important;transform:translateY(-1px)}
+.totop{box-shadow:0 0 0 2px #fff,0 14px 30px -12px rgba(19,35,26,.55)}
+.site:not(.wf) .hm-reviews .hm-stars,.site:not(.wf) .hm-reviews .hm-stars *{color:var(--yz-g)!important;fill:var(--yz-g)!important}
+.site:not(.wf) .hm-reviews .hm-rv:first-child .hm-stars,.site:not(.wf) .hm-reviews .hm-rv:first-child .hm-stars *{color:#fff!important;fill:#fff!important}
+
 /* Site public : pleine largeur */
 html,body{background:var(--sable-50)}.stage{padding:0}.site{max-width:none;box-shadow:none;border-radius:0}

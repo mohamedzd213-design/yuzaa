@@ -51,13 +51,11 @@ V.accueil=()=>`<div class="hm">
   <span class="hm-chip hm-chip-a" aria-hidden="true"><b>40 · 60 · 80</b> mg de caféine par tasse</span>
  </div>
 </div></section>
-${hmMarquee()}
 
 <section class="hm-sec" id="comparer"><div class="hm-wrap">
  <div class="hm-head"><div><span class="hm-eyebrow">Comparer les recettes</span><h2 class="hm-h2">Éveil, Focus ou Rush&nbsp;: laquelle choisir ?</h2></div><p class="hm-head-p">Repère : un espresso ou une canette de 250 ml contiennent environ 80 mg de caféine. <a class="hm-link" href="#infusions">Voir toute la gamme&nbsp;→</a></p></div>
  <div class="hm-rcs">${['eveil','focus','rush'].map(hmRecipe).join('')}</div>
  <p class="hm-foot">Vous hésitez ? <a class="hm-link" href="#coffret-decouverte">Goûtez les trois avec le Coffret Découverte, 19,90&nbsp;€</a><span aria-hidden="true">·</span><a class="hm-link" href="#accueil" data-anchor="faq-accueil">Questions fréquentes</a></p>
- <div class="hm-table">${cmpTable(1)}</div>
 </div></section>
 
 <section class="hm-sec hm-why"><div class="hm-wrap hm-why-g">
