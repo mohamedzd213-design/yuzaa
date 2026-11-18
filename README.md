@@ -58,4 +58,5 @@ Chaque push sur `main` est déployé automatiquement par Vercel.
 - `js/vendor/supabase-2.99.3.js` : bibliothèque officielle supabase-js (copie locale, aucune dépendance externe).
 - `js/supabase.js` : lit le catalogue (table `produits` : prix, prix barré, caféine, stock) avec repli sur les données du site, et gère inscription, connexion, profil, adresse, mot de passe oublié via Supabase Auth (table `clients`, une ligne par compte, protégée par RLS).
 - Seule la clé **publiable** est dans le site. Ne jamais y mettre la clé secrète.
-- Les commandes restent enregistrées dans le navigateur (pas encore de table `commandes`).
+- Commandes : la fonction SQL `passer_commande` recalcule prix, remise BIENVENUE10, livraison et stock côté Supabase, puis enregistre `commandes` + `lignes_commande`. Repli dans le navigateur si Supabase est indisponible.
+- Newsletter : chaque inscription (pop-up, pied de page, panier, compte) est ajoutée à la table `newsletter` (insertion seule, liste illisible depuis le site).

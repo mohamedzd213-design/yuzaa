@@ -49,20 +49,57 @@ function fromRow(u,row){const m=u.user_metadata||{};row=row||{};const o=LS.get(O
 async function loadMe(u){let row=null,ok=false;
  try{const {data,error}=await sb.from('clients').select('*').eq('id',u.id).maybeSingle();if(!error){row=data;ok=true;}}catch(e){}
  const a=fromRow(u,row);
- if(ok&&!row)push(a);   // fiche absente (compte créé avant le script SQL) : on la crée
+ if(ok&&!row)push(a);
+ const o=await loadOrders(u.id);if(o)a.orders=o;   // fiche absente (compte créé avant le script SQL) : on la crée
  if(a.news)try{localStorage.setItem('yz-nl-sub',a.email);}catch(e){}
  return a;}
 function push(a){if(!a||!a.uid)return;sb.from('clients').upsert(toRow(a)).then(({error})=>{if(error)console.warn('[yuzaa] fiche client non enregistrée :',error.message);});}
+/* Commandes : historique lu dans Supabase (tables commandes + lignes_commande) */
+async function loadOrders(uid){try{
+ const {data,error}=await sb.from('commandes').select('numero,cree_le,sous_total,remise,livraison,total,mode_paiement,email,adresse,statut,lignes_commande(produit_id,nom,quantite,prix_unitaire)').eq('client_id',uid).order('cree_le',{ascending:false}).limit(50);
+ if(error||!Array.isArray(data))return null;
+ return data.map(c=>({n:c.numero,date:c.cree_le,items:(c.lignes_commande||[]).map(l=>[l.produit_id,l.quantite,(()=>{try{return lineInfo(l.produit_id).name;}catch(e){return l.nom;}})(),Number(l.prix_unitaire)]),sub:+c.sous_total,disc:+c.remise,ship:+c.livraison,tot:+c.total,free:+c.livraison===0,method:c.mode_paiement,email:c.email,adr:Array.isArray(c.adresse)?c.adresse:[],statut:c.statut}));
+ }catch(e){return null;}}
+const OERR={connexion_requise:'Votre session a expiré. Reconnectez-vous pour valider la commande.',panier_vide:'Votre panier est vide.',code_invalide:'Ce code n\'est pas valide ou a expiré.',code_reserve_newsletter:'Le code BIENVENUE10 est réservé aux inscrits à la newsletter.',code_premiere_commande:'Le code BIENVENUE10 est réservé à la première commande.',quantite_invalide:'Quantité invalide dans le panier.'};
+let ordering=false;
+const _placeOrder=placeOrder;
+placeOrder=async function(method){
+ if(!me||!me.uid)return _placeOrder(method);
+ if(ordering)return;ordering=true;
+ const lignes=Object.entries(state.cart).map(([id,q])=>({id,q}));
+ let r;try{r=await sb.rpc('passer_commande',{p_lignes:lignes,p_code:state.promo||null,p_paiement:method,p_adresse:[me.prenom+' '+me.nom,me.adr,me.cp+' '+me.ville]});}catch(e){r={error:e};}
+ ordering=false;
+ if(r.error){const m=String(r.error.message||'');const k=m.split(':')[0];
+  if(m.startsWith('rupture:')){toast('Plus assez de stock pour « '+m.slice(8)+' ». Modifiez votre panier.');go('panier');return;}
+  if(m.startsWith('produit_inconnu')){toast('Un produit du panier n\'est plus disponible. Modifiez votre panier.');go('panier');return;}
+  if(k.startsWith('code_')){state.promo=null;render(true);toast(OERR[k]);return;}
+  if(OERR[k]){toast(OERR[k]);if(k==='connexion_requise')go('connexion');return;}
+  // tables pas encore créées ou Supabase injoignable : la commande reste enregistrée dans le navigateur
+  console.warn('[yuzaa] commande non enregistrée dans Supabase :',m);return _placeOrder(method);}
+ const row=Array.isArray(r.data)?r.data[0]:r.data;
+ const before=Object.keys(state.cart).map(k=>{const l=lineInfo(k);return [k,state.cart[k],l.name,l.price];});
+ const o={n:row.numero,date:new Date().toISOString(),items:before,sub:+row.sous_total,disc:+row.remise,ship:+row.livraison,tot:+row.total,free:+row.livraison===0,method,email:me.email,adr:[me.prenom+' '+me.nom,me.adr,me.cp+' '+me.ville],statut:'payée'};
+ for(const [k,q] of Object.entries(state.cart))if(STOCK[k]!=null)STOCK[k]=Math.max(0,STOCK[k]-q);
+ me.orders.unshift(o);saveAcc();state.last=o;state.cart={};state.promo=null;count();go('confirmation');};
+
+/* Newsletter : chaque inscription est enregistrée dans la table newsletter */
+const _setSub=setSub;
+setSub=function(email){_setSub(email);const e=String(email||'').trim().toLowerCase();if(!TEST.email(e))return;
+ const src=$('#nlpop')&&!$('#nlpop').hidden?'popup':$('#cdr')&&!$('#cdr').hidden?'panier':cur()==='compte-profil'?'compte':/^(compte|connexion|merci)/.test(cur())?'inscription':'pied de page';
+ sb.from('newsletter').insert({email:e,source:src}).then(({error})=>{if(error&&error.code!=='23505')console.warn('[yuzaa] newsletter :',error.message);});};
+
 let tSave=0;
+/* Copie locale du compte connecté (sans mot de passe) : le site le retrouve tout de suite au rechargement,
+   puis Supabase confirme la session ou déconnecte. */
+function cacheMe(){if(me&&me.uid){LS.set('yz-accounts',{[me.email]:me});LS.set('yz-session',me.email);LS.set(ORD(me.uid),me.orders||[]);}else{LS.del('yz-accounts');LS.del('yz-session');}}
 saveAcc=function(){
- LS.del('yz-session');
+ cacheMe();
  if(!me||!me.uid)return;
- LS.set(ORD(me.uid),me.orders||[]);
  const a=me;clearTimeout(tSave);tSave=setTimeout(()=>push(a),250);};
 
 /* Les anciens comptes enregistrés seulement dans le navigateur ne sont plus utilisés */
 if(me&&!me.uid){me=null;state.logged=false;render(true);}
-LS.del('yz-session');
+cacheMe();
 
 const MSGS={
  invalid_credentials:'E-mail ou mot de passe incorrect. Vérifiez votre saisie, ou créez votre compte avec le formulaire « Nouveau client ».',
