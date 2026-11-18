@@ -52,3 +52,10 @@ Puis ouvrir http://localhost:3000. Un simple double-clic sur `index.html` foncti
 ## Déploiement
 
 Chaque push sur `main` est déployé automatiquement par Vercel.
+
+## Supabase
+
+- `js/vendor/supabase-2.99.3.js` : bibliothèque officielle supabase-js (copie locale, aucune dépendance externe).
+- `js/supabase.js` : lit le catalogue (table `produits` : prix, prix barré, caféine, stock) avec repli sur les données du site, et gère inscription, connexion, profil, adresse, mot de passe oublié via Supabase Auth (table `clients`, une ligne par compte, protégée par RLS).
+- Seule la clé **publiable** est dans le site. Ne jamais y mettre la clé secrète.
+- Les commandes restent enregistrées dans le navigateur (pas encore de table `commandes`).
