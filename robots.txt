@@ -1,6 +1,162 @@
+# yuzaa : infusions énergisantes 100 % plantes
+# Les moteurs de recherche et les assistants IA sont les bienvenus sur tout le site public.
+# Présentation du site pour les IA : https://yuzaa.vercel.app/llms.txt
+
 User-agent: *
 Allow: /
 Disallow: /compte
 Disallow: /panier
+Disallow: /connexion
+Disallow: /livraison
+Disallow: /paiement
+Disallow: /confirmation
+Disallow: /suivi
+Disallow: /merci
+Disallow: /pages/
+
+# Robots des assistants IA, autorisés explicitement
+User-agent: GPTBot
+Allow: /
+Disallow: /compte
+Disallow: /panier
+Disallow: /connexion
+Disallow: /livraison
+Disallow: /paiement
+Disallow: /confirmation
+Disallow: /suivi
+Disallow: /merci
+Disallow: /pages/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /compte
+Disallow: /panier
+Disallow: /connexion
+Disallow: /livraison
+Disallow: /paiement
+Disallow: /confirmation
+Disallow: /suivi
+Disallow: /merci
+Disallow: /pages/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /compte
+Disallow: /panier
+Disallow: /connexion
+Disallow: /livraison
+Disallow: /paiement
+Disallow: /confirmation
+Disallow: /suivi
+Disallow: /merci
+Disallow: /pages/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /compte
+Disallow: /panier
+Disallow: /connexion
+Disallow: /livraison
+Disallow: /paiement
+Disallow: /confirmation
+Disallow: /suivi
+Disallow: /merci
+Disallow: /pages/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /compte
+Disallow: /panier
+Disallow: /connexion
+Disallow: /livraison
+Disallow: /paiement
+Disallow: /confirmation
+Disallow: /suivi
+Disallow: /merci
+Disallow: /pages/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /compte
+Disallow: /panier
+Disallow: /connexion
+Disallow: /livraison
+Disallow: /paiement
+Disallow: /confirmation
+Disallow: /suivi
+Disallow: /merci
+Disallow: /pages/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /compte
+Disallow: /panier
+Disallow: /connexion
+Disallow: /livraison
+Disallow: /paiement
+Disallow: /confirmation
+Disallow: /suivi
+Disallow: /merci
+Disallow: /pages/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /compte
+Disallow: /panier
+Disallow: /connexion
+Disallow: /livraison
+Disallow: /paiement
+Disallow: /confirmation
+Disallow: /suivi
+Disallow: /merci
+Disallow: /pages/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /compte
+Disallow: /panier
+Disallow: /connexion
+Disallow: /livraison
+Disallow: /paiement
+Disallow: /confirmation
+Disallow: /suivi
+Disallow: /merci
+Disallow: /pages/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /compte
+Disallow: /panier
+Disallow: /connexion
+Disallow: /livraison
+Disallow: /paiement
+Disallow: /confirmation
+Disallow: /suivi
+Disallow: /merci
+Disallow: /pages/
+
+User-agent: Mistral
+Allow: /
+Disallow: /compte
+Disallow: /panier
+Disallow: /connexion
+Disallow: /livraison
+Disallow: /paiement
+Disallow: /confirmation
+Disallow: /suivi
+Disallow: /merci
+Disallow: /pages/
+
+User-agent: CCBot
+Allow: /
+Disallow: /compte
+Disallow: /panier
+Disallow: /connexion
+Disallow: /livraison
+Disallow: /paiement
+Disallow: /confirmation
+Disallow: /suivi
+Disallow: /merci
+Disallow: /pages/
 
 Sitemap: https://yuzaa.vercel.app/sitemap.xml

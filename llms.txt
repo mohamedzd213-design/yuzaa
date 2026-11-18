@@ -1,0 +1,46 @@
+# yuzaa
+
+> yuzaa est une marque française d'infusions énergisantes 100 % plantes, sans sucre ajouté. Trois recettes à la caféine naturelle (guayusa, maté, guarana) pour les journées d'étude et de travail : Éveil (40 mg de caféine par tasse), Focus (60 mg) et Rush (80 mg). Vente en ligne en France métropolitaine.
+
+Informations clés :
+- Formats : vrac 100 g (environ 40 tasses, 11,90 €) ou boîte de 20 sachets (6,90 €).
+- Livraison à domicile en 48 h : 4,90 €, offerte dès 35 € d'achat. Retours gratuits sous 30 jours.
+- Paiement sécurisé par carte, PayPal ou Apple Pay. Emballages en carton recyclé.
+- Préparation : 2,5 g par tasse, eau à 80 °C, 5 minutes d'infusion. 2 tasses par jour maximum, pas après 16 h ; déconseillé aux femmes enceintes ou allaitantes et aux moins de 16 ans.
+- Contact : bonjour@yuzaa.fr · Instagram et TikTok : @yuzaa.energie
+
+## Les trois recettes
+
+- [Éveil, infusion guayusa, citronnelle et menthe](https://yuzaa.vercel.app/produit-eveil) : énergie douce, 40 mg de caféine par tasse, goût frais, citronné, mentholé. 11,90 € les 100 g.
+- [Focus, infusion maté vert, gingembre et citron](https://yuzaa.vercel.app/produit-focus) : concentration, 60 mg de caféine par tasse, goût vif, notes de gingembre et de citron. 11,90 € les 100 g.
+- [Rush, infusion guarana, maté torréfié et cacao](https://yuzaa.vercel.app/produit-rush) : coup de boost, 80 mg de caféine par tasse, goût torréfié, notes de cacao. 11,90 € les 100 g.
+- [Comparer les trois recettes](https://yuzaa.vercel.app/infusions) : catalogue complet, filtres par moment de la journée.
+
+## Coffrets et accessoires
+
+- [Coffret Découverte](https://yuzaa.vercel.app/coffret-decouverte) : Petit format pour débuter : 3 × 30 g de vrac (Éveil, Focus, Rush), soit environ 12 tasses de chaque, et une boule à thé portable. 19,90 €.
+- [Pack Partiels](https://yuzaa.vercel.app/coffret-partiels) : Les trois gammes en format complet : 3 × 100 g de vrac (Éveil, Focus, Rush), soit environ 120 tasses. 32,90 € au lieu de 35,70 €.
+- [Boule à thé portable](https://yuzaa.vercel.app/coffret-boule) : Infuseur nomade pour préparer votre infusion où que vous soyez : bibliothèque, salle de cours, bureau. 8,90 €.
+
+## La marque
+
+- [Notre histoire et nos producteurs](https://yuzaa.vercel.app/histoire) : guayusa d'Équateur, maté et guarana du Brésil.
+- [Nos engagements](https://yuzaa.vercel.app/engagements) : plantes tracées et bio, sans sucre ajouté, carton recyclé.
+- [Nos offres B2B](https://yuzaa.vercel.app/pros) : cafés, coworkings et BDE, formats et tarifs sur devis.
+- [Questions fréquentes](https://yuzaa.vercel.app/faq) : caféine, préparation, livraison, retours, code de bienvenue.
+- [Contact](https://yuzaa.vercel.app/contact)
+
+## Blog
+
+- [Que contient vraiment votre boisson énergisante ?](https://yuzaa.vercel.app/article-boisson-energisante) : Sucre, taurine, colorants : décryptage d'une étiquette de canette, comparée à une tasse d'infusion.
+- [Combien de caféine selon le moment de la journée ?](https://yuzaa.vercel.app/article-cafeine-moment) : Matin, après-midi, veille d'examen : notre guide pour choisir entre 40, 60 et 80 mg.
+- [Guayusa, maté, guarana : trois plantes, trois énergies](https://yuzaa.vercel.app/article-trois-plantes) : Origine, profil aromatique, teneur en caféine : tout savoir sur les plantes de nos recettes.
+- [Bien infuser : 80 °C, 5 minutes](https://yuzaa.vercel.app/article-bien-infuser) : La température et le temps d'infusion idéaux pour un goût sans amertume.
+- [Cinq rituels pour tenir une semaine d'examens](https://yuzaa.vercel.app/article-rituels-examens) : Une routine simple et efficace, de la boule à thé du matin à la dernière tasse avant 16 h.
+- [Rush latte au lait d'avoine : la recette](https://yuzaa.vercel.app/article-rush-latte) : Une infusion serrée, un lait mousseux, une pointe de cacao : la version gourmande de Rush.
+
+## Optional
+
+- [Conditions générales de vente](https://yuzaa.vercel.app/cgv)
+- [Mentions légales et confidentialité](https://yuzaa.vercel.app/mentions)
+- [Plan du site](https://yuzaa.vercel.app/sitemap.xml)

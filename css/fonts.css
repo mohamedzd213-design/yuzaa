@@ -1,0 +1,9 @@
+/* yuzaa · fonts.css
+   Polices hébergées sur le site (plus de requête vers Google Fonts) : sous-ensembles latins de
+   Bricolage Grotesque (titres, graisses 500 à 800) et DM Sans (texte, 400 à 700), variables.
+   Les polices de secours « Fallback » reprennent les proportions des vraies polices pour éviter
+   que la page bouge au moment où elles s'affichent. Fichiers régénérés par outils/polices.py. */
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:500 800;font-display:swap;src:url(/assets/fonts/bricolage-grotesque-latin.woff2) format("woff2")}
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:400 700;font-display:swap;src:url(/assets/fonts/dm-sans-latin.woff2) format("woff2")}
+@font-face{font-family:"Bricolage Fallback";font-style:normal;font-weight:500 800;src:local("Arial Bold"),local("Arial-BoldMT"),local("Liberation Sans Bold"),local("Helvetica Neue Bold"),local("Arial");size-adjust:98.6%;ascent-override:94.3%;descent-override:27.4%;line-gap-override:0%}
+@font-face{font-family:"DM Sans Fallback";font-style:normal;font-weight:400 700;src:local("Arial"),local("ArialMT"),local("Liberation Sans"),local("Helvetica Neue"),local("Helvetica");size-adjust:103.1%;ascent-override:96.2%;descent-override:30.1%;line-gap-override:0%}

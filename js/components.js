@@ -11,7 +11,7 @@ const ccard=k=>{const c=C[k];const q=P[c.c]||P.eveil;return `<div class="pcard b
 const acard=a=>`<a class="acard" href="#article-${a.id}"><div class="media">${artIll(a)}</div><span class="t-over over">${a.cat} · ${a.min} min</span><h3>${a.t}</h3><p>${a.ex}</p></a>`;
 const field=(id,label,type,rule,extra='')=>`<div class="field"><label for="${id}">${label}</label><input class="input" id="${id}" name="${id}" type="${type}" data-rule="${rule}" aria-describedby="${id}-err" ${extra}><span class="err" id="${id}-err"></span></div>`;
 const STEPS=['Panier','Connexion','Livraison','Paiement','Confirmation'];
-const stepper=n=>`<div class="stepper" aria-label="Étapes de commande">${STEPS.map((s,i)=>`<span class="${i<n?'done':i===n?'on':''}" ${i===n?'aria-current="step"':''}><i>${i<n?'✓':i+1}</i><em style="font-style:normal">${s}</em></span>`).join('')}</div>`;
+const stepper=n=>`<div class="stepper" aria-label="Étapes de commande">${STEPS.map((s,i)=>`<span class="${i<n?'done':i===n?'on':''}" ${i===n?'aria-current="step"':''}><i>${i<n?'✓':i+1}</i><em style="font-style:normal">${s}</em></span>`).join('')}</div><p class="stepper-m" aria-hidden="true">Étape ${n+1} sur ${STEPS.length} · <b>${STEPS[n]}</b>${n<STEPS.length-1?` · ensuite : ${STEPS[n+1].toLowerCase()}`:''}</p>`;
 const heroCard=d=>{const p=P[d];return `<a class="hcard hc-${d}" href="#produit-${d}" style="--c1:${p.c1};--c3:${p.c3};--c7:${p.c7}" aria-label="Découvrir ${p.name} : ${p.moment.toLowerCase()}, ${p.mg} mg de caféine, ${eur(p.price)}"><span class="media hc-media">${pkImg(IMG[d+'F'],'','pk-hc')}</span><span class="hc-body"><span class="pastille pastille-${d}">${p.moment} · ${p.mg} mg</span><h2 class="hc-name">${p.name}</h2><span class="hc-plants">${p.plants}</span><span class="hc-rate"><span class="stars" aria-hidden="true">${stars(p.rating)}</span>${String(p.rating).replace('.',',')}/5 · ${p.n} avis</span><span class="hc-row"><span class="price">${eur(p.price)} <small>· 100 g</small></span><span class="btn btn-sm hc-btn">Découvrir</span></span></span></a>`;};
 const cmpTable=links=>`<div class="cmpw"><table class="cmp"><thead><tr><th>Recette</th><th>Caféine / tasse</th><th>Plantes</th><th>Goût</th><th>Moment</th><th>Vrac 100 g</th><th>20 sachets</th>${links?'<th aria-label="Fiche produit"></th>':''}</tr></thead><tbody>${['eveil','focus','rush'].map(d=>{const p=P[d];return `<tr><td><span class="pastille pastille-${d}">${p.name}</span></td><td><b><span data-count="${p.mg}">${p.mg}</span> mg</b></td><td>${p.plants}</td><td>${p.taste}</td><td>${p.moment}</td><td>${eur(p.price)}</td><td>6,90 €</td>${links?`<td><a class="link" href="#produit-${d}">Découvrir</a></td>`:''}</tr>`}).join('')}</tbody></table></div>`;
 const simBlock=()=>`<section class="sec-tight" id="canettes"><div class="wrap"><div class="sim">
@@ -50,20 +50,20 @@ const inl=k=>{if(P[k]){const p=P[k];return `<aside class="inprod bg-${k}" aria-l
 const alink=id=>{const a=ARTS.find(x=>x.id===id);return a?`«&nbsp;<a class="link" href="#article-${a.id}">${a.t}</a>&nbsp;»`:'';};
 const BIO=['Fatoumata coordonne l\'équipe yuzaa et partage ses routines pour garder une énergie régulière, même pendant les semaines chargées.','Yacine raconte l\'histoire de yuzaa et recueille vos astuces pour traverser les périodes intenses.','Lou-ann accompagne nos partenaires et teste chaque nouvelle façon de préparer nos infusions.','Mohamed veille à ce qu\'une tasse yuzaa reste à 0,30 € et signe nos recettes les plus gourmandes.','Tenah suit nos approvisionnements, de la récolte des plantes jusqu\'à votre porte.','Zeina compose nos recettes et veille à la teneur en caféine de chacune, de la plante à la boîte.'];
 const authorBox=a=>{const [n,r,img]=TEAM[a.au];return `<aside class="author" aria-label="À propos de l'auteur"><span class="avatar"><img src="${img}" alt="${n}" width="96" height="96" loading="lazy"></span><div><span class="t-over over">Écrit par</span><b>${n}</b><small>${r} chez yuzaa</small><p>${BIO[a.au]}</p><a class="link t-sm" href="#histoire" data-anchor="equipe">Rencontrer l'équipe →</a></div></aside>`;};
-const authForms=next=>`<div class="auth">
+const authForms=next=>`<p class="auth-jump">Première commande ? <a class="link" href="#reg-form" data-scroll="reg-form">Créer mon compte en 30 secondes</a></p><div class="auth">
  <form class="card form" data-form="login" ${next?`data-next="${next}"`:''} novalidate><h2 class="t-h4">Déjà client ?</h2><p class="t-sm muted" style="margin-top:-8px">Connectez-vous pour retrouver votre adresse et vos commandes.</p><div class="alert alert-err" id="login-msg" hidden role="alert"></div>
   ${field('l-email','E-mail','email','req email','autocomplete="email" placeholder="prenom@email.fr"')}
   ${field('l-pw','Mot de passe','password','req','autocomplete="current-password"')}
   <button class="linkbtn" type="button" data-toast="Un lien de réinitialisation vous sera envoyé par e-mail.">Mot de passe oublié ?</button>
   <button class="btn btn-primary btn-block" type="submit">Se connecter</button></form>
- <form class="card form" data-form="register" ${next?`data-next="${next}"`:''} novalidate><h2 class="t-h4">Nouveau client ?</h2><p class="t-sm muted" style="margin-top:-8px">Créez votre compte en quelques secondes pour suivre vos commandes.</p><div class="alert alert-err" id="reg-msg" hidden role="alert"></div>
+ <form class="card form" id="reg-form" data-form="register" ${next?`data-next="${next}"`:''} novalidate><h2 class="t-h4">Nouveau client ?</h2><p class="t-sm muted" style="margin-top:-8px">Créez votre compte en quelques secondes pour suivre vos commandes.</p><div class="alert alert-err" id="reg-msg" hidden role="alert"></div>
   <div class="row2">${field('r-prenom','Prénom','text','req','autocomplete="given-name"')}${field('r-nom','Nom','text','req','autocomplete="family-name"')}</div>
   ${field('r-email','E-mail','email','req email','autocomplete="email" placeholder="prenom@email.fr"')}
   ${field('r-pw','Mot de passe','password','req pw','autocomplete="new-password"')}<span class="hint" style="margin-top:-10px">8 caractères minimum, dont un chiffre.</span>
   <label class="check"><input type="checkbox" id="r-news"> Recevoir la newsletter (conseils et offres, un e-mail par mois)</label>
   <div class="field"><label class="check"><input type="checkbox" id="r-cgu" data-rule="checked" aria-describedby="r-cgu-err"> J'accepte les <a class="link" href="#cgu">conditions générales d'utilisation</a></label><span class="err" id="r-cgu-err"></span></div>
   <button class="btn btn-primary btn-block" type="submit">Créer mon compte</button>
-  <p class="t-cap">Vos informations sont enregistrées uniquement sur cet appareil.</p></form>
+  <p class="t-cap">Vos informations servent uniquement à traiter vos commandes et à gérer votre compte. <a class="link" href="#mentions">Politique de confidentialité</a></p></form>
 </div>`;
 /* Dates et statut des commandes */
 const JOURS=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'],MOIS=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
@@ -78,10 +78,14 @@ const miniTrack=s=>`<ol class="mtrack"><li class="done">Confirmée</li><li class
 
 /* ---------- Panier ---------- */
 const FREE=35;
+/* La boule à thé n'est utile qu'avec du vrac, et le Coffret Découverte la contient déjà */
+const wantBoule=()=>!state.cart.boule&&!state.cart.decouverte&&Object.keys(state.cart).some(k=>P[k]||k==='partiels');
 function lineInfo(k){if(P[k])return{name:P[k].name,sub:P[k].key+' · vrac 100 g',price:P[k].price,media:tinSVG(k)};if(k.startsWith('sachets-')){const d=k.slice(8);return{name:P[d].name+' · sachets',sub:'Boîte de 20 sachets',price:6.9,media:tinSVG(d)};}const c=C[k];return{name:c.name,sub:c.contenu,price:c.price,media:cmedia(k)};}
 function totals(){let sub=0;for(const[k,q]of Object.entries(state.cart)){sub+=lineInfo(k).price*q;}const disc=state.promo?sub*0.1:0;const free=(sub-disc)>=FREE;const ship=sub===0?0:free?0:4.9;return{sub,disc,ship,free,tot:sub-disc+ship};}
 function count(){const n=Object.values(state.cart).reduce((a,b)=>a+b,0);const el=$('#count');el.textContent=n;el.hidden=n===0;saveCart();}
 function saveCart(){if(!DEMO)LS.set('yz-cart',{cart:state.cart,promo:state.promo});}
+/* Annonce discrète pour les lecteurs d'écran (zone #sr-live du gabarit) */
+function srSay(t){const z=$('#sr-live');if(!z)return;z.textContent='';setTimeout(()=>{z.textContent=t;},60);}
 function toast(html){const t=$('#toast');t.innerHTML=html;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),2800);}
 function add(k,q=1){state.cart[k]=(state.cart[k]||0)+q;count();cdrOpen(k);}
 /* Panneau panier latéral */
@@ -98,7 +102,7 @@ function cdrHTML(hl){const keys=Object.keys(state.cart);const n=Object.values(st
  const t=totals();const left=Math.max(0,FREE-(t.sub-t.disc));
  return `<div class="cdr-ship ${t.free?'ok':''}"><p>${ico.truck}<span>${t.free?'<b>Livraison à domicile offerte.</b>':`Plus que <b>${eur(left)}</b> pour la livraison offerte.`}</span></p><div class="bar"><i style="width:${t.free?100:Math.min(100,(t.sub-t.disc)/FREE*100)}%"></i></div></div>
  <ul class="cdr-lines">${keys.map(k=>{const l=lineInfo(k);return `<li class="cdr-line${k===hl?' is-new':''}"><span class="cdr-media">${l.media}</span><div class="cdr-info"><b>${l.name}</b><span class="t-sm muted">${l.sub}</span><div class="cdr-row"><div class="qty qty-s"><button type="button" data-q="${k}" data-d="-1" aria-label="Retirer un ${esc(l.name)}">−</button><span>${state.cart[k]}</span><button type="button" data-q="${k}" data-d="1" aria-label="Ajouter un ${esc(l.name)}">+</button></div><b class="cdr-p">${eur(l.price*state.cart[k])}</b></div><button class="cdr-rm" type="button" data-rm="${k}">Retirer</button></div></li>`}).join('')}</ul>
- ${!state.cart.boule?`<div class="cdr-up"><span class="cdr-media">${bouleSVG()}</span><div><b>Boule à thé portable</b><span class="t-sm muted">Pour infuser votre vrac partout · 8,90 €</span></div><button class="btn btn-ghost btn-sm" type="button" data-add="boule">Ajouter</button></div>`:''}
+ ${wantBoule()?`<div class="cdr-up"><span class="cdr-media">${bouleSVG()}</span><div><b>Boule à thé portable</b><span class="t-sm muted">Pour infuser votre vrac partout · 8,90 €</span></div><button class="btn btn-ghost btn-sm" type="button" data-add="boule">Ajouter</button></div>`:''}
  <div class="cdr-f"><div class="cdr-tot"><span>Sous-total</span><b>${eur(t.sub-t.disc)}</b></div><p class="t-cap">Livraison ${t.free?'offerte':'4,90 €, offerte dès 35 €'}.</p>${wTicket(true)}
  <a class="btn btn-primary btn-block" href="#${state.logged?'livraison':'connexion'}" data-cdrclose>Commander</a><a class="btn btn-ghost btn-block" href="#panier" data-cdrclose>Voir le panier</a>
  <p class="cdr-safe">${ico.lock}Paiement sécurisé · retours gratuits sous 30 jours</p></div>`;}

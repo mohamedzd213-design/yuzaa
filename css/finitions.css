@@ -1,0 +1,59 @@
+/* yuzaa · finitions.css (18/11/2026)
+   Corrections issues des audits : test du parcours d'achat, robots IA et PageSpeed.
+   Ne change pas la direction artistique (noir et blanc premium, boutons verts). */
+
+/* ---------- Lien d'évitement « Aller au contenu » (visible au clavier) ---------- */
+.skip{position:fixed;left:12px;top:-64px;z-index:200;padding:12px 18px;border-radius:999px;background:#111;color:#fff;font:600 15px/1 var(--font-body);text-decoration:none;box-shadow:0 10px 30px -10px rgba(0,0,0,.5);transition:top .2s}
+.skip:focus,.skip:focus-visible{top:12px;outline:3px solid #2A8046;outline-offset:2px}
+#view:focus{outline:none}
+
+/* ---------- Premier affichage : la page arrive déjà construite ----------
+   L'entrée du haut de page glisse sans passer par l'invisible (le texte et la photo s'affichent
+   tout de suite). Les fondus sont gardés pour la navigation entre les pages (html.nav). */
+@keyframes yz-up0{from{transform:translateY(14px)}to{transform:none}}
+@keyframes yz-sc0{from{transform:scale(.97)}to{transform:none}}
+html:not(.nav) .site:not(.wf) .hm-hero-txt>*{animation-name:yz-up0}
+html:not(.nav) .site:not(.wf) .hm-hero-arch{animation-name:yz-sc0}
+html:not(.nav) .hero .t-over,html:not(.nav) .hero h1,html:not(.nav) .hero .hero-sub,html:not(.nav) .hero .lead,html:not(.nav) .hero .ctas,html:not(.nav) .hero .proofs{animation-name:yz-up0}
+
+/* ---------- Tunnel de commande : étape en toutes lettres sur mobile ---------- */
+.stepper-m{display:none}
+@media (max-width:760px){
+  .stepper-m{display:block;margin:-2px 0 18px;font-size:14px;color:var(--y-mute,#5C6157)}
+  .stepper-m b{color:var(--y-ink,#111)}
+}
+.auth-jump{display:none}
+@media (max-width:900px){
+  .auth-jump{display:block;margin:0 0 18px;padding:14px 16px;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px rgba(17,17,17,.1);font-size:15px}
+}
+/* case CGU / CGV : le libellé et son lien restent sur une ligne fluide */
+.site:not(.wf) label.check{display:block;padding-left:28px;position:relative;line-height:1.5}
+.site:not(.wf) label.check input{position:absolute;left:0;top:1px;margin:0}
+
+/* ---------- Pop-up newsletter : panneau en bas d'écran sur mobile, sans grande image ---------- */
+@media (max-width:760px){
+  .site:not(.wf) .nlpop{background:rgba(17,17,17,.35);backdrop-filter:none}
+  .site:not(.wf) .nlpop-media{display:none!important}
+  .site:not(.wf) .nlpop-box{max-height:78vh}
+  .site:not(.wf) .nlpop-body{padding:28px 20px 22px;gap:10px}
+}
+
+/* ---------- Panier latéral sur mobile : les articles d'abord ---------- */
+@media (max-width:760px){
+  .site:not(.wf) .cdr-f{padding:12px 18px 14px;gap:8px}
+  /* ticket de bienvenue en une ligne : talon « −10 % » + bouton (ou code + Appliquer) */
+  .site:not(.wf) .cdr-f .wtk-mini{grid-template-columns:84px 1fr;margin:2px 0 4px;-webkit-mask:none;mask:none;border-radius:12px}
+  .site:not(.wf) .cdr-f .wtk-mini .wtk-stub{padding:8px 6px 12px;gap:2px;border-radius:12px 0 0 12px}
+  .site:not(.wf) .cdr-f .wtk-mini .wtk-stub::after{height:4px}
+  .site:not(.wf) .cdr-f .wtk-mini .wtk-pct{font-size:24px}
+  .site:not(.wf) .cdr-f .wtk-mini .wtk-1re{font-size:9px;letter-spacing:.08em}
+  .site:not(.wf) .cdr-f .wtk-mini .wtk-over,.site:not(.wf) .cdr-f .wtk-mini .wtk-t,.site:not(.wf) .cdr-f .wtk-mini .wtk-note{display:none}
+  .site:not(.wf) .cdr-f .wtk-mini .wtk-body{flex-direction:row;align-items:center;justify-content:center;padding:8px 10px}
+  .site:not(.wf) .cdr-f .wtk-mini .wtk-body>.btn{width:100%;min-height:42px}
+  .site:not(.wf) .cdr-f .wtk-mini .wtk-code{gap:8px;flex-wrap:nowrap;justify-content:space-between}
+  .site:not(.wf) .cdr-f .wtk-mini .wtk-code b{font-size:14px;padding:7px 8px}
+  .site:not(.wf) .cdr-f .wtk-mini .wtk-code .btn{min-height:40px;padding-inline:14px}
+  .site:not(.wf) .cdr-f .btn-block{min-height:46px}
+  .site:not(.wf) .cdr-f .btn-ghost.btn-block{min-height:40px;padding-block:8px}
+  .site:not(.wf) .cdr-safe{font-size:12px}
+}

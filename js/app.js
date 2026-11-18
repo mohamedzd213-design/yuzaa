@@ -11,7 +11,7 @@ function payStep(n){$$('#paym .paym-step').forEach(x=>x.hidden=+x.dataset.step!=
 function payOpen(w){const m=$('#paym');if(!m)return;payW=w;$$('[data-wname]',m).forEach(x=>x.textContent=w);$('#paym-amt').textContent=eur(totals().tot);$('#paym-sum').textContent='Commande yuzaa · livraison à domicile';payStep(1);payLast=document.activeElement;m.hidden=false;requestAnimationFrame(()=>requestAnimationFrame(()=>m.classList.add('on')));setTimeout(()=>{const x=$('.nlpop-x',m);if(x)x.focus({preventScroll:true});},60);payT.push(setTimeout(()=>{payStep(2);const b=$('[data-payok]',m);if(b)b.focus({preventScroll:true});},still()?300:1600));}
 function payClose(){const m=$('#paym');if(!m||m.hidden)return;payT.forEach(clearTimeout);payT=[];m.classList.remove('on');setTimeout(()=>{m.hidden=true;},still()?0:300);if(payLast&&payLast.focus&&payLast.isConnected)payLast.focus({preventScroll:true});}
 function payOk(){payStep(3);payT.push(setTimeout(()=>{payClose();placeOrder(payW);},still()?200:1300));}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){popClose();payClose();cdrClose();}if(e.key==='Tab'){const m=$('#cdr');if(m&&!m.hidden){const f=$$('a[href],button,input',m).filter(x=>x.offsetParent);if(!f.length)return;const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}}}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){popClose();payClose();cdrClose();}if(e.key==='Tab'){const m=[$('#nlpop'),$('#paym'),$('#cdr')].find(x=>x&&!x.hidden);if(m){const f=$$('a[href],button,input',m).filter(x=>x.offsetParent);if(!f.length)return;const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}}}});
 
 /* ---------- Validation des formulaires ---------- */
 const MSG={req:'Ce champ est obligatoire.',email:'Adresse e-mail invalide. Exemple : prenom@email.fr',cp:'Le code postal doit contenir 5 chiffres.',tel:'Numéro invalide. Exemples : 06 12 34 56 78 ou +33 6 12 34 56 78',card:'Le numéro de carte doit contenir 16 chiffres.',exp:'Format attendu : MM/AA, date non dépassée.',cvc:'Les 3 chiffres au dos de votre carte.',pw:'8 caractères minimum, dont au moins un chiffre.',min20:'Votre message doit contenir au moins 20 caractères.',checked:'Veuillez cocher cette case pour continuer.'};
@@ -30,7 +30,7 @@ const H={
  pros:f=>{$('#pros-ok').hidden=false;f.reset();$$('.field',f).forEach(x=>x.classList.remove('is-ok'));},
  newsletter:f=>{setSub($('#nl-email').value.trim());f.reset();go('merci-newsletter');},
  nlpop:f=>{setSub($('#pop-email').value.trim());f.reset();$('#nlpop-form').hidden=true;$('#nlpop-ok').hidden=false;try{sessionStorage.setItem('yz-nl','1');}catch(e){}wRefresh();},
- nlcart:f=>{setSub($('#wtk-email').value.trim());wRefresh();toast('Inscription confirmée : votre code '+WCODE+' est prêt.');},
+ nlcart:f=>{setSub($('#wtk-email').value.trim());wRefresh();srSay('Inscription confirmée : votre code '+WCODE+' s\'affiche dans le récapitulatif.');const b=$('[data-applycode]');if(b)b.focus({preventScroll:true});},
  login:async f=>{const email=val('l-email').toLowerCase(),a=ACC[email];
   if(!a){formMsg('login-msg','Aucun compte n\'est associé à cette adresse e-mail. Créez le vôtre en quelques secondes avec le formulaire « Nouveau client ».');return;}
   const h=await pwHash(a.salt||'',$('#l-pw').value);if(a.pw&&h&&h!==a.pw){formMsg('login-msg','Mot de passe incorrect. Vérifiez votre saisie et réessayez.');return;}
@@ -69,7 +69,8 @@ site.addEventListener('click',e=>{if(e.target.id==='nlpop'){popClose();return;}i
  if(t.dataset.anchor){const r=(t.getAttribute('href')||'').slice(1);if(!r||r===cur()){e.preventDefault();goAnchor(t.dataset.anchor);}else pendingAnchor=t.dataset.anchor;return;}
  if(t.dataset.add){let q=1,k=t.dataset.add;if(t.hasAttribute('data-useq')){q=+$('#pq').textContent;const f=($('input[name=fmt]:checked')||{}).value;if(f==='sachets')k='sachets-'+k;}add(k,q);if(cur()==='panier')render(true);else added(t);return;}
  if(t.dataset.pq){const el=$('#pq');el.textContent=Math.max(1,+el.textContent+ +t.dataset.pq);return;}
- if(t.dataset.q){const k=t.dataset.q;state.cart[k]+= +t.dataset.d;if(state.cart[k]<=0)delete state.cart[k];count();if(t.closest('#cdr')){cdrRefresh();const nb=$(`#cdr [data-q="${k}"][data-d="${t.dataset.d}"]`);if(nb)nb.focus({preventScroll:true});else $('.cdr-x').focus({preventScroll:true});if(cur()==='panier')render(true);}else render(true);return;}
+ if(t.dataset.q){const k=t.dataset.q;state.cart[k]+= +t.dataset.d;if(state.cart[k]<=0)delete state.cart[k];count();if(t.closest('#cdr')){cdrRefresh();const nb=$(`#cdr [data-q="${k}"][data-d="${t.dataset.d}"]`);if(nb)nb.focus({preventScroll:true});else $('.cdr-x').focus({preventScroll:true});if(cur()==='panier')render(true);}else{render(true);const nb=$(`#view [data-q="${k}"][data-d="${t.dataset.d}"]`);if(nb)nb.focus({preventScroll:true});}
+  {const q=state.cart[k]||0,tt=totals();srSay(`${lineInfo(k).name} : ${q?'quantité '+q:'retiré du panier'}. Total ${eur(tt.tot)}.`);}return;}
  if(t.dataset.rm){delete state.cart[t.dataset.rm];count();if(t.closest('#cdr')){cdrRefresh();$('.cdr-x').focus({preventScroll:true});if(cur()==='panier')render(true);}else render(true);toast('Article retiré du panier');return;}
  if(t.dataset.filter){state.filter=t.dataset.filter;render(true);return;}
  if(t.dataset.bfilter){state.bfilter=t.dataset.bfilter;render(true);return;}
@@ -97,5 +98,27 @@ $$('[data-logo]').forEach(a=>a.innerHTML=logoHTML(a.dataset.logo==='light'));
 window.addEventListener('hashchange',()=>render());
 window.addEventListener('popstate',()=>render());
 {const c=DEMO?null:LS.get('yz-cart');if(c&&c.cart&&typeof c.cart==='object')for(const [k,q] of Object.entries(c.cart))if((P[k]||C[k]||(k.startsWith('sachets-')&&P[k.slice(8)]))&&Number.isInteger(q)&&q>0&&q<100)state.cart[k]=q;if(c&&c.promo===WCODE&&isSub())state.promo=WCODE;count();}
-if(document.body.dataset.site){let seen=null;try{seen=sessionStorage.getItem('yz-nl');}catch(e){}if(!seen&&!isSub())setTimeout(popOpen,1200);}
+/* Pop-up newsletter : après 30 s de visite ou à la moitié de la page, jamais pendant la commande */
+const POPNO=/^(panier|connexion|livraison|paiement|confirmation|compte|compte-commandes|compte-profil|suivi|merci|merci-newsletter)$/;
+function popArm(delay){let done=false,t=0;const fire=()=>{if(done)return;const m=$('#nlpop');const busy=POPNO.test(cur())||!$('#cdr').hidden||!$('#paym').hidden||(m&&!m.hidden)||isSub();if(busy){if(!isSub()){clearTimeout(t);t=setTimeout(fire,15000);}return;}done=true;removeEventListener('scroll',onS);clearTimeout(t);popOpen();};
+ const onS=()=>{const max=document.documentElement.scrollHeight-innerHeight;if(max>innerHeight&&scrollY/max>=.5)fire();};addEventListener('scroll',onS,{passive:true});t=setTimeout(fire,delay);}
+if(document.body.dataset.site){let seen=null;try{seen=sessionStorage.getItem('yz-nl');}catch(e){}if(!seen&&!isSub())popArm(30000);}
+/* Supabase (comptes, commandes, stock) : chargé tout de suite sur les pages qui en ont besoin,
+   sinon à la première interaction. La page s'affiche ainsi sans attendre ses 170 Ko de script. */
+const SBR=/^(connexion|livraison|paiement|confirmation|compte|compte-commandes|compte-profil|suivi|merci)$/;
+let sbAsked=false;
+function sbLoad(){if(sbAsked||DEMO)return;sbAsked=true;['/js/vendor/supabase-2.99.3.js','/js/supabase.js'].forEach(u=>{const s=document.createElement('script');s.src=u;s.async=false;document.head.appendChild(s);});}
+function sbNeed(r){if(SBR.test(r)||/[?&#](code|error|access_token)=/.test(location.search+location.hash))sbLoad();}
+['pointerdown','keydown','touchstart','focusin'].forEach(ev=>addEventListener(ev,sbLoad,{once:true,passive:true}));
+addEventListener('load',()=>{const idle=window.requestIdleCallback||(f=>setTimeout(f,1));
+ /* Manifeste (nom et icône sur l'écran d'accueil) : ajouté une fois la page chargée, hors du chemin critique */
+ {const l=document.createElement('link');l.rel='manifest';l.href='/site.webmanifest';document.head.appendChild(l);}setTimeout(()=>idle(sbLoad,{timeout:4000}),6000);
+ /* Vercel Web Analytics + Speed Insights, une fois la page chargée */
+ if(/vercel\.app$|yuzaa\.fr$/.test(location.hostname)){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};window.si=window.si||function(){(window.siq=window.siq||[]).push(arguments)};idle(()=>['/_vercel/insights/script.js','/_vercel/speed-insights/script.js'].forEach(u=>{const s=document.createElement('script');s.defer=true;s.src=u;document.head.appendChild(s);}),{timeout:5000});}});
+/* Lien d'évitement « Aller au contenu » */
+document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('[data-skip]');if(!a)return;e.preventDefault();const v=$('#view');v.focus({preventScroll:true});v.scrollIntoView({block:'start'});});
+/* Carte bancaire : numéro par groupes de 4, date au format MM/AA pendant la saisie */
+document.addEventListener('input',e=>{const i=e.target;if(i.id==='c-num'){const d=i.value.replace(/\D/g,'').slice(0,16);const v=d.replace(/(\d{4})(?=\d)/g,'$1 ');if(v!==i.value)i.value=v;}
+ else if(i.id==='c-exp'&&e.inputType!=='deleteContentBackward'){const d=i.value.replace(/\D/g,'').slice(0,4);const v=d.length>2?d.slice(0,2)+'/'+d.slice(2):d.length===2?d+'/':d;if(v!==i.value)i.value=v;}
+ else if(i.id==='c-cvc'){const v=i.value.replace(/\D/g,'').slice(0,3);if(v!==i.value)i.value=v;}});
 render();
