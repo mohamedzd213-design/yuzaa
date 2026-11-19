@@ -80,6 +80,8 @@ site.addEventListener('click',e=>{if(e.target.id==='nlpop'){popClose();return;}i
  if(t.hasAttribute('data-unpromo')){state.promo=null;render(true);toast('Code promo retiré');return;}
  if(t.hasAttribute('data-logout')){me=null;state.logged=false;saveAcc();const r=cur();if(['compte-commandes','compte-profil','suivi'].includes(r))go('compte');else render();toast('Vous êtes déconnecté(e).');return;}
  if(t.hasAttribute('data-burger')){const m=$('#mnav');const o=m.dataset.open!=='true';m.dataset.open=o;t.setAttribute('aria-expanded',o);return;}
+ if(t.hasAttribute('data-ck')){ckSet(t.dataset.ck);return;}
+ if(t.hasAttribute('data-ckopen')){ckShow();const a=$('#ck [data-ck="non"]');if(a)setTimeout(()=>a.focus({preventScroll:true}),60);return;}
  if(t.hasAttribute('data-nlopen')){e.preventDefault();$('#nlpop-form').hidden=false;$('#nlpop-ok').hidden=true;cdrClose();popOpen();return;}
  if(t.hasAttribute('data-applycode')){if(me&&me.orders.length){toast('Ce code est réservé à la première commande.');return;}state.promo=WCODE;wRefresh();toast('Code '+WCODE+' appliqué : −10 %');return;}
  if(t.hasAttribute('data-focusnl')){e.preventDefault();$('#nl-email').focus();$('#nl-email').scrollIntoView({block:'center',behavior:'smooth'});return;}
@@ -98,9 +100,18 @@ $$('[data-logo]').forEach(a=>a.innerHTML=logoHTML(a.dataset.logo==='light'));
 window.addEventListener('hashchange',()=>render());
 window.addEventListener('popstate',()=>render());
 {const c=DEMO?null:LS.get('yz-cart');if(c&&c.cart&&typeof c.cart==='object')for(const [k,q] of Object.entries(c.cart))if((P[k]||C[k]||(k.startsWith('sachets-')&&P[k.slice(8)]))&&Number.isInteger(q)&&q>0&&q<100)state.cart[k]=q;if(c&&c.promo===WCODE&&isSub())state.promo=WCODE;count();}
+/* Cookies : bandeau Accepter / Refuser, choix gardé 6 mois (recommandation CNIL).
+   Le site ne dépose aucun cookie publicitaire ; Vercel Web Analytics et Speed Insights ne se chargent qu'après « Accepter ». */
+const CKK='yz-consent';
+function ckGet(){const c=LS.get(CKK);return c&&(c.v==='oui'||c.v==='non')&&Date.now()-c.t<15552e6?c.v:null;}
+let statsOn=false;
+function stats(){if(statsOn||!/vercel\.app$|yuzaa\.fr$/.test(location.hostname))return;statsOn=true;window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};window.si=window.si||function(){(window.siq=window.siq||[]).push(arguments)};['/_vercel/insights/script.js','/_vercel/speed-insights/script.js'].forEach(u=>{const s=document.createElement('script');s.defer=true;s.src=u;document.head.appendChild(s);});}
+function ckShow(){const b=$('#ck');if(!b)return;b.hidden=false;requestAnimationFrame(()=>requestAnimationFrame(()=>b.classList.add('on')));}
+function ckSet(v){LS.set(CKK,{v,t:Date.now()});const b=$('#ck');if(b){b.classList.remove('on');setTimeout(()=>{b.hidden=true;},still()?0:300);}if(v==='oui')stats();if(typeof toast==='function')toast(v==='oui'?'Merci, vos préférences sont enregistrées':'C\'est noté : aucune mesure d\'audience');}
+if(!ckGet())ckShow();
 /* Pop-up newsletter : après 30 s de visite ou à la moitié de la page, jamais pendant la commande */
 const POPNO=/^(panier|connexion|livraison|paiement|confirmation|compte|compte-commandes|compte-profil|suivi|merci|merci-newsletter)$/;
-function popArm(delay){let done=false,t=0;const fire=()=>{if(done)return;const m=$('#nlpop');const busy=POPNO.test(cur())||!$('#cdr').hidden||!$('#paym').hidden||(m&&!m.hidden)||isSub();if(busy){if(!isSub()){clearTimeout(t);t=setTimeout(fire,15000);}return;}done=true;removeEventListener('scroll',onS);clearTimeout(t);popOpen();};
+function popArm(delay){let done=false,t=0;const fire=()=>{if(done)return;const m=$('#nlpop');const busy=POPNO.test(cur())||!$('#cdr').hidden||!$('#paym').hidden||(m&&!m.hidden)||!$('#ck').hidden||isSub();if(busy){if(!isSub()){clearTimeout(t);t=setTimeout(fire,15000);}return;}done=true;removeEventListener('scroll',onS);clearTimeout(t);popOpen();};
  const onS=()=>{const max=document.documentElement.scrollHeight-innerHeight;if(max>innerHeight&&scrollY/max>=.5)fire();};addEventListener('scroll',onS,{passive:true});t=setTimeout(fire,delay);}
 if(document.body.dataset.site){let seen=null;try{seen=sessionStorage.getItem('yz-nl');}catch(e){}if(!seen&&!isSub())popArm(30000);}
 /* Supabase (comptes, commandes, stock) : chargé tout de suite sur les pages qui en ont besoin,
@@ -113,8 +124,8 @@ function sbNeed(r){if(SBR.test(r)||/[?&#](code|error|access_token)=/.test(locati
 addEventListener('load',()=>{const idle=window.requestIdleCallback||(f=>setTimeout(f,1));
  /* Manifeste (nom et icône sur l'écran d'accueil) : ajouté une fois la page chargée, hors du chemin critique */
  {const l=document.createElement('link');l.rel='manifest';l.href='/site.webmanifest';document.head.appendChild(l);}setTimeout(()=>idle(sbLoad,{timeout:4000}),6000);
- /* Vercel Web Analytics + Speed Insights, une fois la page chargée */
- if(/vercel\.app$|yuzaa\.fr$/.test(location.hostname)){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};window.si=window.si||function(){(window.siq=window.siq||[]).push(arguments)};idle(()=>['/_vercel/insights/script.js','/_vercel/speed-insights/script.js'].forEach(u=>{const s=document.createElement('script');s.defer=true;s.src=u;document.head.appendChild(s);}),{timeout:5000});}});
+ /* Mesure d'audience : seulement si le visiteur a accepté */
+ if(ckGet()==='oui')idle(stats,{timeout:5000});});
 /* Lien d'évitement « Aller au contenu » */
 document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('[data-skip]');if(!a)return;e.preventDefault();const v=$('#view');v.focus({preventScroll:true});v.scrollIntoView({block:'start'});});
 /* Carte bancaire : numéro par groupes de 4, date au format MM/AA pendant la saisie */
