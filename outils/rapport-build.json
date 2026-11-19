@@ -1,21 +1,21 @@
 {
- "date": "2026-11-19T12:38:02.674Z",
+ "date": "2026-11-19T20:16:29.742Z",
  "pages": [
   {
    "r": "accueil",
-   "kb": 235,
+   "kb": 236,
    "text": 6691,
    "h1": 1
   },
   {
    "r": "infusions",
-   "kb": 216,
+   "kb": 217,
    "text": 1935,
    "h1": 1
   },
   {
    "r": "produit-eveil",
-   "kb": 224,
+   "kb": 225,
    "text": 4098,
    "h1": 1
   },
@@ -27,61 +27,61 @@
   },
   {
    "r": "produit-rush",
-   "kb": 223,
+   "kb": 224,
    "text": 4008,
    "h1": 1
   },
   {
    "r": "coffrets",
-   "kb": 214,
+   "kb": 215,
    "text": 1521,
    "h1": 1
   },
   {
    "r": "coffret-decouverte",
-   "kb": 212,
+   "kb": 213,
    "text": 2054,
    "h1": 1
   },
   {
    "r": "coffret-partiels",
-   "kb": 212,
+   "kb": 213,
    "text": 2055,
    "h1": 1
   },
   {
    "r": "coffret-boule",
-   "kb": 209,
+   "kb": 210,
    "text": 1322,
    "h1": 1
   },
   {
    "r": "pros",
-   "kb": 202,
+   "kb": 203,
    "text": 858,
    "h1": 1
   },
   {
    "r": "histoire",
-   "kb": 208,
+   "kb": 209,
    "text": 3567,
    "h1": 1
   },
   {
    "r": "engagements",
-   "kb": 216,
+   "kb": 217,
    "text": 2149,
    "h1": 1
   },
   {
    "r": "blog",
-   "kb": 205,
+   "kb": 206,
    "text": 1213,
    "h1": 1
   },
   {
    "r": "faq",
-   "kb": 209,
+   "kb": 210,
    "text": 3582,
    "h1": 1
   },
@@ -93,13 +93,13 @@
   },
   {
    "r": "cgv",
-   "kb": 198,
+   "kb": 199,
    "text": 1124,
    "h1": 1
   },
   {
    "r": "cgu",
-   "kb": 198,
+   "kb": 199,
    "text": 940,
    "h1": 1
   },
@@ -111,37 +111,37 @@
   },
   {
    "r": "article-boisson-energisante",
-   "kb": 216,
+   "kb": 217,
    "text": 6276,
    "h1": 1
   },
   {
    "r": "article-cafeine-moment",
-   "kb": 216,
+   "kb": 217,
    "text": 5929,
    "h1": 1
   },
   {
    "r": "article-trois-plantes",
-   "kb": 217,
+   "kb": 218,
    "text": 6254,
    "h1": 1
   },
   {
    "r": "article-bien-infuser",
-   "kb": 215,
+   "kb": 216,
    "text": 5456,
    "h1": 1
   },
   {
    "r": "article-rituels-examens",
-   "kb": 216,
+   "kb": 217,
    "text": 5645,
    "h1": 1
   },
   {
    "r": "article-rush-latte",
-   "kb": 215,
+   "kb": 216,
    "text": 5397,
    "h1": 1
   }
