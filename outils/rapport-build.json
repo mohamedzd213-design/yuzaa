@@ -1,147 +1,147 @@
 {
- "date": "2026-11-19T12:36:25.451Z",
+ "date": "2026-11-19T12:38:02.674Z",
  "pages": [
   {
    "r": "accueil",
-   "kb": 233,
+   "kb": 235,
    "text": 6691,
    "h1": 1
   },
   {
    "r": "infusions",
-   "kb": 214,
+   "kb": 216,
    "text": 1935,
    "h1": 1
   },
   {
    "r": "produit-eveil",
-   "kb": 221,
+   "kb": 224,
    "text": 4098,
    "h1": 1
   },
   {
    "r": "produit-focus",
-   "kb": 221,
+   "kb": 224,
    "text": 3989,
    "h1": 1
   },
   {
    "r": "produit-rush",
-   "kb": 221,
+   "kb": 223,
    "text": 4008,
    "h1": 1
   },
   {
    "r": "coffrets",
-   "kb": 212,
+   "kb": 214,
    "text": 1521,
    "h1": 1
   },
   {
    "r": "coffret-decouverte",
-   "kb": 210,
+   "kb": 212,
    "text": 2054,
    "h1": 1
   },
   {
    "r": "coffret-partiels",
-   "kb": 210,
+   "kb": 212,
    "text": 2055,
    "h1": 1
   },
   {
    "r": "coffret-boule",
-   "kb": 207,
+   "kb": 209,
    "text": 1322,
    "h1": 1
   },
   {
    "r": "pros",
-   "kb": 200,
+   "kb": 202,
    "text": 858,
    "h1": 1
   },
   {
    "r": "histoire",
-   "kb": 206,
+   "kb": 208,
    "text": 3567,
    "h1": 1
   },
   {
    "r": "engagements",
-   "kb": 214,
+   "kb": 216,
    "text": 2149,
    "h1": 1
   },
   {
    "r": "blog",
-   "kb": 203,
+   "kb": 205,
    "text": 1213,
    "h1": 1
   },
   {
    "r": "faq",
-   "kb": 207,
+   "kb": 209,
    "text": 3582,
    "h1": 1
   },
   {
    "r": "contact",
-   "kb": 199,
+   "kb": 202,
    "text": 406,
    "h1": 1
   },
   {
    "r": "cgv",
-   "kb": 196,
+   "kb": 198,
    "text": 1124,
    "h1": 1
   },
   {
    "r": "cgu",
-   "kb": 196,
+   "kb": 198,
    "text": 940,
    "h1": 1
   },
   {
    "r": "mentions",
-   "kb": 195,
-   "text": 434,
+   "kb": 199,
+   "text": 1290,
    "h1": 1
   },
   {
    "r": "article-boisson-energisante",
-   "kb": 214,
+   "kb": 216,
    "text": 6276,
    "h1": 1
   },
   {
    "r": "article-cafeine-moment",
-   "kb": 214,
+   "kb": 216,
    "text": 5929,
    "h1": 1
   },
   {
    "r": "article-trois-plantes",
-   "kb": 215,
+   "kb": 217,
    "text": 6254,
    "h1": 1
   },
   {
    "r": "article-bien-infuser",
-   "kb": 213,
+   "kb": 215,
    "text": 5456,
    "h1": 1
   },
   {
    "r": "article-rituels-examens",
-   "kb": 214,
+   "kb": 216,
    "text": 5645,
    "h1": 1
   },
   {
    "r": "article-rush-latte",
-   "kb": 212,
+   "kb": 215,
    "text": 5397,
    "h1": 1
   }
