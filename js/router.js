@@ -32,7 +32,7 @@ const FRMOIS=['janvier','février','mars','avril','mai','juin','juillet','août'
 const isoDate=s=>{const m=String(s||'').match(/(\d{1,2})\s+([a-zéû]+)\s+(\d{4})/i);if(!m)return undefined;const mo=FRMOIS.indexOf(m[2].toLowerCase());return mo<0?undefined:`${m[3]}-${String(mo+1).padStart(2,'0')}-${m[1].padStart(2,'0')}`;};
 const ldStrip=h=>String(h||'').replace(/<[^>]+>/g,'').replace(/@@[^@]*@@/g,'').replace(/\s+/g,' ').trim();
 // Livraison (4,90 €, offerte dès 35 €, 48 h en France) et retours gratuits sous 30 jours : lus par Google pour les fiches marchand
-const ldShip=[{'@type':'OfferShippingDetails',shippingRate:{'@type':'MonetaryAmount',value:'4.90',currency:'EUR'},shippingDestination:{'@type':'DefinedRegion',addressCountry:'FR'},deliveryTime:{'@type':'ShippingDeliveryTime',handlingTime:{'@type':'QuantitativeValue',minValue:0,maxValue:1,unitCode:'DAY'},transitTime:{'@type':'QuantitativeValue',minValue:1,maxValue:2,unitCode:'DAY'}}}];
+const ldShip=[{'@type':'OfferShippingDetails',shippingRate:{'@type':'MonetaryAmount',value:'4.90',currency:'EUR'},shippingDestination:{'@type':'DefinedRegion',addressCountry:'FR'},deliveryTime:{'@type':'ShippingDeliveryTime',handlingTime:{'@type':'QuantitativeValue',minValue:0,maxValue:0,unitCode:'DAY'},transitTime:{'@type':'QuantitativeValue',minValue:1,maxValue:2,unitCode:'DAY'}}}];
 const ldRetour={'@type':'MerchantReturnPolicy',applicableCountry:'FR',returnPolicyCategory:'https://schema.org/MerchantReturnFiniteReturnWindow',merchantReturnDays:30,returnMethod:'https://schema.org/ReturnByMail',returnFees:'https://schema.org/FreeReturn'};
 const ldOffer=(price,name,url)=>({'@type':'Offer',name,price:price.toFixed(2),priceCurrency:'EUR',availability:'https://schema.org/InStock',itemCondition:'https://schema.org/NewCondition',url,seller:{'@id':SITE+'/#org'},shippingDetails:ldShip,hasMerchantReturnPolicy:ldRetour});
 function ldProduct(d){const p=P[d],url=SITE+'/produit-'+d;return{'@type':'Product','@id':url+'#produit',name:`${p.name}, infusion ${andList(p.plants)}`,description:`${p.desc} ${p.mg} mg de caféine naturelle par tasse, sans sucre ajouté.`,image:[abs(IMG[d+'S']),abs(IMG[d+'B']),abs(IMG[d+'F'])],brand:{'@type':'Brand',name:'yuzaa'},category:'Infusion énergisante aux plantes',sku:'YZ-'+d.toUpperCase(),url,
@@ -79,16 +79,16 @@ function seoMeta(r,art){const strip=ldStrip;const nf=!known(r);
  const url='https://yuzaa.vercel.app/'+(r==='accueil'?'':r);
  set('meta[name=description]','content',d);set('meta[property="og:description"]','content',d);set('meta[property="og:title"]','content',document.title);set('meta[name="twitter:title"]','content',document.title);set('meta[name="twitter:description"]','content',d);
  {const pd=r.startsWith('produit-')&&P[r.slice(8)]?r.slice(8):null;const im=pd?IMG[pd+'S']:IMG.hero;set('meta[property="og:image"]','content',abs(im));set('meta[property="og:type"]','content',pd?'product':art?'article':'website');}
- set('link[rel=canonical]','href',url);set('meta[property="og:url"]','content',url);
+ {let cl=document.querySelector('link[rel=canonical]');if(NOINDEX.includes(r)||nf){if(cl)cl.remove();}else{if(!cl){cl=document.createElement('link');cl.rel='canonical';document.head.appendChild(cl);}cl.href=url;}}set('meta[property="og:url"]','content',url);
  set('meta[name=robots]','content',NOINDEX.includes(r)||nf?'noindex, follow':'index, follow, max-image-preview:large, max-snippet:-1');
  let ld=document.getElementById('ld-page');const data=nf||NOINDEX.includes(r)?null:ldPage(r,art);
  if(!data){if(ld)ld.remove();}else{if(!ld){ld=document.createElement('script');ld.type='application/ld+json';ld.id='ld-page';document.head.appendChild(ld);}const j=JSON.stringify(data);if(ld.textContent!==j)ld.textContent=j;}}
 let pendingAnchor=null;
 const PATHMODE=/^https?:$/.test(location.protocol)&&/(^|\.)yuzaa\.vercel\.app$|^localhost$|^127\.0\.0\.1$/.test(location.hostname);
-const cur=()=>location.hash.slice(1)||(PATHMODE?decodeURIComponent(location.pathname.replace(/^\/+|\/+$/g,'')):'')||'accueil';
+const cur=()=>{const h=location.hash.slice(1);if(PATHMODE&&!(h&&known(h)))return decodeURIComponent(location.pathname.replace(/^\/+|\/+$/g,''))||'accueil';return h||'accueil';};
 function goReplace(r){if(PATHMODE){history.replaceState(null,'','/'+r);render();}else location.replace('#'+r);}
 /* Sur le site en ligne, les liens internes #route deviennent de vraies adresses /route */
-function pathLinks(root){if(!PATHMODE||!root)return;$$('a[href^="#"]',root).forEach(a=>{if(a.hasAttribute('data-scroll')||a.hasAttribute('data-focusnl'))return;const r=a.getAttribute('href').slice(1);if(!r||!/^[a-z0-9-]+$/.test(r)||document.getElementById(r)&&!V[r])return;a.setAttribute('href',r==='accueil'?'/':'/'+r);});}
+function pathLinks(root){if(!PATHMODE||!root)return;$$('a[href^="#"]',root).forEach(a=>{if(a.hasAttribute('data-scroll')||a.hasAttribute('data-focusnl'))return;const r=a.getAttribute('href').slice(1);if(!r||!/^[a-z0-9-]+$/.test(r)||document.getElementById(r)&&!V[r])return;const an=a.getAttribute('data-anchor');a.setAttribute('href',(r==='accueil'?'/':'/'+r)+(an&&/^[a-z0-9-]+$/.test(an)?'#'+an:''));});}
 function go(r){r=r||'accueil';if(PATHMODE){history.pushState(null,'',r==='accueil'?'/':'/'+r);render();}else if(location.hash.slice(1)===r)render();else location.hash=r;}
 function goAnchor(id){const el=document.getElementById(id);if(!el)return;if(el.tagName==='DETAILS')el.open=true;const rv=el.closest('.rv');if(rv&&!rv.classList.contains('in')){rv.style.transition='none';rv.classList.add('in');void rv.offsetHeight;rv.style.transition='';}el.scrollIntoView({behavior:still()?'auto':'smooth',block:'start'});}
 function view(r){if(V[r])return V[r]();if(r.startsWith('produit-')&&P[r.slice(8)])return produit(r.slice(8));if(r.startsWith('coffret-')&&C[r.slice(8)])return coffret(r.slice(8));if(r.startsWith('article-')&&ARTS.some(a=>a.id===r.slice(8)))return article(r.slice(8));return V['404']();}
@@ -96,13 +96,14 @@ function view(r){if(V[r])return V[r]();if(r.startsWith('produit-')&&P[r.slice(8)
    à celui que le script produirait, on le garde tel quel (pas de clignotement, chargement plus rapide). */
 const hh=s=>{let h=5381;for(let i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))>>>0;return h.toString(36)+s.length.toString(36);};
 let firstRender=true;
+if(PATHMODE){const h0=location.hash.slice(1);if(h0&&/^[a-z0-9-]+$/i.test(h0)&&!known(h0))pendingAnchor=h0;}
 function render(keepScroll){const r=cur();saveCart();if(typeof sbNeed==='function')sbNeed(r);
  if(!DEMO&&['connexion','livraison','paiement'].includes(r)){if(!Object.keys(state.cart).length){goReplace('panier');return;}if(r!=='connexion'&&!state.logged){goReplace('connexion');return;}}
  if(!keepScroll)cdrClose();
  const m=$('#view');const html=prep(view(r));const first=firstRender;firstRender=false;
  if(!(first&&m.dataset.h&&m.dataset.h===hh(html)))m.innerHTML=html;m.removeAttribute('data-h');if(first)m.style.minHeight='';
  if(!first&&!keepScroll)document.documentElement.classList.add('nav');setTimeout(buyBar,60);setTimeout(buyBar,600);
- $$('.nav a').forEach(a=>a.classList.toggle('on',a.dataset.nav.split(' ').some(k=>r.startsWith(k))));
+ $$('nav.nav a[data-nav]').forEach(a=>a.classList.toggle('on',a.dataset.nav.split(' ').some(k=>r.startsWith(k))));
  $('#mnav').dataset.open='false';$('[data-burger]').setAttribute('aria-expanded','false');
  const art=r.startsWith('article-')?ARTS.find(a=>'article-'+a.id===r):null;
  document.title=titleOf(known(r)?r:'404',art);seoMeta(r,art);
