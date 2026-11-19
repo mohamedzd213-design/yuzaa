@@ -141,11 +141,12 @@
       </div>
     </div>
   </div>
-  <div class="ck" id="ck" role="region" aria-labelledby="ck-t" hidden="">
+  <div class="ck on" id="ck" role="region" aria-labelledby="ck-t">
     <p class="ck-t" id="ck-t">Cookies et mesure d'audience</p>
     <p class="ck-p">Le panier et votre compte utilisent seulement le stockage nécessaire au site. Avec votre accord, nous mesurons aussi l'audience de façon anonyme pour améliorer le site. <a href="/mentions" data-anchor="lg3">En savoir plus</a></p>
     <div class="ck-b"><button class="btn btn-primary btn-sm" type="button" data-ck="non">Refuser</button><button class="btn btn-primary btn-sm" type="button" data-ck="oui">Accepter</button></div>
   </div>
+  <script>/* bandeau affiché dès le premier rendu ; masqué tout de suite si le choix (moins de 6 mois) est déjà fait */try{var yzc=JSON.parse(localStorage.getItem('yz-consent'));if(yzc&&(yzc.v==='oui'||yzc.v==='non')&&Date.now()-yzc.t<15552e6)document.getElementById('ck').hidden=true}catch(e){}</script>
   <div class="paym" id="paym" hidden="">
     <div class="paym-box" role="dialog" aria-modal="true" aria-labelledby="paym-t">
       <button class="nlpop-x" type="button" data-payclose="" aria-label="Fermer la fenêtre de paiement"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
