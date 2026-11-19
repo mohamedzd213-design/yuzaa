@@ -96,7 +96,6 @@ Les scripts sont chargés dans l'ordre avec `defer` et partagent la même porté
 - Paiement simulé : démonstration, aucun paiement réel.
 - FAQ avec recherche, blog et articles, formulaires validés (contact, devis pros, newsletter).
 - Animations sobres au défilement, désactivées si l'utilisateur réduit les animations.
-- Cookies : bandeau Accepter / Refuser (boutons de même poids, choix gardé 6 mois dans `yz-consent`, lien « Gérer les cookies » en pied de page). Vercel Web Analytics et Speed Insights ne se chargent qu'après « Accepter ». Le site ne dépose aucun cookie publicitaire.
 - Accessibilité : lien « Aller au contenu », focus gardé dans les fenêtres (pop-up, paiement, panier), annonces pour lecteurs d'écran au panier.
 
 ## Supabase

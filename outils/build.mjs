@@ -95,7 +95,6 @@ async function snap(route) {
     st.querySelector('#view').innerHTML = '<!--VIEW-->';
     st.querySelectorAll('.is-scrolled,.is-hidden,.bump').forEach(e => e.classList.remove('is-scrolled', 'is-hidden', 'bump'));
     st.querySelectorAll('.mbuy.show').forEach(e => e.classList.remove('show'));
-    st.querySelectorAll('#ck').forEach(e => { e.hidden = false; e.classList.add('on'); });
     const meta = s => { const e = document.querySelector(s); return e ? e.getAttribute('content') || e.getAttribute('href') : ''; };
     const ld = document.getElementById('ld-page');
     return {route: r, known: known(r), hash: hh(html), hash2: hh(prep(view(r))), viewHTML, stageHTML: st.outerHTML,
