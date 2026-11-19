@@ -102,7 +102,7 @@ function render(keepScroll){const r=cur();saveCart();if(typeof sbNeed==='functio
  if(!keepScroll)cdrClose();
  const m=$('#view');const html=prep(view(r));const first=firstRender;firstRender=false;
  if(!(first&&m.dataset.h&&m.dataset.h===hh(html)))m.innerHTML=html;m.removeAttribute('data-h');if(first)m.style.minHeight='';
- if(!first&&!keepScroll)document.documentElement.classList.add('nav');setTimeout(buyBar,60);setTimeout(buyBar,600);
+ if(!first&&!keepScroll)document.documentElement.classList.add('yz-nav');setTimeout(buyBar,60);setTimeout(buyBar,600);
  $$('nav.nav a[data-nav]').forEach(a=>a.classList.toggle('on',a.dataset.nav.split(' ').some(k=>r.startsWith(k))));
  $('#mnav').dataset.open='false';$('[data-burger]').setAttribute('aria-expanded','false');
  const art=r.startsWith('article-')?ARTS.find(a=>'article-'+a.id===r):null;

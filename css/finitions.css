@@ -9,12 +9,12 @@
 
 /* ---------- Premier affichage : la page arrive déjà construite ----------
    L'entrée du haut de page glisse sans passer par l'invisible (le texte et la photo s'affichent
-   tout de suite). Les fondus sont gardés pour la navigation entre les pages (html.nav). */
+   tout de suite). Les fondus sont gardés pour la navigation entre les pages (html.yz-nav). */
 @keyframes yz-up0{from{transform:translateY(14px)}to{transform:none}}
 @keyframes yz-sc0{from{transform:scale(.97)}to{transform:none}}
-html:not(.nav) .site:not(.wf) .hm-hero-txt>*{animation-name:yz-up0}
-html:not(.nav) .site:not(.wf) .hm-hero-arch{animation-name:yz-sc0}
-html:not(.nav) .hero .t-over,html:not(.nav) .hero h1,html:not(.nav) .hero .hero-sub,html:not(.nav) .hero .lead,html:not(.nav) .hero .ctas,html:not(.nav) .hero .proofs{animation-name:yz-up0}
+html:not(.yz-nav) .site:not(.wf) .hm-hero-txt>*{animation-name:yz-up0}
+html:not(.yz-nav) .site:not(.wf) .hm-hero-arch{animation-name:yz-sc0}
+html:not(.yz-nav) .hero .t-over,html:not(.yz-nav) .hero h1,html:not(.yz-nav) .hero .hero-sub,html:not(.yz-nav) .hero .lead,html:not(.yz-nav) .hero .ctas,html:not(.yz-nav) .hero .proofs{animation-name:yz-up0}
 
 /* ---------- Tunnel de commande : étape en toutes lettres sur mobile ---------- */
 .stepper-m{display:none}
