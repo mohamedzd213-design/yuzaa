@@ -32,6 +32,9 @@ modification de `js/` ou `css/` n'apparaît pas sur le site (les pages chargent 
 
 Ne jamais remettre `cleanUrls` dans `vercel.json` (les adresses comme `/infusions` renvoyaient 404).
 
+Ne jamais supprimer `googlee1cb0f463b72db01.html` à la racine : c'est la preuve de propriété du site
+pour Google Search Console. Sans lui, la propriété perd sa validation.
+
 ## Ce que fait la génération (outils/build.mjs)
 
 - **Une vraie page HTML par adresse** (24 pages publiques) : le contenu, le titre, la description,

@@ -123,8 +123,10 @@ function buildPage(s, {preload = '', robots, absolute = false, emptyView = false
   setMeta(/(<title>)[^<]*(<\/title>)/, s.title);
   setMeta(/(<meta name="description" content=")[^"]*(")/, s.desc);
   setMeta(/(<meta name="robots" content=")[^"]*(")/, robots || s.robots);
-  setMeta(/(<link rel="canonical" href=")[^"]*(")/, s.canonical);
-  setMeta(/(<meta property="og:url" content=")[^"]*(")/, s.canonical);
+  // pages noindex (app.html, 404.html) : pas de balise canonical, plutôt qu'une canonical vers l'accueil
+  if (s.canonical) setMeta(/(<link rel="canonical" href=")[^"]*(")/, s.canonical);
+  else h = h.replace(/<link rel="canonical"[^>]*>\n?/, '');
+  setMeta(/(<meta property="og:url" content=")[^"]*(")/, s.canonical || SITE + '/');
   setMeta(/(<meta property="og:title" content=")[^"]*(")/, s.title);
   setMeta(/(<meta property="og:description" content=")[^"]*(")/, s.desc);
   setMeta(/(<meta property="og:type" content=")[^"]*(")/, s.ogType || 'website');
@@ -173,12 +175,12 @@ for (const r of indexable) {
 {
   const s = await snap('cgu');
   s.stageHTML = s.stageHTML.replace(/ class="on"/g, '').replace(/ aria-current="page"/g, '');
-  write('app.html', buildPage({...s, title: 'yuzaa', desc: s.desc, canonical: SITE + '/', ld: '', ogType: 'website', ogImage: SITE + '/assets/img/gamme-yuzaa.webp'}, {robots: 'noindex, follow', emptyView: true}));
+  write('app.html', buildPage({...s, title: 'yuzaa', desc: s.desc, canonical: '', ld: '', ogType: 'website', ogImage: SITE + '/assets/img/gamme-yuzaa.webp'}, {robots: 'noindex, follow', emptyView: true}));
 }
 // page 404 (servie par Vercel avec le statut 404 pour toute adresse inconnue)
 {
   const s = await snap('page-introuvable-404');
-  write('404.html', buildPage({...s, canonical: SITE + '/', ld: ''}, {robots: 'noindex, follow', absolute: true}));
+  write('404.html', buildPage({...s, canonical: '', ld: ''}, {robots: 'noindex, follow', absolute: true}));
 }
 await browser.close();
 server.close();
